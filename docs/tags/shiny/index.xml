@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shiny on Marcus Nunes&#39; Blog</title>
+    <link>/tags/shiny/</link>
+    <description>Recent content in Shiny on Marcus Nunes&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Wed, 01 May 2019 14:10:00 -0300</lastBuildDate>
+    
+	<atom:link href="/tags/shiny/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Como Instalar o shiny server em seu Próprio Servidor</title>
+      <link>/posts/como-instalar-o-shiny-em-seu-proprio-servidor/</link>
+      <pubDate>Wed, 01 May 2019 14:10:00 -0300</pubDate>
+      
+      <guid>/posts/como-instalar-o-shiny-em-seu-proprio-servidor/</guid>
+      <description>Introdução O pacote shiny do R é uma excelente ferramenta para criar aplicações web com as seguintes funções:
+ mostrar como a Estatística pode ser utilizada para ensino divulgação de informações públicas através de uma ferramenta interativa ferramenta de controle de produção em empresas (dashboards, no jargão popular)  Eu mantenho uma página no site da universidade com aplicações criadas por mim e por meus alunos que ilustram o poder desta ferramenta.</description>
+    </item>
+    
+    <item>
+      <title>Regressão Linear Interativa</title>
+      <link>/posts/regressao-linear-interativa/</link>
+      <pubDate>Wed, 02 May 2018 07:21:00 -0300</pubDate>
+      
+      <guid>/posts/regressao-linear-interativa/</guid>
+      <description>tl; dr Este é o link do aplicativo, caso o texto abaixo seja desinteressante.
+Introdução Regressão linear é um dos tópicos que ensino em uma disciplina chamada Métodos Estatísticos. Como é uma disciplina do terceiro semestre do Bacharelado em Estatística, é comum encontrar alunos que nunca viram um tópico como este ser tratado anteriormente. Assim, alguns ficam sem entender direito quando falo sobre relação linear, pontos de influência e tudo o mais.</description>
+    </item>
+    
+    <item>
+      <title>Controle de gastos públicos: como verificar quanto os deputados federais estão gastando</title>
+      <link>/posts/controle-de-gastos-publicos-como-verificar-quanto-os-deputados-federais-estao-gastando/</link>
+      <pubDate>Mon, 02 Apr 2018 11:40:00 -0300</pubDate>
+      
+      <guid>/posts/controle-de-gastos-publicos-como-verificar-quanto-os-deputados-federais-estao-gastando/</guid>
+      <description>2018 é ano de eleição. Em teoria, alguns milhões de brasileiros que vão às urnas em 7 de outubro escolher seus candidatos para vários cargos. Infelizmente, os debates sobre as eleições no Brasil ficam concentrados na escolha dos nomes para os cargos do executivo. As pessoas tendem a se preocupar com o novo presidente, muitas vezes imaginando que vão eleger um salvador da pátria que vai, magicamente, resolver todos os problemas do país.</description>
+    </item>
+    
+    <item>
+      <title>Intervalos de Confiança na Prática</title>
+      <link>/posts/intervalos-de-confianca-na-pratica/</link>
+      <pubDate>Fri, 02 Feb 2018 12:54:00 -0300</pubDate>
+      
+      <guid>/posts/intervalos-de-confianca-na-pratica/</guid>
+      <description>A construção de Intervalos de Confiança é bastante simples. Entretanto, seu conceito nem sempre é entendido por quem trabalha com eles, principalmente os iniciantes. Pensando nisso, desenvolvi um aplicativo capaz de simplificar o entendimento do processo.
+Segundo o livro Estatística Básica (Bussab e Morettin, 2014), a definição de intervalo de confiança a 95% para o parâmetro da média populacional $\mu$, quando a variância populacional $\sigma^2$ é conhecida, é dada por</description>
+    </item>
+    
+    <item>
+      <title>Visualização Gráfica e Resumida dos Resultados das Edições do ENEM nos Anos de 2010 a 2015</title>
+      <link>/posts/visualizacao-grafica-e-resumida-dos-resultados-das-edicoes-do-enem-nos-anos-de-2010-a-2015/</link>
+      <pubDate>Sun, 21 Jan 2018 13:21:00 -0300</pubDate>
+      
+      <guid>/posts/visualizacao-grafica-e-resumida-dos-resultados-das-edicoes-do-enem-nos-anos-de-2010-a-2015/</guid>
+      <description>Analisar os resultados do ENEM é uma tarefa difícil. Embora os microdados estejam disponíveis gratuitamente para quem quiser baixá-los, nem todos possuem o conhecimento técnico necessário para analisá-los a partir do zero. Até mesmo pesquisadores experientes precisam pedir ajuda para realizar esta tarefa.
+Pensando neste problema, orientei uma monografia no Departamento de Estatística da UFRN chamada Visualização dos resultados das edições de 2010 a 2015 do ENEM através de um Shiny App, de autoria de Marylaine Nascimento.</description>
+    </item>
+    
+  </channel>
+</rss>

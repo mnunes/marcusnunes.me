@@ -1,0 +1,226 @@
+---
+title: "Meu Gosto Musical de Acordo com o last.fm"
+description: "As músicas e artistas que ouvi nos últimos 10 anos"
+tags: ["análise", "last.fm", "música"]
+draft: false
+date: 2019-02-25T05:20:00-03:00
+---
+
+# Uma Pequena Contextualização
+
+Antes da chegada do spotify, havia um serviço muito popular chamado [last.fm](http://last.fm/user/grandeabobora/). Ele foi um serviço muito popular (ao menos comigo e alguns amigos) entre o final da década de 2000 e início da década de 2010. 
+
+Sou usuário *hardcore* dele desde 5 de dezembro de 2008. Criei meu perfil nele em 2007, mas eu não o utilizei durante o primeiro ano. Sendo assim, há mais de 10 anos eu registro nele **todas** as músicas que ouço. Já são quase 100 mil audições registradas, o que dá uma média superior a 26 músicas ouvidas por dia. 
+
+
+![last.fm profile](/images/last.fm.png)
+
+Basicamente, o [last.fm](http://last.fm/user/grandeabobora/) registra todas as músicas ouvidas pelo usuário e as disponibiliza em [uma página pública]([last.fm](http://last.fm/user/grandeabobora/)). Estas músicas podem ter sido ouvidas em mp3 ou streaming, em iPods ou Zunes, em desktops ou celulares. Tanto faz: basta que o usuário configure seus programas e eles enviarão estes dados para o [last.fm]([last.fm](http://last.fm/user/grandeabobora/)) registrar.
+
+Há algumas estatísticas disponíveis no serviço, mas é tudo muito básico. Na imagem acima eu mostrei as contagens que aparecem a respeito do meu perfil assim que ele é visitado. Mas estes totais são pouco informativos: falta mostrar, por exemplo, quais foram os artistas que mais ouvi ou a tendência daquilo que ouvi nos últimos tempos.
+
+Por isso, visitei o site [last.fm to csv](https://benjaminbenben.com/lastfm-to-csv/) e, através dele, baixei todas as faixas que ouvi de 5 de Dezembro de 2008 a 4 de Fevereiro de 2019. Ou seja, analisei mais de dez anos de dados para poder traçar o perfil que apresento a seguir.
+
+
+
+# Resultados Tabelados
+
+
+```{r preparacao, include=FALSE}
+# pacotes necessários
+
+library(tidyverse)
+theme_set(theme_bw())
+library(lubridate)
+library(stringi)
+library(plotly)
+library(knitr)
+library(kableExtra)
+
+# leitura dos dados
+
+#last.fm <- as_data_frame(read.csv(file="scrobbles-grandeabobora-1513705894.csv"))
+last.fm <- as_tibble(read.csv(file="grandeabobora.csv", header=FALSE))
+
+# colocar nomes nas colunas
+
+names(last.fm) <- c("artista", "album", "musica", "data")
+
+# converter as datas para um formato reconhecivel pelo R
+
+last.fm$data <- dmy_hm(last.fm$data)
+last.fm$data <- date(last.fm$data) # exclui as horas
+
+# converter fatores para caracteres
+# e capitalizacao dos nomes
+
+capwords <- function(s, strict = TRUE) {
+  cap <- function(s) paste(toupper(substring(s, 1, 1)),
+                           {s <- substring(s, 2); if(strict) tolower(s) else s},
+                           sep = "", collapse = " " )
+  sapply(strsplit(s, split = " "), cap, USE.NAMES = !is.null(names(s)))
+}
+
+last.fm$artista <- sapply(as.character(last.fm$artista), capwords)
+last.fm$album   <- sapply(as.character(last.fm$album), capwords)
+last.fm$musica  <- sapply(as.character(last.fm$musica), capwords)
+
+# retirar caracteres especiais dos nomes
+
+last.fm$artista <- stri_trans_general(last.fm$artista, "latin-ascii")
+last.fm$album   <- stri_trans_general(last.fm$album, "latin-ascii")
+last.fm$musica  <- stri_trans_general(last.fm$musica, "latin-ascii")
+
+last.fm$artista <- gsub("&", "and", last.fm$artista)
+last.fm$album   <- gsub("&", "and", last.fm$album)
+last.fm$musica  <- gsub("&", "and", last.fm$musica)
+
+last.fm$artista <- gsub("Jupiter Maca", "Jupiter Apple", last.fm$artista)
+```
+
+
+Apresento os primeiros resultados através de números em tabelas. Por exemplo, a tabela abaixo exibe os 20 artistas que mais ouvi nos últimos 10 anos:
+
+```{r tabelaArtistas, echo=FALSE}
+# artistas mais ouvidos
+
+last.fm %>% 
+  group_by(artista) %>%
+  count() %>%
+  arrange(desc(n)) %>%
+  head(n=20) %>%
+  kable()
+```
+
+The White Stripes continua sendo a minha banda favorita, até mais do que Beatles. Mas isto tem um porém. Logo baixo vou mostrar em alguns gráficos como, nos últimos anos, tenho ouvido mais coisas brasileiras e latinas, fazendo com que a vantagem desta banda venha diminuído recentemente.
+
+A próxima tabela exibe as 20 músicas que mais ouvi nos últimos 10 anos:
+
+```{r tabelaMusicas, echo=FALSE}
+# musicas mais ouvidas
+
+last.fm %>% 
+  group_by(musica, artista) %>%
+  count() %>%
+  arrange(desc(n)) %>%
+  head(n=20) %>%
+  kable()
+```
+
+The Modern Age, Gouge Away e Wave Of Mutilation são canções que ouço direto há quase 20 anos. Strokes e Pixies são bandas que ouço trabalhando, quando preciso me concentrar, ou na esteira da academia, pois é o tipo de som que me faz correr mais e mais rápido. 
+
+E, por fim, estes foram os álbuns mais ouvidos por mim durante este período:
+
+```{r tabelaAlbuns, echo=FALSE}
+# albuns mais ouvidos
+
+last.fm %>% 
+  group_by(album, artista) %>%
+  count() %>%
+  arrange(desc(n)) %>%
+  head(n=20) %>%
+  kable()
+```
+
+Embora Is This It? seja o dico mais ouvido por mim, aparentemente, gosto mais de discos brasileiros do que estrangeiros. Foi No Mês Que Vem é uma das maiores obras que já ouvi e, logo logo, imagino que vai ultrapassar a obra de estreia dos Strokes.
+
+Mas tabelas são algo muito estático. Além disso, elas só mostram o quanto eu ouvi no total até o fim do período analisado. Elas não mostram, por exemplo, como foi a evolução destas audições. Quais, dentre os artistas mais ouvidos, eu estava curtindo mais em 2013, quando voltei dos Estados Unidos para o Brasil? Ou quando foi que os White Stripes começaram a perder terreno para meus outros artista preferidos?
+
+Vou responder esta pergunta com gráficos interativos.
+
+
+
+
+# Resultados Plotados
+
+Os gráficos a seguir apresentam os mesmos resultados que descrevi acima, mas para que a visualização ficasse boa, limitei os artistas e as músicas os 15 mais ouvidos por mim. Além disso, os gráficos são interativos: é possível clicar nas legendas e remover linhas, dar zoom com o mouse e várias outras coisas. Um duplo clique faz o zoom voltar a 100%.
+
+
+```{r artistasGrafico, echo=FALSE}
+#####################################
+# objeto com os artistas mais ouvidos
+
+top_artistas <- last.fm %>% 
+  group_by(artista) %>%
+  count() %>%
+  arrange(desc(n)) %>%
+  head(15) %>% # quantidade de artistas
+  select(artista)
+
+top_artistas <- apply(top_artistas, 1, as.character)
+
+# audicoes cumulativas dos top 15 artistas
+
+grafico <- last.fm %>% 
+  filter(artista %in% top_artistas) %>%
+  count(data, artista) %>% 
+  complete(data, artista, fill = list(n = 0)) %>% 
+  group_by(artista) %>% 
+  mutate(n = cumsum(n)) %>%
+  ggplot(., aes(x=data, y=n, colour=artista, text=artista)) +
+  geom_line() +
+  scale_colour_viridis_d() +
+  labs(x="Ano", y="Número de Execuções", colour="Artista")
+
+ggplotly(grafico, tooltip="text")
+```
+
+Perceba como os White Stripes ultrapassaram os Beatles, em meu gosto musical, em 2011. Note também como, em 2014, Fito Paez disparou na minha preferência. Eu ouvia no disco novo dele na época, Rock'n'Roll Revolucion, sem parar. Ano passado, quando Caetano Veloso saiu na turnê Ofertório (disco gravado ao vivo com seus filhos), suas audições também dispararam nos meus aplicativos.
+
+O gráfico das músicas ficou assim:
+
+
+```{r musicasGrafico, echo=FALSE}
+####################################
+# objeto com as musicas mais ouvidas
+
+top_musicas <- last.fm %>% 
+  group_by(artista, musica) %>%
+  count() %>%
+  arrange(desc(n)) %>%
+  head(15) %>% # quantidade de musicas
+  select(musica, artista)
+
+top_musicas <- apply(top_musicas, 1, as.character)
+
+# audicoes cumulativas das top 10 musicas
+
+grafico <- last.fm %>% 
+  filter(musica %in% top_musicas) %>%
+  count(data, musica) %>% 
+  complete(data, musica, fill = list(n = 0)) %>% 
+  group_by(musica) %>% 
+  mutate(n = cumsum(n)) %>%
+  ggplot(., aes(x=data, y=n, colour=musica, text=musica)) +
+  geom_line() +
+  scale_colour_viridis_d() +
+  labs(x="Ano", y="Número de Execuções", colour="Música")
+
+ggplotly(grafico, tooltip="text")
+
+```
+
+Nenhuma música que comecei a ouvir a partir de 2015 entou no Top 15. O último grande fenômeno nas minhas audições foi Bem-me-Leve, da banda gaúcha Apanhador Só. A primeira música a se destacar, ainda lá em 2008, foi O Amor (Zero Sobrevivente), um som que tem dois dos melhores versos já escritos em português:
+
+> Eu encontrei o amor (x6)
+> 
+> E foi como quebrar os dentes
+
+O Amor (Zero Sobrevivente) é uma música de outra banda gaúcha, que se chama Tom Bloch. Seu vocalista era o Pedro Verissimo, filho do Luís Fernando e neto do Erico.
+
+
+
+
+# Conclusão
+
+Basicamente o que ouvi nos últimos 10 anos foi rock alternativo, seja ele americano, inglês, brasileiro ou argentino, com algumas pitadas de MPB. Se eu tivesse começado a coletar estes dados uns 15 anos antes, pelos idos de 1993, nomes como Ramones, Nirvana, Smashing Pumpkins, Graforreia Xilarmônica e muitos outros teriam condição de entrar na listagem final.
+
+Gostaria de ressaltar que passei por uma fase em que ouvi muito jazz, principalmente cool jazz nas figuras de Dave Brubeck, Chet Baker, Miles Davis e Bill Evans. Mas como foi uma fase curta, de poucas audições e espalhadas por muitos artistas diferentes, ela não tem condições de entrar na análise que fiz.
+
+
+
+
+
+[O código usado nesta análise está disponível no meu github](https://github.com/mnunes/last.fm).
+
+

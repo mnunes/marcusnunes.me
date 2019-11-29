@@ -1,0 +1,1097 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Marcus Nunes&#39; Blog</title>
+		<link>/posts/</link>
+		<description>Recent content on Marcus Nunes&#39; Blog</description>
+		<generator>Hugo -- gohugo.io</generator>
+		<language>pt-br</language>
+		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+		<lastBuildDate>Fri, 02 Feb 2018 12:00:00 -0300</lastBuildDate>
+		<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Como simplificar seus relatórios estatísticos usando R Markdown</title>
+			<link>/posts/como-simplificar-seus-relato%CC%81rios-estati%CC%81sticos-usando-r-markdown/</link>
+			<pubDate>Mon, 18 Nov 2019 21:55:00 -0300</pubDate>
+			
+			<guid>/posts/como-simplificar-seus-relato%CC%81rios-estati%CC%81sticos-usando-r-markdown/</guid>
+			<description>Hoje apresentei mais um minicurso. A organização da 2nd Conference on Statistics and Data Science me chamou para contribuir com um assunto referente à ciência de dados no evento. Escolhi falar sobre R Markdown, a tecnologia que utilizamos para escrever os relatórios de consultoria do Laboratório de Estatística Aplicada. Inclusive, temos um pacote no R chamado modeloLEA, escrito para agilizar e padronizar a formatação destes nossos relatórios.
+O material do minicurso pode ser acessado em github.</description>
+			<content type="html"><![CDATA[<p>Hoje apresentei mais um minicurso. A organização da <a href="http://www.csds2019.ime.ufba.br/" target="_blank">2nd Conference on Statistics and Data Science</a> me chamou para contribuir com um assunto referente à ciência de dados no evento. Escolhi falar sobre <a href="https://marcusnunes.me/tags/r%20markdown/" target="_blank">R Markdown</a>, a tecnologia que utilizamos para escrever os relatórios de consultoria do <a href="http://lea.estatistica.ccet.ufrn.br/" target="_blank">Laboratório de Estatística Aplicada</a>. Inclusive, temos um pacote no R chamado <a href="https://github.com/mnunes/modeloLEA/" target="_blank">modeloLEA</a>, escrito para agilizar e padronizar a formatação destes nossos relatórios.</p>
+
+<p><img src="/images/IMG_2410_mini.jpg" alt="Apresentação do minicurso na 2nd Conference on Statistics and Data Science" /></p>
+
+<p>O material do minicurso pode ser acessado em <a href="https://github.com/mnunes/2nd-csds" target="_blank">github.com/mnunes/2nd-csds</a>. Como sempre, o conteúdo disponibilizado é gratuito. Como amostra do trabalho, fiquem com o pdf que possui a <a href="https://github.com/mnunes/2nd-csds/blob/master/presentation/presentation.pdf" target="_blank">apresentação de slides</a> utilizada durante meu minicurso.</p>
+
+<p>Se estiver interessado em uma versão deste minicurso para o seu evento, <a href="https://marcusnunes.me/contato/" target="_blank">entre em contato</a> para que possamos conversar sobre uma possível colaboração.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Resultados da Competição de Ciência de Dados da UFRN 2019</title>
+			<link>/posts/resultados-da-competicao-de-ciencia-de-dados-da-ufrn-2019/</link>
+			<pubDate>Thu, 31 Oct 2019 19:03:00 -0300</pubDate>
+			
+			<guid>/posts/resultados-da-competicao-de-ciencia-de-dados-da-ufrn-2019/</guid>
+			<description>Conforme eu havia avisado anteriormente, o Departamento de Estatística da UFRN promoveu mais um vez a sua tradicional competição de Ciência de Dados entre os alunos da universidade.
+Desta vez, a banca avaliadora não contava apenas com professores do Departamento de Estatística como na competição de 2018. No centro da foto abaixo, que contempla todos os competidores, é possível ver lado a lado Leonardo Bezerra, professor do IMD, Carla Vivacqua e eu, professores do Departamento de Estatística.</description>
+			<content type="html"><![CDATA[
+
+<p><a href="https://marcusnunes.me/posts/competicao-de-ciencia-de-dados-da-ufrn-2019/" target="_blank">Conforme eu havia avisado anteriormente</a>, o Departamento de Estatística da UFRN promoveu mais um vez a sua tradicional competição de Ciência de Dados entre os alunos da universidade.</p>
+
+<p><img src="/images/ccd_2019.png" alt="Logo da Competição de Ciência de Dados da UFRN 2019" /></p>
+
+<p>Desta vez, a banca avaliadora não contava apenas com professores do Departamento de Estatística como na <a href="https://marcusnunes.me/posts/como-foi-a-competicao-de-ciencia-de-dados/" target="_blank">competição de 2018</a>. No centro da foto abaixo, que contempla todos os competidores, é possível ver lado a lado Leonardo Bezerra, professor do IMD, Carla Vivacqua e eu, professores do Departamento de Estatística.</p>
+
+<p><img src="/images/IMG_2195.jpg" alt="Competidores presentes na edição de 2019" /></p>
+
+<p>Foram 21 competidores divididos em 7 equipes. O desafio era os dados coletados pelo INMET - Instituto Nacional de Meteorologia. Estes dados podem ser baixados a partir do endereço <a href="https://www.dropbox.com/s/7rriacb7c6vzf3m/ccd_2019.zip?dl=0" target="_blank">https://www.dropbox.com/s/7rriacb7c6vzf3m/ccd_2019.zip?dl=0</a> . O arquivo zipado tem 214MB. Eles foram obtidos com a ajuda de um pacote do R chamado inmetr - <a href="https://github.com/jdtatsch/inmetr" target="_blank">https://github.com/jdtatsch/inmetr</a> - , criado pelo Professor Jonatan Tatsch, da Universidade Federal de Santa Maria.</p>
+
+<p>São dois arquivos dentro do zip. O arquivo <code>inmetr.csv</code> possui informações sobre as seguintes variáveis:</p>
+
+<pre><code>variável                                descrição       unidade
+    date                     data e hora da coleta             -
+      id                   ID da estação de coleta             -
+    prec                              precipitação            mm
+    tair                         temperatura do ar graus Celsius
+      tw                temperatura de bulbo úmido graus Celsius
+    tmax                  temperatura máxima do ar graus Celsius
+    tmin                  temperatura mínima do ar graus Celsius
+   urmax                   umidade relativa máxima             %
+    patm                       pressão atmosférica           hPa
+    pnmm pressão atmosférica média ao nível do mar           hPa
+      wd                          direção do vento         graus
+   wsmax                          rajadas de vento           m/s
+       n                              horas de sol             h
+      cc                       cobertura de nuvens             -
+    evap                                evaporação            mm
+      ur                          umidade relativa             %
+      ws                       velocidade do vento           m/s
+</code></pre>
+
+<p>O arquivo <code>bdmep_meta.csv</code> possui informações sobre as estações de coleta, relacionando-as com a variável id do arquivo <code>inmetr.csv</code>.</p>
+
+<p>As equipes precisaram seguir algumas poucas regras gerais:</p>
+
+<ul>
+<li><p>O prazo limite para a entrega das análises era 23:59 de 27 de outubro de 2019.</p></li>
+
+<li><p>As apresentações deveriam se limitar a 10 minutos e 3 slides</p></li>
+
+<li><p>Qualquer análise era válida, desde visualizações dos dados até algum tipo de modelagem</p></li>
+</ul>
+
+<p>Após as apresentações, a banca decidiu que as 3 equipes melhores colocadas foram estas listadas abaixo, com as suas respectivas apresentações e relatórios linkados na sequência:</p>
+
+<h2 id="3º-lugar-numberone">3º Lugar: numberOne</h2>
+
+<p><img src="/images/IMG_2174.jpg" alt="Number One: Jordão de Lima Alves" /></p>
+
+<p>Jordão de Lima Alves (Ciências Atuariais) criou a equipe de um homem só e faturou o terceiro lugar. Ele utilizou métodos de séries temporais para analisar alguns dados climatológicos da cidade de Apodi, no Rio Grande do Norte. Saiba mais detalhes sobre o trabalho dele lendo os <a href="/images/ciencia_de_dados_2019/numberOne_Apresentacao.pdf">slides</a> e o <a href="/images/ciencia_de_dados_2019/numberOne_Relatorio.pdf">relatório</a> entregues.</p>
+
+<h2 id="2º-lugar-weeee">2º Lugar: weeee</h2>
+
+<p><img src="/images/IMG_2178.jpg" alt="weeee: André Fellipe da Silva, Ianca Maria Leite da Costa, Vítor Saraiva Ramos, André Luis Andrade Machado e Mariana Costa" /></p>
+
+<p>Os alunos André Fellipe da Silva (Graduação em Engenharia Elétrica), Ianca Maria Leite da Costa (Graduação em Engenharia Elétrica), Vítor Saraiva Ramos (Mestrado em Engenharia Elétrica e de Computação), André Luis Andrade Machado (Graduação em Engenharia Elétrica) e Mariana Costa (Graduação em Engenharia de Produção) se reuniram para analisar os dados meteorológicos disponíveis sobre 19/08/2019, o &ldquo;dia que virou noite&rdquo; devido à fumaça proveniente das queimadas na Amazônia. Baixe os <a href="/images/ciencia_de_dados_2019/weeee_Apresentacao.pdf">slides</a> e o <a href="/images/ciencia_de_dados_2019/weeee_Relatorio.pdf">relatório</a> para ver o que esta equipe produziu. Acesse a <a href="http://bit.ly/slides_wee" target="_blank">apresentação de slides na web</a> para ver uma animação que a equipe produziu para ilustrar os seus achados. As análises podem ser reproduzidas com o <a href="https://github.com/vitorsr/ccd" target="_blank">código em python</a> escrito pela equipe.</p>
+
+<h2 id="1º-lugar-featuring-the-future">1º Lugar: Featuring the Future</h2>
+
+<p><img src="/images/IMG_2185.jpg" alt="Number One: Daniel Marx Pinto Carvalho, Marcos Vinícius Gomes Jacinto, Gilvandro César de Medeiros e Marcus Vinicius Oliveira de Brito" /></p>
+
+<p>Os grandes campeões do evento foram os alunos Daniel Marx Pinto Carvalho (Graduação em Tecnologia da Informação), Marcos Vinícius Gomes Jacinto (Programa de Pós-Graduação em Geodinâmica e Geofísica), Gilvandro César de Medeiros (Bacharelado em Ciências e Tecnologia) e Marcus Vinicius Oliveira de Brito (Graduação em Engenharia Elétrica). Como o conjunto de dados disponibilizado durante a competição possuía muitos dados faltantes, eles utilizaram <em>deep learning</em> para imputar as informações faltantes, além de analisar o potencial eólico das cidades brasileiras utilizando a distribuição Weibull. Seus achados estão disponíveis nos <a href="/images/ciencia_de_dados_2019/Featuring_the_Future_Slides.pdf">slides</a>, no <a href="/images/ciencia_de_dados_2019/Featuring_the_Future_Relatorio.pdf">relatório</a> e no <a href="https://github.com/gilvandrocesardemedeiros/CCD" target="_blank">código</a> fornecidos pela equipe.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>R ou Python? Qual a melhor ferramenta para trabalhar com Ciência de Dados?</title>
+			<link>/posts/r-ou-python/</link>
+			<pubDate>Wed, 09 Oct 2019 16:26:00 -0300</pubDate>
+			
+			<guid>/posts/r-ou-python/</guid>
+			<description>Já vou começar este texto opinativo com a resposta definitiva para a pergunta do título:
+Qual é a melhor ferramenta para Análise de Dados? A melhor ferramenta para análise dados é a ferramenta que o usuário mais conhece. Seja Excel, R, python, Minitab, SAS, SPSS ou qualquer outra. O que importa é obter os resultados desejados de maneira rápida e confiável. Cada usuário vai ter necessidades diferentes e é muito provável que a melhor ferramenta para uma pessoa não sirva para outra.</description>
+			<content type="html"><![CDATA[
+
+<p>Já vou começar este texto opinativo com a resposta definitiva para a pergunta do título:</p>
+
+<h1 id="qual-é-a-melhor-ferramenta-para-análise-de-dados">Qual é a melhor ferramenta para Análise de Dados?</h1>
+
+<p>A melhor ferramenta para análise dados é a ferramenta que o usuário mais conhece. Seja Excel, <a href="https://marcusnunes.me/tags/r/" target="_blank">R</a>, <a href="https://marcusnunes.me/tags/python/" target="_blank">python</a>, Minitab, SAS, SPSS ou qualquer outra. O que importa é obter os resultados desejados de maneira rápida e confiável. Cada usuário vai ter necessidades diferentes e é muito provável que a melhor ferramenta para uma pessoa não sirva para outra.</p>
+
+<p>Isto posto, afirmo que a minha linguagem preferida de programação para análise de dados é o <a href="https://marcusnunes.me/tags/r/" target="_blank">R</a>. Ela não é a linguagem mais popular do mundo, nem a mais rápida e nem a mais simples de aprender. Entretanto, é a que <strong>me</strong> serve melhor para aquilo que <strong>eu</strong> faço.</p>
+
+<!--No restante do texto vou comparar [R](https://marcusnunes.me/tags/r/) e [python](https://marcusnunes.me/tags/python/) dentro das minhas limitações e dos meus conhecimentos e dizer porque prefiro uma em relação à outra.-->
+
+<h1 id="por-que-usar-uma-linguagem-de-programação-para-analisar-dados">Por que usar uma linguagem de programação para analisar dados?</h1>
+
+<p>O principal motivo é a documentação do processo de análise de dados. De maneira geral, ao utilizar uma ferramenta como Excel ou SPSS, o usuário não documenta aquilo que faz. Ele clica nos menus, obtém o seu resultado e termina o seu serviço. Não há nada de errado em fazer isso. O problema é que análises mais complexas acabam gerando mais passos intermediários entre a importação de dados e o resultado final da análise. A imagem abaixo, adaptada do livro <a href="https://r4ds.had.co.nz/" target="_blank">R for Data Science</a>, exemplifica bem como é o workflow geral de uma análise de dados do início ao fim:</p>
+
+<p><img src="/images/workshop.png" alt="" /></p>
+
+<p>Perceba que há muitos passos envolvidos. O processo completo, que começa pela importação dos dados, passa pela modelagem e finaliza na comunicação dos resultados, envolve muitos passos diferentes. Em especial, a parte destacada pelo retângulo azul, pode demorar muito. Encontrar o modelo ideal para os dados não é uma tarefa trivial. Assim, documentar estes passos é fundamental não apenas para que consigamos organizar nossas ideias, mas também para informar os outros membros da nossa equipe a respeito do trabalho que realizamos.</p>
+
+<h1 id="por-que-usar-o-r-para-analisar-dados">Por que usar o R para analisar dados?</h1>
+
+<p>A figura abaixo, obtida no <a href="https://julialang.org/benchmarks/" target="_blank">site da linguagem julia</a>, compara a velocidade de diversas linguagens de programação:</p>
+
+<p><img src="/images/benchmarks.png" alt="" /></p>
+
+<p>Note que <a href="https://marcusnunes.me/tags/r/" target="_blank">R</a> não é a mais rápida em nenhuma tarefa. Mesmo assim, prefiro utilizá-la porque escrevo código mais rápido nesta linguagem. O ganho de performance que eu teria rodando código em <a href="https://marcusnunes.me/tags/python/" target="_blank">python</a> seria perdido na hora de escrever os programas, pois sempre tenho que ficar checando manuais quando uso python. Ocorre o oposto quando uso R, pois sou fluente na linguagem e escrevo código para ela como escrevo meus textos em português ou em inglês.</p>
+
+<p>O <a href="https://marcusnunes.me/tags/r/" target="_blank">R</a> apresenta algumas outras facilidades que eu já não consigo viver sem. Como preparo muito material didático, esta linguagem permite que eu mescle conteúdo teórico, trechos de códigos e outputs de programas de maneira muito prática. Sério, dá uma olhada neste material do <a href="https://htmlpreview.github.io/?https://github.com/mnunes/workshopR/blob/master/inst/doc/workshopR.html" target="_blank">Workshop de R Básico</a> que ministro e veja como a qualidade gráfica é impressionante. Faz quase 10 anos que uso R Sweave e seu sucessor RMarkdown com muito sucesso e não tenho interesse em aprender uma nova ferramenta se as que conheço atualmente já me satisfazem a contento.</p>
+
+<p>Acabei utilizando esta característica do <a href="https://marcusnunes.me/tags/r/" target="_blank">R</a> para criar aplicações do RMarkdown em outras áreas. Por exemplo, os <a href="https://github.com/mnunes/modeloLEA/blob/master/documento_final.pdf" target="_blank">relatórios</a> dos alunos que participam do meu projeto de <a href="http://marcusnunes.me/consultoria/" target="_blank">consultoria estatística gratuita</a> são escritos usando RMarkdown, através de um <a href="https://github.com/mnunes/modeloLEA" target="_blank">pacote que eu mesmo criei</a>.</p>
+
+<h1 id="conclusão">Conclusão</h1>
+
+<p>Eu uso <a href="https://marcusnunes.me/tags/r/" target="_blank">R</a> porque ele facilita a minha vida. Programo na linguagem desde 2008 e, antes disso, utilizei S-Plus, sua versão proprietária. Por isso, o <a href="https://marcusnunes.me/tags/r/" target="_blank">R</a> é a minha opção preferida para analisar dados, preparar material didático e escrever relatórios e artigos científicos.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Competição de Ciência de Dados da UFRN 2019</title>
+			<link>/posts/competicao-de-ciencia-de-dados-da-ufrn-2019/</link>
+			<pubDate>Thu, 03 Oct 2019 19:03:00 -0300</pubDate>
+			
+			<guid>/posts/competicao-de-ciencia-de-dados-da-ufrn-2019/</guid>
+			<description>Alguns professores do Departamento de Estatística da UFRN estão organizando mais uma competição de Ciência de Dados. Ela vai ocorrer entre os dias 23 e 30 de outubro de 2019 e está aberta para qualquer aluno matriculado regularmente em cursos de graduação ou pós-graduação da UFRN.
+Esta competição faz parte das atividades da Semana da Estatística 2019, evento no qual muitas atividades estão programadas para toda a comunidade:
+A competição consistirá em analisar um conjunto de dados fornecido pela organização da competição.</description>
+			<content type="html"><![CDATA[
+
+<p>Alguns professores do <a href="http://www.departamento.ufrn.br/estatistica" target="_blank">Departamento de Estatística da UFRN</a> estão organizando mais uma competição de Ciência de Dados. Ela vai ocorrer entre os dias 23 e 30 de outubro de 2019 e está aberta para qualquer aluno matriculado regularmente em cursos de graduação ou pós-graduação da UFRN.</p>
+
+<p><img src="/images/ccd_2019.png" alt="Logo da Competição de Ciência de Dados da UFRN 2019" /></p>
+
+<p>Esta competição faz parte das atividades da Semana da Estatística 2019, evento no qual muitas atividades estão programadas para toda a comunidade:</p>
+
+<p><img src="/images/Banner_SE2019.jpg" alt="Banner da Semana da Estatística 2019" /></p>
+
+<p>A competição consistirá em analisar um conjunto de dados fornecido pela organização da competição. Este conjunto de dados será mantido em sigilo até o início da competição, marcada para às 11:00 do dia 23 de outubro de 2019. A análise a ser realizada dependerá apenas da criatividade dos competidores. Será possível trabalhar com modelagem dos dados, ajuste de modelos de previsão ou visualização de informações.</p>
+
+<p>Podem ser formadas equipes de até cinco participantes e todos os membros das equipes devem estar regularmente matriculados em algum curso de graduação ou pós-graduação da UFRN.</p>
+
+<p>Corra que as inscrições vão apenas até o dia 20 de outubro, às 23:59! Além disso, as vagas são limitadas.</p>
+
+<p><a href="https://docs.google.com/forms/d/1nvwvHN74yUMDe40vMEj0-ogfegKdikIzIoufo3DL8vE/viewform?edit_requested=true" target="_blank">Clique aqui para fazer a inscrição da sua equipe</a>.</p>
+
+<p><a href="https://marcusnunes.me/posts/como-foi-a-competicao-de-ciencia-de-dados/" target="_blank">Clique aqui para saber foi a Competição de Ciência de Dados de 2018</a>.</p>
+
+<hr />
+
+<h1 id="regulamento">Regulamento</h1>
+
+<p>Este é o regulamento da Competição de Ciência de Dados da UFRN, promovida pelo Departamento de Estatística desta universidade.</p>
+
+<h2 id="introdução">Introdução</h2>
+
+<p>Este regulamento tem como objetivo apresentar como será desenvolvida a Competição de Ciência de Dados 2019 promovida pelo Departamento de Estatística da UFRN.</p>
+
+<h2 id="apresentação">Apresentação</h2>
+
+<p>A Competição de Ciência de Dados 2019 consistirá em analisar um conjunto de dados fornecido pela organização da competição. Este conjunto de dados será mantido em sigilo até o início da competição, marcada para às 11:00 do dia 23 de outubro de 2019. Será a última atividade da Semana da Estatística UFRN 2019 antes do seu encerramento.</p>
+
+<p>Os participantes da competição poderão submeter suas análises, reportadas em no máximo 4 slides (1 slide apenas com título e identificação + 3 slides com o trabalho realizado), até às 23:59 de 27 de outubro de 2019. As apresentações dos resultados destas análises serão públicas e ocorrerão a partir das 14:00 de 30 de outubro de 2019 no Anfiteatro A do CCET.</p>
+
+<h2 id="regras-gerais">Regras Gerais</h2>
+
+<ol>
+<li>Este regulamento se refere à Competição de Ciência de Dados 2019 que está sendo promovida pelo Departamento de Estatística da UFRN.</li>
+<li>Qualquer aluno matriculado regularmente em cursos de graduação ou pós-graduação da UFRN está apto a participar da competição.</li>
+<li>Os competidores prepararão suas análises entre dias 23 e 27 de outubro de 2019, com a apresentação dos resultados marcada para o dia 30 de outubro de 2019, a partir das 14:00.</li>
+<li>Os competidores deverão formar equipes de até 5 participantes.</li>
+<li>Não é obrigatório que as equipes sejam formadas por alunos de apenas um curso de graduação ou pós-graduação.</li>
+<li>Caso seja de interesse da equipe, é possível utilizar outros bancos de dados públicos como ferramentas de apoio à análise apresentada, desde que a fonte seja devidamente citada.</li>
+<li>Os grupos deverão enviar para o email marcus@marcusnunes.me as suas apresentações de no máximo 4 slides (1 slide apenas com título e identificação + 3 slides com o trabalho realizado) até às 23:59 de 27 de outubro de 2019.</li>
+<li>Além disso, um relatório curto, de no máximo uma página, também deve ser enviado para este email dentro deste prazo.</li>
+<li>As apresentações e os relatórios de todas as equipes devem estar no formato pdf, nomeados da seguinte maneira: NomeEquipe_Apresentacao.pdf e NomeEquipe_Relatorio.pdf.</li>
+</ol>
+
+<h2 id="avaliação-dos-trabalhos">Avaliação dos Trabalhos</h2>
+
+<ol>
+<li>A partir das 14:00 do dia 30 de outubro, cada grupo terá até 10 minutos para realizar a apresentação dos seus resultados no Anfiteatro A do CCET.</li>
+<li>As análises realizadas serão avaliadas por uma comissão de três professores do Departamento de Estatística da UFRN.</li>
+<li>Nem todos os membros da equipe precisam falar durante a apresentação.</li>
+<li>Nesta apresentação serão avaliados os resultados obtidos pelas equipes nos quesitos modelagem dos dados, visualização dos dados e comunicação dos resultados.</li>
+</ol>
+
+<h2 id="premiação">Premiação</h2>
+
+<ol>
+<li><p>Todos os grupos que enviarem os arquivos dentro do prazo estipulado e realizarem a apresentação oral a partir das 14:00 em 30 de outubro de 2019 receberão um certificado de participação no evento. Este certificado atesta que o aluno cumpriu 10 horas de Atividades Artístico-Científico-Culturais.</p></li>
+
+<li><p>Os certificados irão conter informações sobre o nome da equipe, seus membros e o desempenho da equipe na competição.</p></li>
+
+<li><p>Os membros das equipes melhores colocadas receberão medalhas.</p></li>
+</ol>
+]]></content>
+		</item>
+		
+		<item>
+			<title>2º Workshop de R: Levando a Ciência de Dados para Todos</title>
+			<link>/posts/workshop-de-r-na-ufrn/</link>
+			<pubDate>Mon, 30 Sep 2019 11:07:00 -0300</pubDate>
+			
+			<guid>/posts/workshop-de-r-na-ufrn/</guid>
+			<description>Eu sou um fulbrighter. Como ex-aluno deste programa de intercâmbio, volta e meia sou convidado para participar de ventos promovidos pelo programa U.S.-Brazil Exchange Alumni (USBEA). O último destes eventos do qual participei rolou semana passada, em comemoração ao Dia Nacional do Voluntário no Brasil.
+O projeto que desenvolvi se chamou 2º Workshop de R: Levando a Ciência de Dados para Todos e foi feito com apoio do Departamento de Estatística da UFRN, que cedeu a sala e os computadores com os quais o workshop pode ser desenvolvido.</description>
+			<content type="html"><![CDATA[<p>Eu sou um <a href="https://fulbright.org.br/comissao/" target="_blank">fulbrighter</a>. Como ex-aluno deste programa de intercâmbio, volta e meia sou convidado para participar de ventos promovidos pelo programa U.S.-Brazil Exchange Alumni (USBEA). O último destes eventos do qual participei rolou semana passada, em comemoração ao Dia Nacional do Voluntário no Brasil.</p>
+
+<p><img src="/images/usbea_month.png" alt="USBEA Month" /></p>
+
+<p>O projeto que desenvolvi se chamou <strong>2º Workshop de R: Levando a Ciência de Dados para Todos</strong> e foi feito com apoio do <a href="http://www.departamento.ufrn.br/estatistica" target="_blank">Departamento de Estatística da UFRN</a>, que cedeu a sala e os computadores com os quais o workshop pode ser desenvolvido.</p>
+
+<p><img src="/images/turma_do_workshop.jpg" alt="Turma do Workshop" /></p>
+
+<p>Como pode ser visto na foto acima, o workshop trouxe muitas pessoas, todas de backgrounds diversos. Haviam desde alunos de graduação até doutorandos, todos interessados em conhecer um pouco mais sobre a linguagem de programação mais usada pelos estatísticos para analisarem seus dados.</p>
+
+<p>Além disso, criei um pacote no R para facilitar a utilização do material didático do workshop. Seu nome é <code>workshopR</code> e ele pode ser baixado através <a href="https://github.com/mnunes/workshopR" target="_blank">deste link</a>. Um preview do material trabalhado durante o encontro está <a href="https://htmlpreview.github.io/?https://github.com/mnunes/workshopR/blob/master/inst/doc/workshopR.html" target="_blank">neste outro link aqui</a>.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Workshop de R na UFRN</title>
+			<link>/posts/42/</link>
+			<pubDate>Fri, 27 Sep 2019 14:45:00 -0300</pubDate>
+			
+			<guid>/posts/42/</guid>
+			<description>https://www.youtube.com/watch?v=zyG8Vlw5aAw</description>
+			<content type="html"><![CDATA[<p><a href="https://www.youtube.com/watch?v=zyG8Vlw5aAw" target="_blank">https://www.youtube.com/watch?v=zyG8Vlw5aAw</a></p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Consultoria Estatística na UFRN: Nosso Trabalho Sendo Divulgado no Oriente</title>
+			<link>/posts/consultoria-estati%CC%81stica-na-ufrn-nosso-trabalho-sendo-divulgado-no-oriente/</link>
+			<pubDate>Sat, 24 Aug 2019 14:45:00 -0300</pubDate>
+			
+			<guid>/posts/consultoria-estati%CC%81stica-na-ufrn-nosso-trabalho-sendo-divulgado-no-oriente/</guid>
+			<description>Um dos meus maiores interesses como professor do Departamento de Estatística da UFRN é formar bons prestadores de serviço de consultoria estatística. Acho fundamental que os bacharéis formados em nosso curso sejam capazes de entender as demandas de outras áreas, traduzi-las para o jargão estatístico e reportar os resultados obtidos numa linguagem fácil de compreender.
+Por isso, junto com a Professora Carla Vivacqua, coordeno o Laboratório de Estatística Aplicada (LEA), órgão do Departamento de Estatística criado para prestar assessoria estatística gratuita para alunos, professores, pesquisadores e técnicos da universidade.</description>
+			<content type="html"><![CDATA[
+
+<p>Um dos meus maiores interesses como professor do Departamento de Estatística da UFRN é formar bons prestadores de serviço de consultoria estatística. Acho fundamental que os bacharéis formados em nosso curso sejam capazes de entender as demandas de outras áreas, traduzi-las para o jargão estatístico e reportar os resultados obtidos numa linguagem fácil de compreender.</p>
+
+<p>Por isso, junto com a Professora Carla Vivacqua, coordeno o Laboratório de Estatística Aplicada (LEA), órgão do Departamento de Estatística criado para prestar assessoria estatística gratuita para alunos, professores, pesquisadores e técnicos da universidade. <a href="https://ufrn.br/imprensa/materias-especiais/3041/departamento-de-estatistica-oferece-servico-de-consultoria-gratuita-para-a-comunidade" target="_blank">O LEA já foi matéria de um número especial do boletim da universidade, em 11 de abril de 2017, no qual nossos serviços são descritos com detalhes</a>.</p>
+
+<p>Pois eis que o LEA foi convidado, junto com outros 20 laboratórios ao redor do mundo, para participar de dois eventos em Kuala Lumpur, na Malásia. Estive lá entre 15 e 23 de Agosto, como representante do nosso laboratório, para participar destes eventos.</p>
+
+<h1 id="2nd-lisa-2020-symposium">2nd LISA 2020 Symposium</h1>
+
+<p>O primeiro evento que participei, chamado 2nd LISA 2020 Symposium, diz respeito a uma iniciativa mundial de laboratório de colaboração estatística. Esta iniciativa visa unir laboratórios de colaboração estatística em países em desenvolvimento. Seu nome é <a href="http://lisa2020.org" target="_blank">Laboratory for Interdisciplinary Statistical Analysis 2020</a> e foi criada pelo professor <a href="https://www.colorado.edu/amath/ervance" target="_blank">Eric Vance</a>, da University of Colorado Boulder, nos Estados Unidos. Até o momento, são mais de 20 países com laboratórios já funcionais ou em vias de serem implementados.</p>
+
+<p><img src="/images/imagem01.png" alt="Laboratórios ao redor do mundo" /></p>
+
+<p>Perceba como há vários laboratórios na África, mas quase nenhum na América Latina. Caso seja do teu interesse ou caso tu conheça alguém interessado em criar um laboratório de colaboração estatística no Brasil, Argentina, Uruguai ou outro país do nosso continente, <a href="https://marcusnunes.me/contato/" target="_blank">entre em contato comigo</a> para conversarmos a respeito de como implementar algo assim na tua universidade.</p>
+
+<p>O professor Vance organizou este simpósio em Kuala Lumpur envolvendo coordenadores de laboratórios com missões semelhantes ao que temos na UFRN. Os países que enviaram representantes para participarem do simpósio, além dos Estados Unidos como organizadores, foram</p>
+
+<ul>
+<li>África do Sul</li>
+<li>Brasil</li>
+<li>Etiópia</li>
+<li>Gana</li>
+<li>Índia</li>
+<li>Nepal</li>
+<li>Nigéria</li>
+<li>Paquistão</li>
+<li>Tanzânia</li>
+<li>Zimbábue</li>
+</ul>
+
+<p><img src="/images/foto02.jpg" alt="Representantes de laboratórios ao redor do mundo" /></p>
+
+<p>Foi uma experiência enriquecedora, na qual pude comparar minhas experiências com as deles. Assim, pudemos todos perceber como existem dificuldades semelhantes em fazer estatística ao redor do mundo, principalmente nos países em desenvolvimento. Uma queixa muito comum entre todos os participantes foi a falta de verba, seguida por falta de apoio da universidade e pelo desinteresse dos colegas de departamento.</p>
+
+<p>Além das experiências trocadas com os outros participantes, que contribuíram com relatos a respeito de ensino de estatística e análise de dados, tive a oportunidade de participar de quatro workshops:</p>
+
+<ul>
+<li>Collaboration Skills</li>
+<li>Creating and Administering a Stat Lab</li>
+<li>Transforming Evidence to Action</li>
+<li>Grant Writing</li>
+</ul>
+
+<p>Particularmente, creio que o workshop de Grant Writing vai ser o mais útil de todos, dados os cortes de verbas que temos enfrentado nos últimos anos.</p>
+
+<h1 id="62nd-isi-world-statistics-congress">62nd ISI World Statistics Congress</h1>
+
+<p>O segundo evento do qual participei foi o 62nd World Statistics Congress. Neste evento apresentei o trabalho &ldquo;Effects of Participation in a Statistical Laboratory on Statistics Students&rdquo;. Este trabalho serviu para apresentar o LEA para o mundo, mostrando como é o nosso fluxo de trabalho no Brasil e como lidamos com as dificuldades de encontramos por aqui.</p>
+
+<p><img src="/images/foto03.jpg" alt="Cosplay de palestrante 01" /></p>
+
+<p><img src="/images/foto03a.jpg" alt="Cosplay de palestrante 02" /></p>
+
+<p>A repercussão da minha apresentação foi muito boa, com uma discussão envolvendo a plateia ao final da minha apresentação. Foram quase 10 minutos de perguntas e respostas a respeito da iniciativa que mantemos no Brasil. Além disso, fui procurado por professores de outros países interessados em implementar um laboratório como o LEA em suas universidades. Para quem se interessou pelo assunto, <a href="/images/Marcus_Nunes_62nd_ISI_WSC.pdf">este é o pdf com os slides que apresentei no evento</a>.</p>
+
+<p>Por fim, também fui o moderador da sessão &ldquo;How to Scale Up Statistical Analysis Capacity to Achieve the Sustainable Development Goals&rdquo;. Foi uma sessão extremamente produtiva, na qual os palestrantes mostraram como eles são capazes de aumentar a contribuição dos laboratórios de colaboração estatística em seus países de origem e como é possível, mesmo com poucos recursos financeiros, realizar projetos de grande impacto social.</p>
+
+<p><img src="/images/foto04.jpg" alt="Mediador" /></p>
+
+<p>Minha participação neste evento se concretizou devido a um prêmio que ganhei da United States Agency for International Development (USAID), que cobriu meus gastos com translado, hospedagem e alimentação, além dos custos com a inscrição no congresso.</p>
+
+<p><a href="https://www.instagram.com/grandeabobora/" target="_blank">Aproveita e me segue no instagram para ver umas fotos que bati na Malásia e estou publicando de forma homeopática</a>.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Análise de Sentimentos com o R: Bojack Horseman vs Brooklyn Nine-Nine</title>
+			<link>/posts/analise-de-sentimentos-com-r-bojack-horseman-vs-brooklyn-99/</link>
+			<pubDate>Sun, 28 Jul 2019 08:20:00 -0300</pubDate>
+			
+			<guid>/posts/analise-de-sentimentos-com-r-bojack-horseman-vs-brooklyn-99/</guid>
+			<description>Introdução Analisar sentimentos em texto é uma das coisas que sempre desejei aprender a fazer. Ao descobrir o post Bojack Horseman and Tidy Data Principles (Part 1) senti que era o momento de dar o pontapé inicial no assunto. Mas em vez de simplesmente reaplicar aquilo que o meu texto inspirador fez, decidi ir além, comparando duas séries de TV que gosto bastante.
+Para tal, escolhi Bojack Horseman e Brooklyn Nine-Nine para a empreitada.</description>
+			<content type="html"><![CDATA[
+
+
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
+<p>Analisar sentimentos em texto é uma das coisas que sempre desejei aprender a fazer. Ao descobrir o post <a href="https://pacha.hk/blog/2019/07/16/bojack-horseman-and-tidy-data-principles-part-1/">Bojack Horseman and Tidy Data Principles (Part 1)</a> senti que era o momento de dar o pontapé inicial no assunto. Mas em vez de simplesmente reaplicar aquilo que o meu texto inspirador fez, decidi ir além, comparando duas séries de TV que gosto bastante.</p>
+<p>Para tal, escolhi <a href="https://pt.wikipedia.org/wiki/BoJack_Horseman">Bojack Horseman</a> e <a href="https://pt.wikipedia.org/wiki/Brooklyn_Nine-Nine">Brooklyn Nine-Nine</a> para a empreitada. Optei pelas duas por uma série de motivos. O principal deles, como dito anteriormente, é o fato de eu gostar de ambas. Além disso, as duas séries são consideradas <em>sitcoms</em>, o que as coloca no mesmo gênero televisivo. Não obstante, são séries contemporâneas: Bojack Horseman estreou em 2014, enquanto Brooklyn Nine-Nine é apenas um ano mais velha. Assm, decidi me concentrar nas cinco primeiras temporadas de cada seriado.</p>
+<p>O que as difere são os temas abordados. Enquanto Bojack Horseman é uma série brutalmente triste, que explora a relação do protagonista com a sua depressão, Brooklyn Nine-Nine aposta em piadas leves e temas como inclusão para contar a sua história.</p>
+<p>Assim, a minha hipótese é que Bojack Horseman use sentimentos mais negativos em seus diálogos, enquanto Brooklyn Nine-Nine seja uma série mais positiva.</p>
+</div>
+<div id="obtenção-dos-dados" class="section level1">
+<h1>Obtenção dos Dados</h1>
+<p>O ideal seria utilizar os roteiros dos seriados como base para a minha análise. Mas isto so mostrou impossível, pois desejo encontrar resultados em português. Portanto, decidi utilizar as legendas traduzidas para fazer a minha análise. Por sorte, o site <a href="http://legendas.tv">Legendas TV</a> possui todas as legendas das cinco primeiras temporadas destes seriados. Como estas legendas estão organizadas em um arquivo único por temporada, o trabalho de baixá-las tornou-se bem menor.</p>
+</div>
+<div id="tratamento-e-análise-dos-dados" class="section level1">
+<h1>Tratamento e Análise dos Dados</h1>
+<div id="palavras-mais-frequentes" class="section level2">
+<h2>Palavras Mais Frequentes</h2>
+<p>A primeira parte da análise é carregar os pacotes necessários para realizá-la. Note que o pacote <code>subtools</code> está hospedado no GitHub, o que implica que não basta rodar <code>install.packages(subtools)</code> para que ele seja instalado.</p>
+<pre class="r"><code># pacotes necessarios
+
+library(subtools) # devtools::install_github(&quot;fkeck/subtools&quot;)
+library(tm)
+library(tidyverse)
+theme_set(theme_bw())
+library(gridExtra)
+library(reshape2)</code></pre>
+<p>Como cada episódio dos seriados está armazenado em um arquivo .srt diferente, é necessário ter uma forma prática de ler todos estes arquivos de uma vez. A função <code>subtools::read.subtitles.serie</code> é perfeita para isso, pois além de ler todos os arquivos de uma vez só, ela também os organiza por episódio e temporada.</p>
+<pre class="r"><code>#######################
+### bojack horseman ###
+#######################
+
+# leitura das legendas dos episodios
+
+bojack &lt;- read.subtitles.serie(dir = &quot;subtitles/bojack_horseman/&quot;)</code></pre>
+<p>Após a leitura das legendas, precisamos transformá-las em um <em><a href="https://pt.wikipedia.org/wiki/Corpus_lingu%C3%ADstico">corpus</a></em>. Isto é fundamental para que possamos proceder com a limpeza do texto, aplicando nele as seguintes transformações:</p>
+<ul>
+<li>converter todas as letras para sua versão minúscula</li>
+<li>remover sinais de pontuação</li>
+<li>remover números</li>
+<li>remover <em><a href="https://pt.wikipedia.org/wiki/Palavra_vazia">stopwords</a></em> (palavras vazias de sentido, como: e, para, de e similares)</li>
+<li>remover espaços em branco</li>
+</ul>
+<pre class="r"><code># limpeza do texto
+
+bojack_corpus &lt;- tmCorpus(bojack)
+
+bojack_corpus &lt;- tm_map(bojack_corpus, content_transformer(tolower))
+bojack_corpus &lt;- tm_map(bojack_corpus, removePunctuation)
+bojack_corpus &lt;- tm_map(bojack_corpus, removeNumbers)
+bojack_corpus &lt;- tm_map(bojack_corpus, removeWords, stopwords(&quot;portuguese&quot;))
+bojack_corpus &lt;- tm_map(bojack_corpus, stripWhitespace)
+bojack_corpus &lt;- TermDocumentMatrix(bojack_corpus)
+
+bojack_corpus_matrix &lt;- as.matrix(bojack_corpus)</code></pre>
+<p>Em seguida, é preciso proceder com a lematização do texto. É necessário identificar e converter formas flexionadas das palavras para as suas versões dicionarizadas. Por exemplo, é preciso tomar as palavras <em>comi</em>, <em>comemos</em>. <em>comeríamos</em>, <em>comia</em> e transformá-las todas em <em>comer</em>.</p>
+<p>Não encontrei nenhum pacote que fizesse uma lematização aceitável em português. Assim, tive que implementar a minha própria, baseado no <a href="https://github.com/michmech/lemmatization-lists">dicionário de lematização encontrado neste link</a>. Ela ficou um pouco lenta de ser aplicada, mas foi a melhor solução que encontrei na minha pesquisa.</p>
+<pre class="r"><code># lemmatizacao
+
+lemma_dic &lt;- read.delim(file = &quot;lemmatization/lemmatization-pt.txt&quot;, header = FALSE, stringsAsFactors = FALSE)
+names(lemma_dic) &lt;- c(&quot;stem&quot;, &quot;term&quot;)
+
+# palavras do bojack que estao no dicionario
+
+palavras &lt;- row.names(bojack_corpus_matrix)
+
+for (j in 1:length(palavras)){
+  comparacao &lt;- palavras[j] == lemma_dic$term
+  if (sum(comparacao) == 1){
+    palavras[j] &lt;- as.character(lemma_dic$stem[comparacao])
+  } else {
+    palavras[j] &lt;- palavras[j]
+  }
+}
+
+palavras_bojack &lt;- palavras
+
+bojack_corpus_df &lt;- as.data.frame(bojack_corpus_matrix)
+row.names(bojack_corpus_df) &lt;- NULL
+bojack_corpus_df$palavras &lt;- palavras_bojack</code></pre>
+<p>Após a lematização, é preciso contar as ocorrências de cada palavra e preparar os conjuntos de dados para que sejam plotados:</p>
+<pre class="r"><code># agrupar os resultados 
+
+bojack_corpus_df &lt;- bojack_corpus_df %&gt;%
+  group_by(palavras) %&gt;%
+  summarise_all(sum)
+
+temporadas &lt;- rep(1:5, each = 12)
+bojack_corpus_df_col &lt;- t(apply(bojack_corpus_df[, 2:61], 1, function(x) tapply(x, temporadas, sum)))
+colnames(bojack_corpus_df_col) &lt;- paste(&quot;S0&quot;, 1:5, sep = &quot;&quot;)
+bojack_corpus_df_col &lt;- data.frame(palavra = bojack_corpus_df$palavras,
+                                   bojack_corpus_df_col)
+
+bojack_corpus_melt &lt;- melt(bojack_corpus_df_col)
+names(bojack_corpus_melt) &lt;- c(&quot;palavra&quot;, &quot;temporada&quot;, &quot;ocorrencias&quot;)
+
+
+# funcao para plotar os graficos de barra
+
+plot.seriado &lt;- function(dados, season, cor = 0){
+  
+  grafico &lt;- dados %&gt;%
+    filter(temporada == season) %&gt;%
+    top_n(n = 10, wt = ocorrencias) %&gt;%
+    arrange(desc(ocorrencias)) %&gt;%
+    ggplot(., aes(x = reorder(palavra, ocorrencias), y = ocorrencias, fill = temporada)) +
+    geom_col(show.legend = FALSE) +
+    labs(x = &quot;&quot;, y = &quot;&quot;, title = season) +
+    coord_flip() +
+    scale_fill_viridis_d(begin = cor)
+  
+  return(grafico)  
+  
+}</code></pre>
+<p>No fim, o que obtemos é o seguinte gráfico:</p>
+<pre class="r"><code>s01 &lt;- plot.seriado(bojack_corpus_melt, &quot;S01&quot;, 0.00)
+s02 &lt;- plot.seriado(bojack_corpus_melt, &quot;S02&quot;, 0.25)
+s03 &lt;- plot.seriado(bojack_corpus_melt, &quot;S03&quot;, 0.50)
+s04 &lt;- plot.seriado(bojack_corpus_melt, &quot;S04&quot;, 0.75)
+s05 &lt;- plot.seriado(bojack_corpus_melt, &quot;S05&quot;, 1.00)
+
+grid.arrange(s01, s02, s03, s04, s05, left = &quot;Palavras&quot;, bottom = &quot;Número de Ocorrências&quot;)</code></pre>
+<p><img src="/posts/analise-de-sentimentos-com-R-bojack-horseman-vs-brooklyn-99_files/figure-html/bojack_plots-1.png" width="672" /></p>
+<p>Note que o verbo <strong>ir</strong> é o que mais aparece em todas as temporadas de Bojack Horseman, com <strong>querer</strong> e <strong>fazer</strong> alternando a segunda posição.</p>
+<p>A preparação dos dados para a análise dos diálogos de Brooklyn Nine-Nine é análoga à realizada para Bojack Horseman.</p>
+<pre class="r"><code>###################
+### brooklyn 99 ###
+###################
+
+# leitura das legendas dos episodios
+
+brooklyn99 &lt;- read.subtitles.serie(dir = &quot;subtitles/brooklyn99/&quot;)
+
+# limpeza do texto
+
+brooklyn99_corpus &lt;- tmCorpus(brooklyn99)
+
+brooklyn99_corpus &lt;- tm_map(brooklyn99_corpus, content_transformer(tolower))
+brooklyn99_corpus &lt;- tm_map(brooklyn99_corpus, removePunctuation)
+brooklyn99_corpus &lt;- tm_map(brooklyn99_corpus, removeNumbers)
+brooklyn99_corpus &lt;- tm_map(brooklyn99_corpus, removeWords, stopwords(&quot;portuguese&quot;))
+brooklyn99_corpus &lt;- tm_map(brooklyn99_corpus, stripWhitespace)
+brooklyn99_corpus &lt;- TermDocumentMatrix(brooklyn99_corpus)
+
+brooklyn99_corpus_matrix &lt;- as.matrix(brooklyn99_corpus)
+
+# lemmatizacao
+
+lemma_dic &lt;- read.delim(file = &quot;lemmatization/lemmatization-pt.txt&quot;, header = FALSE, stringsAsFactors = FALSE)
+names(lemma_dic) &lt;- c(&quot;stem&quot;, &quot;term&quot;)
+
+# palavras do brooklyn99 que estao no dicionario
+
+palavras &lt;- row.names(brooklyn99_corpus_matrix)
+
+for (j in 1:length(palavras)){
+  comparacao &lt;- palavras[j] == lemma_dic$term
+  if (sum(comparacao) == 1){
+    palavras[j] &lt;- as.character(lemma_dic$stem[comparacao])
+  } else {
+    palavras[j] &lt;- palavras[j]
+  }
+}
+
+palavras_brooklyn99 &lt;- palavras
+
+brooklyn99_corpus_df &lt;- as.data.frame(brooklyn99_corpus_matrix)
+row.names(brooklyn99_corpus_df) &lt;- NULL
+brooklyn99_corpus_df$palavras &lt;- palavras_brooklyn99
+
+# agrupar os resultados 
+
+brooklyn99_corpus_df &lt;- brooklyn99_corpus_df %&gt;%
+  group_by(palavras) %&gt;%
+  summarise_all(sum)
+
+temporadas &lt;- c(rep(1, 22), 
+                rep(2, 23), 
+                rep(3, 23), 
+                rep(4, 22), 
+                rep(5, 22))
+
+brooklyn99_corpus_df_col &lt;- t(apply(brooklyn99_corpus_df[, 2:113], 1, function(x) tapply(x, temporadas, sum)))
+colnames(brooklyn99_corpus_df_col) &lt;- paste(&quot;S0&quot;, 1:5, sep = &quot;&quot;)
+brooklyn99_corpus_df_col &lt;- data.frame(palavra = brooklyn99_corpus_df$palavras,
+                                       brooklyn99_corpus_df_col)
+
+brooklyn99_corpus_melt &lt;- melt(brooklyn99_corpus_df_col)
+names(brooklyn99_corpus_melt) &lt;- c(&quot;palavra&quot;, &quot;temporada&quot;, &quot;ocorrencias&quot;)
+
+# funcao para plotar os graficos de barra
+
+plot.seriado &lt;- function(dados, season, cor = 0){
+  
+  grafico &lt;- dados %&gt;%
+    filter(temporada == season) %&gt;%
+    top_n(n = 10, wt = ocorrencias) %&gt;%
+    arrange(desc(ocorrencias)) %&gt;%
+    ggplot(., aes(x = reorder(palavra, ocorrencias), y = ocorrencias, fill = temporada)) +
+    geom_col(show.legend = FALSE) +
+    labs(x = &quot;&quot;, y = &quot;&quot;, title = season) +
+    coord_flip() +
+    scale_fill_viridis_d(begin = cor)
+  
+  return(grafico)  
+  
+}</code></pre>
+<p>E ao fazer a contagem das palavras que mais aparecem e colocá-las em um gráfico, eis que o resultado é praticamente idêntico ao de Bojack Horseman:</p>
+<pre class="r"><code>s01 &lt;- plot.seriado(brooklyn99_corpus_melt, &quot;S01&quot;, 0.00)
+s02 &lt;- plot.seriado(brooklyn99_corpus_melt, &quot;S02&quot;, 0.25)
+s03 &lt;- plot.seriado(brooklyn99_corpus_melt, &quot;S03&quot;, 0.50)
+s04 &lt;- plot.seriado(brooklyn99_corpus_melt, &quot;S04&quot;, 0.75)
+s05 &lt;- plot.seriado(brooklyn99_corpus_melt, &quot;S05&quot;, 1.00)
+
+grid.arrange(s01, s02, s03, s04, s05, left = &quot;Palavras&quot;, bottom = &quot;Número de Ocorrências&quot;)</code></pre>
+<p><img src="/posts/analise-de-sentimentos-com-R-bojack-horseman-vs-brooklyn-99_files/figure-html/b99_plot-1.png" width="672" /></p>
+<pre class="r"><code>sentimentos &lt;- read.table(file = &quot;sentiment/sentiword.txt&quot;, sep = &quot;\t&quot;, header = TRUE)
+
+sentimentos &lt;- sentimentos %&gt;%
+  group_by(Termo) %&gt;%
+  summarise(positivo = max(PosScore), negativo = max(NegScore)) %&gt;%
+  mutate(Termo = trimws(Termo, which = &quot;left&quot;))
+
+pos &lt;- sentimentos[, c(1, 2)]
+neg &lt;- sentimentos[, c(1, 3)]
+
+# sentimento para cada episodio
+
+bojack_sentimento_positivo &lt;- 0
+bojack_sentimento_negativo &lt;- 0
+
+for (j in 1:(dim(bojack_corpus_df)[2]-1)){
+  
+  # palavras do j-esimo episodio
+  
+  a &lt;- bojack_corpus_matrix[, j]
+  a &lt;- data.frame(Termo = names(a),
+                  Ocorrencias = a)
+
+  row.names(a) &lt;- NULL
+  
+  # juntando sentimentos com as palavras do episodio - caso positivo
+  
+  x &lt;- left_join(a, pos, by = &quot;Termo&quot;) %&gt;%
+    na.omit()
+
+  sentimento_positivo &lt;- sum(x$Ocorrencias*x$positivo)/sum(a$Ocorrencias)
+  
+  # juntando sentimentos com as palavras do episodio - caso negativo
+
+  x &lt;- left_join(a, neg, by = &quot;Termo&quot;) %&gt;%
+    na.omit()
+
+  sentimento_negativo &lt;- sum(x$Ocorrencias*x$negativo)/sum(a$Ocorrencias)
+  
+  bojack_sentimento_positivo[j] &lt;- sentimento_positivo
+  bojack_sentimento_negativo[j] &lt;- sentimento_negativo
+}
+
+bojack_plot &lt;- data.frame(episodio = 1:length(bojack_sentimento_positivo),
+                          temporada = factor(temporadas),
+                          positivo = bojack_sentimento_positivo,
+                          negativo = bojack_sentimento_negativo)
+
+# sentimento para cada episodio
+
+brooklyn99_sentimento_positivo &lt;- 0
+brooklyn99_sentimento_negativo &lt;- 0
+
+for (j in 1:(dim(brooklyn99_corpus_df)[2]-1)){
+  
+  # palavras do j-esimo episodio
+  
+  a &lt;- brooklyn99_corpus_matrix[, j]
+  a &lt;- data.frame(Termo = names(a),
+                  Ocorrencias = a)
+  
+  row.names(a) &lt;- NULL
+  
+  # juntando sentimentos com as palavras do episodio - caso positivo
+  
+  x &lt;- left_join(a, pos, by = &quot;Termo&quot;) %&gt;%
+    na.omit()
+  
+  sentimento_positivo &lt;- sum(x$Ocorrencias*x$positivo)/sum(a$Ocorrencias)
+  
+  # juntando sentimentos com as palavras do episodio - caso negativo
+  
+  x &lt;- left_join(a, neg, by = &quot;Termo&quot;) %&gt;%
+    na.omit()
+  
+  sentimento_negativo &lt;- sum(x$Ocorrencias*x$negativo)/sum(a$Ocorrencias)
+  
+  brooklyn99_sentimento_positivo[j] &lt;- sentimento_positivo
+  brooklyn99_sentimento_negativo[j] &lt;- sentimento_negativo
+}
+
+brooklyn99_plot &lt;- data.frame(episodio = 1:length(brooklyn99_sentimento_positivo),
+                              temporada = factor(temporadas),
+                              positivo = brooklyn99_sentimento_positivo,
+                              negativo = brooklyn99_sentimento_negativo)</code></pre>
+</div>
+<div id="análise-de-sentimentos" class="section level2">
+<h2>Análise de Sentimentos</h2>
+<p>É possível atribuir pesos positivos e negativos a palavras, em uma escala de 0 a 1. Por exemplo, a palavra incapaz pode ter valor 0.75 positivo, enquanto a palavra hiperventilar tem peso negativo de 0.5. Ao atribuir estes pesos para as palavras ditas no seriado, é possível verificar como, em uma escala de 0 a 1 para valores positivos e de -1 a 0 para valores negativos, como estão os diálogos das séries. O dicionário <a href="https://github.com/Pedro-Thales/SentiWordNet-PT-BR">SentiWordNet-PT-BR</a>, criado pelo Pedro Thales, me ajudou muito nesta tarefa. Os resultados obtidos estão nas figuras abaixo.</p>
+<pre class="r"><code>ggplot(bojack_plot, aes(x = episodio, colour = temporada)) +
+  geom_line(aes(y = positivo)) +
+  geom_line(aes(y = -negativo)) +
+  scale_x_continuous(breaks = seq(12, 60, 12)) +
+  labs(x = &quot;Episódio&quot;, y = &quot;Sentimento&quot;, colour = &quot;Temporada&quot;, title = &quot;Bojack Horseman&quot;) +
+  scale_colour_viridis_d()</code></pre>
+<p><img src="/posts/analise-de-sentimentos-com-R-bojack-horseman-vs-brooklyn-99_files/figure-html/plotSentimento-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(brooklyn99_plot, aes(x = episodio, colour = temporada)) +
+  geom_line(aes(y = positivo)) +
+  geom_line(aes(y = -negativo)) +
+  scale_x_continuous(breaks = c(22, 45, 68, 90, 112)) +
+  labs(x = &quot;Episódio&quot;, y = &quot;Sentimento&quot;, colour = &quot;Temporada&quot;, title = &quot;Brooklyn 99&quot;) +
+  scale_colour_viridis_d()</code></pre>
+<p><img src="/posts/analise-de-sentimentos-com-R-bojack-horseman-vs-brooklyn-99_files/figure-html/plotSentimento-2.png" width="672" /></p>
+<p>Novamente, parece não haver muita diferença de uma série para outra.</p>
+</div>
+</div>
+<div id="conclusão" class="section level1">
+<h1>Conclusão</h1>
+<p>Reconheço que este não é o resultado que eu esperava. Eu imaginava que as palavras com maior frequência para Bojack Horseman teriam conotação negativa, enquanto em Brooklyn Nine-Nine elas teriam mais conotação positiva. Pelo visto, me enganei.</p>
+<p>Caberia fazer uma segunda análise nestes dados, talvez com os diálogos originais. Afinal, como as traduções que usei não são, pode ser que elas estejam influenciando no resultado final da análise. Além disso, é possível que meus dicionários de lematização e sentimentos possuam problemas, fazendo com que os resultados não sejam exatamente aqueles que ocorrem na língua original dos seriados.</p>
+<p>De toda forma, foi uma análise divertida de fazer. Tentarei repeti-la co fututo, mas aí com <em>corpus</em> originais do português.</p>
+<p>Os arquivos utilizados nesta análise estão <a href="https://github.com/mnunes/tv_series">neste repositório do GitHub</a>.</p>
+</div>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Analisando Questionários no R: Uma Abordagem Multivariada</title>
+			<link>/posts/analisando-questionarios-no-r-uma-abordagem-multivariada/</link>
+			<pubDate>Sun, 30 Jun 2019 20:08:00 -0300</pubDate>
+			
+			<guid>/posts/analisando-questionarios-no-r-uma-abordagem-multivariada/</guid>
+			<description>Um dos tipos de trabalho que aparece mais frequentemente no Laboratório de Consultoria que coordeno na universidade diz respeito à análise de questionários. Recebemos pedidos de colaboração na preparação dos questionários, cálculo do tamanho amostral para sua aplicação e análise dos resultados coletados.
+Em geral, nossos clientes estão interessados apenas em estatísticas descritivas básicas a respeito dos resultados obtidos em suas pesquisas. Sendo assim, o intuito deste meu post é mostrar que há um outro mundo possível para quem deseja obter informações mais sofisticadas a respeito dos questionários que aplica em seus sujeitos.</description>
+			<content type="html"><![CDATA[
+
+
+<p>Um dos tipos de trabalho que aparece mais frequentemente no <a href="https://marcusnunes.me/consultoria/">Laboratório de Consultoria</a> que coordeno na universidade diz respeito à análise de questionários. Recebemos pedidos de colaboração na preparação dos questionários, cálculo do tamanho amostral para sua aplicação e análise dos resultados coletados.</p>
+<p>Em geral, nossos clientes estão interessados apenas em estatísticas descritivas básicas a respeito dos resultados obtidos em suas pesquisas. Sendo assim, o intuito deste meu post é mostrar que há um outro mundo possível para quem deseja obter informações mais sofisticadas a respeito dos questionários que aplica em seus sujeitos. Para ilustrar estas ideias, compartilho o código de uma análise de questionário realizada por mim no software R.</p>
+<div id="questionário" class="section level1">
+<h1>Questionário</h1>
+<p>Um questionário aplicado a 13156 sujeitos se propôs a avaliar o que estas pessoas achavam de uma série de preceitos morais. Foram feitas 20 afirmações que deveriam ser respondidas de acordo com uma escala Likert, definida da seguinte maneira:</p>
+<ol style="list-style-type: decimal">
+<li><p>Discordo totalmente</p></li>
+<li><p>Discordo parcialmente</p></li>
+<li><p>Indiferente</p></li>
+<li><p>Concordo parcialmente</p></li>
+<li><p>Concordo totalmente</p></li>
+</ol>
+<p>Caso o respondente não soubesse classificar alguma informação, ele poderia responder 0. As afirmações feitas foram as seguintes:</p>
+<ul>
+<li><p>Q01. Nunca conte as suas reais intenções a respeito de algo que você fez a não ser que seja útil fazer isso.</p></li>
+<li><p>Q02. A melhor maneira de lidar com pessoas é falando o que elas desejam ouvir.</p></li>
+<li><p>Q03. As pessoas devem agir apenas quando é moralmente correto.</p></li>
+<li><p>Q04. A maioria das pessoas é boa e gentil.</p></li>
+<li><p>Q05. É mais seguro assumir que todas as pessoas possuem um lado mau e ele virá à nota quando houver oportunidade.</p></li>
+<li><p>Q06. Honestidade é um princípio a ser adotado em todas as situações.</p></li>
+<li><p>Q07. Não há desculpa para mentir.</p></li>
+<li><p>Q08. De maneira geral, as pessoas não vão trabalhar duro a não ser que sejam forçadas a isso.</p></li>
+<li><p>Q09. De modo geral, é melhor ser modesto e honesto do que arrogante e desonesto.</p></li>
+<li><p>Q10. Quando você pede para alguém fazer algo para você é melhor dar a verdadeira razão do pedido do que dar razões que sejam particularmente mais fortes para quem as ouve.</p></li>
+<li><p>Q11. A maioria das pessoas que chegam longe na vida são honestas, possuindo vidas limpas e de acordo com a moral.</p></li>
+<li><p>Q12. Qualquer pessoas que acredite seriamente nos outros está pedindo para ter problemas.</p></li>
+<li><p>Q13. A principal diferença entre a maioria dos criminosos e as outras pessoas é que os criminosos são estúpidos o suficiente para terem sido pegos.</p></li>
+<li><p>Q14. A maioria das pessoas é corajosa.</p></li>
+<li><p>Q15. É sábio elogiar pessoas importantes.</p></li>
+<li><p>Q16. É possível ser bom em todos os aspectos.</p></li>
+<li><p>Q17. A autor da frase “nasce um otário a cada minuto” estava errado.</p></li>
+<li><p>Q18. É difícil chegar longe na vida sem tomar alguns atalhos aqui e ali.</p></li>
+<li><p>Q19. Pessoas que sofrem de doenças incuráveis deveria ter a escolha de optar por serem mortas sem dor.</p></li>
+<li><p>Q20. A maioria das pessoas esquecerá mais fácil a morte dos seus pais do que a perda do seu patrimônio.</p></li>
+</ul>
+<p>Além destas, outras variáveis foram coletadas:</p>
+<ul>
+<li><p><code>score</code>: variando de 20 a 100, é um índice calculado a partir das respostas dos sujeitos às aformações Q01 a Q20</p></li>
+<li><p><code>genero</code>: 1 para masculino, 2 para feminino, 3 para outro, 0 sem resposta</p></li>
+<li><p><code>idade</code>: idade de cada sujeito, em anos</p></li>
+<li><p><code>tempo_decorrido</code>: tempo, em segundos, que cada sujeito levou para responder ao questionário</p></li>
+</ul>
+<p>Os dados brutos podem ser obtidos <a href="https://marcusnunes.me/images/dados/maquiavel.csv">através deste link</a>.</p>
+</div>
+<div id="preparação-dos-dados" class="section level1">
+<h1>Preparação dos Dados</h1>
+<p>Antes de proceder com a análise em si, é necessário preparar os dados. Todo mundo que já aplicou um questionário, principalmente via internet, sabe que o maior problema depois da não-resposta é a falta de compromisso de alguns respondentes. É muito difícil localizar respostas dadas de maneira deliberadamente equivocada para as questões de um questionário. Em geral, confiamos na boa-fé de quem responde.</p>
+<p>Entretanto, outras perguntas pode ser utilizadas como balizas do que podemos ou não confiar naquilo que estamos analisando. Pensando nisso e de modo a ter um questionário o mais fiel possível à realidade, vamos remover do conjunto de dados analisado todo sujeito que satisfaça pelo menos uma das condições abaixo:</p>
+<ol style="list-style-type: lower-roman">
+<li><p>respondeu 0 para ao menos uma afirmação</p></li>
+<li><p>idade inferior a 18 anos</p></li>
+<li><p>idade superior a 90 anos</p></li>
+<li><p>tempo de resposta do questionário superior à média mais três desvios padrão dos demais respondentes</p></li>
+</ol>
+<p>O código para fazer isto neste conjunto de dados é o seguinte:</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ───────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 3.2.1     ✔ purrr   0.3.3
+## ✔ tibble  2.1.3     ✔ dplyr   0.8.3
+## ✔ tidyr   1.0.0     ✔ stringr 1.4.0
+## ✔ readr   1.3.1     ✔ forcats 0.4.0</code></pre>
+<pre><code>## ── Conflicts ──────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>theme_set(theme_bw())
+library(reshape2)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;reshape2&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
+## 
+##     smiths</code></pre>
+<pre class="r"><code># leitura dos dados
+
+maquiavel &lt;- read.csv(file=&quot;maquiavel.csv&quot;)
+
+# limpeza dos dados de acordo com as regras acima
+
+maquiavel &lt;- maquiavel %&gt;%
+  na_if(., 0) %&gt;% # i
+  na.omit() %&gt;%
+  filter(idade &gt;= 18) %&gt;% # ii
+  filter(idade &lt;= 90) %&gt;%
+  filter(tempo_decorrido&lt;=(mean(tempo_decorrido)+(3*sd(tempo_decorrido))))
+
+dim(maquiavel)</code></pre>
+<pre><code>## [1] 10875    24</code></pre>
+<p>No final, ficamos com 20 respostas de 10875 sujeitos. E agora, com o conjunto de dados limpo, é possível proceder com a análise exploratória.</p>
+</div>
+<div id="análise-exploratória" class="section level1">
+<h1>Análise Exploratória</h1>
+<p>A primeira análise que faço é a da comparação da proporção de respostas para cada pergunta. Abaixo eu mostro como fazer isso de maneira prática no R, além de exibir o resultado que obtive para este problema.</p>
+<pre class="r"><code>maquiavel %&gt;%
+  select(-idade, -genero, -score, -tempo_decorrido) %&gt;% 
+  melt() %&gt;% 
+  group_by(variable, value) %&gt;%
+  count() %&gt;%
+  group_by(variable) %&gt;%
+  mutate(prop = n/sum(n)) %&gt;%
+  ggplot(., aes(x = variable, y = prop, fill = factor(value, levels = 5:1))) +
+  geom_col() +
+  coord_flip() +
+  labs(x = &quot;Proporção&quot;, y = &quot;Pergunta&quot;, fill = &quot;Resposta&quot;) +
+  scale_fill_viridis_d()</code></pre>
+<pre><code>## No id variables; using all as measure variables</code></pre>
+<p><img src="/posts/analisando-questionarios-no-r-uma-abordagem-multivariada_files/figure-html/maquiavel_2-1.png" width="672" /></p>
+<p>A primeira coisa que podemos perceber neste conjunto de dados é que se em dada pergunta a proporção de respostas 1 é grande, a proporção de respostas 5 é pequena e vice-versa. Para o primeiro caso, veja o comportamento das questões Q07, Q11 e Q20. Para o segundo caso, as questões Q01, Q02 e Q05 são bons exemplos.</p>
+<p>Com a análise exploratória realizada, é hora de procedermos com a análise fatorial deste questionário.</p>
+</div>
+<div id="análise-fatorial" class="section level1">
+<h1>Análise Fatorial</h1>
+<p>Isto nos leva a perguntar se seria possível agrupar as questões realizadas. Ou seja, será que é possível utilizar menos do que 20 questões para descrever o perfil psicológico das pessoas que responderam este questionário? Em outras palavras, como podemos simplificar este resultado e obter uma maneira direta de classificar os seus respondentes?</p>
+<p>Uma forma de fazer isto é através da análise de componentes principais. Ao fazermos ela, obtemos uma sugestão de quantas variáveis latentes devemos utilizar em nossa análise fatorial. Entretanto, só podemos usar os resultados das questões para fazer a análise fatorial: todas as outras variáveis devem ser retiradas do conjunto de dados.</p>
+<pre class="r"><code>maquiavel_questoes &lt;- maquiavel %&gt;%
+  select(-idade, -genero, -score, -tempo_decorrido)
+
+pca &lt;- prcomp(maquiavel_questoes, center = TRUE, scale. = TRUE)
+
+summary(pca)</code></pre>
+<pre><code>## Importance of components:
+##                           PC1     PC2     PC3     PC4     PC5     PC6
+## Standard deviation     2.5697 1.27549 1.09430 0.98368 0.94074 0.89568
+## Proportion of Variance 0.3302 0.08134 0.05987 0.04838 0.04425 0.04011
+## Cumulative Proportion  0.3302 0.41152 0.47139 0.51977 0.56402 0.60414
+##                           PC7     PC8     PC9    PC10    PC11    PC12
+## Standard deviation     0.8614 0.83463 0.81811 0.80676 0.78671 0.76848
+## Proportion of Variance 0.0371 0.03483 0.03347 0.03254 0.03095 0.02953
+## Cumulative Proportion  0.6412 0.67607 0.70953 0.74208 0.77302 0.80255
+##                           PC13    PC14   PC15    PC16    PC17    PC18
+## Standard deviation     0.76328 0.75608 0.7402 0.72352 0.70890 0.67555
+## Proportion of Variance 0.02913 0.02858 0.0274 0.02617 0.02513 0.02282
+## Cumulative Proportion  0.83168 0.86026 0.8877 0.91384 0.93896 0.96178
+##                           PC19    PC20
+## Standard deviation     0.63914 0.59654
+## Proportion of Variance 0.02042 0.01779
+## Cumulative Proportion  0.98221 1.00000</code></pre>
+<pre class="r"><code>plot.pca &lt;- data.frame(
+  x = 1:20,
+  y = unlist(as.data.frame(summary(pca)[6])[1, ])
+)
+
+plot.pca %&gt;%
+  head(10) %&gt;%
+  ggplot(., aes(x = x, y = y^2)) +
+  geom_line() +
+  labs(x = &quot;Componente Principal&quot;, y = &quot;Variância&quot;) +
+  scale_colour_viridis_d() +
+  scale_x_continuous(breaks = 1:10, minor_breaks = 1:10)</code></pre>
+<p><img src="/posts/analisando-questionarios-no-r-uma-abordagem-multivariada_files/figure-html/maquiavel_03-1.png" width="672" /></p>
+<p>Pelo gráfico acima, vemos que a variância estabiliza por volta da terceira ou quarta componente principal. Sendo assim, vou criar a representação gráfica da análise fatorial com quatro variáveis latentes:</p>
+<pre class="r"><code>ajuste_4 &lt;- factanal(maquiavel_questoes, 
+                     factors = 4,
+                     scores = c(&quot;regression&quot;),
+                     rotation = &quot;none&quot;)
+
+ajuste_4</code></pre>
+<pre><code>## 
+## Call:
+## factanal(x = maquiavel_questoes, factors = 4, scores = c(&quot;regression&quot;),     rotation = &quot;none&quot;)
+## 
+## Uniquenesses:
+##   Q01   Q02   Q03   Q04   Q05   Q06   Q07   Q08   Q09   Q10   Q11   Q12 
+## 0.539 0.527 0.607 0.541 0.587 0.377 0.369 0.619 0.327 0.514 0.621 0.600 
+##   Q13   Q14   Q15   Q16   Q17   Q18   Q19   Q20 
+## 0.558 0.609 0.674 0.735 0.831 0.692 0.877 0.722 
+## 
+## Loadings:
+##     Factor1 Factor2 Factor3 Factor4
+## Q01 -0.618   0.257                 
+## Q02 -0.592   0.180   0.230   0.193 
+## Q03  0.553   0.201           0.214 
+## Q04  0.566           0.323   0.168 
+## Q05 -0.538   0.325  -0.126         
+## Q06  0.697   0.360                 
+## Q07  0.623   0.445          -0.210 
+## Q08 -0.485   0.381                 
+## Q09  0.729          -0.225   0.290 
+## Q10  0.672   0.107  -0.133         
+## Q11  0.500   0.112   0.339         
+## Q12 -0.551   0.268  -0.135         
+## Q13 -0.573   0.336                 
+## Q14  0.528           0.332         
+## Q15 -0.478   0.114   0.248   0.151 
+## Q16  0.465   0.132   0.168         
+## Q17  0.344           0.200         
+## Q18 -0.518   0.171           0.101 
+## Q19 -0.308                   0.150 
+## Q20 -0.430   0.290                 
+## 
+##                Factor1 Factor2 Factor3 Factor4
+## SS loadings      6.012   1.091   0.631   0.339
+## Proportion Var   0.301   0.055   0.032   0.017
+## Cumulative Var   0.301   0.355   0.387   0.404
+## 
+## Test of the hypothesis that 4 factors are sufficient.
+## The chi square statistic is 1419.32 on 116 degrees of freedom.
+## The p-value is 5.45e-223</code></pre>
+<pre class="r"><code>grafico &lt;- as.data.frame(ajuste_4$loadings[, 1:2])
+
+ggplot(grafico, aes(x = Factor1, y = Factor2)) +
+  geom_text(label=rownames(grafico)) +
+  labs(x = &quot;Fator 1&quot;, y = &quot;Fator 2&quot;) +
+  scale_colour_viridis_d()</code></pre>
+<p><img src="/posts/analisando-questionarios-no-r-uma-abordagem-multivariada_files/figure-html/maquiavel_04-1.png" width="672" /></p>
+<p>Note como há quatro grupos bem definidos no gráfico. Separando-os por proximidade e me baseando nas questões definidas no começo deste post, eu os nomeria da seguinte maneira:</p>
+<ul>
+<li><p><em>manipulação:</em> Q01, Q02, Q05, Q08, Q12, Q13, Q15, Q18, Q20</p></li>
+<li><p><em>bondade:</em> Q03, Q04, Q09, Q10, Q11, Q14, Q16, Q17</p></li>
+<li><p><em>honestidade:</em> Q06, Q07</p></li>
+<li><p><em>compaixao:</em> Q19</p></li>
+</ul>
+<p>Ou seja, podemos reduzir oito questões (Q01, Q02, Q05, Q08, Q12, Q13, Q15, Q18, Q20) a apenas uma qualidade: manipulação. Parece-me que estas questões tratam todas, em maior ou menor grau, do mesmo assunto. Resultados similares podem ser deduzidos para as demais variáveis e questões aplicadas.</p>
+</div>
+<div id="conclusão" class="section level1">
+<h1>Conclusão</h1>
+<p>Conseguimos pegar um questionário com 20 questões, que é algo bastante complexo, e reduzi-lo para quatro variáveis latentes. Uma ferramenta assim é muito útil para resumir informações obtidas a partir de questionários aplicados aos mais diversos sujeitos.</p>
+</div>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Como Instalar o shiny server em seu Próprio Servidor</title>
+			<link>/posts/como-instalar-o-shiny-em-seu-proprio-servidor/</link>
+			<pubDate>Wed, 01 May 2019 14:10:00 -0300</pubDate>
+			
+			<guid>/posts/como-instalar-o-shiny-em-seu-proprio-servidor/</guid>
+			<description>Introdução O pacote shiny do R é uma excelente ferramenta para criar aplicações web com as seguintes funções:
+ mostrar como a Estatística pode ser utilizada para ensino divulgação de informações públicas através de uma ferramenta interativa ferramenta de controle de produção em empresas (dashboards, no jargão popular)  Eu mantenho uma página no site da universidade com aplicações criadas por mim e por meus alunos que ilustram o poder desta ferramenta.</description>
+			<content type="html"><![CDATA[
+
+<h1 id="introdução">Introdução</h1>
+
+<p>O pacote <a href="https://marcusnunes.me/shiny/" target="_blank">shiny</a> do R é uma excelente ferramenta para criar aplicações web com as seguintes funções:</p>
+
+<ol>
+<li>mostrar como a Estatística pode ser utilizada para ensino</li>
+<li>divulgação de informações públicas através de uma ferramenta interativa</li>
+<li>ferramenta de controle de produção em empresas (dashboards, no jargão popular)</li>
+</ol>
+
+<p><a href="http://shiny.estatistica.ccet.ufrn.br" target="_blank">Eu mantenho uma página no site da universidade</a> com aplicações criadas por mim e por meus alunos que ilustram o poder desta ferramenta.</p>
+
+<p>Qualquer pessoa pode utilizar gratuitamente o site <a href="https://www.shinyapps.io/" target="_blank">shinyapps.io</a> para hospedar as suas próprias criações. Entretanto, por ser um serviço gratuito, ele apresenta diversas limitações de uso. Por isso, o tutorial abaixo mostra como instalar o shiny em um servidor utilizando Ubuntu 18.04, a versão LTS mais atual de uma das distribuições de Linux mais utilizadas.</p>
+
+<p>Caso o seu uso do <a href="https://marcusnunes.me/tags/shiny/" target="_blank">shiny</a> seja acadêmico, <a href="https://marcusnunes.me/contato/" target="_blank">mande um email para mim</a> que podemos conversar a respeito de hospedagem gratuita para o seu aplicativo no <a href="http://shiny.estatistica.ccet.ufrn.br" target="_blank">meu site</a>, sem limitação alguma.</p>
+
+<h2 id="instalação-do-r">Instalação do R</h2>
+
+<p>Vou assumir a partir de agora que o leitor dispõe de um servidor remoto com Ubuntu 18.04 instalado e que possui privilégios de administrador nesta máquina. Na verdade, é possível utilizar comandos bem parecidos com estes para instalar o shiny em qualquer servidor Linux. Bastam pequenas alterações no script.</p>
+
+<p>Antes de instalar o R, é preciso fazer a atualização do Ubuntu através do comando</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade
+</code></pre>
+
+<p>Para um uso despreocupado da ferramenta, recomendo pelo menos 10GB de espaço em disco disponível. Dá para instalar o shiny com menos espaço do que isso, mas é possível que falte espaço para pacotes do R ou para os dados a serem analisados.  Para checar o espaço disponível na sua máquina, rode o comando</p>
+
+<pre><code>df -h
+</code></pre>
+
+<p>Em seguida, é necessário instalar alguns pacotes extras no Ubuntu. Isto é resolvido através do comando</p>
+
+<pre><code>sudo apt install apt-transport-https software-properties-common
+</code></pre>
+
+<p>Para instalar o R, é necessário alterar o arquivo de sistema com informações sobre repositórios de programas. Isto é feito da seguinte forma no Ubuntu:</p>
+
+<pre><code>sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+</code></pre>
+
+<p>Agora sim podemos finalmente instalar o R. Rodo os comandos abaixo caso ele ainda não esteja instalado em seu servidor.</p>
+
+<pre><code>sudo apt update
+sudo apt install -y r-base r-base-core r-recommended
+</code></pre>
+
+<p>Alguns pacotes do R precisarão de programas especiais para serem instalados. Estes programas são instalados da seguinte maneira:</p>
+
+<pre><code>sudo apt install -y build-essential libcurl4-openssl-dev libxml2-dev openjdk-8-jdk git libssl-dev
+</code></pre>
+
+<p>Além disso, o java exige algumas configurações extras que devem ser realizadas da seguinte maneira:</p>
+
+<pre><code>export LD_LIBRARY_PATH=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/server
+sudo R CMD javareconf
+</code></pre>
+
+<p>Por fim, caso seu servidor tenha pouco espaço em disco, é preciso atualizar o local em que os pacotes do R serão instalados. Para fazer isso, abra o arquivo <code>Renviron</code> com o seguinte comando:</p>
+
+<pre><code>sudo nano /usr/lib/R/etc/Renviron
+</code></pre>
+
+<p>Após o editor de texto estar aberto, procure a primeira linha abaixo e comente-a, colocando o caractere <code>#</code> na sua frente. Em seguida, copie e cole a instrução <code>R_LIBS_USER=${R_LIBS_USER-‘~/Library/R/3.5/library’}</code> logo abaixo. No final ,é isto que deve estar presente no arquivo:</p>
+
+<pre><code>#R_LIBS_USER=${R_LIBS_USER-‘~/R/x86_64-pc-linux-gnu-library/3.0’}
+R_LIBS_USER=${R_LIBS_USER-‘~/Library/R/3.5/library’}
+</code></pre>
+
+<p>Com o R configurado, agora é hora de iniciar o programa como usuário root para instalar pacotes para todos os usuários. Rode</p>
+
+<pre><code>sudo -i R
+</code></pre>
+
+<p>para fazer isto. Vamos instalar alguns pacotes da maneira como sempre foi feito no R:</p>
+
+<pre><code>install.packages(c(&quot;shiny&quot;, &quot;tidyverse&quot;, &quot;devtools&quot;), 
+  repos = &quot;https://cran.rstudio.com/&quot;,
+  dependencies=TRUE)
+</code></pre>
+
+<p>Estou colocando <code>repos=&quot;https://cran.rstudio.com/&quot;</code> como repositório porque já vi alguns usuários reportarem que tiveram problemas ao instalar o shiny sem fazer isso.</p>
+
+<p>Em seguida, devemos deixar a pasta dos pacotes legível para o shiny. Para saber que pasta é esta, rode o comando abaixo no R:</p>
+
+<pre><code>.libPaths() # /usr/local/lib/R/site-library é o meu resultado; isto pode variar
+</code></pre>
+
+<p>Para deixar a pasta dos pacotes legível para o shiny, saia do R e rode o seguinte comando no terminal:</p>
+
+<pre><code>sudo chmod 777 /usr/lib/R/site-library # lembre-se de alterar o que vem depois de 777 com o resultado de .libPaths()
+</code></pre>
+
+<h2 id="instalação-do-shiny-server">Instalação do shiny server</h2>
+
+<p>Finalmente, podemos instalar o servidor do shiny. O endereço de download abaixo pode estar desatualizado no momento em que este post está sendo lido. <a href="https://www.rstudio.com/products/shiny/download-server/" target="_blank">Visite este site</a> para obter a versão mais recente do servidor.</p>
+
+<pre><code>sudo apt install -y gdebi-core
+wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.9.923-amd64.deb
+sudo gdebi shiny-server-1.5.9.923-amd64.deb
+</code></pre>
+
+<p>Rode o comando abaixo para permitir que outros usuários vejam seus apps:</p>
+
+<pre><code>sudo chmod -R 777 /srv
+</code></pre>
+
+<p>Por fim, teste o seu novo servidor em um browser, substituindo o ip abaixo pelo ip ou domínio do seu site:</p>
+
+<pre><code>127.0.0.1:3838
+</code></pre>
+
+<p>Tudo deve estar funcionando neste momento. Parabéns!</p>
+
+<h2 id="instalação-dos-web-apps">Instalação dos web apps</h2>
+
+<p>Para rodar os seus próprios apps no servidor, copie a pasta com os arquivos dos apps (em geral, <code>global.R</code>, <code>server.R</code> e <code>ui.R</code>) para o servidor e mova-os para a pasta <code>/srv/shiny-server/</code>:</p>
+
+<pre><code>sudo mv PastaComApp /srv/shiny-server/
+</code></pre>
+
+<p>Agora é só acessar os apps através da pasta na qual eles estão</p>
+
+<pre><code>127.0.0.1:3838/PastaComApp
+</code></pre>
+
+<h2 id="manutenção-do-servidor">Manutenção do Servidor</h2>
+
+<p>Para substituir a porta do servidor e não ter que ficar digitando a porta de acesso toda vez que desejar acessar um app, rode</p>
+
+<pre><code>sudo nano /etc/shiny-server/shiny-server.conf
+</code></pre>
+
+<p>Dentro do editor, altere a linha</p>
+
+<pre><code>listen 3838;
+</code></pre>
+
+<p>para</p>
+
+<pre><code>listen 80;
+</code></pre>
+
+<p>Reinicie o servidor do shiny:</p>
+
+<pre><code>sudo systemctl restart shiny-server
+</code></pre>
+
+<p>Para verificar seu status, isto é, para checar se ele está rodando de fato, rode</p>
+
+<pre><code>sudo systemctl status shiny-server
+</code></pre>
+
+<p>Este comando deve retornar a informação de que o sistema está rodando.</p>
+
+<p>Eu recomendo que, para evitar problemas de segurança, o seu Ubuntu seja atualizado periodicamente. Para isso, rode o comando</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade -y &amp;&amp; sudo apt-get autoremove -y
+</code></pre>
+
+<p>Para atualizar os pacotes do R, rode</p>
+
+<pre><code>sudo Rscript -e 'update.packages(repos=&quot;http://cran.rstudio.com&quot;, ask=FALSE); source(&quot;http://bioconductor.org/biocLite.R&quot;); biocLite(ask=FALSE)'
+</code></pre>
+
+<h2 id="conclusão">Conclusão</h2>
+
+<p>Estes são os passos gerais para a instalação do shiny server em uma máquina rodando Linux. Em condições normais, este procedimento leva em torno de duas a três horas para ser completado. O tempo vai depender de vários fatores, como a experiência de quem estiver realizando-o, a velocidade de conexão à internet do servidor e até mesmo a facilidade en resolver alguns detalhes chatos que podem surgir pelo caminho.</p>
+
+<p>Caso a sua empresa esteja interessada em fazer uso deste serviço e não tenha pessoal habilitado, saiba que estou disponível para prestar <a href="https://marcusnunes.me/consultoria/" target="_blank">consultoria</a> no assunto. Além disso, ofereço treinamento personalizado em R e estatística. <a href="https://marcusnunes.me/contato/" target="_blank">Entre em contato</a> para saber mais a respeito.</p>
+
+<p>Não custa lembrar que se o uso do <a href="https://marcusnunes.me/tags/shiny/" target="_blank">shiny</a> pela tua parte é acadêmico, <a href="https://marcusnunes.me/contato/" target="_blank">mande um email para mim</a> que podemos conversar a respeito de hospedagem gratuita para o seu aplicativo no <a href="http://shiny.estatistica.ccet.ufrn.br" target="_blank">meu site</a>, sem limitação alguma.</p>
+]]></content>
+		</item>
+		
+	</channel>
+</rss>

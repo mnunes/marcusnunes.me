@@ -1,0 +1,211 @@
+---
+title: "Analisando Questionários no R: Uma Abordagem Multivariada"
+description: "Como usar o Google para provar ou desprovar esta afirmação"
+tags: ["análise", "análise fatorial", "estatística multivariada", "likert", "questionários"]
+draft: false
+date: 2019-06-30T20:08:00-03:00
+---
+
+Um dos tipos de trabalho que aparece mais frequentemente no [Laboratório de Consultoria](https://marcusnunes.me/consultoria/) que coordeno na universidade diz respeito à análise de questionários. Recebemos pedidos de colaboração na preparação dos questionários, cálculo do tamanho amostral para sua aplicação e análise dos resultados coletados.
+
+Em geral, nossos clientes estão interessados apenas em estatísticas descritivas básicas a respeito dos resultados obtidos em suas pesquisas. Sendo assim, o intuito deste meu post é mostrar que há um outro mundo possível para quem deseja obter informações mais sofisticadas a respeito dos questionários que aplica em seus sujeitos. Para ilustrar estas ideias, compartilho o código de uma análise de questionário realizada por mim no software R.
+
+
+# Questionário
+
+Um questionário aplicado a 13156 sujeitos se propôs a avaliar o que estas pessoas achavam de uma série de preceitos morais. Foram feitas 20 afirmações que deveriam ser respondidas de acordo com uma escala Likert, definida da seguinte maneira:
+
+1. Discordo totalmente
+
+2. Discordo parcialmente
+
+3. Indiferente
+
+4. Concordo parcialmente
+
+5. Concordo totalmente
+
+Caso o respondente não soubesse classificar alguma informação, ele poderia responder 0. As afirmações feitas foram as seguintes:
+
+
+- Q01. Nunca conte as suas reais intenções a respeito de algo que você fez a não ser que seja útil fazer isso.
+
+- Q02. A melhor maneira de lidar com pessoas é falando o que elas desejam ouvir.
+
+- Q03. As pessoas devem agir apenas quando é moralmente correto.
+
+- Q04. A maioria das pessoas é boa e gentil.
+
+- Q05. É mais seguro assumir que todas as pessoas possuem um lado mau e ele virá à nota quando houver oportunidade.
+
+- Q06. Honestidade é um princípio a ser adotado em todas as situações.
+
+- Q07. Não há desculpa para mentir.
+
+- Q08. De maneira geral, as pessoas não vão trabalhar duro a não ser que sejam forçadas a isso.
+
+- Q09. De modo geral, é melhor ser modesto e honesto do que arrogante e desonesto.
+
+- Q10. Quando você pede para alguém fazer algo para você é melhor dar a verdadeira razão do pedido do que dar razões que sejam particularmente mais fortes para quem as ouve.
+
+- Q11. A maioria das pessoas que chegam longe na vida são honestas, possuindo vidas limpas e de acordo com a moral.
+
+- Q12. Qualquer pessoas que acredite seriamente nos outros está pedindo para ter problemas.
+
+- Q13. A principal diferença entre a maioria dos criminosos e as outras pessoas é que os criminosos são estúpidos o suficiente para terem sido pegos.
+
+- Q14. A maioria das pessoas é corajosa.
+
+- Q15. É sábio elogiar pessoas importantes.
+
+- Q16. É possível ser bom em todos os aspectos.
+
+- Q17. A autor da frase "nasce um otário a cada minuto" estava errado.
+
+- Q18. É difícil chegar longe na vida sem tomar alguns atalhos aqui e ali.
+
+- Q19. Pessoas que sofrem de doenças incuráveis deveria ter a escolha de optar por serem mortas sem dor.
+
+- Q20. A maioria das pessoas esquecerá mais fácil a morte dos seus pais do que a perda do seu patrimônio.
+
+Além destas, outras variáveis foram coletadas:
+
+* `score`: variando de 20 a 100, é um índice calculado a partir das respostas dos sujeitos às aformações Q01 a Q20
+
+* `genero`: 1 para masculino, 2 para feminino, 3 para outro, 0 sem resposta
+
+* `idade`: idade de cada sujeito, em anos
+
+* `tempo_decorrido`: tempo, em segundos, que cada sujeito levou para responder ao questionário
+
+Os dados brutos podem ser obtidos [através deste link](https://marcusnunes.me/images/dados/maquiavel.csv).
+
+
+# Preparação dos Dados
+
+Antes de proceder com a análise em si, é necessário preparar os dados. Todo mundo que já aplicou um questionário, principalmente via internet, sabe que o maior problema depois da não-resposta é a falta de compromisso de alguns respondentes. É muito difícil localizar respostas dadas de maneira deliberadamente equivocada para as questões de um questionário. Em geral, confiamos na boa-fé de quem responde.
+
+Entretanto, outras perguntas pode ser utilizadas como balizas do que podemos ou não confiar naquilo que estamos analisando. Pensando nisso e de modo a ter um questionário o mais fiel possível à realidade, vamos remover do conjunto de dados analisado todo sujeito que satisfaça pelo menos uma das condições abaixo:
+
+i. respondeu 0 para ao menos uma afirmação
+
+ii. idade inferior a 18 anos
+
+iii. idade superior a 90 anos
+
+iv. tempo de resposta do questionário superior à média mais três desvios padrão dos demais respondentes
+
+O código para fazer isto neste conjunto de dados é o seguinte:
+
+```{r maquiavel_01}
+library(tidyverse)
+theme_set(theme_bw())
+library(reshape2)
+
+# leitura dos dados
+
+maquiavel <- read.csv(file="maquiavel.csv")
+
+# limpeza dos dados de acordo com as regras acima
+
+maquiavel <- maquiavel %>%
+  na_if(., 0) %>% # i
+  na.omit() %>%
+  filter(idade >= 18) %>% # ii
+  filter(idade <= 90) %>%
+  filter(tempo_decorrido<=(mean(tempo_decorrido)+(3*sd(tempo_decorrido))))
+
+dim(maquiavel)
+```
+
+No final, ficamos com 20 respostas de 10875 sujeitos. E agora, com o conjunto de dados limpo, é possível proceder com a análise exploratória.
+
+# Análise Exploratória
+
+A primeira análise que faço é a da comparação da proporção de respostas para cada pergunta. Abaixo eu mostro como fazer isso de maneira prática no R, além de exibir o resultado que obtive para este problema. 
+
+```{r maquiavel_2}
+maquiavel %>%
+  select(-idade, -genero, -score, -tempo_decorrido) %>% 
+  melt() %>% 
+  group_by(variable, value) %>%
+  count() %>%
+  group_by(variable) %>%
+  mutate(prop = n/sum(n)) %>%
+  ggplot(., aes(x = variable, y = prop, fill = factor(value, levels = 5:1))) +
+  geom_col() +
+  coord_flip() +
+  labs(x = "Proporção", y = "Pergunta", fill = "Resposta") +
+  scale_fill_viridis_d()
+```
+
+A primeira coisa que podemos perceber neste conjunto de dados é que se em dada pergunta a proporção de respostas 1 é grande, a proporção de respostas 5 é pequena e vice-versa. Para o primeiro caso, veja o comportamento das questões Q07, Q11 e Q20. Para o segundo caso, as questões Q01, Q02 e Q05 são bons exemplos.
+
+Com a análise exploratória realizada, é hora de procedermos com a análise fatorial deste questionário.
+
+# Análise Fatorial
+
+Isto nos leva a perguntar se seria possível agrupar as questões realizadas. Ou seja, será que é possível utilizar menos do que 20 questões para descrever o perfil psicológico das pessoas que responderam este questionário? Em outras palavras, como podemos simplificar este resultado e obter uma maneira direta de classificar os seus respondentes? 
+
+Uma forma de fazer isto é através da análise de componentes principais. Ao fazermos ela, obtemos uma sugestão de quantas variáveis latentes devemos utilizar em nossa análise fatorial. Entretanto, só podemos usar os resultados das questões para fazer a análise fatorial: todas as outras variáveis devem ser retiradas do conjunto de dados.
+
+```{r maquiavel_03}
+maquiavel_questoes <- maquiavel %>%
+  select(-idade, -genero, -score, -tempo_decorrido)
+
+pca <- prcomp(maquiavel_questoes, center = TRUE, scale. = TRUE)
+
+summary(pca)
+
+plot.pca <- data.frame(
+  x = 1:20,
+  y = unlist(as.data.frame(summary(pca)[6])[1, ])
+)
+
+plot.pca %>%
+  head(10) %>%
+  ggplot(., aes(x = x, y = y^2)) +
+  geom_line() +
+  labs(x = "Componente Principal", y = "Variância") +
+  scale_colour_viridis_d() +
+  scale_x_continuous(breaks = 1:10, minor_breaks = 1:10)
+```
+
+Pelo gráfico acima, vemos que a variância estabiliza por volta da terceira ou quarta componente principal. Sendo assim, vou criar a representação gráfica da análise fatorial com quatro variáveis latentes:
+
+```{r maquiavel_04}
+ajuste_4 <- factanal(maquiavel_questoes, 
+                     factors = 4,
+                     scores = c("regression"),
+                     rotation = "none")
+
+ajuste_4
+
+grafico <- as.data.frame(ajuste_4$loadings[, 1:2])
+
+ggplot(grafico, aes(x = Factor1, y = Factor2)) +
+  geom_text(label=rownames(grafico)) +
+  labs(x = "Fator 1", y = "Fator 2") +
+  scale_colour_viridis_d()
+```
+
+Note como há quatro grupos bem definidos no gráfico. Separando-os por proximidade e me baseando nas questões definidas no começo deste post, eu os nomeria da seguinte maneira:
+
+* *manipulação:* Q01, Q02, Q05, Q08, Q12, Q13, Q15, Q18, Q20
+
+* *bondade:* Q03, Q04, Q09, Q10, Q11, Q14, Q16, Q17
+
+* *honestidade:* Q06, Q07
+
+* *compaixao:* Q19
+
+Ou seja, podemos reduzir oito questões (Q01, Q02, Q05, Q08, Q12, Q13, Q15, Q18, Q20) a apenas uma qualidade: manipulação. Parece-me que estas questões tratam todas, em maior ou menor grau, do mesmo assunto. Resultados similares podem ser deduzidos para as demais variáveis e questões aplicadas.
+
+
+# Conclusão
+
+Conseguimos pegar um questionário com 20 questões, que é algo bastante complexo, e reduzi-lo para quatro variáveis latentes. Uma ferramenta assim é muito útil para resumir informações obtidas a partir de questionários aplicados aos mais diversos sujeitos.
+
+
+
+

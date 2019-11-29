@@ -1,0 +1,1317 @@
+---
+title: "1000 Dias Com Ela: A Dieta"
+description: "Quer Perder Peso? Pergunte-me Como."
+tags: ["análise", "dieta", "visualização"]
+draft: false
+date: 2018-10-21T10:34:00-03:00
+---
+
+# 2015 foi muito louco
+
+Qualquer nutricionista diria que as minhas noites de terça-feira em 2015 eram absurdas. Minha mulher e eu assistíamos, toda semana, uma competição de cozinheiros na TV. Como ficávamos com fome durante o programa, aproveitávamos a promoção de uma pizzaria daqui de Natal: ao comprar uma pizza gigante, ganhávamos outra pizza gigante, de graça. Ocorre que duas pizzas gigantes para duas pessoas é muita comida, o que fez com que ganhássemos muito peso.
+
+<!--![500 Dias com Ela - 500 Hundred Days of Summer](/images/500_dias_com_ela.jpg)-->
+
+Então há 1000 dias, no início de 2016, eu achei que estava gordo e comprei uma balança. Passei a me pesar todo dia pela manhã, registrando meu meu peso. Também passei a anotar tudo o que eu comia, em todas as minhas refeições e lanches. Utilizei um app chamado [MyFitnessPal](https://myfitnesspal.com) para esta tarefa. Com isso, percebi que eu estava consumindo muitos alimentos que não favoreciam a minha saúde. Muito sódio, gordura e açúcares fizeram com que eu ficasse muita acima do meu peso ideal, quase entrando na faixa de obesidade.
+
+O que vou mostrar a seguir é uma análise descritiva a respeito dos valores que registrei nestes 1000 dias. Ela não é de nenhum modo definitiva ou científica: afinal, eu controlei apenas o meu peso, sem me preocupar com percentual de gordura ou massa magra. De todo modo, considero que é um resultado bastante interessante. Além disso, talvez sirva de inspiração para outras pessoas passando pela mesma situação que eu e que estejam descontentes
+
+Como sempre, o código e os dados utilizados para refazer esta análise estão disponíveis [em meu github](https://github.com/mnunes/MyFitnessPal).
+
+
+# Análise
+
+O que vou mostrar abaixo é o resumo de 984 registros que fiz do meu peso entre fevereiro de 2016 e outubro de 2018. Não são exatamente 1000 registros porque passei alguns dias viajando e eu não me pesei nestes momentos.
+
+
+```{r grafico01, include=FALSE, warning=FALSE}
+library(ggplot2)
+library(dplyr)
+library(forecast)
+library(lubridate)
+library(wesanderson)
+library(scales)
+library(zoo)
+
+# leitura de dados
+
+dados <- as_data_frame(read.table(file="myFitnessPal.csv", sep=",", header=TRUE))
+dados <- dados %>%
+  select(-Calories)
+
+dim(dados)
+
+str(dados)
+
+dados$Date           <- ymd(dados$Date)
+dados$Year           <- year(dados$Date)
+dados$Month          <- month(dados$Date)
+dados$Day            <- day(dados$Date)
+dados$GrupoDiaSemana <- wday(dados$Date, label=TRUE)
+dados$GrupoMes       <- ymd(paste(dados$Year, dados$Month, "01", sep="-"))
+
+# grafico
+
+g1 <- ggplot(data=dados, aes(x=Date)) +
+  labs(x="Data", y="Peso (kg)") +
+  geom_line(aes(y=Weight, colour="Peso Real")) +
+  #geom_line(aes(y=c(rep(NA,  6), rollmean(Weight,  7)), colour="MM 07 Dias")) +
+  geom_line(aes(y=c(rep(NA, 29), rollmean(Weight, 30)), colour="MM 30 Dias")) +
+  geom_line(aes(y=c(rep(NA, 89), rollmean(Weight, 90)), colour="MM 90 Dias")) +
+  scale_colour_manual("Legenda", values = wes_palette("Zissou1")[c(5, 3, 2)]) +
+  scale_y_continuous(breaks = round(seq(floor(min(dados$Weight)), ceiling(max(dados$Weight)), by=1), 1), minor_breaks=NULL, limits=c(min(dados$Weight), max(dados$Weight))) +
+  scale_x_date(breaks=seq(min(dados$Date), max(dados$Date), by="2 month"), date_labels="%b/%Y", minor_breaks=seq(min(dados$Date), max(dados$Date), by="2 month")) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  annotate("text", ymd("2016-06-25"), 80, label="Buenos Aires", hjust=0.25) +
+  geom_segment(aes(x = ymd("2016-06-25"), y = 73, xend = ymd("2016-06-25"), yend = 79.5)) +
+  annotate("text", ymd("2017-01-12"), 78, label="Porto Alegre", hjust=0.25) +
+  geom_segment(aes(x = ymd("2017-01-12"), y = 77.5, xend = ymd("2017-01-12"), yend = 74)) +
+  annotate("text", ymd("2017-08-01"), 76, label="Comecei a correr na rua", hjust=0.25) +
+  geom_segment(aes(x = ymd("2017-08-01"), y = 72.5, xend = ymd("2017-08-01"), yend = 75.5)) +
+  annotate("text", ymd("2017-11-11"), 74, label="Parei de correr na rua", hjust=0.25) +
+  geom_segment(aes(x = ymd("2017-11-11"), y = 70.5, xend = ymd("2017-11-11"), yend = 73.5)) +
+  annotate("text", ymd("2017-12-26"), 70, label="Espanha", hjust=0.25) +
+  geom_segment(aes(x = ymd("2017-12-26"), y = 70.5, xend = ymd("2017-12-26"), yend = 71.5))
+```
+
+
+```{r grafico02, warning=FALSE, echo=FALSE}
+g1
+```
+
+Antes de mais nada, precisamos entender o que significa cada linha no gráfico acima. A linha azul é o peso registrado pela balança, sem transformação alguma. As linhas vermelha e amarela são as médias móveis de 30 e 90 dias, respectivamente, abreviadas por MM30 e MM90. A média móvel de 30 dias é a média do meu peso de hoje com os 29 dias anteriores. De maneira análoga, média móvel de 90 dias é a média do meu peso de hoje com os 89 dias anteriores. Estas estatísticas suavizam as observações registradas, facilitando a detecção de tendências.
+
+Como quase toda dieta, a maior queda no meu peso se deu nos primeiros meses. Veja que foi algo vertiginoso. De fevereiro a junho de 2016 eu emagreci 10kg. Aí viajei para Buenos Aires no inverno, comi muita carne vermelha e doce de leite e, quando voltei para Natal, meu peso estabilizou.
+
+Durante pouco mais de um ano, até agosto de 2017, meu peso ficou oscilando entre 72 e 74kg. Excelente, pois eu havia emagrecido 10kg e não sofri de efeito sanfona. Até que decidi que participaria de uma corrida de rua e, além da academia e do pilates, passei a correr 5km todo domingo de manhã. Portanto, há outra queda acentuada no meu peso entre agosto e novembro de 2017.
+
+Após completar a minha prova de rua, relaxei. Parei de levantar às 5:15 dos domingos para ir à praia correr. [Eu já tinha completado minha prova na rua](https://www.instagram.com/p/BbaDzjmFg4l/), o semestre estava acabando, eu iria viajar no ano novo e precisava de uma deculpa para ser preguiçoso. No final de 2017 e início de 2018 fui para a Espanha. Esta viagem me rendeu 1kg a mais na balança. Além disso, ao voltar de lá, introduzi pão com azeite de oliva e tomate no café da manhã. 
+
+Perceba que isto fez com que eu fosse paulatinamente ganhando peso durante 2018. Apesar de uma leve queda em fevereiro e março, cheguei a ganhar 3kg durante 2018.
+
+Por isso, há alguns dias voltei a desejar diminuir a escalada da minha gordura. Estou tomando algumas providências para ingerir menos calorias e isto tem se refletido na pequena queda registrada pela MM30, no extremo direito do gráfico. Ou seja, no curto prazo, a balança já registra esta redução de peso. A MM90, por outro lado, ainda não foi afetada por esta recente mudança de hábitos. Ela continua a subir, pois registra o movimento de longo prazo do meu peso. Por isso, espero que com mais algumas semanas de dieta este comportamento de longo prazo se estabilize e, logo em seguida, passe a apresentar tendência de queda.
+
+Já são mais de dois anos e meio registrando meu peso diariamente. Pretendo fazer isto ainda por muito tempo e manter o [em meu github](https://github.com/mnunes/MyFitnessPal) atualizado com os resultados.
+
+
+
+
+
+<!--chapter:end:1000-dias-com-ela-a-dieta.Rmd-->
+
+---
+title: "Correlações e Gráficos de Dispersão"
+description: "Uma boa visualização é sempre o primeiro passo em uma análise de dados"
+tags: ["dica", "visualização"]
+draft: false
+date: 2018-06-03T07:15:00-03:00
+---
+
+Um dos pontos que mais reforço em minhas aulas é visualização de dados. A [tag visualização](/tags/visualização/) aqui no site não me deixa mentir. Um dos exemplos que mais gosto sobre este assunto está presente do pacote `datasauRus` do R. Este pacote traz 13 conjuntos de dados bivariados que possuem uma característica muito marcante: as correlações entre as variáveis $x$ e $y$ destes conjuntos de dados são muito parecidas entre si.
+
+
+```{r datasauRus, echo=TRUE, message=FALSE}
+library(datasauRus)
+library(tidyverse)
+theme_set(theme_bw())
+
+datasaurus_dozen %>%
+  group_by(dataset) %>%
+  summarise(correlacao=cor(x, y))
+```
+
+Perceba que ao calcularmos a correlação entre as colunas `x` e `y` deste conjunto de dados, agrupadas de acordo com o `dataset`, obtemos 13 correlações. Perceba que todas elas são muito parecidas entre si. São valores negativos, mas muito pequenos. Isto é um indicativo de que as colunas `x` e `y` são pouco correlacionadas. Ou seja, elas devem ter o seguinte aspecto quanto colocadas em um gráfico de dispersão:
+
+```{r correlacaoBaixa, echo=FALSE}
+x <- rnorm(400)
+y <- rnorm(400)
+dados <- data.frame(x=x, y=y)
+ggplot(dados, aes(x=x, y=y)) +
+  geom_point()
+```
+
+O interessante é que este comportamento visusal não ocorre com este conjunto de dados. Veja o resultado que obtemos ao criar os gráficos de dispersão entre as variáveis `x` e `y` para cada `dataset`:
+
+```{r datasauRusPlot, echo=TRUE}
+ggplot(datasaurus_dozen, aes(x=x, y=y)) +
+  geom_point() +
+  facet_wrap(~ dataset, nrow=4)
+```
+
+As mais variadas figuras surgem, de linhas quase paralelas até um dinossauro, passando por estrela, a letra X e muito mais. Todos estes arranjos são bem diferentes do que a imagem que somos levados a imaginar através do resultado das estimativas das correlações.
+
+Portanto, só calcular a correlação entre duas variáveis não significa muita coisa. É imprescindível construir gráficos, de modo que possamos ter uma verdadeira noção a respeito daquilo com o que estamos trabalhando.
+
+
+
+
+
+<!--chapter:end:correlacoes-e-graficos-de-dispersao.Rmd-->
+
+---
+title: "Curso RMarkdown"
+description: "Como automatizar a geração de relatórios no `R`"
+tags: ["ensino", "ferramenta", "rmarkdown", "visualização"]
+draft: false
+date: 2018-06-11T14:05:00-03:00
+---
+
+# Introdução
+
+Uma das características mais desejáveis em pesquisa científica e análise de dados é a sua reprodutibilidade. É importante que os métodos estatísticos aplicados sejam auditados independentemente por outras pessoas.
+
+Entretanto, para que o trabalho possa ser lido, compreendido e reproduzido, é fundamental que, além do código, nosso fluxo de pensamento também possa ser documentado. Em alguns casos, apenas os comentários distribuídos com o código podem não ser suficientes para garantir a compreensão do trabalho realizado.
+
+Este curso mostra como podemos utilizar a linguagem RMarkdown para juntar R e LaTeX, com o intuito de automatizar a geração de relatórios. O pacote knitr vai ser utilizado para inserir, diretamente a partir do R, tabelas e gráficos em um documento. O minicurso será totalmente aplicado, pois os alunos irão aprender R Markdown enquanto praticam os ensinamentos no RStudio.
+
+Este minicurso foi ministrado na Universidade Federal do Rio Grande do Norte, durante a Semana da Estatística 2017, em 25 de outubro.
+
+# Requisitos do Sistema
+
+Para rodar os exemplos disponíveis neste repositório, é necessário instalar os seguintes programas em seu computador:
+
+- MikTex (versão 2.9 ou superior)
+
+- R (versão 3.4.3 ou superior)
+
+- RStudio (versão 1.1.383 ou superior)
+
+- Alguns pacotes do R, que podem ser instalados a partir do comando
+
+```{r eval=FALSE}
+source("https://raw.githubusercontent.com/mnunes/Curso-RMarkdown/master/markdown-pacotes.R")
+```
+
+a ser rodado dentro do RStudio. É possível que os relatórios possam ser criados com versões mais antigas do MikTex, R, RStudio e dos pacotes sugeridos do R, mas os códigos atuais foram todos testados nas versões relatadas acima.
+
+# Organização do Repositório
+
+O material do curso está disponível no [GitHub](https://github.com/mnunes/Curso-RMarkdown). O repositório possui as pastas descritas abaixo. Usuários do Windows devem utilizar os arquivos `.Rmd` com o sufixo windows, para que a acentuação dos caracteres fique correta em seus RStudio.
+
+* **01.relatorio_pdf:** Esta pasta, junto com a pasta `03.slides`, é o cerne do curso. Possui um arquivo chamado `relatorio.Rmd`, que é um relatório em que uma análise de dados é executada a fim de exibir várias das funcionalidades do R Markdown. Caso os acentos deste arquivo apareçam errados em seu computador, abra o arquivo `relatorio_windows.Rmd` para trabalhar.
+
+* **02.relatorio_html:** Conteúdo quase idêntico ao da pasta `01.relatorio_pdf`. A diferença reside no priembulo do documento `.Rmd`, adaptado para gerar um relatório em html. Este material é ideal para quem não possui LaTeX instalado no seu computador.
+
+* **03.slides:** Esta pasta, junto com a pasta `01.relatorio_pdf`, é o cerne do curso. É  a apresentação de slides que serve de apoio e motivação ao curso. Utiliza o pacote Beamer do LaTeX.
+
+* **04.ioslides:** É uma apresentação de slides alternativa, feita em HTML. Seu conteúdo é idêntico ao da pasta `03.slides`, mas não necessita de LaTeX ou Beamer.
+
+* **05.revealjs:** É uma apresentação de slides alternativa, feita em HTML, utilizando o framework reveal.js. Seu conteúdo é idêntico ao da pasta `03.slides`, mas não necessita de LaTeX ou Beamer.
+
+* **06.exercicios:** Respostas dos exercícios propostos no arquivo `relatorio.Rmd`.
+
+Todas as pastas possuem o arquivo fonte do relatório ou apresentação a que dizem respeito, além do resultado compilado de cada arquivo fonte, bem como o arquivo de dados analisado, quando isto for aplicável.
+
+Não esqueça de conferir os outros minicursos que ministrei na aba [Ensino](/ensino/) deste site.
+
+
+
+
+
+
+<!--chapter:end:curso-rmarkdown.Rmd-->
+
+---
+title: "Nomes dos Números: Uma Visualização"
+description: "Conte o número de letras nos números por extenso e veja onde vamos parar"
+tags: ["grafos", "linguística", "números", "visualização"]
+draft: false
+date: 2018-07-27T13:12:00-03:00
+---
+
+Imagine o seguinte procedimento:
+
+1. Sorteie um número entre 1 e 100
+
+2. Escreva este número por extenso
+
+3. Conte o número de caracteres sem espaço obtidos
+
+4. Represente numericamente este resultado
+
+5. Repita os passos de 2 a 4 até os números começarem a se repetir
+
+Seja, por exemplo, o número 40. Se escrevermos 40 por extenso, temos a palavra quarenta. Se contarmos o número de letras de quarenta, obtemos 8. 8 se escreve oito, que possui 4 caractesres. 4 se escreve como quatro, que possui 6 caracteres. 6 é seis e aí o algoritmo termina.
+
+Se repetirmos isto para todos os números de 1 a 100, obtemos a imagem abaixo:
+
+```{r message=FALSE, echo=FALSE}
+library(igraph)
+
+numeros <- as.character(read.csv(file="~/Documents/Research/github/numeros/numeros.txt", header=FALSE)[, 1])
+
+numeros <- numeros[1:100]
+numeros <- nchar(gsub(" ", "", numeros))
+
+matriz <- matrix(0, ncol=length(numeros), nrow=length(numeros))
+
+for (j in 1:nrow(matriz)) {
+  matriz[j, numeros[j]] <- 1
+}
+
+grafo <- graph_from_adjacency_matrix(matriz)
+
+par(mar=c(0,0,0,0), mai=c(0,0,0,0))
+
+plot(grafo, edge.arrow.size=0.3, vertex.size=10, vertex.label.cex=0.7, curved=FALSE)
+```
+
+Tente encontrar o número 40 no grafo acima e percorra o caminho descrito no parágrafo anterior.
+
+Perceba que há dois grupos de nomes de números que não conversam entre si. Um dos grupos é formado por aqueles números que ao final do algoritmo ficam alternando entre 6 e 4, como no exemplo acima. 
+
+Também há aqueles números que chegam em 5 e por lá ficam.
+
+Também perceba como os números se organizam em torno de alguns valores especiais, como 9, 12, 14, 11, 10 e 13, e partir disso vão para um dos seus destinos finais.
+
+Mas este grafo foi gerado apenas para os números entre 1 e 100. Será que este resultado obtido vale para todos os números? Isto é, se eu tivesse escolhido um valor mais alto, como 4.232.121.935, eu também teria chegado em 4, 6 ou 5 ao repetir este procediento?
+
+Os arquivos utilizados nesta análise podem ser encontrados no [github](https://github.com/mnunes/numeros/). Pegue-os e tente fazer a sua própria visualização.
+
+
+<!--chapter:end:numeros-por-extenso.Rmd-->
+
+---
+title: "O Ranking da FIFA e a Copa do Mundo"
+description: "Descubra se o ranking da FIFA possui algum tipo de relação com o resultado da Copa do Mundo"
+tags: ["copa da mundo", "esporte", "futebol", "machine learning", "regressão"]
+draft: true
+date: 2018-07-09T22:12:00-03:00
+---
+
+
+# Resumo
+
+O ranking da FIFA não serve para prever a classificação final da Copa do Mundo com acurácia.
+
+
+# Introdução
+
+Previsões são muito difíceis de serem feitas, principalmente a respeito do futuro. Mesmo assim, todos nos atraímos por elas, seja para imaginarmos como estaremos daqui a alguns anos ou para partiipar de bolões da copa.
+
+Pensando nisso, resolvi aplicar alguns modelos de predição às informações fornecidas pelo Ranking da FIFA para verificar se ele é uma boa ferramenta para prever o resultado da Copa do Mundo.
+
+
+
+# Ranking da FIFA
+
+O Ranking da FIFA é uma ferramenta criada nos anos 90 pela entidade máxima do futebol. Este ranking computa informações a respeito dos resultados dos jogos das seleções mundiais, sejam eles em competições ou amistosos, a fim de estabelecer uma classificação geral para elas.
+
+Note que estabelecer uma classificação geral para todas as seleções do mundo não é uma tarefa fácil. Os países da América do Sul jogam muito entre si, seja durante a Copa América, seja durante as eliminatórias da Copa do Mundo. 
+
+É razoável supor que o Brasil, país melhor colocado dentre os sul-americanos durante as eliminatórias, seja equivalente ao melhor time europeu. Mas nas eliminatórias europeias os times são divididos em vários grupos distintos, ao contrário das sul-americanas, que ocorrem em um grupo apenas. Sendo assim, qual seria o melhor time europeu neste contexto? E como se comporta o Chile neste ranking, posto que este país ganhou as Copas América de 2015 e 2016, mas ficou fora da Copa 2018?
+
+É aí que entra o [Ranking da FIFA](https://www.fifa.com/fifa-world-ranking/ranking-table/men/). Publicado desde 1995, ele cruza dados e informações e, assim, estabelece uma classificação mundial de seleções. Supostamente, os times melhor colocados no ranking deveriam estar melhor colocados ao final da Copa. 
+
+Mas será que isto acontece na prática?
+
+Para testar esta hipótese, resgatei as informações referentes ao último Ranking da FIFA publicado antes de cada Copa do Mundo de 1998 a 2018. Portanto, foram analisadas seis competições.
+
+Os dados do [Ranking da FIFA](https://www.fifa.com/fifa-world-ranking/ranking-table/men/) foram obtidos no site da própria instituição. As classificações finais das Copas do Mundo de 1998 a 2018 foram coletadas a partir da Wikipedia em inglês. Os dados utilizados na análise, bem como o código com a modelagem realizada, estão disponíveis no meu [github](https://github.com/mnunes/).
+
+
+
+
+# Correlações
+
+Correlação é uma medida estatística que serve para determinar o quanto uma medida está relacionada com a outra. Quanto mais próxima de 1 esta medida for, mais forte é a correlação positiva entre duas variáveis. Quanto mais próxima de 0 esta medida for, mais fraca é a correlação entre duas variáveis. 
+
+Por exemplo, peso e altura estão positivamente correlacionados. Quanto mais alto alguém for, mais pesado este alguém tende a ser. Logicamente, esta relação não é perfeita, pois existem pessoas de mesma altura e pesos diferentes, mas a tendência é que pessoas mais altas sejam mais pesadas.
+
+
+Por exemplo, peso e altura estão positivamente correlacionados. Quanto mais alto alguém for, mais pesado este alguém tende a ser. Logicamente, esta relação não é perfeita, pois existem pessoas de mesma altura e pesos diferentes, mas a tendência é que pessoas mais altas sejam mais pesadas.
+
+O Ranking da FIFA é uma medida ordinal (ou seja, é feita a partir de uma ordem), ela classifica os times do número 1 ao XXX. Desta forma, faz sentido relacioná-lo com a classificação final da Copa do Mundo, que também é uma medida de ordem. Como analisei apenas os resultados das copas em que haviam Ranking da FIFA disponível, os resultados possíveis para os países participantes variaram entre 1 e 32, pois todas as Copas de 1998 em diante contaram com 32 países.
+
+A primeira tarefa que realizaei foi verificar se havia correlação 
+
+```{r correlacoes01, message=FALSE, warning=FALSE, echo=FALSE}
+library(rvest)
+library(MASS)
+library(emmeans)
+library(tidyverse)
+theme_set(theme_bw())
+library(broom)
+library(ggfortify)
+
+load("~/Documents/Research/github/ranking-fifa-vs-copa-do-mundo/fifa.RData")
+
+cor.test(tabela_completa$Rank, tabela_completa$World_Cup, method="kendall")
+```
+
+De acordo com o resultado acima, a correlação entre o Ranking da FIFA e a classificação final na Copa do Mundo é igual a 0.3138331. Este número está mais próximo de 0 do que de 1, o que indica uma correlação não muito forte. 
+
+Mas nes primeira análise eu utilizei os dados de seis Copas do Mundo simultaneamente. É natural esperar que esta correlação seja mais forte em alguns anos do que em outros. Por este motivo, vou calcular novamente a correlação entre as variáveis consideradas, mas desta vez agrupando-as por ano:
+
+```{r correlacoes02, echo=FALSE, warning=FALSE}
+correlacoes <- tabela_completa %>%
+  group_by(Year) %>% 
+  do(tidy(cor.test(.$Rank, .$World_Cup, method="kendall"))) %>%
+  select(Year, estimate, statistic, p.value)
+
+correlacoes$p.fdr <- p.adjust(correlacoes$p.value, method="fdr")
+
+data.frame(correlacoes[, 1], round(correlacoes[, 2:5], digits=4))
+```
+
+De fato, alguns anos possuíram correlação mais baixa do que 0.3138 e alguns possuíram correlação mais alta do que este valor. Mesmo assim, 0.4597 como valor para a maior correlação não é algo que poderíamos chamar de empolgante.
+
+Com isto em mente, vamos passar ao ajuste de um modelo, mas sem muitas esperanças de que ele tenha um poder preditivo alto, pois as correlações são baixas.
+
+
+
+
+
+# Previsões
+
+Como estamos trabalhando com dados ordinais, vou utilizar um modelo de regressão logística ordinal. Com ele poderei relacionar as variáveis que desejo, além de criar um _intervalo de predição_ para os resultados obtidos.
+
+Grosso modo, o que o intervalo de predição faz é determinar intervalos nos quais nossas predições podem variar. Em outras palavras, o resultado que procuro obter é algo na linha de "dado que o país é o 7º colocado no Ranking da FIFA, há 95% de probabilidade dele terminar a Copa do Mundo entre a 9ª e 6ª colocação".
+
+Após rodar o modelo, o resultado obtido com as previsões está no gráfico abaixo:
+
+```{r }
+
+```
+
+
+
+# Conclusão
+
+Ou seja, o Ranking da FIFA não serve para prever a classificação final da Copa do Mundo. Embora seja possível detectar padrões, como os times mais bem colocados no Ranking da FIFA tendem a ficar mais bem classificados ao final da Copa do Mundo, a variabilidade das previsões é muito grande, tornando a ferramenta pouco útil.
+
+Poranto, continue utilizando o com e velho _feeling_ ao fazer preencher o bolão da Copa do Qatar. Dificilmente a estatística vai te ajudar com esta tarefa.
+
+Os dados utilizados na análise, bem como o código com a modelagem realizada, estão disponíveis no meu [github](https://github.com/mnunes/).
+
+
+
+
+
+
+<!--chapter:end:o-ranking-da-fifa-e-a-copa-do-mundo.Rmd-->
+
+---
+title: "De Dois Meses e Meio para Menos de Uma Hora: Como Otimizei o Código de um Programa no R"
+description: "Neste texto explico como uma tarefa que levaria mais de dois meses rodando foi finalizada em 55 minutos"
+tags: ["eficiência", "programação"]
+draft: false
+date: 2018-08-25T18:30:00-03:00
+---
+
+Estou trabalhando em um novo projeto com meu conjunto de dados sobre os pedidos de reembolso dos deputados federais brasileiros (falei com detalhes sobre este projeto [neste link](https://marcusnunes.me/post/controle-de-gastos-publicos-como-verificar-quanto-os-deputados-federais-estao-gastando/)). 
+
+Um aspecto importante neste novo projeto é encontrar os pedidos de reembolso dos deputados por empresa contratada. O problema é que o cadastro destes pedidos é feito por seres humanos e, ao procurar os das empresas, encontramos situações assim:
+
+    vivo
+    VIVO
+    VIVO - TELEFONICA BRASIL
+    VIVO - TELEFONICA Brasil S.A.
+    VIVO CELULAR
+    VIVO S. A.
+    VIVO S.A
+    VIVO S.A.
+    VIVO S/A
+    VIVO SA
+    
+Qual é a diferença entre `vivo` e `VIVO`? Em teoria, nenhuma. Mas o computador vai considerar estas duas ocorrências como empresas diferentes, pois estão cadastradas de maneira diferente no sistema. Então como melhorar estes registros? Como evitar que o computador entenda errado a qual empresa cada gasto está atribuído?
+
+O que vou descrever a seguir é a maneira com a qual lidei com este problema.
+
+# Utilizar distâncias entre strings
+
+Minha primeira ideia foi comparar distâncias entre as strings. Por exemplo, o quão distantes as expressões `VIVO S.A` e `VIVO S.A.` estão entre si? Não parece ser muito, pois apenas um ponto difere as duas strings. Portanto, seria possível utilizar uma função como `levenshteinSim`, do pacote `RecordLinkage`, para fazer este trabalho.
+
+O problema é que o conjunto de dados de reembolsos é muito grande. São 3.100.697 registros no momento em que escrevo este texto, em 25 de agosto de 2018. Seria necessário comparar cada empresa com as outras 3.100.696 de que aparecem nos registros para, justamente, encontrar as que possuem nomes parecidos.
+
+Fazer isto uma vez não é complicado. Veja, por exemplo, o caso da empresa chamada `vivo`:
+
+
+    system.time(x <- levenshteinSim("vivo", as.character(camara$supplier)))
+      user  system elapsed 
+    2.142   0.032   2.186 
+
+Em 2,186 segundos meu computador conseguiu comparar a string `vivo` com todos os 3.100.697 registros. O problema é repetir isto mais 3.100.696 vezes. Numa conta de padaria, a estimativa é que este trabalho leve 6.778.123.642 segundos, o que equivale a 78,5 dias. É algo inviável.
+
+
+
+# Classificar por CNPJ ou CPF
+
+Felizmente, o [conjunto de dados reembolsos](https://marcusnunes.me/post/controle-de-gastos-publicos-como-verificar-quanto-os-deputados-federais-estao-gastando/) possui uma coluna com o CNPJ ou CPF do prestador de serviços. Com isso, minha próxima ideia foi a seguinte:
+
+1. Agrupar os dados por CNPJ ou CPF
+
+2. Contar o número de ocorrências de cada grafia do nome da empresa
+
+3. Definir o nome verdadeiro da empresa como o mais comum nesta contagem
+
+E assim eu fiz. Rodei o código abaixo, que faz a tabulação descrita acima e substitui os nomes de 100 das empresas que prestaram serviço à câmara:
+
+
+    dados.tabulados <- camara %>%
+      select(cnpj_cpf, supplier) %>%
+      group_by(cnpj_cpf) %>%
+      summarize(supplier=names(which.max(table(supplier))))
+    
+    ti <- proc.time()
+    
+    for (j in 1:100){
+      camara[camara$cnpj_cpf %in% dados.tabulados$cnpj_cpf[j], ]$supplier <- dados.tabulados$supplier[j]
+    }
+
+    proc.time() - ti
+    
+       user  system elapsed 
+    473.308  42.932 524.650 
+
+Mas 524,650 segundos é o tempo que o algoritmo leva pra analisar 100 empresas. Como são 87.972 CPNJs únicos, ele levaria 461.545 segundos (ou 5 dis e 8 horas) pra rodar completamente.
+
+Isso ainda não me deixava satisfeito.
+
+
+
+# Mas Será que Dá pra Melhorar?
+
+Dá. Além das milhões de linhas, o conjunto de dados `camara` possui 29 colunas. Só que apenas duas são necessárias para realizar este trabalho. Assim, criei um novo conjunto chamado `dados`, apenas com as colunas `cnpj_cpf` e `supplier`, para fazer estas atribuições. O resultado está abaixo:
+
+
+    ti <- proc.time()
+    
+    for (j in 1:100){
+      dados[dados$cnpj_cpf %in% dados.tabulados$cnpj_cpf[j], ]$supplier <- dados.tabulados$supplier[j]
+    }
+
+    proc.time() - ti
+    
+     user  system elapsed 
+    3.573   1.328   5.489
+
+Foram apenas 5,489 segundos para fazer 100 empresas. Portanto, para rodar este código para todas as 87.972 empresas únicas, eu levaria 4.829 segundos para rodá-lo (ou um pouco mais de uma hora e meia).
+
+
+
+# Funções Otimizadas
+
+Veja acima que eu havia usado o comando `%in%` do R básico para realizar a atribuição dos nomes corrigidos das empresas. Descobri recentemente que o pacote `data.table` possui a função `%chin%`. Ela é similar ao `%in%`, mas é otimizada para trabalhar com caracteres e strings.
+
+Com isso, o meu código que levaria uma hora e meia para rodar, acabou finalizando em menos tempo. De acodo com meus testes, a função `%chin%` leva em torno de 70% do tempo da função `%in%` para rodar. Desta forma, acabei levando pouco menos de uma hora (55 minutos, para ser mais preciso) para realizar o trabalho que precisava.
+
+
+
+
+# Próximos Passos
+
+A partir de agora, meu próximo passo é paralelizar o código. Embora eu tenha conseguido reduzir muito o tempo de execução do programa, de 78 dias para menos de 1 hora, tenho certeza que ainda é possível melhorar mais. 
+
+Se eu conseguir, de alguma forma, retirar o `for` de um core e dividi-lo em mais processadores, meu trabalho ficará ainda mais rápido.
+
+
+
+<!--chapter:end:otimizar-codigo-no-R.Rmd-->
+
+---
+title: "Tutorial: Como Fazer o Seu Primeiro Projeto de Data Science"
+description: "Faça o seu primeiro projeto de data science a partir do zero, desde a obtenção dos dados, passando pela sua análise exploratória e chegando a um modelo de previsão"
+tags: ["curso", "data science", "ensino", "machine learning", "random forest", "tutorial"]
+draft: false
+date: 2018-07-01T08:54:00-03:00
+---
+
+# Introdução
+
+O principal objetivo deste texto é mostrar como é possível, utilizando apenas recursos gratuitos na internet, realizar um projeto de data science do início ao fim. Vamos treinar um algoritmo de classificação de dados baseado em uma técnica chamada [Random Forest (link em inglês, pois a Wikipedia em Português ainda não possui um verbete sobre este assunto)](https://en.wikipedia.org/wiki/Random_forest)], capaz de realizar tanto tarefas de classificação quanto de regressão.
+
+O público-alvo deste texto são as pessoas que já possuem alguma experiência com Estatística e estão interessadas em aprender melhor como aplicar estes conhecimentos já adquiridos em uma área nova, como machine learning. Pessoas com menos experiência talvez tenham um pouco mais de dificuldade na leitura, mas tenho certeza que, ao procederem com calma e atenção, serão recompensados e aprenderão muito.
+
+
+
+# Preparação do Software
+
+Quem já possui os programas R e RStudio instalados em seu computador pode pular esta parte do tutorial. Entretanto, sugiro que [baixe o arquivo com os códigos organizados](https://github.com/mnunes/primeiro-projeto-de-data-science) para que fique mais fácil de acompanhar este texto.
+
+Há diversos programas disponíveis para fazer data science. Os dois principais são R e python. Este tutorial foi escrito pensado na linguagem R para ser rodado. Particularmente, prefiro o R ao python, pois a sintaxe dele é, para mim, mais fácil de entender. Mas isto é gosto pessoal. Tudo o que foi feito aqui pode ser adaptado e realizado em qualquer outra linguagem que o leitor prefira, como python, julia ou matlab, por exemplo.
+
+Se o seu computador não possua o R e o RStudio instalado, clique nos links abaixo e instale-os.
+
+* [R](http://cran.fiocruz.br/): este programa é o cerne da análise. É ele que vai realizar os cálculos e plotar os gráficos da análise.
+
+* [RStudio](https://www.rstudio.com/products/rstudio/download/): a interface padrão do R não é muito amigável de utilizar. Entretanto, é possível melhorá-la para que ela fique mais interativa. Desta forma, nossa produtividade aumenta.  Portanto, o RStudio serve para melhorar a utilização do R, deixando-a mais dinâmica. 
+
+Uma característica do R é que suas funções podem ser expandidas com comandos e funções criados pela comunidade. E são milhares (se não forem milhões) de expansões assim. Estas expansões estão em pacotes que podem ser instalados via internet. Para instalar os pacotes extras necessários para esta análise, abra o RStudio e vá ao menu File > New File > R Script, como mostra a figura abaixo:
+
+![Novo script](/images/novo_script.png)
+
+Com o script aberto, rode o comando abaixo e aguarde. Vários arquivos serão baixados e o R vai informando o progresso da instalação.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, eval=TRUE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=60))
+set.seed(1234)
+```
+
+```{r pacotes, eval=FALSE}
+install.packages(c("tidyverse", "corrplot", "GGally", "caret", "rpart", "rpart.plot"), dependencies=TRUE)
+```
+
+Este passo pode demorar um pouco, dependendo da velocidade da sua conexão com a internet.
+
+Com tudo preparado, é hora de começar a análise.
+
+
+
+
+
+# Análise Exploratória dos Dados
+
+Como não poderia deixar de ser, a primeira parte de um projeto de data science segue a mesma lógica de um projeto de análise estatística de dados. Precisamos fazer a análise exploratória a fim de entender o conjunto de dados com o qual estamos trabalhando.
+
+O conjunto de dados que vou baixar se chama [Iris Flower Dataset](https://en.wikipedia.org/wiki/Iris_flower_data_set). Por ser multivariado e com um número razoável de observações, este conjunto é bastante famoso na literatura estatística. Até mesmo Fisher já trabalhou conceitos de análise multivariada com estes dados. 
+
+Seu nome é Iris porque foram coletadas observações de 150 sujeitos de 3 espécies de flores do gênero _Iris_: _Iris setosa_, _Iris versicolor_ e _Iris virginica_. Mais informações sobre estas flores podem ser encontradas na [Wikipedia](https://en.wikipedia.org/wiki/Iris_flower_data_set).
+
+
+Embora o conjunto de dados iris esteja disponível em qualquer instalação do R, este tutorial vai mostrar como obter dados diretamente da internet. Então é isto que faremos abaixo, baixando este conjunto iris diretamente do site do [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/) e processando-o na sequência para análise.
+
+```{r eda01}
+# definir o endereco do conjunto de dados e baixa-lo
+
+url <- "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
+
+iris        <- read.csv(url, header=FALSE)
+names(iris) <- c("c_sepala", "l_sepala", "c_petala", "l_petala", "especie")
+
+# remover a string 'Iris-' do inicio de cada tipo de especie
+
+iris$especie <- as.factor(gsub("Iris-", "", iris$especie))
+
+# estatistica descritiva basica
+
+summary(iris)
+```
+
+Com isso, percebemos que temos um conjunto de dados formado por cinco variáveis. Quatro destas variáveis são quantitativas e uma é categórica. As variáveis são
+
+* c_sepala: comprimento da sépala das flores
+
+* l_sepala: largura da sépala das flores
+
+* c_petala: comprimento da pétala das flores
+
+* l_petala: largura da pétala das flores
+
+* especie: espécie da flor
+
+Há diversas atividades que podem ser feitas com este conjunto de dados. O que farei aqui é uma tarefa de classificação. Vou ajustar um modelo que vai prever a espécie da planta baseado nas quatro dimensões de cada uma delas. 
+
+É importante qual o objetivo do nosso primeiro projeto de data science logo no seu começo. Assim, podemos direcionar nossas análises diretamente para este fim, sem perder tempo realizando atividades que não contribuem para o nosso objetivo.
+
+Com o objetivo definido, vamos fazer algumas análises básicas. A primeira delas é verificar se existe correlação entre as nossas variáveis. Perceba que vou retirar a coluna 5 desta análise porque ela não é uma variável quantitativa.
+
+```{r eda02}
+library(corrplot)
+
+correlacao <- cor(iris[, -5])
+
+corrplot.mixed(correlacao, upper="ellipse")
+```
+
+Podemos perceber que existem valores razoáveis de correlação entre algumas das combinações de variáveis. Em particular, entre o comprimento e a largura da pétala. Podemos visualizar isto em um gráfico de dispersão:
+
+```{r eda03}
+library(tidyverse)
+theme_set(theme_bw())
+
+ggplot(iris, aes(x=c_petala, y=l_petala)) +
+  geom_point()
+```
+
+Embora já vejamos a relação que existe entre as variáveis comprimento e largura da pétala, podemos colocar mais informações neste gráfico. Por exemplo, podemos colorir os pontos de acordo com a espécie da planta.
+
+```{r eda04}
+ggplot(iris, aes(x=c_petala, y=l_petala, colour=especie)) +
+  geom_point()
+```
+
+Agora podemos ver que o grupo de flores da espécie setosa está bastante separado dos demais. Esta é uma informação importante, pois queremos construir um algoritmo de classificação de espécies. Por outro lado, perceba que as espécies versicolor e virginica estão quase se confundindo uma com a outra. Isto pode acabar prejudicando um pouco o desempenho do nosso algoritmo de classificação.
+
+A fim de verificar como é o comportamento das outras variáveis, podemos extender o gráfico anterior para todas a combinações de variáveis neste conjunto de dados. Em vez de repetirmos manualmente o código, vamos utilizar a função `ggpairs` do pacote `GGally`:
+
+```{r eda05}
+library(GGally)
+
+# remover a variavel especie, pois nao eh quantitativa
+
+ggpairs(iris[, -5], aes(colour = iris$especie))
+```
+
+Veja que agora temos muitas informações sobre nossos dados. Para quem já tem alguma experiência em análise de dados, o que vemos é o seguinte:
+
+* Diagonal principal: estimativas da função densidade de cada uma das quatro variáveis, de acordo com a espécie de flor
+
+* Triângulo inferior: gráficos de dispersão das variáveis do conjunto de dados, duas a duas
+
+* Triângulo superior: correlação total entre as variáveis e correlação dentro de cada grupo
+
+Com a análise exploratória dos dados terminada, podemos partir para o ajuste do modelo.
+
+
+
+# Ajuste do Modelo
+
+Há uma infinidade de opções quando falamos de ajuste de modelos de classificação. Neste tutorial vou utilizar o [Random Forest](https://en.wikipedia.org/wiki/Random_forest), que é poderoso o suficiente, além de ter convergência rápida e ser de fácil utilização.
+
+O Random Forest é baseado em árvores de classificação. Sem entrar muito fundo na parte teórica, uma árvore de classificação é um modelo matemático que utiliza a estrutura de árvore de decisão para classificar dados. Melhor do que explicar isto em palavras é ver o algoritmo em ação:
+
+```{r arvore}
+library(rpart)
+library(rpart.plot)
+modelo <- rpart(especie ~ ., method="class", data=iris)
+prp(modelo, extra=1)
+```
+
+Perceba que é feita uma pergunta em cada nó da árvore. A resposta da pergunta determina se outra pergunta será feita ou se a árvore chegou ao fim e a classificação foi terminada. Além disso, o erro de classificação é determinado ao final da árvore.
+
+Uma Random Forest (ou Floresta Aleatória) é a combinação de centenas de árvores de classificação. Este resultado segue do fato de que a combinação de diversos modelos diferentes é melhor do que um modelo sozinho.
+
+
+
+## Conjuntos de Treino e Teste
+
+Um problema que surge no ajuste de modelos de classificação e regressão é o [sobreajuste](https://pt.wikipedia.org/wiki/Sobreajuste). O sobreajuste ocorre quando o modelo se ajusta muito bem aos dados, se tornando ineficaz para prever observações novas.
+
+O gráfico abaixo ilustra este conceito no contexto de um modelo de classificação.
+
+```{r sobreajuste, echo=FALSE, warning=FALSE}
+ajuste_lm   <- lm(dist ~ speed, data=cars)
+ajuste_poly <- lm(dist ~ poly(speed, 20, raw=TRUE), data=cars)
+
+cars2 <- data.frame(cars, ajuste_lm=predict(ajuste_lm, cars), ajuste_poly=predict(ajuste_poly, cars))
+
+cars2$grupo <- NA
+cars2$grupo <- ifelse(predict(ajuste_poly, cars) > cars$dist, "g1", "g2")
+
+ggplot(cars2, aes(x=speed, y=dist)) +
+  geom_point(aes(colour=grupo), show.legend = FALSE) +
+  geom_line(aes(y=ajuste_lm, linetype="Ajustado")) +
+  geom_line(aes(y=ajuste_poly, linetype="Sobreajustado")) +
+  labs(x="X", y="Y", linetype="Modelo")
+```
+
+Note como o modelo sobreajustado acompanha os dados muito mais de perto, enquanto o modelo ajustado segue a tendência geral de separação dos pontos. A desvantagem de ter um modelo que acompanhe os dados de maneira muito próxima é a perda de generalidade. Este tipo de modelo funciona muito bem para um conjunto de dados específico, mas vai se comportar muito mal se novas observações forem coletadas. 
+
+Uma forma de evitar este problema é dividindo aleatoriamente o conjunto de dados original em duas partes mutuamente exclusivas. Uma destas partes é chamada de conjunto de treino e, a outra, conjunto de teste. A ideia por trás disso é ajustar o modelo aos dados de treinamento e simular a entrada de novas observações através do conjunto de teste. Assim, é possível verificar quão bem ou quão mal o modelo ajustado está se comportando ao prever observações que não foram utilizadas em seu ajuste.
+
+Para fazer isto no R utilizamos a função `createDataPartition` do pacote `caret`.
+
+```{r data_split}
+library(caret)
+
+# definir 75% dos dados para treino, 25% para teste
+
+trainIndex  <- createDataPartition(iris$especie, p=0.75, list=FALSE)
+iris_treino <- iris[ trainIndex, ]
+iris_teste  <- iris[-trainIndex, ]
+```
+
+Ao fazer `iris_treino <- iris[ trainIndex, ]` eu estou dizendo que o conjunto de dados `iris_treino` vai ter as linhas de `iris` com os números presentes em `trainIndex`. De modo análogo, `iris_teste <- iris[-trainIndex, ]` diz que o conjunto de dados `iris_teste` **não** vai ter as linhas de `iris` com os números presentes em `trainIndex`
+
+Agora tenho dois data frames novos em minha área de trabalho. 75% das observações estão no conjunto de treino e 25% no conjunto de teste. Esta divisão é arbitrária. Normalmente, recomenda-se que o conjunto de treino tenha de 70% a 80% das observações. O restante das observações irá fazer parte do conjunto de teste.
+
+Ocorre que esta divisão dos dados em dois grupos tem uma desvantagem. Isto acaba fazendo com que tenhamos menos dados para ajustar o modelo. E, com menos dados para ajustar o modelo, menos informação temos. Com menos informação, pior ficará nosso modelo. Uma maneira de reduzir este efeito é através da validação cruzada.
+
+
+
+## Validação Cruzada
+
+A [validação cruzada](https://pt.wikipedia.org/wiki/Valida%C3%A7%C3%A3o_cruzada) é mais um método utilizado para evitar sobreajuste no modelo. A ideia é ajustar diversas vezes o mesmo modelo em partições (conjuntos mutuamente exclusivos) do conjunto de treinamento original. Neste exemplo eu vou utilizar um método chamado validação cruzada $k$-_fold_.
+
+Esta técnica consiste em cinco passos:
+
+1. Separar o conjunto de treinamento em $k$ _folds_ (ou partições) 
+
+2. Ajustar o modelo em $k-1$ _folds_
+
+3. Testar o modelo no _fold_ restante
+
+4. Repetir os passos 2 e 3 até que todos os _folds_ tenham sido utilizados para teste
+
+5. Calcular a acurácia do modelo
+
+Entretanto, precisamos definir o número de _folds_ a serem utilizados na validação cruzada. Em geral, a literatura sugere que de 5 a 10 _folds_ sejam usados. O desempenho dos algoritmos não melhora de maneira considerável se aumentarmos muito o número de _folds_.
+
+Dependendo do tamanho do conjunto de dados, é possível que muitos _folds_ acabem deixando-nos sem observações para os conjuntos de teste dentro da validação cruzada. Por este motivo, é sempre bom controlar este parâmetro de acordo com o conjunto de dados que estamos estudando.
+
+Com estas técnicas definidas, podemos finalmente passar para o ajuste do modelo.
+
+
+
+
+## Ajuste do Modelo
+
+Como dito anteriormente, vamos ajustar um modelo chamado Random Forest aos dados das flores. Para realizar este ajuste precisamos criar os conjuntos de treino e teste e fazer a validação cruzada do modelo a ser ajustado. Como já criamos os conjuntos de treino e teste anteriormente, apenas precisamos nos preocupar com a validação cruzada do modelo.
+
+Felizmente, o pacote `caret` já possui o algoritmo da validação cruzada implementado. Só precisamos ser explícitos no ajuste do modelo para que este método seja utilizado.
+
+O `caret` utiliza duas funções para ajustar modelos aos dados, chamadas `train` e `trainControl`. Basicamente, a função `trainControl` estabelece os parâmetros utilizados no ajuste do modelo. Abaixo estou exemplificando como definir que desejamos fazer validação cruzada com 5 _folds_.
+
+```{r ajuste01}
+fitControl <- trainControl(method = "cv",
+                           number = 5)
+```
+
+Com os parâmetros da validação cruzada definidos, podemos partir para a o ajuste em si. 
+
+```{r ajuste02}
+ajuste_iris <- train(especie ~ ., 
+                     data = iris_treino, 
+                     method = "rf", 
+                     importance = TRUE,
+                     trControl = fitControl)
+```
+
+Note que defino várias coisas com a função `train`:
+
+* `especie ~ .` é a notação de fórmula do R, aquele mesma que se utiliza para se ajustar modelos de regressão linear com a função `lm`. Neste exemplo eu estou dizendo que quero prever `especie` em função de todas as outras variáveis do conjunto de dados.
+
+* `data = iris_treino` informa para o R em qual conjunto de dados ele deve procurar as variáveis presentes na fórmula definida acima
+
+* `method = "rf"` diz que vou ajustar um modelo do tipo Random Forest. Uma grande vantagem de usar o pacote `caret` é poder aprender uma sintaxe apenas e poder ajustar centenas de algoritmos diferentes, apenas mudando o argumento `method` da função `train`.
+
+* `importance = TRUE` é um argumento opcional que nos permitirá, posteriormente, fazer seleção de variáveis
+
+* `trControl = fitControl` define as opções da validação cruzada
+
+Para saber o resultado do ajuste, basta chamar o objeto ajuste_iris:
+
+```{r ajuste03}
+ajuste_iris
+```
+
+Note que há um parâmetro chamado `mtry` no output acima. Este parâmetro significa que os modelos foram ajustados com 2, 3 e 4 variáveis preditoras selecionadas aleatoriamente (na verdade, quando `mtry` = 4 temos todas as variáveis preditoras utilizadas no modelo). Ao final, o melhor modelo é aquele que utiliza 2 variáveis preditoras. 
+
+Este resultado pode variar dependendo de como os dados foram selecionados durante as criação do conjunto de treinamento e teste e também de como a validação cruzada foi realizada, principalmente se estivermos com conjuntos de dados pequenos como este que utilizamos neste projeto.
+
+Além disso, note que aparecem duas medidas a respeito da qualidade da predição realizada. Para entendê-las, considere a tabela abaixo:
+
+\begin{center}
+\begin{tabular}{lccc}\cline{2-4}
+                          &     & \multicolumn{2}{c}{Verdade} \\ \hline
+                          &     & Sim & Não \\
+\multirow{2}{*}{Predição} & Sim & $a$ & $b$ \\
+                          & Não & $c$ & $d$ \\ \hline
+\end{tabular}
+\end{center}
+
+Em um modelo de classificação, que desejamos é que os valores da diagonal da tabela sejam os maiores possíveis e os valores fora da diagonal sejam os menores possíveis. Estes valores são tão importantes que eles possuem nomes próprios:
+
+* $a$: verdadeiro positivo
+
+* $b$: falso negativo
+
+* $c$: falso positivo
+
+* $d$: verdadeiro negativo
+
+Assim, temos as seguintes medidas para avaliar o quão boa foi nossa predição:
+
+$$\textrm{Accuracy} = p_0 = \frac{a+d}{a+b+c+d}$$
+
+e 
+
+$$
+    Kappa: 
+    \begin{align*}
+    p_{\mbox{Sim}} &= \frac{a+b}{a+b+c+b} \times \frac{a+c}{a+b+c+b} \\
+    p_{\mbox{Não}} &= \frac{c+d}{a+b+c+b} \times \frac{b+d}{a+b+c+b} \\
+    p_e            &= p_{\mbox{Sim}} + p_{\mbox{Não}} \\
+    \end{align*}
+$$
+
+Com estas medidas definidas, o Kappa é dado por
+
+$$Kappa = \frac{p_0-p_e}{1-p_e}.$$
+
+Para não me alongar ainda mais, vou deixar a explicação da acurácia e do Kappa em aberto, mas basta saber que tanto a acurácia quanto o Kappa variam entre 0 e 1. Não obstante, quanto maiores estes valores, melhor é o ajuste do modelo.
+
+Finalizamos o ajuste testando se este modelo criado é capaz de classificar novos dados. Para isto, vamos utilizar o conjunto de teste definido anteriormente:
+
+```{r ajuste04}
+predicao <- predict(ajuste_iris, iris_teste)
+confusionMatrix(predicao, iris_teste$especie)
+```
+
+A função `confusionMatrix` apresenta diversas estatísticas a respeito das previsões que realizamos. Note que apenas uma flor da espécie _Iris virginica_ foi classificada de maneira inadequada. Todas as outras foram classificadas corretamente. Além disso, a acurácia está bastante alta, igual a 0,9722. O Kappa igual a 0,9583 também não é de se desprezar.
+
+Portanto, podemos concluir este projeto dizendo que fomos bem sucedidos ao utilizar o Random Forest para classificar as espécies de plantas de acordo com as variáveis comprimento e largura da sépala e comprimento e largura da pétala.
+
+Para finalizar, podemos verificar quais foram, dentre estas quatro variáveis preditoras, aquelas que tiveram a maior importância no modelo.
+
+```{r ajuste05}
+ggplot(varImp(ajuste_iris))
+```
+
+Como podemos ver, as variáveis relacionadas à pétala são mais importantes do que as variáveis relacionadas à sépala. Além disso, em termos de importância, a largura da pétala parece levar ligeira vantagem em relação ao comprimento.
+
+
+# Ideias para Novos Projetos
+
+Este texto que publiquei não toca em vários assuntos concernentes ao ajuste de modelos de machine learning. Por exemplo, eu não comentei sobre paralelização de código, não fui a fundo na descrição do modelo e não falei sobre o tuning dos hiperparâmetros da Random Forest. Tratarei destes assuntos em outra oportunidade.
+
+Obter dados para análise é algo trivial hoje em dia. Existem diversos sites que disponibilizam todo tipo de dados para as mais diversas tarefas. Abaixo eu listo algumas das minhas fontes preferidas para buscar dados abertos, colocadas mais ou menos em ordem de preferência e importância:
+
+* [Kaggle](https://kaggle.com/datasets/): Acredito que este seja, atualmente, o maior site sobre machine learning no mundo. Possui muitos conjuntos de dados disponíveis, nas mais variadas áreas. Além dos dados, há diversos projetos de machine learning já realizados nele, fazendo com que seja uma fonte quase inesgotável de informação.
+
+* [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/): Este é o pai do Kaggle. Na época em que fiz meu primeiro curso de data mining, ainda durante meu doutorado no longínquo ano de 2010, este site era minha fonte principal de conjuntos de dados para classificação e clusterização.
+
+* [Instituto Brasileiro de Geografia e Estatística (IBGE)](http://downloads.ibge.gov.br/): O site do IBGE disponibiliza informações sobre os censos, PNAD e tudo mais que o IBGE trabalha.
+
+* [Portal Brasileiro de Dados Abertos](http://dados.gov.br): Informações oficiais do governo brasileiro sobre mapas, orçamento da união, aviação, dentre outros assuntos.
+
+* [Portal da Transparência](http://www.transparencia.gov.br/): Dados do executivos brasileiro, como salários, pagamentos de programas sociais e muito mais.
+
+<!--
+* [Banco Central do Brasil](http://www4.bcb.gov.br/pec/series/port/aviso.asp): Dados históricos sobre inflação, câmbio, exportações e mais.
+
+
+* [Dados Abertos da Câmara dos Deputados](http://www2.camara.leg.br/transparencia/cota-para-exercicio-da-atividade-parlamentar/dados-abertos-cota-parlamentar): Informações a respeitos dos gastos da Câmara. Embora sejam abertos, é um pouco difícil de acessar para quem não entende de tecnologias como xml e json. Por isso, escrevi um [pacote no R](https://github.com/mnunes/reembolsos/) que organiza estes dados de maneira a torná-los mais acessíveis.
+
+* [Gene Expression Omnibus (GEO)](http://www.ncbi.nlm.nih.gov/geo/): Fonte de dados genéticos. É possível encontrar dados de artigos científicos e reproduzir os resultados obtidos pelos autores.
+
+* [The home of the U.S. Government’s open data](http://www.data.gov/): Site de dados abertos do governo norte-americano. Possui milhares de conjuntos de dados.
+
+* [IMDb](http://www.imdb.com/interfaces): Dados abertos que o [IMDb](http://imdb.com/), site especializado em filmes e séries de TV, disponibiliza. Vale muito pelas avaliações que os usuários do site dão para as produções audiovisuais cadastradas no site. 
+
+* [Economic Time Series Page](http://www.economagic.com/): Dados de séries temporais econométricas.
+
+* [Time Series Data Library](https://datamarket.com/data/list/?q=provider:tsdl): Fonte excelente para quem procura dados de séries temporais, sejam eles econométricos ou não.-->
+
+Além destas fontes de terceiros, eu mantenho uma lista de favoritos online, locais em que encontrei fontes interessantes para dados. Venho fazendo isto desde 2007. Os links são os seguintes:
+
+* [https://pinboard.in/u:grandeabobora/t:datasets/](https://pinboard.in/u:grandeabobora/t:datasets/)
+
+* [https://pinboard.in/u:grandeabobora/t:database/](https://pinboard.in/u:grandeabobora/t:database/)
+
+Espero que estas informações sejam uteis para vocês. Esta lista não esgota todas as boas fontes de dados abertos na internet. Há muitas outras, tão boas quanto estas que listei, que podem ser encontradas em . 
+
+Caso alguma fonte de dados óbvia tenha faltado, comente aí embaixo que eu atualizo o post com ela.
+
+Agora que o seu primeiro projeto de data science está completo, o céu é o limite. Leia livros sobre o assunto, [me contrate](http://marcusnunes.me/contato/) para te dar um curso mais avançado ou simplesmente visite o [Kaggle](https://kaggle.com/datasets/) e escolha um novo assunto de seu interesse para trabalhar.
+
+
+<!--chapter:end:primeiro-projeto-de-data-science.Rmd-->
+
+---
+title: "Será que as Pessoas estão se Interessando Mais Cedo pelo Natal?"
+description: "Como usar o Google para provar ou desprovar esta afirmação"
+tags: ["análise", "google", "natal", "visualização"]
+draft: false
+date: 2018-12-12T9:34:00-03:00
+---
+
+# A Pergunta que não quer Calar
+
+Não sei qual a opinião de vocês, mas eu tenho a impressão de que a cada ano que passa, o Natal está chegando mais cedo. Não o dia 25 de dezembro, óbvio, mas parece que cada vez mais cedo os supermercado colocam decoração natalina e produtos especiais à venda.
+
+Inclusive, tenho para mim que, quando eu menos esperar, os supermercados vão estar vendendo panetone durante as festas juninas. Fica a dica aí, Bauducco: panetone de quentão.
+
+Com isto em mente, resolvi baixar 15 anos de dados de buscas feitas no Google para responder a uma pergunta: será que as pessoas no Brasil estão se preocupando com o Natal cada vez mais cedo? Ou será que é só impressão minha e a mudança não tem sido tão grande quanto a minha memória quer me fazer crer?
+
+
+
+# Coleta dos Dados
+
+Para provar ou deprovar a minha hipótese, decidi investigá-la utilizando a maior ferramenta de busca da internet: o Google. Em particular, resolvi utilizar o [Google Trends](https://trends.google.com/trends/?geo=BR). Para quem não conhece, o Google Trends é uma ferramenta que permite que analisemos a popularidade história de um termo buscado no Google. Esta ferramenta guarda informações sobre a popularidade de muitos termos de pesquisa, desde 1 de Janeiro de 2004 (praticamente 15 anos atrás) até o dia de hoje.
+
+Por exemplo, se eu quiser saber como evoluiu a popularidade dos White Stripes, a minha banda favorita, basta eu fazer uma busca no Google Trends e obtenho o seguinte resultado:
+
+```{r preparacao, include=FALSE}
+library(gtrendsR)
+library(tidyverse)
+theme_set(theme_bw())
+library(lubridate)
+```
+
+```{r whiteStripes, echo=FALSE}
+dados <- gtrends(keyword = "white stripes", 
+                 time="2004-01-01 2018-12-01")$interest_over_time
+
+dados$date <- ymd(dados$date)
+
+ggplot(dados, aes(x=date, y=hits)) +
+  geom_line() +
+  scale_x_date(date_labels="%Y", date_breaks = "1 year") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(x="Ano", y="Popularidade", title="Buscas por White Stripes no Google") +
+  scale_colour_viridis_d()
+```
+
+Note que o pico de popularidade da banda no Brasil foi em Junho de 2005. Faz sentido, pois [eles haviam lançado um disco novo e anunciado shpws no nosso país](https://www1.folha.uol.com.br/folha/ilustrada/ult90u50397.shtml). De lá para cá, a banda foi procurada cada vez menos. Houve dois outros picos, também na época de lançamento de outros CDs, mas nada que chegasse perto que foi visto em 2005. 
+
+Note também que o 100 indicado no eixo y não indica que houve 100 procuras por White Stripes em Junho de 2005. O Google não libera a quantidade exata de vezes que cada termo foi buscado. Assim, o 100 significa apenas o máximo de procuras que o termo "white stripes" atingiu. Mesmo assim, sabemos que o pico de interesse em 2007 correspondeu a 75% do volume registrado em 2005.
+
+A ferramenta começa a ficar interessante quando comparamos diferentes termos de busca. Abaixo comparo o interesse de White Stripes com Jack White, o vocalista que saiu em carreira solo após o término da banda.
+
+```{r whiteStripesJackWhite, echo=FALSE}
+dados <- gtrends(keyword = c("white stripes", "jack white"), 
+                 time="2004-01-01 2018-12-01")$interest_over_time
+
+dados$date <- ymd(dados$date)
+
+ggplot(dados, aes(x=date, y=hits, colour=keyword)) +
+  geom_line() +
+  scale_x_date(date_labels="%Y", date_breaks = "1 year") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(x="Ano", y="Popularidade", colour="Palavra-Chave", title="Buscas por White Stripes e Jack White no Google") +
+  scale_colour_viridis_d(direction=-1)
+
+rm(list=ls())
+```
+
+Perceba como o interesse pelo Jack White aumentou após o término dos White Stripes. Embora nunca tenha chegado aos níveis de popularidade que sua antiga banda chegou, Jack White conseguiu despertar relativo interesse na época do lançamento de seus discos solo, como podemos ver em 2012, 2014 e 2018 (embora 2018 não tenha sido muito auspicioso para ele e a sua popularidade esteja equivalente à da sua extinta banda).
+
+Com isso em mente, decidi baixar os dados a respeito das procuras do termo "natal" no Brasil, entre 2004 e 2018, para verificar se as pessoas estão se interessando cada vez mais cedo pelo [nascimento de Brian](https://pt.wikipedia.org/wiki/A_Vida_de_Brian).
+
+(quem não estiver interessado em programação pode pular o bloco de texto abaixo, onde exibo o código utilizado para baixar os dados que analisei)
+
+```{r natalDownload}
+# pacotes necessarios
+
+library(gtrendsR) # baixar dados do Google Trends
+library(tidyverse) # graficos
+theme_set(theme_bw())
+library(lubridate) # manipulacao de datas
+
+# intervalos de datas de 2004 a 2017
+
+data.inicial <- dmy("01-01-2004") + years(0:13)
+data.final   <- dmy("31-12-2004") + years(0:13)
+
+datas <- paste(data.inicial, data.final)
+
+# baixando dados de 2004 apenas
+# os outros anos serao baixados em um loop
+
+dados <- gtrends(keyword = "natal", 
+                 geo="BR",
+                 time=datas[1])$interest_over_time
+
+dados$ano <- as.factor(rep(2004, nrow(dados)))
+
+# loop para baixar os anos de 2005 a 2017
+# desta forma, garantimos que todos os anos
+# terao um pico de interesse 100
+
+for (j in datas[-1]){
+
+  dados_aux     <- gtrends(keyword = "natal", 
+                           geo="BR",
+                           time=j)$interest_over_time
+  
+  dados_aux$ano <- as.factor(rep(year(unlist(strsplit(j, split=" "))[1]), 
+                                 nrow(dados_aux)))
+  
+  dados <- rbind(dados, dados_aux)
+
+}
+
+# ano de 2018
+# ele deve ser baixado separadamente porque
+# ainda nao temos os dados ateh 31/12/2018
+
+dados_aux     <- gtrends(keyword = "natal", 
+                         geo="BR",
+                         time="2018-01-01 2018-12-11")$interest_over_time
+
+dados_aux$ano <- as.factor(rep(2018, nrow(dados_aux)))
+
+dados <- rbind(dados, dados_aux)
+
+# datas fake no ano 2000, para os plots
+# sairem sobrepostos na visualizacao que
+# vou fazer
+
+dados$date_plot <- dmy(paste(day(dados$date), 
+                             month(dados$date), 
+                             2000, sep="-"))
+```
+
+Agora, com os dados baixados e organizados, é hora de plotá-los.
+
+
+
+# Visualizando os Resultados
+
+Se plotarmos os dados na ordem temporal correta, o que obtemos é o seguinte gráfico:
+
+```{r natalCompleto, include=FALSE}
+dados_total     <- gtrends(keyword = "natal", 
+                         geo="BR",
+                         time="2004-01-01 2018-12-11")$interest_over_time
+```
+
+```{r natalCompletoPlot}
+ggplot(dados_total, aes(x=ymd(date), y=hits)) +
+  geom_line() +
+  scale_x_date(date_labels="%Y", date_breaks = "1 year") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(x="Ano", y="Popularidade", title="Buscas por Natal no Google") +
+  scale_colour_viridis_d()
+```
+
+
+O que não nos diz muita coisa. Afinal, o pico geral de interesse na procura pelo Natal foi em dezembro de 2004, mas será que se fizermos um estudo por ano, vamos ver alguma diferença no comportamento dos dados? Melhor dizendo, se sobrepusermos os meses de cada um dos 15 anos utilizados na análise, perceberemos algo diferente?
+
+É exatamente isso que vemos no gráfico abaixo:
+
+
+```{r natalPorAno}
+ggplot(dados, aes(x=date_plot, y=hits, group=ano, colour=ano)) +
+  geom_line() +
+  scale_x_date(date_labels="%B", date_breaks = "1 month") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(x="Mês do Ano", y="Popularidade", colour="Ano", title="Buscas por Natal no Google") +
+  scale_colour_viridis_d()
+```
+
+Perceba que as curvas dos anos todas coincidem razoavelmente bem, exceto por 2018, que é facilmente explicável: ainda não chegamos ao pico de procura por Natal em 2018. Assim, quando 2018 acabar, a tendência é que a curva amarela baixe um pouco, pois seu pico relativo saumentará.
+
+O que podemos ver no gráfico acima é que a procura por Natal no Google é baixa durante o ano inteiro. Ela começa a ganhar tração no meio de outubro, é multiplicada por 10 até o meio de dezembro, quando rapidamente perde o fôlego. Este comportamento vale para todos os 15 anos analisados aqui, de 2004 a 2018.
+
+Portanto, embora eu particularmente tenha a impressão que as lojas e os supermercados estão começando a celebrar o Natal cada vez mais cedo, ao menos no Google as pessoas tem seu comportamento razoavelmente constante ao passar dos últimos 15 anos. Isto é, como um todo, os brasileiros não estão se interessando pelo Natal cada vez mais cedo.
+
+
+
+
+
+<!--chapter:end:sera-que-as-pessoas-estao-se-interessando-mais-cedo-pelo-natal.Rmd-->
+
+---
+title: "Teria sido possível evitar o desastre da Challenger?"
+description: "Regressão Logística poderia salvar vidas"
+tags: ["análise", "data science", "ferramenta", "mlg"]
+draft: false
+date: 2018-02-15T12:04:00-03:00
+---
+
+Creio que as duas imagens mais marcantes em toda a história do programa espacial norte-americano sejam <a href="https://www.youtube.com/watch?v=GS32pRTURdI">a caminhada de Neil Armostrong na Lua</a> e a <a href="https://www.youtube.com/watch?v=j4JOjcDFtBE">explosão do ônibus espacial Challenger</a>. Esta tragédia, exibida ao vivo pela TV em 28 de janeiro de 1986, chocou o mundo.
+
+<!--![Explosão da Challenger](/images/challenger00.jpg)-->
+
+Após uma cuidadosa investigação, a NASA concluiu que a explosão ocorreu devido ao mau funcionamento de uma peça chamada <a href="https://pt.wikipedia.org/wiki/O-ring">O-ring</a>, que deveria manter a junção entre as partes dos foguetes que levariam a Challenger para o espaço. Mas será que o problema com estas peças não poderia ter sido previsto utilizando dados dos outros lançamentos de ônibus espaciais?
+
+A Challenger foi a 25a missão oficial de um ônibus espacial. Para fazer este estudo, utilizei os dados de temperatura e falhas de O-rings de 23 voos de ônibus espaciais anteriores ao da Challenger, obtidos no <a href="https://archive.ics.uci.edu/ml/datasets/Challenger+USA+Space+Shuttle+O-Ring">UCI Machine Learning Repository</a>. Apenas os dados de 23 dos 24 voos anteriores estão disponíveis publicamente.
+
+O gráfico abaixo mostra, no eixo horizontal, as temperaturas de lançamento, em graus Celsius, durante o lançamento dos ônibus espaciais. No eixo vertical, 0 significa que não houve problemas com nenhum O-ring durante o lançamento do ônibus espacial naquela temperatura e 1 significa que houve algum problema com pelo menos um O-ring durante o lançamento.
+
+
+```{r challenger01, echo=FALSE, message=FALSE}
+# leitura do conjunto de dados - http://archive.ics.uci.edu/ml/datasets/Challenger+USA+Space+Shuttle+O-Ring
+
+temp = c(66, 70, 69, 68, 67, 72, 73, 70, 57, 63, 70, 78, 67, 53, 67, 75, 70, 81, 76, 79, 75, 76, 58)
+ring = c(0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1)
+
+# converter Fahrenheit para Celsius
+
+temp <- (temp-32)*5/9
+
+dados <- data.frame(temperatura=temp, falha=ring)
+
+# analise exploratoria
+
+library(ggplot2)
+theme_set(theme_bw())
+
+ggplot(dados, aes(x=temperatura, y=falha)) +
+  geom_point() +
+  labs(x="Temperatura (ºC)", y="Falha") +
+  scale_y_continuous(breaks=c(0, 1))
+```
+
+Perceba que, aparentemente, há influência da temperatura no comportamento dos O-rings. Quanto mais frio, é mais provável que haja algum problema com o dispositivo. Mas estatística não é achismo e há uma maneira de testar se esta hipótese é verdadeira. Para isto, utilizei uma ferramenta chamada regressão logística. O <a href="https://cran.r-project.org/">R</a>, software que utilizo no meu dia a dia, possui um comando específico para isto, chamado glm. A resposta que obtive está logo abaixo:
+
+
+```{r challenger02}
+ajuste <- glm(falha ~ temperatura, data=dados, family=binomial)
+
+summary(ajuste)
+```
+
+Mas o que este monte de números quer realmente dizer? Vejamos como a curva dada pelo output acima se ajusta à realidade:
+
+```{r challenger03, echo=FALSE}
+# plot dos resultados
+
+binomial_smooth <- function(...) {
+  geom_smooth(method = "glm", method.args = list(family = "binomial"), ...)
+}
+
+ggplot(dados, aes(x=temperatura, y=falha)) +
+  geom_point() +
+  labs(x="Temperatura (ºC)", y="Falha") +
+  scale_y_continuous(breaks=c(0, 1)) +
+  binomial_smooth(se=FALSE)
+```
+
+Nesta figura, além do eixo y indicar se houve ou não algum problema com os o-rings, ele indica a probabilidade de haver um acidente dada a temperatura do local do lançamento do ônibus espacial. No dia do lançamento da Challenger, a temperatura estava prevista para 31°F (equivalente a -0,5ºC). Até então, esta seria a temperatura mais baixa de lançamento de um ônibus espacial. Substituindo um valor próximo a este e outros no modelo ajustado acima, temos as seguintes probabilidades de falha do o-ring:
+
+```{r challenger04, echo=FALSE}
+# probabilidade de quebra do o-ring
+
+temperatura <- seq(0, 40, 5)
+data.frame(temperatura=temperatura, 
+           probabilidade=predict(ajuste, data.frame(temperatura=temperatura), type="response"))
+```
+
+Note que, para temperaturas próximas de zero, a probabilidade de falha é muito próxima de 1. Ou seja, a chance de falha é de quase 100%! Se a temperatura estivesse mais alta, acima de 25 graus, esta probabilidade cairia para 0,055 (puco mais de 5%). Ou seja, a falha do equipamento era quase uma certeza. 
+
+Por si só, a falha de um ou mais O-rings não acarretaria na explosão da nave. Entretanto, não era necessário arriscar a vida de sete astronautas e um equipamento caríssimo num lançamento muito propenso a ter problemas. Bastaria esperar alguns dias por condições mais propícias para este realizar este evento.
+
+Os arquivos e códigos utilizados nesta análise podem ser <a href="https://github.com/mnunes/Challenger">encontrados no meu github</a>.
+
+<!--chapter:end:teria-sido-possivel-evitar-o-desastre-da-challenger.Rmd-->
+
+---
+title: "Tutorial: Usando Deep Learning para Criar Letras de Músicas Sertanejas"
+description: "Veja como utilizar R e deep learning para gerar letras de músicas sertanejas universitárias"
+tags: ["curso", "data science", "ensino", "keras", "machine learning", "tensor flow", "tutorial"]
+draft: true
+date: 2018-12-12T08:54:00-03:00
+---
+
+# Introdução
+
+Este é mais um post na série de tutorias deste blog. No primeiro texto eu ensinei a [fazer classificação utilizando Random Forest](https://marcusnunes.me/post/primeiro-projeto-de-data-science/). Hoje, como o título do post diz, eu vou mostrar como podemos utilizar a biblioteca [Keras](https://keras.io/) para fazer o computador ler as letras das músicas de vários artistas de sertanejo universitário e ensiná-lo a produzir novas letras no estilo.
+
+O procedimento completo para fazer esta tarefa está descrito logo abaixo. É possível segui-lo lendo meu texto ou, caso prefira, [ir ao github e baixar os arquivos com o código completo e organizado](https://github.com/mnunes/segundo-projeto-de-data-science/). Como 
+
+
+
+
+
+# Preparação do Software
+
+Quem já possui os programas R e RStudio instalados em seu computador pode pular esta parte do tutorial. Entretanto, sugiro que [baixe o arquivo com os códigos organizados](https://github.com/mnunes/segundo-projeto-de-data-science/) para que fique mais fácil de acompanhar este texto.
+
+Há diversos programas disponíveis para fazer data science. Os dois principais são R e python. Este tutorial foi escrito pensado na linguagem R para ser rodado. Particularmente, prefiro o R ao python, pois a sintaxe dele é, para mim, mais fácil de entender. Mas isto é gosto pessoal. Tudo o que foi feito aqui pode ser adaptado e realizado em qualquer outra linguagem que o leitor prefira, como python, julia ou matlab, por exemplo.
+
+Se o seu computador não possua o R e o RStudio instalado, clique nos links abaixo e instale-os.
+
+* [R](http://cran.fiocruz.br/): este programa é o cerne da análise. É ele que vai realizar os cálculos e plotar os gráficos da análise.
+
+* [RStudio](https://www.rstudio.com/products/rstudio/download/): a interface padrão do R não é muito amigável de utilizar. Entretanto, é possível melhorá-la para que ela fique mais interativa. Desta forma, nossa produtividade aumenta.  Portanto, o RStudio serve para melhorar a utilização do R, deixando-a mais dinâmica. 
+
+Uma característica do R é que suas funções podem ser expandidas com comandos e funções criados pela comunidade. E são milhares (se não forem milhões) de expansões assim. Estas expansões estão em pacotes que podem ser instalados via internet. Para instalar os pacotes extras necessários para esta análise, abra o RStudio e vá ao menu File > New File > R Script, como mostra a figura abaixo:
+
+![Novo script](https://marcusnunes.me/images/novo_script.png)
+
+Com o script aberto, rode o comando abaixo e aguarde. Vários arquivos serão baixados e o R vai informando o progresso da instalação.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, eval=TRUE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=60))
+set.seed(1234)
+```
+
+```{r pacotes, eval=FALSE}
+install.packages(c("ggwordcloud", "rvest", "tidyverse", "tm", "tokenizer", "keras"), dependencies=TRUE)
+library(keras)
+install_keras()
+```
+
+Este passo pode demorar um pouco, dependendo da velocidade da sua conexão com a internet.
+
+Com tudo preparado, é hora de começar a análise.
+
+
+
+
+
+# Baixando as Letras das Músicas
+
+Vamos baixar as letras de músicas dos artistas que nos interessam com uma adaptação [deste script desenvolvido pelo pessoal do site Curso-R](https://www.curso-r.com/blog/2017-08-27-safadao/).
+
+```{r baixarLetras}
+baixarLetras <- function(artista){
+
+  # funcao adaptada do post 
+  # https://www.curso-r.com/blog/2017-08-27-safadao/
+  
+  link_base <- "https://www.letras.mus.br"
+  # listando os links
+  artista_links <- paste0(link_base, "/", artista, "/") %>% 
+    rvest::html_session() %>% 
+    rvest::html_nodes(".cnt-list--alp > ul > li > a") %>% 
+    rvest::html_attr("href")
+  
+  pegar_letra <- function(link) {
+    # do link até a parte que tem o conteúdo
+    result <- paste0(link_base, link) %>% 
+      rvest::html_session() %>% 
+      rvest::html_nodes(".cnt-letra > article > p") %>% 
+      # Peguei o texto com as tags html para pegar os \n
+      as.character() %>% 
+      stringr::str_replace_all("<[brp/]+>", "\n") %>% 
+      paste(collapse = "\n\n") %>% 
+      # Limpeza do texto
+      limpar_musica() %>% 
+      tokenizers::tokenize_characters(strip_non_alphanum = FALSE, simplify = TRUE  )
+    c(result, "@") # Adicionando @ no final
+  }
+  
+  limpar_musica <- function(txt) {
+    txt %>% 
+      stringr::str_trim() %>% 
+      stringr::str_to_lower() %>% 
+      stringr::str_replace_all("[^a-z0-9êâôáéíóúãõàç;,!?: \n-]", "") %>%
+      stringr::str_replace_all("[0-9]+x| bis", "") %>%
+      stringr::str_replace_all("([ ,?!])+", "\\1") %>% 
+      stringr::str_replace_all(" ([;,!?:-])", "\\1") %>%
+      stringr::str_replace_all("\n{3,}", "\n\n")
+  }
+  
+  p <- progress::progress_bar$new(total = length(artista_links))
+  artista_letras <- unlist(purrr::map(artista_links, ~{
+    p$tick()
+    pegar_letra(.x)
+  }))
+  
+  return(artista_letras)
+
+}
+```
+
+Dado o nome do artista, o script visita a página dele no site [letras.mus.br](https://letras.mus.br) e identifica os links para as letras. Com os links identificados, as letras são baixadas e processadas, a fim de retirar caracteres especiais e outras sujeiras em geral.
+
+Nós vamos baixar todas as letras que encontrarmos dos seguintes artistas:
+
+
+O código para fzermos isso é o seguinte:
+
+
+```{}
+
+```
+
+
+# Análise Exploratória dos Dados
+
+Aqui estamos interessados em procurar padrões nos dados. Vamos ver coisas básicas, como as palavras mais comuns nas canções. Não será feita distinção por autor, pois estamos tentando misturar os estilos deles para gerarmos a música sertaneja que irá 
+
+Para encontrar as palavras mais comuns, devemos, em primeiro lugar, preparar o conjunto de dados que vamos analisar. Devemos remover as [palavras vazias](https://pt.wikipedia.org/wiki/Palavra_vazia) dos textos, como artigos, preposições etc. Para automatizar este processo, vamos utilizar o pacote `tm`:
+
+```{r limpezaTexto}
+
+```
+
+
+# Ajuste do Modelo
+
+[](https://juliasilge.com/blog/tensorflow-generation/)
+
+
+# Ideias para Novos Projetos
+
+
+
+
+<!--chapter:end:usando-deep-learning-para-criar-letras-de-musicas-sertanejas.Rmd-->
+

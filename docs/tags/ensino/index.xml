@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ensino on Marcus Nunes&#39; Blog</title>
+    <link>/tags/ensino/</link>
+    <description>Recent content in Ensino on Marcus Nunes&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Mon, 18 Nov 2019 21:55:00 -0300</lastBuildDate>
+    
+	<atom:link href="/tags/ensino/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Como simplificar seus relatórios estatísticos usando R Markdown</title>
+      <link>/posts/como-simplificar-seus-relato%CC%81rios-estati%CC%81sticos-usando-r-markdown/</link>
+      <pubDate>Mon, 18 Nov 2019 21:55:00 -0300</pubDate>
+      
+      <guid>/posts/como-simplificar-seus-relato%CC%81rios-estati%CC%81sticos-usando-r-markdown/</guid>
+      <description>Hoje apresentei mais um minicurso. A organização da 2nd Conference on Statistics and Data Science me chamou para contribuir com um assunto referente à ciência de dados no evento. Escolhi falar sobre R Markdown, a tecnologia que utilizamos para escrever os relatórios de consultoria do Laboratório de Estatística Aplicada. Inclusive, temos um pacote no R chamado modeloLEA, escrito para agilizar e padronizar a formatação destes nossos relatórios.
+O material do minicurso pode ser acessado em github.</description>
+    </item>
+    
+    <item>
+      <title>Tutorial: Usando Deep Learning para Criar Letras de Músicas Sertanejas</title>
+      <link>/posts/usando-deep-learning-para-criar-letras-de-musicas-sertanejas/</link>
+      <pubDate>Wed, 12 Dec 2018 08:54:00 -0300</pubDate>
+      
+      <guid>/posts/usando-deep-learning-para-criar-letras-de-musicas-sertanejas/</guid>
+      <description>Introdução Este é mais um post na série de tutorias deste blog. No primeiro texto eu ensinei a fazer classificação utilizando Random Forest. Hoje, como o título do post diz, eu vou mostrar como podemos utilizar a biblioteca Keras para fazer o computador ler as letras das músicas de vários artistas de sertanejo universitário e ensiná-lo a produzir novas letras no estilo.
+O procedimento completo para fazer esta tarefa está descrito logo abaixo.</description>
+    </item>
+    
+    <item>
+      <title>Tutorial: Como Fazer o Seu Primeiro Projeto de Data Science</title>
+      <link>/posts/primeiro-projeto-de-data-science/</link>
+      <pubDate>Sun, 01 Jul 2018 08:54:00 -0300</pubDate>
+      
+      <guid>/posts/primeiro-projeto-de-data-science/</guid>
+      <description>Introdução O principal objetivo deste texto é mostrar como é possível, utilizando apenas recursos gratuitos na internet, realizar um projeto de data science do início ao fim. Vamos treinar um algoritmo de classificação de dados baseado em uma técnica chamada Random Forest (link em inglês, pois a Wikipedia em Português ainda não possui um verbete sobre este assunto)], capaz de realizar tanto tarefas de classificação quanto de regressão.
+O público-alvo deste texto são as pessoas que já possuem alguma experiência com Estatística e estão interessadas em aprender melhor como aplicar estes conhecimentos já adquiridos em uma área nova, como machine learning.</description>
+    </item>
+    
+    <item>
+      <title>Bibliografia Recomendada para Machine Learning</title>
+      <link>/posts/bibliografia-recomendada-para-machine-learning/</link>
+      <pubDate>Sun, 01 Jul 2018 07:41:00 -0300</pubDate>
+      
+      <guid>/posts/bibliografia-recomendada-para-machine-learning/</guid>
+      <description>Como sou professor, volta e meio recebo pedidos de sugestões de bibliografia recomendada para quem quer começar a estudar machine learning. Claro que tenho estas sugestões para quem quiser saber.
+Entretanto, aprender machine learning não é uma tarefa trivial. Como a minha formação é em Estatística, defendo que antes de partir para os estudos na área, o interessado deve ter uma formação básica em
+Probabilidade e Estatística  A</description>
+    </item>
+    
+    <item>
+      <title>Curso RMarkdown</title>
+      <link>/posts/curso-rmarkdown/</link>
+      <pubDate>Mon, 11 Jun 2018 14:05:00 -0300</pubDate>
+      
+      <guid>/posts/curso-rmarkdown/</guid>
+      <description>Introdução Uma das características mais desejáveis em pesquisa científica e análise de dados é a sua reprodutibilidade. É importante que os métodos estatísticos aplicados sejam auditados independentemente por outras pessoas.
+Entretanto, para que o trabalho possa ser lido, compreendido e reproduzido, é fundamental que, além do código, nosso fluxo de pensamento também possa ser documentado. Em alguns casos, apenas os comentários distribuídos com o código podem não ser suficientes para garantir a compreensão do trabalho realizado.</description>
+    </item>
+    
+    <item>
+      <title>Curso ggplot2</title>
+      <link>/posts/curso-ggplot2/</link>
+      <pubDate>Mon, 21 May 2018 09:21:00 -0300</pubDate>
+      
+      <guid>/posts/curso-ggplot2/</guid>
+      <description>Recentemente fui convidado pela organização do 2º Encontro Paraibano de Estatística para ministrar um minicurso durante o evento. O tema que escolhi foi visualização de dados:
+ Visualização de dados com ggplot2
+Seja na análise dos resultados de algum experimento ou na modelagem de big data, todo trabalho estatístico começa com a visualização dos dados coletados. Embora seja negligenciada às vezes, a visualização é de suma importância para ajudar a levantar hipóteses, confirmar suspeitas e avaliar suposições.</description>
+    </item>
+    
+  </channel>
+</rss>

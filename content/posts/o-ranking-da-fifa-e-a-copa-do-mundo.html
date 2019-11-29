@@ -1,0 +1,68 @@
+---
+title: "O Ranking da FIFA e a Copa do Mundo"
+description: "Descubra se o ranking da FIFA possui algum tipo de relação com o resultado da Copa do Mundo"
+tags: ["copa da mundo", "esporte", "futebol", "machine learning", "regressão"]
+draft: true
+date: 2018-07-09T22:12:00-03:00
+---
+
+
+
+<div id="resumo" class="section level1">
+<h1>Resumo</h1>
+<p>O ranking da FIFA não serve para prever a classificação final da Copa do Mundo com acurácia.</p>
+</div>
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
+<p>Previsões são muito difíceis de serem feitas, principalmente a respeito do futuro. Mesmo assim, todos nos atraímos por elas, seja para imaginarmos como estaremos daqui a alguns anos ou para partiipar de bolões da copa.</p>
+<p>Pensando nisso, resolvi aplicar alguns modelos de predição às informações fornecidas pelo Ranking da FIFA para verificar se ele é uma boa ferramenta para prever o resultado da Copa do Mundo.</p>
+</div>
+<div id="ranking-da-fifa" class="section level1">
+<h1>Ranking da FIFA</h1>
+<p>O Ranking da FIFA é uma ferramenta criada nos anos 90 pela entidade máxima do futebol. Este ranking computa informações a respeito dos resultados dos jogos das seleções mundiais, sejam eles em competições ou amistosos, a fim de estabelecer uma classificação geral para elas.</p>
+<p>Note que estabelecer uma classificação geral para todas as seleções do mundo não é uma tarefa fácil. Os países da América do Sul jogam muito entre si, seja durante a Copa América, seja durante as eliminatórias da Copa do Mundo.</p>
+<p>É razoável supor que o Brasil, país melhor colocado dentre os sul-americanos durante as eliminatórias, seja equivalente ao melhor time europeu. Mas nas eliminatórias europeias os times são divididos em vários grupos distintos, ao contrário das sul-americanas, que ocorrem em um grupo apenas. Sendo assim, qual seria o melhor time europeu neste contexto? E como se comporta o Chile neste ranking, posto que este país ganhou as Copas América de 2015 e 2016, mas ficou fora da Copa 2018?</p>
+<p>É aí que entra o <a href="https://www.fifa.com/fifa-world-ranking/ranking-table/men/">Ranking da FIFA</a>. Publicado desde 1995, ele cruza dados e informações e, assim, estabelece uma classificação mundial de seleções. Supostamente, os times melhor colocados no ranking deveriam estar melhor colocados ao final da Copa.</p>
+<p>Mas será que isto acontece na prática?</p>
+<p>Para testar esta hipótese, resgatei as informações referentes ao último Ranking da FIFA publicado antes de cada Copa do Mundo de 1998 a 2018. Portanto, foram analisadas seis competições.</p>
+<p>Os dados do <a href="https://www.fifa.com/fifa-world-ranking/ranking-table/men/">Ranking da FIFA</a> foram obtidos no site da própria instituição. As classificações finais das Copas do Mundo de 1998 a 2018 foram coletadas a partir da Wikipedia em inglês. Os dados utilizados na análise, bem como o código com a modelagem realizada, estão disponíveis no meu <a href="https://github.com/mnunes/">github</a>.</p>
+</div>
+<div id="correlações" class="section level1">
+<h1>Correlações</h1>
+<p>Correlação é uma medida estatística que serve para determinar o quanto uma medida está relacionada com a outra. Quanto mais próxima de 1 esta medida for, mais forte é a correlação positiva entre duas variáveis. Quanto mais próxima de 0 esta medida for, mais fraca é a correlação entre duas variáveis.</p>
+<p>Por exemplo, peso e altura estão positivamente correlacionados. Quanto mais alto alguém for, mais pesado este alguém tende a ser. Logicamente, esta relação não é perfeita, pois existem pessoas de mesma altura e pesos diferentes, mas a tendência é que pessoas mais altas sejam mais pesadas.</p>
+<p>Por exemplo, peso e altura estão positivamente correlacionados. Quanto mais alto alguém for, mais pesado este alguém tende a ser. Logicamente, esta relação não é perfeita, pois existem pessoas de mesma altura e pesos diferentes, mas a tendência é que pessoas mais altas sejam mais pesadas.</p>
+<p>O Ranking da FIFA é uma medida ordinal (ou seja, é feita a partir de uma ordem), ela classifica os times do número 1 ao XXX. Desta forma, faz sentido relacioná-lo com a classificação final da Copa do Mundo, que também é uma medida de ordem. Como analisei apenas os resultados das copas em que haviam Ranking da FIFA disponível, os resultados possíveis para os países participantes variaram entre 1 e 32, pois todas as Copas de 1998 em diante contaram com 32 países.</p>
+<p>A primeira tarefa que realizaei foi verificar se havia correlação</p>
+<pre><code>## 
+##  Kendall&#39;s rank correlation tau
+## 
+## data:  tabela_completa$Rank and tabela_completa$World_Cup
+## z = 5.7744, p-value = 7.722e-09
+## alternative hypothesis: true tau is not equal to 0
+## sample estimates:
+##       tau 
+## 0.3138331</code></pre>
+<p>De acordo com o resultado acima, a correlação entre o Ranking da FIFA e a classificação final na Copa do Mundo é igual a 0.3138331. Este número está mais próximo de 0 do que de 1, o que indica uma correlação não muito forte.</p>
+<p>Mas nes primeira análise eu utilizei os dados de seis Copas do Mundo simultaneamente. É natural esperar que esta correlação seja mais forte em alguns anos do que em outros. Por este motivo, vou calcular novamente a correlação entre as variáveis consideradas, mas desta vez agrupando-as por ano:</p>
+<pre><code>##   Year estimate statistic p.value  p.fdr
+## 1 1998   0.2702  315.0000  0.0302 0.0454
+## 2 2002   0.2379  307.0000  0.0573 0.0573
+## 3 2006   0.2614    2.0933  0.0363 0.0454
+## 4 2010   0.2863  319.0000  0.0213 0.0454
+## 5 2014   0.4597  362.0000  0.0001 0.0007</code></pre>
+<p>De fato, alguns anos possuíram correlação mais baixa do que 0.3138 e alguns possuíram correlação mais alta do que este valor. Mesmo assim, 0.4597 como valor para a maior correlação não é algo que poderíamos chamar de empolgante.</p>
+<p>Com isto em mente, vamos passar ao ajuste de um modelo, mas sem muitas esperanças de que ele tenha um poder preditivo alto, pois as correlações são baixas.</p>
+</div>
+<div id="previsões" class="section level1">
+<h1>Previsões</h1>
+<p>Como estamos trabalhando com dados ordinais, vou utilizar um modelo de regressão logística ordinal. Com ele poderei relacionar as variáveis que desejo, além de criar um <em>intervalo de predição</em> para os resultados obtidos.</p>
+<p>Grosso modo, o que o intervalo de predição faz é determinar intervalos nos quais nossas predições podem variar. Em outras palavras, o resultado que procuro obter é algo na linha de “dado que o país é o 7º colocado no Ranking da FIFA, há 95% de probabilidade dele terminar a Copa do Mundo entre a 9ª e 6ª colocação”.</p>
+<p>Após rodar o modelo, o resultado obtido com as previsões está no gráfico abaixo:</p>
+</div>
+<div id="conclusão" class="section level1">
+<h1>Conclusão</h1>
+<p>Ou seja, o Ranking da FIFA não serve para prever a classificação final da Copa do Mundo. Embora seja possível detectar padrões, como os times mais bem colocados no Ranking da FIFA tendem a ficar mais bem classificados ao final da Copa do Mundo, a variabilidade das previsões é muito grande, tornando a ferramenta pouco útil.</p>
+<p>Poranto, continue utilizando o com e velho <em>feeling</em> ao fazer preencher o bolão da Copa do Qatar. Dificilmente a estatística vai te ajudar com esta tarefa.</p>
+<p>Os dados utilizados na análise, bem como o código com a modelagem realizada, estão disponíveis no meu <a href="https://github.com/mnunes/">github</a>.</p>
+</div>

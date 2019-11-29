@@ -1,0 +1,112 @@
+---
+title: "Será que as Pessoas estão se Interessando Mais Cedo pelo Natal?"
+description: "Como usar o Google para provar ou desprovar esta afirmação"
+tags: ["análise", "google", "natal", "visualização"]
+draft: false
+date: 2018-12-12T9:34:00-03:00
+---
+
+
+
+<div id="a-pergunta-que-nao-quer-calar" class="section level1">
+<h1>A Pergunta que não quer Calar</h1>
+<p>Não sei qual a opinião de vocês, mas eu tenho a impressão de que a cada ano que passa, o Natal está chegando mais cedo. Não o dia 25 de dezembro, óbvio, mas parece que cada vez mais cedo os supermercado colocam decoração natalina e produtos especiais à venda.</p>
+<p>Inclusive, tenho para mim que, quando eu menos esperar, os supermercados vão estar vendendo panetone durante as festas juninas. Fica a dica aí, Bauducco: panetone de quentão.</p>
+<p>Com isto em mente, resolvi baixar 15 anos de dados de buscas feitas no Google para responder a uma pergunta: será que as pessoas no Brasil estão se preocupando com o Natal cada vez mais cedo? Ou será que é só impressão minha e a mudança não tem sido tão grande quanto a minha memória quer me fazer crer?</p>
+</div>
+<div id="coleta-dos-dados" class="section level1">
+<h1>Coleta dos Dados</h1>
+<p>Para provar ou deprovar a minha hipótese, decidi investigá-la utilizando a maior ferramenta de busca da internet: o Google. Em particular, resolvi utilizar o <a href="https://trends.google.com/trends/?geo=BR">Google Trends</a>. Para quem não conhece, o Google Trends é uma ferramenta que permite que analisemos a popularidade história de um termo buscado no Google. Esta ferramenta guarda informações sobre a popularidade de muitos termos de pesquisa, desde 1 de Janeiro de 2004 (praticamente 15 anos atrás) até o dia de hoje.</p>
+<p>Por exemplo, se eu quiser saber como evoluiu a popularidade dos White Stripes, a minha banda favorita, basta eu fazer uma busca no Google Trends e obtenho o seguinte resultado:</p>
+<p><img src="/posts/sera-que-as-pessoas-estao-se-interessando-mais-cedo-pelo-natal_files/figure-html/whiteStripes-1.png" width="672" /></p>
+<p>Note que o pico de popularidade da banda no Brasil foi em Junho de 2005. Faz sentido, pois <a href="https://www1.folha.uol.com.br/folha/ilustrada/ult90u50397.shtml">eles haviam lançado um disco novo e anunciado shpws no nosso país</a>. De lá para cá, a banda foi procurada cada vez menos. Houve dois outros picos, também na época de lançamento de outros CDs, mas nada que chegasse perto que foi visto em 2005.</p>
+<p>Note também que o 100 indicado no eixo y não indica que houve 100 procuras por White Stripes em Junho de 2005. O Google não libera a quantidade exata de vezes que cada termo foi buscado. Assim, o 100 significa apenas o máximo de procuras que o termo “white stripes” atingiu. Mesmo assim, sabemos que o pico de interesse em 2007 correspondeu a 75% do volume registrado em 2005.</p>
+<p>A ferramenta começa a ficar interessante quando comparamos diferentes termos de busca. Abaixo comparo o interesse de White Stripes com Jack White, o vocalista que saiu em carreira solo após o término da banda.</p>
+<p><img src="/posts/sera-que-as-pessoas-estao-se-interessando-mais-cedo-pelo-natal_files/figure-html/whiteStripesJackWhite-1.png" width="672" /></p>
+<p>Perceba como o interesse pelo Jack White aumentou após o término dos White Stripes. Embora nunca tenha chegado aos níveis de popularidade que sua antiga banda chegou, Jack White conseguiu despertar relativo interesse na época do lançamento de seus discos solo, como podemos ver em 2012, 2014 e 2018 (embora 2018 não tenha sido muito auspicioso para ele e a sua popularidade esteja equivalente à da sua extinta banda).</p>
+<p>Com isso em mente, decidi baixar os dados a respeito das procuras do termo “natal” no Brasil, entre 2004 e 2018, para verificar se as pessoas estão se interessando cada vez mais cedo pelo <a href="https://pt.wikipedia.org/wiki/A_Vida_de_Brian">nascimento de Brian</a>.</p>
+<p>(quem não estiver interessado em programação pode pular o bloco de texto abaixo, onde exibo o código utilizado para baixar os dados que analisei)</p>
+<pre class="r"><code># pacotes necessarios
+
+library(gtrendsR) # baixar dados do Google Trends
+library(tidyverse) # graficos
+theme_set(theme_bw())
+library(lubridate) # manipulacao de datas
+
+# intervalos de datas de 2004 a 2017
+
+data.inicial &lt;- dmy(&quot;01-01-2004&quot;) + years(0:13)
+data.final   &lt;- dmy(&quot;31-12-2004&quot;) + years(0:13)
+
+datas &lt;- paste(data.inicial, data.final)
+
+# baixando dados de 2004 apenas
+# os outros anos serao baixados em um loop
+
+dados &lt;- gtrends(keyword = &quot;natal&quot;, 
+                 geo=&quot;BR&quot;,
+                 time=datas[1])$interest_over_time
+
+dados$ano &lt;- as.factor(rep(2004, nrow(dados)))
+
+# loop para baixar os anos de 2005 a 2017
+# desta forma, garantimos que todos os anos
+# terao um pico de interesse 100
+
+for (j in datas[-1]){
+
+  dados_aux     &lt;- gtrends(keyword = &quot;natal&quot;, 
+                           geo=&quot;BR&quot;,
+                           time=j)$interest_over_time
+  
+  dados_aux$ano &lt;- as.factor(rep(year(unlist(strsplit(j, split=&quot; &quot;))[1]), 
+                                 nrow(dados_aux)))
+  
+  dados &lt;- rbind(dados, dados_aux)
+
+}
+
+# ano de 2018
+# ele deve ser baixado separadamente porque
+# ainda nao temos os dados ateh 31/12/2018
+
+dados_aux     &lt;- gtrends(keyword = &quot;natal&quot;, 
+                         geo=&quot;BR&quot;,
+                         time=&quot;2018-01-01 2018-12-11&quot;)$interest_over_time
+
+dados_aux$ano &lt;- as.factor(rep(2018, nrow(dados_aux)))
+
+dados &lt;- rbind(dados, dados_aux)
+
+# datas fake no ano 2000, para os plots
+# sairem sobrepostos na visualizacao que
+# vou fazer
+
+dados$date_plot &lt;- dmy(paste(day(dados$date), 
+                             month(dados$date), 
+                             2000, sep=&quot;-&quot;))</code></pre>
+<p>Agora, com os dados baixados e organizados, é hora de plotá-los.</p>
+</div>
+<div id="visualizando-os-resultados" class="section level1">
+<h1>Visualizando os Resultados</h1>
+<p>Se plotarmos os dados na ordem temporal correta, o que obtemos é o seguinte gráfico:</p>
+<pre class="r"><code>ggplot(dados_total, aes(x=ymd(date), y=hits)) +
+  geom_line() +
+  scale_x_date(date_labels=&quot;%Y&quot;, date_breaks = &quot;1 year&quot;) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(x=&quot;Ano&quot;, y=&quot;Popularidade&quot;, title=&quot;Buscas por Natal no Google&quot;) +
+  scale_colour_viridis_d()</code></pre>
+<p><img src="/posts/sera-que-as-pessoas-estao-se-interessando-mais-cedo-pelo-natal_files/figure-html/natalCompletoPlot-1.png" width="672" /></p>
+<p>O que não nos diz muita coisa. Afinal, o pico geral de interesse na procura pelo Natal foi em dezembro de 2004, mas será que se fizermos um estudo por ano, vamos ver alguma diferença no comportamento dos dados? Melhor dizendo, se sobrepusermos os meses de cada um dos 15 anos utilizados na análise, perceberemos algo diferente?</p>
+<p>É exatamente isso que vemos no gráfico abaixo:</p>
+<pre class="r"><code>ggplot(dados, aes(x=date_plot, y=hits, group=ano, colour=ano)) +
+  geom_line() +
+  scale_x_date(date_labels=&quot;%B&quot;, date_breaks = &quot;1 month&quot;) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(x=&quot;Mês do Ano&quot;, y=&quot;Popularidade&quot;, colour=&quot;Ano&quot;, title=&quot;Buscas por Natal no Google&quot;) +
+  scale_colour_viridis_d()</code></pre>
+<p><img src="/posts/sera-que-as-pessoas-estao-se-interessando-mais-cedo-pelo-natal_files/figure-html/natalPorAno-1.png" width="672" /></p>
+<p>Perceba que as curvas dos anos todas coincidem razoavelmente bem, exceto por 2018, que é facilmente explicável: ainda não chegamos ao pico de procura por Natal em 2018. Assim, quando 2018 acabar, a tendência é que a curva amarela baixe um pouco, pois seu pico relativo saumentará.</p>
+<p>O que podemos ver no gráfico acima é que a procura por Natal no Google é baixa durante o ano inteiro. Ela começa a ganhar tração no meio de outubro, é multiplicada por 10 até o meio de dezembro, quando rapidamente perde o fôlego. Este comportamento vale para todos os 15 anos analisados aqui, de 2004 a 2018.</p>
+<p>Portanto, embora eu particularmente tenha a impressão que as lojas e os supermercados estão começando a celebrar o Natal cada vez mais cedo, ao menos no Google as pessoas tem seu comportamento razoavelmente constante ao passar dos últimos 15 anos. Isto é, como um todo, os brasileiros não estão se interessando pelo Natal cada vez mais cedo.</p>
+</div>

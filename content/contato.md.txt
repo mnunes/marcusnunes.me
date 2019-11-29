@@ -1,0 +1,13 @@
+---
+title: Contato
+description: Vamos trocar uma ideia?
+type: page
+#featured_image: 'images/banners/contato.jpg'
+menu:
+  main: {}
+weight: 60
+---
+
+
+Quer entrar em contato comigo? Bastar enviar um email para marcus arroba marcusnunes.me e vamos nos falando.
+

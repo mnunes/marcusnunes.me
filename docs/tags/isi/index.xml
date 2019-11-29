@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Isi on Marcus Nunes&#39; Blog</title>
+    <link>/tags/isi/</link>
+    <description>Recent content in Isi on Marcus Nunes&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Mon, 30 Sep 2019 11:07:00 -0300</lastBuildDate>
+    
+	<atom:link href="/tags/isi/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2º Workshop de R: Levando a Ciência de Dados para Todos</title>
+      <link>/posts/workshop-de-r-na-ufrn/</link>
+      <pubDate>Mon, 30 Sep 2019 11:07:00 -0300</pubDate>
+      
+      <guid>/posts/workshop-de-r-na-ufrn/</guid>
+      <description>Eu sou um fulbrighter. Como ex-aluno deste programa de intercâmbio, volta e meia sou convidado para participar de ventos promovidos pelo programa U.S.-Brazil Exchange Alumni (USBEA). O último destes eventos do qual participei rolou semana passada, em comemoração ao Dia Nacional do Voluntário no Brasil.
+O projeto que desenvolvi se chamou 2º Workshop de R: Levando a Ciência de Dados para Todos e foi feito com apoio do Departamento de Estatística da UFRN, que cedeu a sala e os computadores com os quais o workshop pode ser desenvolvido.</description>
+    </item>
+    
+    <item>
+      <title>Workshop de R na UFRN</title>
+      <link>/posts/42/</link>
+      <pubDate>Fri, 27 Sep 2019 14:45:00 -0300</pubDate>
+      
+      <guid>/posts/42/</guid>
+      <description>https://www.youtube.com/watch?v=zyG8Vlw5aAw</description>
+    </item>
+    
+    <item>
+      <title>Consultoria Estatística na UFRN: Nosso Trabalho Sendo Divulgado no Oriente</title>
+      <link>/posts/consultoria-estati%CC%81stica-na-ufrn-nosso-trabalho-sendo-divulgado-no-oriente/</link>
+      <pubDate>Sat, 24 Aug 2019 14:45:00 -0300</pubDate>
+      
+      <guid>/posts/consultoria-estati%CC%81stica-na-ufrn-nosso-trabalho-sendo-divulgado-no-oriente/</guid>
+      <description>Um dos meus maiores interesses como professor do Departamento de Estatística da UFRN é formar bons prestadores de serviço de consultoria estatística. Acho fundamental que os bacharéis formados em nosso curso sejam capazes de entender as demandas de outras áreas, traduzi-las para o jargão estatístico e reportar os resultados obtidos numa linguagem fácil de compreender.
+Por isso, junto com a Professora Carla Vivacqua, coordeno o Laboratório de Estatística Aplicada (LEA), órgão do Departamento de Estatística criado para prestar assessoria estatística gratuita para alunos, professores, pesquisadores e técnicos da universidade.</description>
+    </item>
+    
+  </channel>
+</rss>

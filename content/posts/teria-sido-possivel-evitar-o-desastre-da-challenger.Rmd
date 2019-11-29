@@ -1,0 +1,82 @@
+---
+title: "Teria sido possível evitar o desastre da Challenger?"
+description: "Regressão Logística poderia salvar vidas"
+tags: ["análise", "data science", "ferramenta", "mlg"]
+draft: false
+date: 2018-02-15T12:04:00-03:00
+---
+
+Creio que as duas imagens mais marcantes em toda a história do programa espacial norte-americano sejam <a href="https://www.youtube.com/watch?v=GS32pRTURdI">a caminhada de Neil Armostrong na Lua</a> e a <a href="https://www.youtube.com/watch?v=j4JOjcDFtBE">explosão do ônibus espacial Challenger</a>. Esta tragédia, exibida ao vivo pela TV em 28 de janeiro de 1986, chocou o mundo.
+
+<!--![Explosão da Challenger](/images/challenger00.jpg)-->
+
+Após uma cuidadosa investigação, a NASA concluiu que a explosão ocorreu devido ao mau funcionamento de uma peça chamada <a href="https://pt.wikipedia.org/wiki/O-ring">O-ring</a>, que deveria manter a junção entre as partes dos foguetes que levariam a Challenger para o espaço. Mas será que o problema com estas peças não poderia ter sido previsto utilizando dados dos outros lançamentos de ônibus espaciais?
+
+A Challenger foi a 25a missão oficial de um ônibus espacial. Para fazer este estudo, utilizei os dados de temperatura e falhas de O-rings de 23 voos de ônibus espaciais anteriores ao da Challenger, obtidos no <a href="https://archive.ics.uci.edu/ml/datasets/Challenger+USA+Space+Shuttle+O-Ring">UCI Machine Learning Repository</a>. Apenas os dados de 23 dos 24 voos anteriores estão disponíveis publicamente.
+
+O gráfico abaixo mostra, no eixo horizontal, as temperaturas de lançamento, em graus Celsius, durante o lançamento dos ônibus espaciais. No eixo vertical, 0 significa que não houve problemas com nenhum O-ring durante o lançamento do ônibus espacial naquela temperatura e 1 significa que houve algum problema com pelo menos um O-ring durante o lançamento.
+
+
+```{r challenger01, echo=FALSE, message=FALSE}
+# leitura do conjunto de dados - http://archive.ics.uci.edu/ml/datasets/Challenger+USA+Space+Shuttle+O-Ring
+
+temp = c(66, 70, 69, 68, 67, 72, 73, 70, 57, 63, 70, 78, 67, 53, 67, 75, 70, 81, 76, 79, 75, 76, 58)
+ring = c(0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1)
+
+# converter Fahrenheit para Celsius
+
+temp <- (temp-32)*5/9
+
+dados <- data.frame(temperatura=temp, falha=ring)
+
+# analise exploratoria
+
+library(ggplot2)
+theme_set(theme_bw())
+
+ggplot(dados, aes(x=temperatura, y=falha)) +
+  geom_point() +
+  labs(x="Temperatura (ºC)", y="Falha") +
+  scale_y_continuous(breaks=c(0, 1))
+```
+
+Perceba que, aparentemente, há influência da temperatura no comportamento dos O-rings. Quanto mais frio, é mais provável que haja algum problema com o dispositivo. Mas estatística não é achismo e há uma maneira de testar se esta hipótese é verdadeira. Para isto, utilizei uma ferramenta chamada regressão logística. O <a href="https://cran.r-project.org/">R</a>, software que utilizo no meu dia a dia, possui um comando específico para isto, chamado glm. A resposta que obtive está logo abaixo:
+
+
+```{r challenger02}
+ajuste <- glm(falha ~ temperatura, data=dados, family=binomial)
+
+summary(ajuste)
+```
+
+Mas o que este monte de números quer realmente dizer? Vejamos como a curva dada pelo output acima se ajusta à realidade:
+
+```{r challenger03, echo=FALSE}
+# plot dos resultados
+
+binomial_smooth <- function(...) {
+  geom_smooth(method = "glm", method.args = list(family = "binomial"), ...)
+}
+
+ggplot(dados, aes(x=temperatura, y=falha)) +
+  geom_point() +
+  labs(x="Temperatura (ºC)", y="Falha") +
+  scale_y_continuous(breaks=c(0, 1)) +
+  binomial_smooth(se=FALSE)
+```
+
+Nesta figura, além do eixo y indicar se houve ou não algum problema com os o-rings, ele indica a probabilidade de haver um acidente dada a temperatura do local do lançamento do ônibus espacial. No dia do lançamento da Challenger, a temperatura estava prevista para 31°F (equivalente a -0,5ºC). Até então, esta seria a temperatura mais baixa de lançamento de um ônibus espacial. Substituindo um valor próximo a este e outros no modelo ajustado acima, temos as seguintes probabilidades de falha do o-ring:
+
+```{r challenger04, echo=FALSE}
+# probabilidade de quebra do o-ring
+
+temperatura <- seq(0, 40, 5)
+data.frame(temperatura=temperatura, 
+           probabilidade=predict(ajuste, data.frame(temperatura=temperatura), type="response"))
+```
+
+Note que, para temperaturas próximas de zero, a probabilidade de falha é muito próxima de 1. Ou seja, a chance de falha é de quase 100%! Se a temperatura estivesse mais alta, acima de 25 graus, esta probabilidade cairia para 0,055 (puco mais de 5%). Ou seja, a falha do equipamento era quase uma certeza. 
+
+Por si só, a falha de um ou mais O-rings não acarretaria na explosão da nave. Entretanto, não era necessário arriscar a vida de sete astronautas e um equipamento caríssimo num lançamento muito propenso a ter problemas. Bastaria esperar alguns dias por condições mais propícias para este realizar este evento.
+
+Os arquivos e códigos utilizados nesta análise podem ser <a href="https://github.com/mnunes/Challenger">encontrados no meu github</a>.

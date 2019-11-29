@@ -1,0 +1,89 @@
+---
+title: "Dia do Pi 2019"
+description: "Visualizando a constante mais famosa da matemática"
+tags: ["comemoração", "matemática", "pi"]
+draft: false
+date: 2019-03-14T06:51:00-03:00
+---
+
+O Pi (ou π) é uma constante matemática. É definido como a razão entre o comprimento de uma circunferência e seu diâmetro. Seu valor aproximado para duas casas decimais é 3,14. [Neste link](pi.dat) é possível ver o primeiro milhão de casas decimais de π (o número 3, referente à unidade, foi excluído).
+
+Hoje, dia 14 de março, é comemorado o [Dia do Pi](https://pt.wikipedia.org/wiki/Dia_do_Pi). Isto se deve à maneira como se representam as datas nos Estados Unidos. Como 3/14 é a maneira utilizada se fazer referência ao dia 14 de março no sistema daquele país, convencionou-se considerar este dia como sendo o Dia do Pi.
+
+Para não deixar a data passar em branco, resolvi fazer duas coisas. A primeira delas é verificar quantas vezes cada dígito de 0 a 9 aparece no primeiro milhão de casas decimais de π. Assim, seria possível tentar encontrar algum padrão nestes números, embora seja provado pela matemática que π não possui padrão algum, ao menos em seu primeiro milhão de dígitos.
+
+```{r pi-day, echo=FALSE, message=FALSE}
+# pacotes necessarios
+
+library(tidyverse)
+theme_set(theme_bw())
+library(knitr)
+library(kableExtra)
+
+# leitura dos dados
+
+pi <- read.table(file="pi.dat", header = FALSE, colClasses = "character")
+
+# converter as strings em numeros,
+# criando um vetor de 1e6 posicoes
+
+pi <- as.numeric(unlist(apply(pi, 2, strsplit, split="")))
+
+# frequencia das casas decimais
+
+table(pi) %>%
+  as.data.frame() %>%
+  kable(., row.names = NA, col.names = c("Dígito", "Frequência"))
+```
+
+Como podemos ver, há dígitos que ocorrem mais do que outros. Por exemplo, o dígito 6 ocorre 100359 vezes no primeiro milhão de casas decimais, enquanto 7 ocorre apenas 99548 vezes. Embora hajam 811 ocorrências a mais de 6 do que 7, se formos olhar de modo percentual, isto equivale a uma diferença de apenas 0,8%. Não dá pra dizer que é algo considerável.
+
+Mas também é possível visualizar os dígitos de π, procurando padrões visuais neles. A figura abaixo tem dimensão 1000 x 1000 pixels. Cada pixel foi colorido com uma cor variando do azul bem escuro ao azul bem claro. São 10 tonalidades, variando de acordo com a posição do dígito no π. E o que podemos perceber na imagem?
+
+
+```{r heatmap, echo=FALSE, message=FALSE}
+# mapa de calor
+
+pi.grid         <- expand.grid(x=1:1000, y=1:1000)
+pi.grid$digitos <- pi
+
+ggplot(pi.grid, aes(x, y)) +
+  geom_raster(aes(fill = digitos)) +
+  scale_fill_continuous(breaks = seq(0, 9, 3)) +
+  labs(x="", y="", fill = "Dígitos")
+```
+
+
+Absolutamente nada. O π é apenas ruído. Não é possível distinguir a imagem formada pelo primeiro milhão de dígitos de π e uma tela de televisão antiga exibindo estática.
+
+O código para reproduzir este estudo está, como sempre, disponível logo abaixo:
+
+```{r pi-day-code, eval=FALSE, message=FALSE}
+# pacotes necessarios
+
+library(tidyverse)
+theme_set(theme_bw())
+
+# leitura dos dados
+
+pi <- read.table(file="pi.dat", header = FALSE, colClasses = "character")
+
+# converter as strings em numeros,
+# criando um vetor de 1e6 posicoes
+
+pi <- as.numeric(unlist(apply(pi, 2, strsplit, split="")))
+
+# frequencia das casas decimais
+
+table(pi)
+
+# mapa de calor
+
+pi.grid         <- expand.grid(x=1:1000, y=1:1000)
+pi.grid$digitos <- pi
+
+ggplot(pi.grid, aes(x, y)) +
+  geom_raster(aes(fill = digitos)) +
+  scale_fill_continuous(breaks = seq(0, 9, 3)) +
+  labs(x="", y="", fill = "Dígitos")
+```

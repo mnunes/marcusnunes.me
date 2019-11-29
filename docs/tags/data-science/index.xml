@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Science on Marcus Nunes&#39; Blog</title>
+    <link>/tags/data-science/</link>
+    <description>Recent content in Data Science on Marcus Nunes&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Mon, 21 Jan 2019 06:45:00 -0300</lastBuildDate>
+    
+	<atom:link href="/tags/data-science/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Urbanismo e Estatística: Como é a Orientação das Ruas das Capitais Brasileiras</title>
+      <link>/posts/como-e-a-orientacao-das-ruas-brasileiras/</link>
+      <pubDate>Mon, 21 Jan 2019 06:45:00 -0300</pubDate>
+      
+      <guid>/posts/como-e-a-orientacao-das-ruas-brasileiras/</guid>
+      <description>Uns meses atrás, um professor de planejamento urbano chamado Geoff Boeing criou em seu blog um post chamado Comparing US City Street Orientations. Neste texto ele compara a orientação das ruas de várias cidades dos Estados Unidos a fim de descobrir como é a organização espacial delas. Ele utilizou python para acessar o site Open Street Map e baixar dados a respeito das ruas e suas direções.
+Geoff Boeing foi generoso e disponibilizou um jupyter notebook para quem quisesse reproduzir seu trabalho.</description>
+    </item>
+    
+    <item>
+      <title>Tutorial: Usando Deep Learning para Criar Letras de Músicas Sertanejas</title>
+      <link>/posts/usando-deep-learning-para-criar-letras-de-musicas-sertanejas/</link>
+      <pubDate>Wed, 12 Dec 2018 08:54:00 -0300</pubDate>
+      
+      <guid>/posts/usando-deep-learning-para-criar-letras-de-musicas-sertanejas/</guid>
+      <description>Introdução Este é mais um post na série de tutorias deste blog. No primeiro texto eu ensinei a fazer classificação utilizando Random Forest. Hoje, como o título do post diz, eu vou mostrar como podemos utilizar a biblioteca Keras para fazer o computador ler as letras das músicas de vários artistas de sertanejo universitário e ensiná-lo a produzir novas letras no estilo.
+O procedimento completo para fazer esta tarefa está descrito logo abaixo.</description>
+    </item>
+    
+    <item>
+      <title>Ciência de Dados e Multidisciplinaridade</title>
+      <link>/posts/ciencia-de-dados-e-multidisciplinaridade/</link>
+      <pubDate>Fri, 07 Dec 2018 07:00:00 -0300</pubDate>
+      
+      <guid>/posts/ciencia-de-dados-e-multidisciplinaridade/</guid>
+      <description>Fui convidado pela organização do II Seminário de Aplicações em Ciência de Dados para falar a respeito da visão da Estatística e a importância dos conhecimentos da área em aplicações de Ciência de Dados. Aceitei o convite o resultado foram os slides Ciência de Dados e Multidisciplinaridade.
+Fique à vontade para baixar estes slides e saber mais a respeito das minhas posições sobre o tema de Ciência de Dados e Multidisciplinaridade.</description>
+    </item>
+    
+    <item>
+      <title>Ciência de Dados e Multidisciplinaridade</title>
+      <link>/posts/o-que-e-uma-rede-neural-parte-1/</link>
+      <pubDate>Fri, 07 Dec 2018 07:00:00 -0300</pubDate>
+      
+      <guid>/posts/o-que-e-uma-rede-neural-parte-1/</guid>
+      <description>Fui convidado pela organização do II Seminário de Aplicações em Ciência de Dados para falar a respeito da visão da Estatística e a importância dos conhecimentos da área em aplicações de Ciência de Dados. Aceitei o convite o resultado foram os slides Ciência de Dados e Multidisciplinaridade.
+Fique à vontade para baixar estes slides e saber mais a respeito das minhas posições sobre o tema de Ciência de Dados e Multidisciplinaridade.</description>
+    </item>
+    
+    <item>
+      <title>Ciência de Dados e Multidisciplinaridade</title>
+      <link>/posts/o-que-e-uma-rede-neural-parte-2/</link>
+      <pubDate>Fri, 07 Dec 2018 07:00:00 -0300</pubDate>
+      
+      <guid>/posts/o-que-e-uma-rede-neural-parte-2/</guid>
+      <description>Fui convidado pela organização do II Seminário de Aplicações em Ciência de Dados para falar a respeito da visão da Estatística e a importância dos conhecimentos da área em aplicações de Ciência de Dados. Aceitei o convite o resultado foram os slides Ciência de Dados e Multidisciplinaridade.
+Fique à vontade para baixar estes slides e saber mais a respeito das minhas posições sobre o tema de Ciência de Dados e Multidisciplinaridade.</description>
+    </item>
+    
+    <item>
+      <title>Como foi a Competição de Ciência de Dados da UFRN</title>
+      <link>/posts/como-foi-a-competicao-de-ciencia-de-dados/</link>
+      <pubDate>Tue, 06 Nov 2018 14:29:00 -0300</pubDate>
+      
+      <guid>/posts/como-foi-a-competicao-de-ciencia-de-dados/</guid>
+      <description>Conforme eu havia avisado anteriormente, eu e alguns professores do Departamento de Estatística da UFRN promovemos uma competição de Data Science entre os alunos da universidade. Se eu tivesse que descrevê-la em duas palavras, eu diria que foi um sucesso.
+Acima estamos Eu, Carla Almeida Vivacqua e Eliardo Guimarães Costa, os professores membros da banca avaliadora da competição.
+Foram 24 competidores divididos em seis equipes. O desafio era analisar os microdados do Censo Escolar de 2017.</description>
+    </item>
+    
+    <item>
+      <title>Competição de Data Science</title>
+      <link>/posts/competicao-de-data-science/</link>
+      <pubDate>Wed, 17 Oct 2018 08:08:00 -0300</pubDate>
+      
+      <guid>/posts/competicao-de-data-science/</guid>
+      <description>Pois eis que eu e mais alguns professores do Departamento de Estatística da UFRN estamos organizando uma competição de Data Science! Ela vai ocorrer entre os dias 24 e 30 de outubro de 2018 e está aberta para qualquer aluno matriculado regularmente em cursos de graduação ou pós-graduação da UFRN.
+Esta competição faz parte das atividades da Semana da Estatística 2018, evento no qual o Departamento de Estatística da UFRN estará comemorando 45 anos.</description>
+    </item>
+    
+    <item>
+      <title>Tutorial: Como Fazer o Seu Primeiro Projeto de Data Science</title>
+      <link>/posts/primeiro-projeto-de-data-science/</link>
+      <pubDate>Sun, 01 Jul 2018 08:54:00 -0300</pubDate>
+      
+      <guid>/posts/primeiro-projeto-de-data-science/</guid>
+      <description>Introdução O principal objetivo deste texto é mostrar como é possível, utilizando apenas recursos gratuitos na internet, realizar um projeto de data science do início ao fim. Vamos treinar um algoritmo de classificação de dados baseado em uma técnica chamada Random Forest (link em inglês, pois a Wikipedia em Português ainda não possui um verbete sobre este assunto)], capaz de realizar tanto tarefas de classificação quanto de regressão.
+O público-alvo deste texto são as pessoas que já possuem alguma experiência com Estatística e estão interessadas em aprender melhor como aplicar estes conhecimentos já adquiridos em uma área nova, como machine learning.</description>
+    </item>
+    
+    <item>
+      <title>Utilizando Estatística para Decidir qual Cerveja Beber - Parte 2</title>
+      <link>/posts/utilizando-estatistica-para-decidir-qual-cerveja-beber-parte-2/</link>
+      <pubDate>Tue, 27 Feb 2018 11:30:00 -0300</pubDate>
+      
+      <guid>/posts/utilizando-estatistica-para-decidir-qual-cerveja-beber-parte-2/</guid>
+      <description>Sou maior de idade, pago meus impostos e contribuo para o PIB. Portanto, nada me impede de ocasionalmente beber uma ou outra cerveja em meus momentos de lazer. Embora eu tenha as minhas preferências pessoais neste assunto, estive pensando qual seria a opinião geral do brasileiro a respeito das cervejas disponíveis no mercado. De acordo com o G1, cada brasileiro consumiu, em média, 60,7 litros de suco de cevada em 2017, o que serve como indicativo do quanto o povo daqui curte uma ampola (ou talvez mais) deste diurético.</description>
+    </item>
+    
+    <item>
+      <title>Teria sido possível evitar o desastre da Challenger?</title>
+      <link>/posts/teria-sido-possivel-evitar-o-desastre-da-challenger/</link>
+      <pubDate>Thu, 15 Feb 2018 12:04:00 -0300</pubDate>
+      
+      <guid>/posts/teria-sido-possivel-evitar-o-desastre-da-challenger/</guid>
+      <description>Creio que as duas imagens mais marcantes em toda a história do programa espacial norte-americano sejam a caminhada de Neil Armostrong na Lua e a explosão do ônibus espacial Challenger. Esta tragédia, exibida ao vivo pela TV em 28 de janeiro de 1986, chocou o mundo.
+Após uma cuidadosa investigação, a NASA concluiu que a explosão ocorreu devido ao mau funcionamento de uma peça chamada O-ring, que deveria manter a junção entre as partes dos foguetes que levariam a Challenger para o espaço.</description>
+    </item>
+    
+  </channel>
+</rss>

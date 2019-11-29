@@ -1,0 +1,34 @@
+---
+title: Consultoria
+description: Difusão de conhecimento e tecnologia
+type: page
+#featured_image: 'images/banners/pessoal.jpg'
+menu:
+  main: {}
+weight: 35
+---
+
+**Consultoria Acadêmica**
+
+Sou o atual coordenador do Laboratório de Estatística Aplicada (LEA), órgão do Departamento de Estatística que presta consultoria estatística à comunidade. As consultorias prestadas por este laboratório são gratuitas e disponíveis a toda comunidade acadêmica, não apenas da UFRN. 
+
+O laboratório é focado em projetos de colaboração estatística de curta duração. A equipe do LEA oferece consultorias nas áreas abaixo, embora não esteja limitada a apenas elas:
+
+- Estatística descritiva
+- Amostragem
+- Planejamento de experimentos
+- Ensaios clínicos
+- Análise multivariada
+- Modelos de regressão
+- Séries temporais
+- Estatística não-paramétrica
+- Aprendizagem de máquina
+- Treinamentos no software R
+
+O edital para pedidos de colaboração estatística é lançado duas vezes ao ano, nos períodos de férias da universidade. Tire as suas dúvidas ou marque uma reunião com a equipe do LEA através do email [lea.ccet.ufrn@gmail.com](mailto:lea.ccet.ufrn@gmail.com).
+
+**Consultoria Profissional**
+
+Também estou aberto à propostas de consultorias para empresas e profissionais em geral, seja na forma de trabalhos aplicados ou cursos de estatística ou programação. Mande um email para [marcus@marcusnunes.me](mailto:marcus@marcusnunes.me) e podemos acertar os detalhes.
+
+Dê uma olhada no [blog](https://marcusnunes.me/posts/) deste site para ter uma ideia do que é possível fazer com estatística.

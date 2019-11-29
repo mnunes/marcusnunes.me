@@ -1,0 +1,139 @@
+---
+title: "Dia do Pi 2019"
+description: "Visualizando a constante mais famosa da matemática"
+tags: ["comemoração", "matemática", "pi"]
+draft: false
+date: 2019-03-14T06:51:00-03:00
+---
+
+
+
+<p>O Pi (ou π) é uma constante matemática. É definido como a razão entre o comprimento de uma circunferência e seu diâmetro. Seu valor aproximado para duas casas decimais é 3,14. <a href="pi.dat">Neste link</a> é possível ver o primeiro milhão de casas decimais de π (o número 3, referente à unidade, foi excluído).</p>
+<p>Hoje, dia 14 de março, é comemorado o <a href="https://pt.wikipedia.org/wiki/Dia_do_Pi">Dia do Pi</a>. Isto se deve à maneira como se representam as datas nos Estados Unidos. Como 3/14 é a maneira utilizada se fazer referência ao dia 14 de março no sistema daquele país, convencionou-se considerar este dia como sendo o Dia do Pi.</p>
+<p>Para não deixar a data passar em branco, resolvi fazer duas coisas. A primeira delas é verificar quantas vezes cada dígito de 0 a 9 aparece no primeiro milhão de casas decimais de π. Assim, seria possível tentar encontrar algum padrão nestes números, embora seja provado pela matemática que π não possui padrão algum, ao menos em seu primeiro milhão de dígitos.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Dígito
+</th>
+<th style="text-align:right;">
+Frequência
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+99959
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+99758
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+100026
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+100229
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+100230
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:right;">
+100359
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:right;">
+99548
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:right;">
+99800
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:right;">
+99985
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:right;">
+100106
+</td>
+</tr>
+</tbody>
+</table>
+<p>Como podemos ver, há dígitos que ocorrem mais do que outros. Por exemplo, o dígito 6 ocorre 100359 vezes no primeiro milhão de casas decimais, enquanto 7 ocorre apenas 99548 vezes. Embora hajam 811 ocorrências a mais de 6 do que 7, se formos olhar de modo percentual, isto equivale a uma diferença de apenas 0,8%. Não dá pra dizer que é algo considerável.</p>
+<p>Mas também é possível visualizar os dígitos de π, procurando padrões visuais neles. A figura abaixo tem dimensão 1000 x 1000 pixels. Cada pixel foi colorido com uma cor variando do azul bem escuro ao azul bem claro. São 10 tonalidades, variando de acordo com a posição do dígito no π. E o que podemos perceber na imagem?</p>
+<p><img src="/posts/dia-do-pi_files/figure-html/heatmap-1.png" width="672" /></p>
+<p>Absolutamente nada. O π é apenas ruído. Não é possível distinguir a imagem formada pelo primeiro milhão de dígitos de π e uma tela de televisão antiga exibindo estática.</p>
+<p>O código para reproduzir este estudo está, como sempre, disponível logo abaixo:</p>
+<pre class="r"><code># pacotes necessarios
+
+library(tidyverse)
+theme_set(theme_bw())
+
+# leitura dos dados
+
+pi &lt;- read.table(file=&quot;pi.dat&quot;, header = FALSE, colClasses = &quot;character&quot;)
+
+# converter as strings em numeros,
+# criando um vetor de 1e6 posicoes
+
+pi &lt;- as.numeric(unlist(apply(pi, 2, strsplit, split=&quot;&quot;)))
+
+# frequencia das casas decimais
+
+table(pi)
+
+# mapa de calor
+
+pi.grid         &lt;- expand.grid(x=1:1000, y=1:1000)
+pi.grid$digitos &lt;- pi
+
+ggplot(pi.grid, aes(x, y)) +
+  geom_raster(aes(fill = digitos)) +
+  scale_fill_continuous(breaks = seq(0, 9, 3)) +
+  labs(x=&quot;&quot;, y=&quot;&quot;, fill = &quot;Dígitos&quot;)</code></pre>

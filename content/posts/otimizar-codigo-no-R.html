@@ -1,0 +1,86 @@
+---
+title: "De Dois Meses e Meio para Menos de Uma Hora: Como Otimizei o Código de um Programa no R"
+description: "Neste texto explico como uma tarefa que levaria mais de dois meses rodando foi finalizada em 55 minutos"
+tags: ["eficiência", "programação"]
+draft: false
+date: 2018-08-25T18:30:00-03:00
+---
+
+
+
+<p>Estou trabalhando em um novo projeto com meu conjunto de dados sobre os pedidos de reembolso dos deputados federais brasileiros (falei com detalhes sobre este projeto <a href="https://marcusnunes.me/post/controle-de-gastos-publicos-como-verificar-quanto-os-deputados-federais-estao-gastando/">neste link</a>).</p>
+<p>Um aspecto importante neste novo projeto é encontrar os pedidos de reembolso dos deputados por empresa contratada. O problema é que o cadastro destes pedidos é feito por seres humanos e, ao procurar os das empresas, encontramos situações assim:</p>
+<pre><code>vivo
+VIVO
+VIVO - TELEFONICA BRASIL
+VIVO - TELEFONICA Brasil S.A.
+VIVO CELULAR
+VIVO S. A.
+VIVO S.A
+VIVO S.A.
+VIVO S/A
+VIVO SA</code></pre>
+<p>Qual é a diferença entre <code>vivo</code> e <code>VIVO</code>? Em teoria, nenhuma. Mas o computador vai considerar estas duas ocorrências como empresas diferentes, pois estão cadastradas de maneira diferente no sistema. Então como melhorar estes registros? Como evitar que o computador entenda errado a qual empresa cada gasto está atribuído?</p>
+<p>O que vou descrever a seguir é a maneira com a qual lidei com este problema.</p>
+<div id="utilizar-distâncias-entre-strings" class="section level1">
+<h1>Utilizar distâncias entre strings</h1>
+<p>Minha primeira ideia foi comparar distâncias entre as strings. Por exemplo, o quão distantes as expressões <code>VIVO S.A</code> e <code>VIVO S.A.</code> estão entre si? Não parece ser muito, pois apenas um ponto difere as duas strings. Portanto, seria possível utilizar uma função como <code>levenshteinSim</code>, do pacote <code>RecordLinkage</code>, para fazer este trabalho.</p>
+<p>O problema é que o conjunto de dados de reembolsos é muito grande. São 3.100.697 registros no momento em que escrevo este texto, em 25 de agosto de 2018. Seria necessário comparar cada empresa com as outras 3.100.696 de que aparecem nos registros para, justamente, encontrar as que possuem nomes parecidos.</p>
+<p>Fazer isto uma vez não é complicado. Veja, por exemplo, o caso da empresa chamada <code>vivo</code>:</p>
+<pre><code>system.time(x &lt;- levenshteinSim(&quot;vivo&quot;, as.character(camara$supplier)))
+  user  system elapsed 
+2.142   0.032   2.186 </code></pre>
+<p>Em 2,186 segundos meu computador conseguiu comparar a string <code>vivo</code> com todos os 3.100.697 registros. O problema é repetir isto mais 3.100.696 vezes. Numa conta de padaria, a estimativa é que este trabalho leve 6.778.123.642 segundos, o que equivale a 78,5 dias. É algo inviável.</p>
+</div>
+<div id="classificar-por-cnpj-ou-cpf" class="section level1">
+<h1>Classificar por CNPJ ou CPF</h1>
+<p>Felizmente, o <a href="https://marcusnunes.me/post/controle-de-gastos-publicos-como-verificar-quanto-os-deputados-federais-estao-gastando/">conjunto de dados reembolsos</a> possui uma coluna com o CNPJ ou CPF do prestador de serviços. Com isso, minha próxima ideia foi a seguinte:</p>
+<ol style="list-style-type: decimal">
+<li><p>Agrupar os dados por CNPJ ou CPF</p></li>
+<li><p>Contar o número de ocorrências de cada grafia do nome da empresa</p></li>
+<li><p>Definir o nome verdadeiro da empresa como o mais comum nesta contagem</p></li>
+</ol>
+<p>E assim eu fiz. Rodei o código abaixo, que faz a tabulação descrita acima e substitui os nomes de 100 das empresas que prestaram serviço à câmara:</p>
+<pre><code>dados.tabulados &lt;- camara %&gt;%
+  select(cnpj_cpf, supplier) %&gt;%
+  group_by(cnpj_cpf) %&gt;%
+  summarize(supplier=names(which.max(table(supplier))))
+
+ti &lt;- proc.time()
+
+for (j in 1:100){
+  camara[camara$cnpj_cpf %in% dados.tabulados$cnpj_cpf[j], ]$supplier &lt;- dados.tabulados$supplier[j]
+}
+
+proc.time() - ti
+
+   user  system elapsed 
+473.308  42.932 524.650 </code></pre>
+<p>Mas 524,650 segundos é o tempo que o algoritmo leva pra analisar 100 empresas. Como são 87.972 CPNJs únicos, ele levaria 461.545 segundos (ou 5 dis e 8 horas) pra rodar completamente.</p>
+<p>Isso ainda não me deixava satisfeito.</p>
+</div>
+<div id="mas-será-que-dá-pra-melhorar" class="section level1">
+<h1>Mas Será que Dá pra Melhorar?</h1>
+<p>Dá. Além das milhões de linhas, o conjunto de dados <code>camara</code> possui 29 colunas. Só que apenas duas são necessárias para realizar este trabalho. Assim, criei um novo conjunto chamado <code>dados</code>, apenas com as colunas <code>cnpj_cpf</code> e <code>supplier</code>, para fazer estas atribuições. O resultado está abaixo:</p>
+<pre><code>ti &lt;- proc.time()
+
+for (j in 1:100){
+  dados[dados$cnpj_cpf %in% dados.tabulados$cnpj_cpf[j], ]$supplier &lt;- dados.tabulados$supplier[j]
+}
+
+proc.time() - ti
+
+ user  system elapsed 
+3.573   1.328   5.489</code></pre>
+<p>Foram apenas 5,489 segundos para fazer 100 empresas. Portanto, para rodar este código para todas as 87.972 empresas únicas, eu levaria 4.829 segundos para rodá-lo (ou um pouco mais de uma hora e meia).</p>
+</div>
+<div id="funções-otimizadas" class="section level1">
+<h1>Funções Otimizadas</h1>
+<p>Veja acima que eu havia usado o comando <code>%in%</code> do R básico para realizar a atribuição dos nomes corrigidos das empresas. Descobri recentemente que o pacote <code>data.table</code> possui a função <code>%chin%</code>. Ela é similar ao <code>%in%</code>, mas é otimizada para trabalhar com caracteres e strings.</p>
+<p>Com isso, o meu código que levaria uma hora e meia para rodar, acabou finalizando em menos tempo. De acodo com meus testes, a função <code>%chin%</code> leva em torno de 70% do tempo da função <code>%in%</code> para rodar. Desta forma, acabei levando pouco menos de uma hora (55 minutos, para ser mais preciso) para realizar o trabalho que precisava.</p>
+</div>
+<div id="próximos-passos" class="section level1">
+<h1>Próximos Passos</h1>
+<p>A partir de agora, meu próximo passo é paralelizar o código. Embora eu tenha conseguido reduzir muito o tempo de execução do programa, de 78 dias para menos de 1 hora, tenho certeza que ainda é possível melhorar mais.</p>
+<p>Se eu conseguir, de alguma forma, retirar o <code>for</code> de um core e dividi-lo em mais processadores, meu trabalho ficará ainda mais rápido.</p>
+</div>

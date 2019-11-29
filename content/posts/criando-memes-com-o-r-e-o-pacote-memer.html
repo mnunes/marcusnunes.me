@@ -1,0 +1,52 @@
+---
+title: "Criando Memes com o R e o Pacote memer"
+description: "Porque não é só de pesquisa que vive o ser humano"
+tags: ["humor", "internet", "meme", "r"]
+draft: false
+date: 2019-04-22T05:20:00-03:00
+---
+
+
+
+<p>O pacote <a href="https://github.com/sctyner/memer">memer</a> foi criado para facilitar a criação de imagens macro (os famosos memes) a partir do <code>R</code>. Abaixo mostro como instalar este pacote e como usá-lo para criar imagens deste tipo.</p>
+<div id="instalacao" class="section level2">
+<h2>Instalação</h2>
+<p>A instalação é bem simples. Como ele está hospedado no github, é necessário instalar o pacote <code>devtools</code> em seu computador para que o pacote <code>memer</code> seja instalado. Os cokandos para isso são os seguintes:</p>
+<pre class="r"><code># install.packages(&quot;devtools&quot;)
+devtools::install_github(&quot;sctyner/memer&quot;)</code></pre>
+<p>Com isto feito, basta carregá-lo e verificar quais são os memes disponíveis:</p>
+<pre class="r"><code>library(memer)
+meme_list()</code></pre>
+<pre><code>##  [1] &quot;AllTheThings&quot;       &quot;AmericanChopper&quot;    &quot;AncientAliens&quot;     
+##  [4] &quot;BatmanRobin&quot;        &quot;DistractedBf&quot;       &quot;EvilKermit&quot;        
+##  [7] &quot;ExpandingBrain&quot;     &quot;FirstWorldProbs&quot;    &quot;FryNotSure&quot;        
+## [10] &quot;HotlineDrake&quot;       &quot;IsThisAPigeon&quot;      &quot;NoneOfMyBusiness&quot;  
+## [13] &quot;CheersLeo&quot;          &quot;OneDoesNotSimply&quot;   &quot;DosEquisMan&quot;       
+## [16] &quot;OffRamp&quot;            &quot;OprahGiveaway&quot;      &quot;Philosoraptor&quot;     
+## [19] &quot;PicardFacePalm&quot;     &quot;PicardWTH&quot;          &quot;Purples&quot;           
+## [22] &quot;PutItPatrick&quot;       &quot;Rainbow&quot;            &quot;ShiaJustDoIt&quot;      
+## [25] &quot;Spongebob&quot;          &quot;SuccessKid&quot;         &quot;ThatWouldBeGreat&quot;  
+## [28] &quot;TheRockDriving&quot;     &quot;ThinkAboutIt&quot;       &quot;TrumpBillSigning&quot;  
+## [31] &quot;TwoButtonsAnxiety&quot;  &quot;WhatIfIToldYou&quot;     &quot;CondescendingWonka&quot;
+## [34] &quot;YoDawg&quot;             &quot;Y-U-NOguy&quot;</code></pre>
+<p>A partir daqui começa a diversão.</p>
+</div>
+<div id="criacao-de-memes" class="section level2">
+<h2>Criação de Memes</h2>
+<p>Vou começar com um exemplo simples. Veja na lista acima o meme <code>"BatmanRobin"</code>. Para criar um meme com esta imagem, basta utilizar a função <code>meme_get()</code> e selecionar a opção <code>"BatmanRobin"</code>. Depois, juntamos a função <code>meme_text_batman()</code> para escrever frases nos balões dos personagens.</p>
+<pre class="memer02"><code>library(dplyr)
+meme_get(&quot;BatmanRobin&quot;) %&gt;% 
+  meme_text_batman(robin  = &quot;Estudei 20 horas no Udemy e virei cientista de dados!&quot;,
+                   batman = &quot;Eu não acredito no que eu ouvi. Você é um menino ainda!&quot;)</code></pre>
+<p><img src="/images/batman_e_robin.png" /></p>
+<p>Cada meme possui suas próprias funções para colocação de texto na imagem. Se eu criar um meme com o namorado distraído, preciso utilizar a função <code>meme_text_distbf()</code> para colocar os textos nos locais corretos:</p>
+<pre class="memer03"><code>meme_get(&quot;DistractedBf&quot;) %&gt;% 
+  meme_text_distbf(newgirl = &quot;Cientistas de \nDados&quot;, guy = &quot;Mercado de \nTrabalho&quot;, oldgirl = &quot;Estatísticos&quot;, size = 30)</code></pre>
+<p><img src="/images/distracted_boyfriend.png" /></p>
+<p>A string <code>\n</code> significa quebra de linha, o que permite que formatemos o texto da maneira mais adequada possível. Além disso, o argumento <code>size</code> ajusta o tamanho da fonte usada no meme.</p>
+<p>Instale o pacote no seu computador e compartilhe nos comentários as suas criações!</p>
+<pre class="memer04"><code>meme_get(&quot;FryNotSure&quot;) %&gt;% 
+  meme_text_top(&quot;Não sei se isso é algo útil&quot;) %&gt;%
+  meme_text_bottom(&quot;Ou só mais uma ferramenta \ncriada pra eu procrastinar&quot;)</code></pre>
+<p><img src="/images/fry_meme.png" /></p>
+</div>

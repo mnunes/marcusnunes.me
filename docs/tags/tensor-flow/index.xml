@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tensor Flow on Marcus Nunes&#39; Blog</title>
+    <link>/tags/tensor-flow/</link>
+    <description>Recent content in Tensor Flow on Marcus Nunes&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Wed, 12 Dec 2018 08:54:00 -0300</lastBuildDate>
+    
+	<atom:link href="/tags/tensor-flow/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tutorial: Usando Deep Learning para Criar Letras de Músicas Sertanejas</title>
+      <link>/posts/usando-deep-learning-para-criar-letras-de-musicas-sertanejas/</link>
+      <pubDate>Wed, 12 Dec 2018 08:54:00 -0300</pubDate>
+      
+      <guid>/posts/usando-deep-learning-para-criar-letras-de-musicas-sertanejas/</guid>
+      <description>Introdução Este é mais um post na série de tutorias deste blog. No primeiro texto eu ensinei a fazer classificação utilizando Random Forest. Hoje, como o título do post diz, eu vou mostrar como podemos utilizar a biblioteca Keras para fazer o computador ler as letras das músicas de vários artistas de sertanejo universitário e ensiná-lo a produzir novas letras no estilo.
+O procedimento completo para fazer esta tarefa está descrito logo abaixo.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Analise on Marcus Nunes&#39; Blog</title>
+    <link>/tags/analise/</link>
+    <description>Recent content in Analise on Marcus Nunes&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Fri, 27 Jul 2018 08:15:00 -0300</lastBuildDate>
+    
+	<atom:link href="/tags/analise/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Como Detectar Fraudes nas Contas dos Deputados Federais Utilizando a Lei de Benford</title>
+      <link>/posts/como-detectar-fraudes-com-a-lei-de-benford/</link>
+      <pubDate>Fri, 27 Jul 2018 08:15:00 -0300</pubDate>
+      
+      <guid>/posts/como-detectar-fraudes-com-a-lei-de-benford/</guid>
+      <description>Introdução Neste texto vou mostrar como procurar por fraudes nos pedidos de reembolsos feitos pelos deputados federais brasileiros. Pra quem não sabe, eu criei uma ferramenta
+O Que Diz a Lei de Benford? A Lei de Benford diz que um conjunto de números é dito satisfazer a Lei de Benford se o primeiro dígito $d$ deste número ocorrer com probabilidade $P(d)$ dada por
+$$P(d) = \log_{10} \left( 1 + \frac{1}{d} \right)$$</description>
+    </item>
+    
+  </channel>
+</rss>

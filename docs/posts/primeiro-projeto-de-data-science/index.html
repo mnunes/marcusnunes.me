@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+
+<meta itemprop="name" content="Tutorial: Como Fazer o Seu Primeiro Projeto de Data Science">
+<meta itemprop="description" content="Faça o seu primeiro projeto de data science a partir do zero, desde a obtenção dos dados, passando pela sua análise exploratória e chegando a um modelo de previsão">
+
+
+<meta itemprop="datePublished" content="2018-07-01T08:54:00-03:00" />
+<meta itemprop="dateModified" content="2018-07-01T08:54:00-03:00" />
+<meta itemprop="wordCount" content="3447">
+
+
+
+<meta itemprop="keywords" content="curso,data science,ensino,machine learning,random forest,tutorial," />
+<meta property="og:title" content="Tutorial: Como Fazer o Seu Primeiro Projeto de Data Science" />
+<meta property="og:description" content="Faça o seu primeiro projeto de data science a partir do zero, desde a obtenção dos dados, passando pela sua análise exploratória e chegando a um modelo de previsão" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/primeiro-projeto-de-data-science/" />
+<meta property="article:published_time" content="2018-07-01T08:54:00-03:00"/>
+<meta property="article:modified_time" content="2018-07-01T08:54:00-03:00"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tutorial: Como Fazer o Seu Primeiro Projeto de Data Science"/>
+<meta name="twitter:description" content="Faça o seu primeiro projeto de data science a partir do zero, desde a obtenção dos dados, passando pela sua análise exploratória e chegando a um modelo de previsão"/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Tutorial: Como Fazer o Seu Primeiro Projeto de Data Science</title>
+	<link rel="stylesheet" href="/css/style.min.2abea836b35631572d081e3a3c4e1ab54d8a33a8d87fa93c9b79831551fd44ce.css" integrity="sha256-Kr6oNrNWMVctCB46PE4atU2KM6jYf6k8m3mDFVH9RM4=">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="/">Marcus Nunes&#39; Blog</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					<a href="/posts/">Posts</a>
+					<a href="/sobre/">Sobre</a>
+					<a href="/ensino/">Ensino</a>
+					<a href="/pesquisa/">Pesquisa</a>
+					<a href="/shiny/">Shiny</a>
+					<a href="/midia/">Mídia</a>
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://twitter.com/_marcus_nunes_" target="_blank" rel="noopener" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/grandeabobora" target="_blank" rel="noopener" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/mnunes" target="_blank" rel="noopener" title="Github"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://pt.stackoverflow.com/users/49033/marcus-nunes" target="_blank" rel="noopener" title="Stackoverflow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a><a href="http://www.linkedin.com/in/marcusanunes" target="_blank" rel="noopener" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="https://marcusnunes.me/contato" target="_blank" rel="noopener" title="Email"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="/posts/">Posts</a></li>
+			<li><a href="/sobre/">Sobre</a></li>
+			<li><a href="/ensino/">Ensino</a></li>
+			<li><a href="/pesquisa/">Pesquisa</a></li>
+			<li><a href="/shiny/">Shiny</a></li>
+			<li><a href="/midia/">Mídia</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Jul 1, 2018</span></div>
+				<h1>Tutorial: Como Fazer o Seu Primeiro Projeto de Data Science</h1>
+			</header>
+			<div class="content">
+				
+
+
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
+<p>O principal objetivo deste texto é mostrar como é possível, utilizando apenas recursos gratuitos na internet, realizar um projeto de data science do início ao fim. Vamos treinar um algoritmo de classificação de dados baseado em uma técnica chamada <a href="https://en.wikipedia.org/wiki/Random_forest">Random Forest (link em inglês, pois a Wikipedia em Português ainda não possui um verbete sobre este assunto)</a>], capaz de realizar tanto tarefas de classificação quanto de regressão.</p>
+<p>O público-alvo deste texto são as pessoas que já possuem alguma experiência com Estatística e estão interessadas em aprender melhor como aplicar estes conhecimentos já adquiridos em uma área nova, como machine learning. Pessoas com menos experiência talvez tenham um pouco mais de dificuldade na leitura, mas tenho certeza que, ao procederem com calma e atenção, serão recompensados e aprenderão muito.</p>
+</div>
+<div id="preparação-do-software" class="section level1">
+<h1>Preparação do Software</h1>
+<p>Quem já possui os programas R e RStudio instalados em seu computador pode pular esta parte do tutorial. Entretanto, sugiro que <a href="https://github.com/mnunes/primeiro-projeto-de-data-science">baixe o arquivo com os códigos organizados</a> para que fique mais fácil de acompanhar este texto.</p>
+<p>Há diversos programas disponíveis para fazer data science. Os dois principais são R e python. Este tutorial foi escrito pensado na linguagem R para ser rodado. Particularmente, prefiro o R ao python, pois a sintaxe dele é, para mim, mais fácil de entender. Mas isto é gosto pessoal. Tudo o que foi feito aqui pode ser adaptado e realizado em qualquer outra linguagem que o leitor prefira, como python, julia ou matlab, por exemplo.</p>
+<p>Se o seu computador não possua o R e o RStudio instalado, clique nos links abaixo e instale-os.</p>
+<ul>
+<li><p><a href="http://cran.fiocruz.br/">R</a>: este programa é o cerne da análise. É ele que vai realizar os cálculos e plotar os gráficos da análise.</p></li>
+<li><p><a href="https://www.rstudio.com/products/rstudio/download/">RStudio</a>: a interface padrão do R não é muito amigável de utilizar. Entretanto, é possível melhorá-la para que ela fique mais interativa. Desta forma, nossa produtividade aumenta. Portanto, o RStudio serve para melhorar a utilização do R, deixando-a mais dinâmica.</p></li>
+</ul>
+<p>Uma característica do R é que suas funções podem ser expandidas com comandos e funções criados pela comunidade. E são milhares (se não forem milhões) de expansões assim. Estas expansões estão em pacotes que podem ser instalados via internet. Para instalar os pacotes extras necessários para esta análise, abra o RStudio e vá ao menu File &gt; New File &gt; R Script, como mostra a figura abaixo:</p>
+<div class="figure">
+<img src="/images/novo_script.png" alt="" />
+<p class="caption">Novo script</p>
+</div>
+<p>Com o script aberto, rode o comando abaixo e aguarde. Vários arquivos serão baixados e o R vai informando o progresso da instalação.</p>
+<pre class="r"><code>install.packages(c(&quot;tidyverse&quot;, &quot;corrplot&quot;, &quot;GGally&quot;, &quot;caret&quot;, 
+    &quot;rpart&quot;, &quot;rpart.plot&quot;), dependencies = TRUE)</code></pre>
+<p>Este passo pode demorar um pouco, dependendo da velocidade da sua conexão com a internet.</p>
+<p>Com tudo preparado, é hora de começar a análise.</p>
+</div>
+<div id="análise-exploratória-dos-dados" class="section level1">
+<h1>Análise Exploratória dos Dados</h1>
+<p>Como não poderia deixar de ser, a primeira parte de um projeto de data science segue a mesma lógica de um projeto de análise estatística de dados. Precisamos fazer a análise exploratória a fim de entender o conjunto de dados com o qual estamos trabalhando.</p>
+<p>O conjunto de dados que vou baixar se chama <a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">Iris Flower Dataset</a>. Por ser multivariado e com um número razoável de observações, este conjunto é bastante famoso na literatura estatística. Até mesmo Fisher já trabalhou conceitos de análise multivariada com estes dados.</p>
+<p>Seu nome é Iris porque foram coletadas observações de 150 sujeitos de 3 espécies de flores do gênero <em>Iris</em>: <em>Iris setosa</em>, <em>Iris versicolor</em> e <em>Iris virginica</em>. Mais informações sobre estas flores podem ser encontradas na <a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">Wikipedia</a>.</p>
+<p>Embora o conjunto de dados iris esteja disponível em qualquer instalação do R, este tutorial vai mostrar como obter dados diretamente da internet. Então é isto que faremos abaixo, baixando este conjunto iris diretamente do site do <a href="http://archive.ics.uci.edu/ml/">UCI Machine Learning Repository</a> e processando-o na sequência para análise.</p>
+<pre class="r"><code># definir o endereco do conjunto de dados e baixa-lo
+url &lt;- &quot;https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data&quot;
+iris &lt;- read.csv(url, header = FALSE)
+names(iris) &lt;- c(&quot;c_sepala&quot;, &quot;l_sepala&quot;, &quot;c_petala&quot;, &quot;l_petala&quot;, 
+    &quot;especie&quot;)
+# remover a string &#39;Iris-&#39; do inicio de cada tipo de especie
+iris$especie &lt;- as.factor(gsub(&quot;Iris-&quot;, &quot;&quot;, iris$especie))
+# estatistica descritiva basica
+summary(iris)</code></pre>
+<pre><code>##     c_sepala        l_sepala        c_petala        l_petala    
+##  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+##  Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+##  Mean   :5.843   Mean   :3.054   Mean   :3.759   Mean   :1.199  
+##  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+##  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+##        especie  
+##  setosa    :50  
+##  versicolor:50  
+##  virginica :50  
+##                 
+##                 
+## </code></pre>
+<p>Com isso, percebemos que temos um conjunto de dados formado por cinco variáveis. Quatro destas variáveis são quantitativas e uma é categórica. As variáveis são</p>
+<ul>
+<li><p>c_sepala: comprimento da sépala das flores</p></li>
+<li><p>l_sepala: largura da sépala das flores</p></li>
+<li><p>c_petala: comprimento da pétala das flores</p></li>
+<li><p>l_petala: largura da pétala das flores</p></li>
+<li><p>especie: espécie da flor</p></li>
+</ul>
+<p>Há diversas atividades que podem ser feitas com este conjunto de dados. O que farei aqui é uma tarefa de classificação. Vou ajustar um modelo que vai prever a espécie da planta baseado nas quatro dimensões de cada uma delas.</p>
+<p>É importante qual o objetivo do nosso primeiro projeto de data science logo no seu começo. Assim, podemos direcionar nossas análises diretamente para este fim, sem perder tempo realizando atividades que não contribuem para o nosso objetivo.</p>
+<p>Com o objetivo definido, vamos fazer algumas análises básicas. A primeira delas é verificar se existe correlação entre as nossas variáveis. Perceba que vou retirar a coluna 5 desta análise porque ela não é uma variável quantitativa.</p>
+<pre class="r"><code>library(corrplot)</code></pre>
+<pre><code>## corrplot 0.84 loaded</code></pre>
+<pre class="r"><code>correlacao &lt;- cor(iris[, -5])
+corrplot.mixed(correlacao, upper = &quot;ellipse&quot;)</code></pre>
+<p><img src="/posts/primeiro-projeto-de-data-science_files/figure-html/eda02-1.png" width="672" /></p>
+<p>Podemos perceber que existem valores razoáveis de correlação entre algumas das combinações de variáveis. Em particular, entre o comprimento e a largura da pétala. Podemos visualizar isto em um gráfico de dispersão:</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ───────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 3.2.1     ✔ purrr   0.3.3
+## ✔ tibble  2.1.3     ✔ dplyr   0.8.3
+## ✔ tidyr   1.0.0     ✔ stringr 1.4.0
+## ✔ readr   1.3.1     ✔ forcats 0.4.0</code></pre>
+<pre><code>## ── Conflicts ──────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>theme_set(theme_bw())
+ggplot(iris, aes(x = c_petala, y = l_petala)) + geom_point()</code></pre>
+<p><img src="/posts/primeiro-projeto-de-data-science_files/figure-html/eda03-1.png" width="672" /></p>
+<p>Embora já vejamos a relação que existe entre as variáveis comprimento e largura da pétala, podemos colocar mais informações neste gráfico. Por exemplo, podemos colorir os pontos de acordo com a espécie da planta.</p>
+<pre class="r"><code>ggplot(iris, aes(x = c_petala, y = l_petala, colour = especie)) + 
+    geom_point()</code></pre>
+<p><img src="/posts/primeiro-projeto-de-data-science_files/figure-html/eda04-1.png" width="672" /></p>
+<p>Agora podemos ver que o grupo de flores da espécie setosa está bastante separado dos demais. Esta é uma informação importante, pois queremos construir um algoritmo de classificação de espécies. Por outro lado, perceba que as espécies versicolor e virginica estão quase se confundindo uma com a outra. Isto pode acabar prejudicando um pouco o desempenho do nosso algoritmo de classificação.</p>
+<p>A fim de verificar como é o comportamento das outras variáveis, podemos extender o gráfico anterior para todas a combinações de variáveis neste conjunto de dados. Em vez de repetirmos manualmente o código, vamos utilizar a função <code>ggpairs</code> do pacote <code>GGally</code>:</p>
+<pre class="r"><code>library(GGally)</code></pre>
+<pre><code>## Registered S3 method overwritten by &#39;GGally&#39;:
+##   method from   
+##   +.gg   ggplot2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;GGally&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     nasa</code></pre>
+<pre class="r"><code># remover a variavel especie, pois nao eh quantitativa
+ggpairs(iris[, -5], aes(colour = iris$especie))</code></pre>
+<p><img src="/posts/primeiro-projeto-de-data-science_files/figure-html/eda05-1.png" width="672" /></p>
+<p>Veja que agora temos muitas informações sobre nossos dados. Para quem já tem alguma experiência em análise de dados, o que vemos é o seguinte:</p>
+<ul>
+<li><p>Diagonal principal: estimativas da função densidade de cada uma das quatro variáveis, de acordo com a espécie de flor</p></li>
+<li><p>Triângulo inferior: gráficos de dispersão das variáveis do conjunto de dados, duas a duas</p></li>
+<li><p>Triângulo superior: correlação total entre as variáveis e correlação dentro de cada grupo</p></li>
+</ul>
+<p>Com a análise exploratória dos dados terminada, podemos partir para o ajuste do modelo.</p>
+</div>
+<div id="ajuste-do-modelo" class="section level1">
+<h1>Ajuste do Modelo</h1>
+<p>Há uma infinidade de opções quando falamos de ajuste de modelos de classificação. Neste tutorial vou utilizar o <a href="https://en.wikipedia.org/wiki/Random_forest">Random Forest</a>, que é poderoso o suficiente, além de ter convergência rápida e ser de fácil utilização.</p>
+<p>O Random Forest é baseado em árvores de classificação. Sem entrar muito fundo na parte teórica, uma árvore de classificação é um modelo matemático que utiliza a estrutura de árvore de decisão para classificar dados. Melhor do que explicar isto em palavras é ver o algoritmo em ação:</p>
+<pre class="r"><code>library(rpart)
+library(rpart.plot)
+modelo &lt;- rpart(especie ~ ., method = &quot;class&quot;, data = iris)
+prp(modelo, extra = 1)</code></pre>
+<p><img src="/posts/primeiro-projeto-de-data-science_files/figure-html/arvore-1.png" width="672" /></p>
+<p>Perceba que é feita uma pergunta em cada nó da árvore. A resposta da pergunta determina se outra pergunta será feita ou se a árvore chegou ao fim e a classificação foi terminada. Além disso, o erro de classificação é determinado ao final da árvore.</p>
+<p>Uma Random Forest (ou Floresta Aleatória) é a combinação de centenas de árvores de classificação. Este resultado segue do fato de que a combinação de diversos modelos diferentes é melhor do que um modelo sozinho.</p>
+<div id="conjuntos-de-treino-e-teste" class="section level2">
+<h2>Conjuntos de Treino e Teste</h2>
+<p>Um problema que surge no ajuste de modelos de classificação e regressão é o <a href="https://pt.wikipedia.org/wiki/Sobreajuste">sobreajuste</a>. O sobreajuste ocorre quando o modelo se ajusta muito bem aos dados, se tornando ineficaz para prever observações novas.</p>
+<p>O gráfico abaixo ilustra este conceito no contexto de um modelo de classificação.</p>
+<p><img src="/posts/primeiro-projeto-de-data-science_files/figure-html/sobreajuste-1.png" width="672" /></p>
+<p>Note como o modelo sobreajustado acompanha os dados muito mais de perto, enquanto o modelo ajustado segue a tendência geral de separação dos pontos. A desvantagem de ter um modelo que acompanhe os dados de maneira muito próxima é a perda de generalidade. Este tipo de modelo funciona muito bem para um conjunto de dados específico, mas vai se comportar muito mal se novas observações forem coletadas.</p>
+<p>Uma forma de evitar este problema é dividindo aleatoriamente o conjunto de dados original em duas partes mutuamente exclusivas. Uma destas partes é chamada de conjunto de treino e, a outra, conjunto de teste. A ideia por trás disso é ajustar o modelo aos dados de treinamento e simular a entrada de novas observações através do conjunto de teste. Assim, é possível verificar quão bem ou quão mal o modelo ajustado está se comportando ao prever observações que não foram utilizadas em seu ajuste.</p>
+<p>Para fazer isto no R utilizamos a função <code>createDataPartition</code> do pacote <code>caret</code>.</p>
+<pre class="r"><code>library(caret)</code></pre>
+<pre><code>## Loading required package: lattice</code></pre>
+<pre><code>## 
+## Attaching package: &#39;caret&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     lift</code></pre>
+<pre class="r"><code># definir 75% dos dados para treino, 25% para teste
+trainIndex &lt;- createDataPartition(iris$especie, p = 0.75, list = FALSE)
+iris_treino &lt;- iris[trainIndex, ]
+iris_teste &lt;- iris[-trainIndex, ]</code></pre>
+<p>Ao fazer <code>iris_treino &lt;- iris[ trainIndex, ]</code> eu estou dizendo que o conjunto de dados <code>iris_treino</code> vai ter as linhas de <code>iris</code> com os números presentes em <code>trainIndex</code>. De modo análogo, <code>iris_teste &lt;- iris[-trainIndex, ]</code> diz que o conjunto de dados <code>iris_teste</code> <strong>não</strong> vai ter as linhas de <code>iris</code> com os números presentes em <code>trainIndex</code></p>
+<p>Agora tenho dois data frames novos em minha área de trabalho. 75% das observações estão no conjunto de treino e 25% no conjunto de teste. Esta divisão é arbitrária. Normalmente, recomenda-se que o conjunto de treino tenha de 70% a 80% das observações. O restante das observações irá fazer parte do conjunto de teste.</p>
+<p>Ocorre que esta divisão dos dados em dois grupos tem uma desvantagem. Isto acaba fazendo com que tenhamos menos dados para ajustar o modelo. E, com menos dados para ajustar o modelo, menos informação temos. Com menos informação, pior ficará nosso modelo. Uma maneira de reduzir este efeito é através da validação cruzada.</p>
+</div>
+<div id="validação-cruzada" class="section level2">
+<h2>Validação Cruzada</h2>
+<p>A <a href="https://pt.wikipedia.org/wiki/Valida%C3%A7%C3%A3o_cruzada">validação cruzada</a> é mais um método utilizado para evitar sobreajuste no modelo. A ideia é ajustar diversas vezes o mesmo modelo em partições (conjuntos mutuamente exclusivos) do conjunto de treinamento original. Neste exemplo eu vou utilizar um método chamado validação cruzada <span class="math inline">\(k\)</span>-<em>fold</em>.</p>
+<p>Esta técnica consiste em cinco passos:</p>
+<ol style="list-style-type: decimal">
+<li><p>Separar o conjunto de treinamento em <span class="math inline">\(k\)</span> <em>folds</em> (ou partições)</p></li>
+<li><p>Ajustar o modelo em <span class="math inline">\(k-1\)</span> <em>folds</em></p></li>
+<li><p>Testar o modelo no <em>fold</em> restante</p></li>
+<li><p>Repetir os passos 2 e 3 até que todos os <em>folds</em> tenham sido utilizados para teste</p></li>
+<li><p>Calcular a acurácia do modelo</p></li>
+</ol>
+<p>Entretanto, precisamos definir o número de <em>folds</em> a serem utilizados na validação cruzada. Em geral, a literatura sugere que de 5 a 10 <em>folds</em> sejam usados. O desempenho dos algoritmos não melhora de maneira considerável se aumentarmos muito o número de <em>folds</em>.</p>
+<p>Dependendo do tamanho do conjunto de dados, é possível que muitos <em>folds</em> acabem deixando-nos sem observações para os conjuntos de teste dentro da validação cruzada. Por este motivo, é sempre bom controlar este parâmetro de acordo com o conjunto de dados que estamos estudando.</p>
+<p>Com estas técnicas definidas, podemos finalmente passar para o ajuste do modelo.</p>
+</div>
+<div id="ajuste-do-modelo-1" class="section level2">
+<h2>Ajuste do Modelo</h2>
+<p>Como dito anteriormente, vamos ajustar um modelo chamado Random Forest aos dados das flores. Para realizar este ajuste precisamos criar os conjuntos de treino e teste e fazer a validação cruzada do modelo a ser ajustado. Como já criamos os conjuntos de treino e teste anteriormente, apenas precisamos nos preocupar com a validação cruzada do modelo.</p>
+<p>Felizmente, o pacote <code>caret</code> já possui o algoritmo da validação cruzada implementado. Só precisamos ser explícitos no ajuste do modelo para que este método seja utilizado.</p>
+<p>O <code>caret</code> utiliza duas funções para ajustar modelos aos dados, chamadas <code>train</code> e <code>trainControl</code>. Basicamente, a função <code>trainControl</code> estabelece os parâmetros utilizados no ajuste do modelo. Abaixo estou exemplificando como definir que desejamos fazer validação cruzada com 5 <em>folds</em>.</p>
+<pre class="r"><code>fitControl &lt;- trainControl(method = &quot;cv&quot;, number = 5)</code></pre>
+<p>Com os parâmetros da validação cruzada definidos, podemos partir para a o ajuste em si.</p>
+<pre class="r"><code>ajuste_iris &lt;- train(especie ~ ., data = iris_treino, method = &quot;rf&quot;, 
+    importance = TRUE, trControl = fitControl)</code></pre>
+<p>Note que defino várias coisas com a função <code>train</code>:</p>
+<ul>
+<li><p><code>especie ~ .</code> é a notação de fórmula do R, aquele mesma que se utiliza para se ajustar modelos de regressão linear com a função <code>lm</code>. Neste exemplo eu estou dizendo que quero prever <code>especie</code> em função de todas as outras variáveis do conjunto de dados.</p></li>
+<li><p><code>data = iris_treino</code> informa para o R em qual conjunto de dados ele deve procurar as variáveis presentes na fórmula definida acima</p></li>
+<li><p><code>method = "rf"</code> diz que vou ajustar um modelo do tipo Random Forest. Uma grande vantagem de usar o pacote <code>caret</code> é poder aprender uma sintaxe apenas e poder ajustar centenas de algoritmos diferentes, apenas mudando o argumento <code>method</code> da função <code>train</code>.</p></li>
+<li><p><code>importance = TRUE</code> é um argumento opcional que nos permitirá, posteriormente, fazer seleção de variáveis</p></li>
+<li><p><code>trControl = fitControl</code> define as opções da validação cruzada</p></li>
+</ul>
+<p>Para saber o resultado do ajuste, basta chamar o objeto ajuste_iris:</p>
+<pre class="r"><code>ajuste_iris</code></pre>
+<pre><code>## Random Forest 
+## 
+## 114 samples
+##   4 predictor
+##   3 classes: &#39;setosa&#39;, &#39;versicolor&#39;, &#39;virginica&#39; 
+## 
+## No pre-processing
+## Resampling: Cross-Validated (5 fold) 
+## Summary of sample sizes: 92, 90, 91, 91, 92 
+## Resampling results across tuning parameters:
+## 
+##   mtry  Accuracy   Kappa    
+##   2     0.9738801  0.9607672
+##   3     0.9738801  0.9607672
+##   4     0.9829710  0.9744318
+## 
+## Accuracy was used to select the optimal model using the largest value.
+## The final value used for the model was mtry = 4.</code></pre>
+<p>Note que há um parâmetro chamado <code>mtry</code> no output acima. Este parâmetro significa que os modelos foram ajustados com 2, 3 e 4 variáveis preditoras selecionadas aleatoriamente (na verdade, quando <code>mtry</code> = 4 temos todas as variáveis preditoras utilizadas no modelo). Ao final, o melhor modelo é aquele que utiliza 2 variáveis preditoras.</p>
+<p>Este resultado pode variar dependendo de como os dados foram selecionados durante as criação do conjunto de treinamento e teste e também de como a validação cruzada foi realizada, principalmente se estivermos com conjuntos de dados pequenos como este que utilizamos neste projeto.</p>
+<p>Além disso, note que aparecem duas medidas a respeito da qualidade da predição realizada. Para entendê-las, considere a tabela abaixo:</p>
+
+<p>Em um modelo de classificação, que desejamos é que os valores da diagonal da tabela sejam os maiores possíveis e os valores fora da diagonal sejam os menores possíveis. Estes valores são tão importantes que eles possuem nomes próprios:</p>
+<ul>
+<li><p><span class="math inline">\(a\)</span>: verdadeiro positivo</p></li>
+<li><p><span class="math inline">\(b\)</span>: falso negativo</p></li>
+<li><p><span class="math inline">\(c\)</span>: falso positivo</p></li>
+<li><p><span class="math inline">\(d\)</span>: verdadeiro negativo</p></li>
+</ul>
+<p>Assim, temos as seguintes medidas para avaliar o quão boa foi nossa predição:</p>
+<p><span class="math display">\[\textrm{Accuracy} = p_0 = \frac{a+d}{a+b+c+d}\]</span></p>
+<p>e</p>
+<p><span class="math display">\[
+    Kappa: 
+    \begin{align*}
+    p_{\mbox{Sim}} &amp;= \frac{a+b}{a+b+c+b} \times \frac{a+c}{a+b+c+b} \\
+    p_{\mbox{Não}} &amp;= \frac{c+d}{a+b+c+b} \times \frac{b+d}{a+b+c+b} \\
+    p_e            &amp;= p_{\mbox{Sim}} + p_{\mbox{Não}} \\
+    \end{align*}
+\]</span></p>
+<p>Com estas medidas definidas, o Kappa é dado por</p>
+<p><span class="math display">\[Kappa = \frac{p_0-p_e}{1-p_e}.\]</span></p>
+<p>Para não me alongar ainda mais, vou deixar a explicação da acurácia e do Kappa em aberto, mas basta saber que tanto a acurácia quanto o Kappa variam entre 0 e 1. Não obstante, quanto maiores estes valores, melhor é o ajuste do modelo.</p>
+<p>Finalizamos o ajuste testando se este modelo criado é capaz de classificar novos dados. Para isto, vamos utilizar o conjunto de teste definido anteriormente:</p>
+<pre class="r"><code>predicao &lt;- predict(ajuste_iris, iris_teste)
+confusionMatrix(predicao, iris_teste$especie)</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##             Reference
+## Prediction   setosa versicolor virginica
+##   setosa         12          0         0
+##   versicolor      0         12         4
+##   virginica       0          0         8
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.8889          
+##                  95% CI : (0.7394, 0.9689)
+##     No Information Rate : 0.3333          
+##     P-Value [Acc &gt; NIR] : 6.677e-12       
+##                                           
+##                   Kappa : 0.8333          
+##                                           
+##  Mcnemar&#39;s Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: setosa Class: versicolor Class: virginica
+## Sensitivity                 1.0000            1.0000           0.6667
+## Specificity                 1.0000            0.8333           1.0000
+## Pos Pred Value              1.0000            0.7500           1.0000
+## Neg Pred Value              1.0000            1.0000           0.8571
+## Prevalence                  0.3333            0.3333           0.3333
+## Detection Rate              0.3333            0.3333           0.2222
+## Detection Prevalence        0.3333            0.4444           0.2222
+## Balanced Accuracy           1.0000            0.9167           0.8333</code></pre>
+<p>A função <code>confusionMatrix</code> apresenta diversas estatísticas a respeito das previsões que realizamos. Note que apenas uma flor da espécie <em>Iris virginica</em> foi classificada de maneira inadequada. Todas as outras foram classificadas corretamente. Além disso, a acurácia está bastante alta, igual a 0,9722. O Kappa igual a 0,9583 também não é de se desprezar.</p>
+<p>Portanto, podemos concluir este projeto dizendo que fomos bem sucedidos ao utilizar o Random Forest para classificar as espécies de plantas de acordo com as variáveis comprimento e largura da sépala e comprimento e largura da pétala.</p>
+<p>Para finalizar, podemos verificar quais foram, dentre estas quatro variáveis preditoras, aquelas que tiveram a maior importância no modelo.</p>
+<pre class="r"><code>ggplot(varImp(ajuste_iris))</code></pre>
+<p><img src="/posts/primeiro-projeto-de-data-science_files/figure-html/ajuste05-1.png" width="672" /></p>
+<p>Como podemos ver, as variáveis relacionadas à pétala são mais importantes do que as variáveis relacionadas à sépala. Além disso, em termos de importância, a largura da pétala parece levar ligeira vantagem em relação ao comprimento.</p>
+</div>
+</div>
+<div id="ideias-para-novos-projetos" class="section level1">
+<h1>Ideias para Novos Projetos</h1>
+<p>Este texto que publiquei não toca em vários assuntos concernentes ao ajuste de modelos de machine learning. Por exemplo, eu não comentei sobre paralelização de código, não fui a fundo na descrição do modelo e não falei sobre o tuning dos hiperparâmetros da Random Forest. Tratarei destes assuntos em outra oportunidade.</p>
+<p>Obter dados para análise é algo trivial hoje em dia. Existem diversos sites que disponibilizam todo tipo de dados para as mais diversas tarefas. Abaixo eu listo algumas das minhas fontes preferidas para buscar dados abertos, colocadas mais ou menos em ordem de preferência e importância:</p>
+<ul>
+<li><p><a href="https://kaggle.com/datasets/">Kaggle</a>: Acredito que este seja, atualmente, o maior site sobre machine learning no mundo. Possui muitos conjuntos de dados disponíveis, nas mais variadas áreas. Além dos dados, há diversos projetos de machine learning já realizados nele, fazendo com que seja uma fonte quase inesgotável de informação.</p></li>
+<li><p><a href="http://archive.ics.uci.edu/ml/">UCI Machine Learning Repository</a>: Este é o pai do Kaggle. Na época em que fiz meu primeiro curso de data mining, ainda durante meu doutorado no longínquo ano de 2010, este site era minha fonte principal de conjuntos de dados para classificação e clusterização.</p></li>
+<li><p><a href="http://downloads.ibge.gov.br/">Instituto Brasileiro de Geografia e Estatística (IBGE)</a>: O site do IBGE disponibiliza informações sobre os censos, PNAD e tudo mais que o IBGE trabalha.</p></li>
+<li><p><a href="http://dados.gov.br">Portal Brasileiro de Dados Abertos</a>: Informações oficiais do governo brasileiro sobre mapas, orçamento da união, aviação, dentre outros assuntos.</p></li>
+<li><p><a href="http://www.transparencia.gov.br/">Portal da Transparência</a>: Dados do executivos brasileiro, como salários, pagamentos de programas sociais e muito mais.</p></li>
+</ul>
+<!--
+* [Banco Central do Brasil](http://www4.bcb.gov.br/pec/series/port/aviso.asp): Dados históricos sobre inflação, câmbio, exportações e mais.
+
+
+* [Dados Abertos da Câmara dos Deputados](http://www2.camara.leg.br/transparencia/cota-para-exercicio-da-atividade-parlamentar/dados-abertos-cota-parlamentar): Informações a respeitos dos gastos da Câmara. Embora sejam abertos, é um pouco difícil de acessar para quem não entende de tecnologias como xml e json. Por isso, escrevi um [pacote no R](https://github.com/mnunes/reembolsos/) que organiza estes dados de maneira a torná-los mais acessíveis.
+
+* [Gene Expression Omnibus (GEO)](http://www.ncbi.nlm.nih.gov/geo/): Fonte de dados genéticos. É possível encontrar dados de artigos científicos e reproduzir os resultados obtidos pelos autores.
+
+* [The home of the U.S. Government’s open data](http://www.data.gov/): Site de dados abertos do governo norte-americano. Possui milhares de conjuntos de dados.
+
+* [IMDb](http://www.imdb.com/interfaces): Dados abertos que o [IMDb](http://imdb.com/), site especializado em filmes e séries de TV, disponibiliza. Vale muito pelas avaliações que os usuários do site dão para as produções audiovisuais cadastradas no site. 
+
+* [Economic Time Series Page](http://www.economagic.com/): Dados de séries temporais econométricas.
+
+* [Time Series Data Library](https://datamarket.com/data/list/?q=provider:tsdl): Fonte excelente para quem procura dados de séries temporais, sejam eles econométricos ou não.-->
+<p>Além destas fontes de terceiros, eu mantenho uma lista de favoritos online, locais em que encontrei fontes interessantes para dados. Venho fazendo isto desde 2007. Os links são os seguintes:</p>
+<ul>
+<li><p><a href="https://pinboard.in/u:grandeabobora/t:datasets/">https://pinboard.in/u:grandeabobora/t:datasets/</a></p></li>
+<li><p><a href="https://pinboard.in/u:grandeabobora/t:database/">https://pinboard.in/u:grandeabobora/t:database/</a></p></li>
+</ul>
+<p>Espero que estas informações sejam uteis para vocês. Esta lista não esgota todas as boas fontes de dados abertos na internet. Há muitas outras, tão boas quanto estas que listei, que podem ser encontradas em .</p>
+<p>Caso alguma fonte de dados óbvia tenha faltado, comente aí embaixo que eu atualizo o post com ela.</p>
+<p>Agora que o seu primeiro projeto de data science está completo, o céu é o limite. Leia livros sobre o assunto, <a href="http://marcusnunes.me/contato/">me contrate</a> para te dar um curso mais avançado ou simplesmente visite o <a href="https://kaggle.com/datasets/">Kaggle</a> e escolha um novo assunto de seu interesse para trabalhar.</p>
+</div>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="2" height="2" viewBox="0 0 2 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="/tags/curso">curso</a></span><span class="tag"><a href="/tags/data-science">data science</a></span><span class="tag"><a href="/tags/ensino">ensino</a></span><span class="tag"><a href="/tags/machine-learning">machine learning</a></span><span class="tag"><a href="/tags/random-forest">random forest</a></span><span class="tag"><a href="/tags/tutorial">tutorial</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>3447 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2018-07-01 08:54 -0300</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="/posts/o-ranking-da-fifa-e-a-copa-do-mundo/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>O Ranking da FIFA e a Copa do Mundo</span>
+			</a>
+			<a class="prev-post" href="/posts/bibliografia-recomendada-para-machine-learning/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Bibliografia Recomendada para Machine Learning</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "marcus-nunes-blog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2013-2019 <a href="/">Marcus Nunes</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+	<script src="/js/main.min.784417f5847151f848c339cf0acb13a06cbb648b1483435a28ed4556c4ead69b.js" integrity="sha256-eEQX9YRxUfhIwznPCssToGy7ZIsUg0NaKO1FVsTq1ps="></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-201649-7', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+</body>
+
+</html>

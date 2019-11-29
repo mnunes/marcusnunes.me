@@ -1,0 +1,142 @@
+---
+title: "Tutorial: Usando Deep Learning para Criar Letras de Músicas Sertanejas"
+description: "Veja como utilizar R e deep learning para gerar letras de músicas sertanejas universitárias"
+tags: ["curso", "data science", "ensino", "keras", "machine learning", "tensor flow", "tutorial"]
+draft: true
+date: 2018-12-12T08:54:00-03:00
+---
+
+# Introdução
+
+Este é mais um post na série de tutorias deste blog. No primeiro texto eu ensinei a [fazer classificação utilizando Random Forest](https://marcusnunes.me/post/primeiro-projeto-de-data-science/). Hoje, como o título do post diz, eu vou mostrar como podemos utilizar a biblioteca [Keras](https://keras.io/) para fazer o computador ler as letras das músicas de vários artistas de sertanejo universitário e ensiná-lo a produzir novas letras no estilo.
+
+O procedimento completo para fazer esta tarefa está descrito logo abaixo. É possível segui-lo lendo meu texto ou, caso prefira, [ir ao github e baixar os arquivos com o código completo e organizado](https://github.com/mnunes/segundo-projeto-de-data-science/). Como 
+
+
+
+
+
+# Preparação do Software
+
+Quem já possui os programas R e RStudio instalados em seu computador pode pular esta parte do tutorial. Entretanto, sugiro que [baixe o arquivo com os códigos organizados](https://github.com/mnunes/segundo-projeto-de-data-science/) para que fique mais fácil de acompanhar este texto.
+
+Há diversos programas disponíveis para fazer data science. Os dois principais são R e python. Este tutorial foi escrito pensado na linguagem R para ser rodado. Particularmente, prefiro o R ao python, pois a sintaxe dele é, para mim, mais fácil de entender. Mas isto é gosto pessoal. Tudo o que foi feito aqui pode ser adaptado e realizado em qualquer outra linguagem que o leitor prefira, como python, julia ou matlab, por exemplo.
+
+Se o seu computador não possua o R e o RStudio instalado, clique nos links abaixo e instale-os.
+
+* [R](http://cran.fiocruz.br/): este programa é o cerne da análise. É ele que vai realizar os cálculos e plotar os gráficos da análise.
+
+* [RStudio](https://www.rstudio.com/products/rstudio/download/): a interface padrão do R não é muito amigável de utilizar. Entretanto, é possível melhorá-la para que ela fique mais interativa. Desta forma, nossa produtividade aumenta.  Portanto, o RStudio serve para melhorar a utilização do R, deixando-a mais dinâmica. 
+
+Uma característica do R é que suas funções podem ser expandidas com comandos e funções criados pela comunidade. E são milhares (se não forem milhões) de expansões assim. Estas expansões estão em pacotes que podem ser instalados via internet. Para instalar os pacotes extras necessários para esta análise, abra o RStudio e vá ao menu File > New File > R Script, como mostra a figura abaixo:
+
+![Novo script](https://marcusnunes.me/images/novo_script.png)
+
+Com o script aberto, rode o comando abaixo e aguarde. Vários arquivos serão baixados e o R vai informando o progresso da instalação.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, eval=TRUE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=60))
+set.seed(1234)
+```
+
+```{r pacotes, eval=FALSE}
+install.packages(c("ggwordcloud", "rvest", "tidyverse", "tm", "tokenizer", "keras"), dependencies=TRUE)
+library(keras)
+install_keras()
+```
+
+Este passo pode demorar um pouco, dependendo da velocidade da sua conexão com a internet.
+
+Com tudo preparado, é hora de começar a análise.
+
+
+
+
+
+# Baixando as Letras das Músicas
+
+Vamos baixar as letras de músicas dos artistas que nos interessam com uma adaptação [deste script desenvolvido pelo pessoal do site Curso-R](https://www.curso-r.com/blog/2017-08-27-safadao/).
+
+```{r baixarLetras}
+baixarLetras <- function(artista){
+
+  # funcao adaptada do post 
+  # https://www.curso-r.com/blog/2017-08-27-safadao/
+  
+  link_base <- "https://www.letras.mus.br"
+  # listando os links
+  artista_links <- paste0(link_base, "/", artista, "/") %>% 
+    rvest::html_session() %>% 
+    rvest::html_nodes(".cnt-list--alp > ul > li > a") %>% 
+    rvest::html_attr("href")
+  
+  pegar_letra <- function(link) {
+    # do link até a parte que tem o conteúdo
+    result <- paste0(link_base, link) %>% 
+      rvest::html_session() %>% 
+      rvest::html_nodes(".cnt-letra > article > p") %>% 
+      # Peguei o texto com as tags html para pegar os \n
+      as.character() %>% 
+      stringr::str_replace_all("<[brp/]+>", "\n") %>% 
+      paste(collapse = "\n\n") %>% 
+      # Limpeza do texto
+      limpar_musica() %>% 
+      tokenizers::tokenize_characters(strip_non_alphanum = FALSE, simplify = TRUE  )
+    c(result, "@") # Adicionando @ no final
+  }
+  
+  limpar_musica <- function(txt) {
+    txt %>% 
+      stringr::str_trim() %>% 
+      stringr::str_to_lower() %>% 
+      stringr::str_replace_all("[^a-z0-9êâôáéíóúãõàç;,!?: \n-]", "") %>%
+      stringr::str_replace_all("[0-9]+x| bis", "") %>%
+      stringr::str_replace_all("([ ,?!])+", "\\1") %>% 
+      stringr::str_replace_all(" ([;,!?:-])", "\\1") %>%
+      stringr::str_replace_all("\n{3,}", "\n\n")
+  }
+  
+  p <- progress::progress_bar$new(total = length(artista_links))
+  artista_letras <- unlist(purrr::map(artista_links, ~{
+    p$tick()
+    pegar_letra(.x)
+  }))
+  
+  return(artista_letras)
+
+}
+```
+
+Dado o nome do artista, o script visita a página dele no site [letras.mus.br](https://letras.mus.br) e identifica os links para as letras. Com os links identificados, as letras são baixadas e processadas, a fim de retirar caracteres especiais e outras sujeiras em geral.
+
+Nós vamos baixar todas as letras que encontrarmos dos seguintes artistas:
+
+
+O código para fzermos isso é o seguinte:
+
+
+```{}
+
+```
+
+
+# Análise Exploratória dos Dados
+
+Aqui estamos interessados em procurar padrões nos dados. Vamos ver coisas básicas, como as palavras mais comuns nas canções. Não será feita distinção por autor, pois estamos tentando misturar os estilos deles para gerarmos a música sertaneja que irá 
+
+Para encontrar as palavras mais comuns, devemos, em primeiro lugar, preparar o conjunto de dados que vamos analisar. Devemos remover as [palavras vazias](https://pt.wikipedia.org/wiki/Palavra_vazia) dos textos, como artigos, preposições etc. Para automatizar este processo, vamos utilizar o pacote `tm`:
+
+```{r limpezaTexto}
+
+```
+
+
+# Ajuste do Modelo
+
+[](https://juliasilge.com/blog/tensorflow-generation/)
+
+
+# Ideias para Novos Projetos
+
+
+

@@ -1,0 +1,46 @@
+---
+title: "Correlações e Gráficos de Dispersão"
+description: "Uma boa visualização é sempre o primeiro passo em uma análise de dados"
+tags: ["dica", "visualização"]
+draft: false
+date: 2018-06-03T07:15:00-03:00
+---
+
+Um dos pontos que mais reforço em minhas aulas é visualização de dados. A [tag visualização](/tags/visualização/) aqui no site não me deixa mentir. Um dos exemplos que mais gosto sobre este assunto está presente do pacote `datasauRus` do R. Este pacote traz 13 conjuntos de dados bivariados que possuem uma característica muito marcante: as correlações entre as variáveis $x$ e $y$ destes conjuntos de dados são muito parecidas entre si.
+
+
+```{r datasauRus, echo=TRUE, message=FALSE}
+library(datasauRus)
+library(tidyverse)
+theme_set(theme_bw())
+
+datasaurus_dozen %>%
+  group_by(dataset) %>%
+  summarise(correlacao=cor(x, y))
+```
+
+Perceba que ao calcularmos a correlação entre as colunas `x` e `y` deste conjunto de dados, agrupadas de acordo com o `dataset`, obtemos 13 correlações. Perceba que todas elas são muito parecidas entre si. São valores negativos, mas muito pequenos. Isto é um indicativo de que as colunas `x` e `y` são pouco correlacionadas. Ou seja, elas devem ter o seguinte aspecto quanto colocadas em um gráfico de dispersão:
+
+```{r correlacaoBaixa, echo=FALSE}
+x <- rnorm(400)
+y <- rnorm(400)
+dados <- data.frame(x=x, y=y)
+ggplot(dados, aes(x=x, y=y)) +
+  geom_point()
+```
+
+O interessante é que este comportamento visusal não ocorre com este conjunto de dados. Veja o resultado que obtemos ao criar os gráficos de dispersão entre as variáveis `x` e `y` para cada `dataset`:
+
+```{r datasauRusPlot, echo=TRUE}
+ggplot(datasaurus_dozen, aes(x=x, y=y)) +
+  geom_point() +
+  facet_wrap(~ dataset, nrow=4)
+```
+
+As mais variadas figuras surgem, de linhas quase paralelas até um dinossauro, passando por estrela, a letra X e muito mais. Todos estes arranjos são bem diferentes do que a imagem que somos levados a imaginar através do resultado das estimativas das correlações.
+
+Portanto, só calcular a correlação entre duas variáveis não significa muita coisa. É imprescindível construir gráficos, de modo que possamos ter uma verdadeira noção a respeito daquilo com o que estamos trabalhando.
+
+
+
+

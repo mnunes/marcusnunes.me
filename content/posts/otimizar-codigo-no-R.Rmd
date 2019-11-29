@@ -1,0 +1,115 @@
+---
+title: "De Dois Meses e Meio para Menos de Uma Hora: Como Otimizei o Código de um Programa no R"
+description: "Neste texto explico como uma tarefa que levaria mais de dois meses rodando foi finalizada em 55 minutos"
+tags: ["eficiência", "programação"]
+draft: false
+date: 2018-08-25T18:30:00-03:00
+---
+
+Estou trabalhando em um novo projeto com meu conjunto de dados sobre os pedidos de reembolso dos deputados federais brasileiros (falei com detalhes sobre este projeto [neste link](https://marcusnunes.me/post/controle-de-gastos-publicos-como-verificar-quanto-os-deputados-federais-estao-gastando/)). 
+
+Um aspecto importante neste novo projeto é encontrar os pedidos de reembolso dos deputados por empresa contratada. O problema é que o cadastro destes pedidos é feito por seres humanos e, ao procurar os das empresas, encontramos situações assim:
+
+    vivo
+    VIVO
+    VIVO - TELEFONICA BRASIL
+    VIVO - TELEFONICA Brasil S.A.
+    VIVO CELULAR
+    VIVO S. A.
+    VIVO S.A
+    VIVO S.A.
+    VIVO S/A
+    VIVO SA
+    
+Qual é a diferença entre `vivo` e `VIVO`? Em teoria, nenhuma. Mas o computador vai considerar estas duas ocorrências como empresas diferentes, pois estão cadastradas de maneira diferente no sistema. Então como melhorar estes registros? Como evitar que o computador entenda errado a qual empresa cada gasto está atribuído?
+
+O que vou descrever a seguir é a maneira com a qual lidei com este problema.
+
+# Utilizar distâncias entre strings
+
+Minha primeira ideia foi comparar distâncias entre as strings. Por exemplo, o quão distantes as expressões `VIVO S.A` e `VIVO S.A.` estão entre si? Não parece ser muito, pois apenas um ponto difere as duas strings. Portanto, seria possível utilizar uma função como `levenshteinSim`, do pacote `RecordLinkage`, para fazer este trabalho.
+
+O problema é que o conjunto de dados de reembolsos é muito grande. São 3.100.697 registros no momento em que escrevo este texto, em 25 de agosto de 2018. Seria necessário comparar cada empresa com as outras 3.100.696 de que aparecem nos registros para, justamente, encontrar as que possuem nomes parecidos.
+
+Fazer isto uma vez não é complicado. Veja, por exemplo, o caso da empresa chamada `vivo`:
+
+
+    system.time(x <- levenshteinSim("vivo", as.character(camara$supplier)))
+      user  system elapsed 
+    2.142   0.032   2.186 
+
+Em 2,186 segundos meu computador conseguiu comparar a string `vivo` com todos os 3.100.697 registros. O problema é repetir isto mais 3.100.696 vezes. Numa conta de padaria, a estimativa é que este trabalho leve 6.778.123.642 segundos, o que equivale a 78,5 dias. É algo inviável.
+
+
+
+# Classificar por CNPJ ou CPF
+
+Felizmente, o [conjunto de dados reembolsos](https://marcusnunes.me/post/controle-de-gastos-publicos-como-verificar-quanto-os-deputados-federais-estao-gastando/) possui uma coluna com o CNPJ ou CPF do prestador de serviços. Com isso, minha próxima ideia foi a seguinte:
+
+1. Agrupar os dados por CNPJ ou CPF
+
+2. Contar o número de ocorrências de cada grafia do nome da empresa
+
+3. Definir o nome verdadeiro da empresa como o mais comum nesta contagem
+
+E assim eu fiz. Rodei o código abaixo, que faz a tabulação descrita acima e substitui os nomes de 100 das empresas que prestaram serviço à câmara:
+
+
+    dados.tabulados <- camara %>%
+      select(cnpj_cpf, supplier) %>%
+      group_by(cnpj_cpf) %>%
+      summarize(supplier=names(which.max(table(supplier))))
+    
+    ti <- proc.time()
+    
+    for (j in 1:100){
+      camara[camara$cnpj_cpf %in% dados.tabulados$cnpj_cpf[j], ]$supplier <- dados.tabulados$supplier[j]
+    }
+
+    proc.time() - ti
+    
+       user  system elapsed 
+    473.308  42.932 524.650 
+
+Mas 524,650 segundos é o tempo que o algoritmo leva pra analisar 100 empresas. Como são 87.972 CPNJs únicos, ele levaria 461.545 segundos (ou 5 dis e 8 horas) pra rodar completamente.
+
+Isso ainda não me deixava satisfeito.
+
+
+
+# Mas Será que Dá pra Melhorar?
+
+Dá. Além das milhões de linhas, o conjunto de dados `camara` possui 29 colunas. Só que apenas duas são necessárias para realizar este trabalho. Assim, criei um novo conjunto chamado `dados`, apenas com as colunas `cnpj_cpf` e `supplier`, para fazer estas atribuições. O resultado está abaixo:
+
+
+    ti <- proc.time()
+    
+    for (j in 1:100){
+      dados[dados$cnpj_cpf %in% dados.tabulados$cnpj_cpf[j], ]$supplier <- dados.tabulados$supplier[j]
+    }
+
+    proc.time() - ti
+    
+     user  system elapsed 
+    3.573   1.328   5.489
+
+Foram apenas 5,489 segundos para fazer 100 empresas. Portanto, para rodar este código para todas as 87.972 empresas únicas, eu levaria 4.829 segundos para rodá-lo (ou um pouco mais de uma hora e meia).
+
+
+
+# Funções Otimizadas
+
+Veja acima que eu havia usado o comando `%in%` do R básico para realizar a atribuição dos nomes corrigidos das empresas. Descobri recentemente que o pacote `data.table` possui a função `%chin%`. Ela é similar ao `%in%`, mas é otimizada para trabalhar com caracteres e strings.
+
+Com isso, o meu código que levaria uma hora e meia para rodar, acabou finalizando em menos tempo. De acodo com meus testes, a função `%chin%` leva em torno de 70% do tempo da função `%in%` para rodar. Desta forma, acabei levando pouco menos de uma hora (55 minutos, para ser mais preciso) para realizar o trabalho que precisava.
+
+
+
+
+# Próximos Passos
+
+A partir de agora, meu próximo passo é paralelizar o código. Embora eu tenha conseguido reduzir muito o tempo de execução do programa, de 78 dias para menos de 1 hora, tenho certeza que ainda é possível melhorar mais. 
+
+Se eu conseguir, de alguma forma, retirar o `for` de um core e dividi-lo em mais processadores, meu trabalho ficará ainda mais rápido.
+
+

@@ -1,0 +1,91 @@
+---
+title: "Tutorial: Usando Deep Learning para Criar Letras de Músicas Sertanejas"
+description: "Veja como utilizar R e deep learning para gerar letras de músicas sertanejas universitárias"
+tags: ["curso", "data science", "ensino", "keras", "machine learning", "tensor flow", "tutorial"]
+draft: true
+date: 2018-12-12T08:54:00-03:00
+---
+
+
+
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
+<p>Este é mais um post na série de tutorias deste blog. No primeiro texto eu ensinei a <a href="https://marcusnunes.me/post/primeiro-projeto-de-data-science/">fazer classificação utilizando Random Forest</a>. Hoje, como o título do post diz, eu vou mostrar como podemos utilizar a biblioteca <a href="https://keras.io/">Keras</a> para fazer o computador ler as letras das músicas de vários artistas de sertanejo universitário e ensiná-lo a produzir novas letras no estilo.</p>
+<p>O procedimento completo para fazer esta tarefa está descrito logo abaixo. É possível segui-lo lendo meu texto ou, caso prefira, <a href="https://github.com/mnunes/segundo-projeto-de-data-science/">ir ao github e baixar os arquivos com o código completo e organizado</a>. Como</p>
+</div>
+<div id="preparação-do-software" class="section level1">
+<h1>Preparação do Software</h1>
+<p>Quem já possui os programas R e RStudio instalados em seu computador pode pular esta parte do tutorial. Entretanto, sugiro que <a href="https://github.com/mnunes/segundo-projeto-de-data-science/">baixe o arquivo com os códigos organizados</a> para que fique mais fácil de acompanhar este texto.</p>
+<p>Há diversos programas disponíveis para fazer data science. Os dois principais são R e python. Este tutorial foi escrito pensado na linguagem R para ser rodado. Particularmente, prefiro o R ao python, pois a sintaxe dele é, para mim, mais fácil de entender. Mas isto é gosto pessoal. Tudo o que foi feito aqui pode ser adaptado e realizado em qualquer outra linguagem que o leitor prefira, como python, julia ou matlab, por exemplo.</p>
+<p>Se o seu computador não possua o R e o RStudio instalado, clique nos links abaixo e instale-os.</p>
+<ul>
+<li><p><a href="http://cran.fiocruz.br/">R</a>: este programa é o cerne da análise. É ele que vai realizar os cálculos e plotar os gráficos da análise.</p></li>
+<li><p><a href="https://www.rstudio.com/products/rstudio/download/">RStudio</a>: a interface padrão do R não é muito amigável de utilizar. Entretanto, é possível melhorá-la para que ela fique mais interativa. Desta forma, nossa produtividade aumenta. Portanto, o RStudio serve para melhorar a utilização do R, deixando-a mais dinâmica.</p></li>
+</ul>
+<p>Uma característica do R é que suas funções podem ser expandidas com comandos e funções criados pela comunidade. E são milhares (se não forem milhões) de expansões assim. Estas expansões estão em pacotes que podem ser instalados via internet. Para instalar os pacotes extras necessários para esta análise, abra o RStudio e vá ao menu File &gt; New File &gt; R Script, como mostra a figura abaixo:</p>
+<div class="figure">
+<img src="https://marcusnunes.me/images/novo_script.png" alt="" />
+<p class="caption">Novo script</p>
+</div>
+<p>Com o script aberto, rode o comando abaixo e aguarde. Vários arquivos serão baixados e o R vai informando o progresso da instalação.</p>
+<pre class="r"><code>install.packages(c(&quot;ggwordcloud&quot;, &quot;rvest&quot;, &quot;tidyverse&quot;, &quot;tm&quot;, 
+    &quot;tokenizer&quot;, &quot;keras&quot;), dependencies = TRUE)
+library(keras)
+install_keras()</code></pre>
+<p>Este passo pode demorar um pouco, dependendo da velocidade da sua conexão com a internet.</p>
+<p>Com tudo preparado, é hora de começar a análise.</p>
+</div>
+<div id="baixando-as-letras-das-músicas" class="section level1">
+<h1>Baixando as Letras das Músicas</h1>
+<p>Vamos baixar as letras de músicas dos artistas que nos interessam com uma adaptação <a href="https://www.curso-r.com/blog/2017-08-27-safadao/">deste script desenvolvido pelo pessoal do site Curso-R</a>.</p>
+<pre class="r"><code>baixarLetras &lt;- function(artista) {
+    # funcao adaptada do post
+    # https://www.curso-r.com/blog/2017-08-27-safadao/
+    link_base &lt;- &quot;https://www.letras.mus.br&quot;
+    # listando os links
+    artista_links &lt;- paste0(link_base, &quot;/&quot;, artista, &quot;/&quot;) %&gt;% 
+        rvest::html_session() %&gt;% rvest::html_nodes(&quot;.cnt-list--alp &gt; ul &gt; li &gt; a&quot;) %&gt;% 
+        rvest::html_attr(&quot;href&quot;)
+    pegar_letra &lt;- function(link) {
+        # do link até a parte que tem o conteúdo
+        result &lt;- paste0(link_base, link) %&gt;% rvest::html_session() %&gt;% 
+            rvest::html_nodes(&quot;.cnt-letra &gt; article &gt; p&quot;) %&gt;% 
+            # Peguei o texto com as tags html para pegar os \n
+        as.character() %&gt;% stringr::str_replace_all(&quot;&lt;[brp/]+&gt;&quot;, 
+            &quot;\n&quot;) %&gt;% paste(collapse = &quot;\n\n&quot;) %&gt;% # Limpeza do texto
+        limpar_musica() %&gt;% tokenizers::tokenize_characters(strip_non_alphanum = FALSE, 
+            simplify = TRUE)
+        c(result, &quot;@&quot;)  # Adicionando @ no final
+    }
+    limpar_musica &lt;- function(txt) {
+        txt %&gt;% stringr::str_trim() %&gt;% stringr::str_to_lower() %&gt;% 
+            stringr::str_replace_all(&quot;[^a-z0-9êâôáéíóúãõàç;,!?: \n-]&quot;, 
+                &quot;&quot;) %&gt;% stringr::str_replace_all(&quot;[0-9]+x| bis&quot;, 
+            &quot;&quot;) %&gt;% stringr::str_replace_all(&quot;([ ,?!])+&quot;, &quot;\\1&quot;) %&gt;% 
+            stringr::str_replace_all(&quot; ([;,!?:-])&quot;, &quot;\\1&quot;) %&gt;% 
+            stringr::str_replace_all(&quot;\n{3,}&quot;, &quot;\n\n&quot;)
+    }
+    p &lt;- progress::progress_bar$new(total = length(artista_links))
+    artista_letras &lt;- unlist(purrr::map(artista_links, ~{
+        p$tick()
+        pegar_letra(.x)
+    }))
+    return(artista_letras)
+}</code></pre>
+<p>Dado o nome do artista, o script visita a página dele no site <a href="https://letras.mus.br">letras.mus.br</a> e identifica os links para as letras. Com os links identificados, as letras são baixadas e processadas, a fim de retirar caracteres especiais e outras sujeiras em geral.</p>
+<p>Nós vamos baixar todas as letras que encontrarmos dos seguintes artistas:</p>
+<p>O código para fzermos isso é o seguinte:</p>
+<pre><code></code></pre>
+</div>
+<div id="análise-exploratória-dos-dados" class="section level1">
+<h1>Análise Exploratória dos Dados</h1>
+<p>Aqui estamos interessados em procurar padrões nos dados. Vamos ver coisas básicas, como as palavras mais comuns nas canções. Não será feita distinção por autor, pois estamos tentando misturar os estilos deles para gerarmos a música sertaneja que irá</p>
+<p>Para encontrar as palavras mais comuns, devemos, em primeiro lugar, preparar o conjunto de dados que vamos analisar. Devemos remover as <a href="https://pt.wikipedia.org/wiki/Palavra_vazia">palavras vazias</a> dos textos, como artigos, preposições etc. Para automatizar este processo, vamos utilizar o pacote <code>tm</code>:</p>
+</div>
+<div id="ajuste-do-modelo" class="section level1">
+<h1>Ajuste do Modelo</h1>
+<p><a href="https://juliasilge.com/blog/tensorflow-generation/"></a></p>
+</div>
+<div id="ideias-para-novos-projetos" class="section level1">
+<h1>Ideias para Novos Projetos</h1>
+</div>

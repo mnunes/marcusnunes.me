@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Copa Da Mundo on Marcus Nunes&#39; Blog</title>
+    <link>/tags/copa-da-mundo/</link>
+    <description>Recent content in Copa Da Mundo on Marcus Nunes&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Mon, 09 Jul 2018 22:12:00 -0300</lastBuildDate>
+    
+	<atom:link href="/tags/copa-da-mundo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>O Ranking da FIFA e a Copa do Mundo</title>
+      <link>/posts/o-ranking-da-fifa-e-a-copa-do-mundo/</link>
+      <pubDate>Mon, 09 Jul 2018 22:12:00 -0300</pubDate>
+      
+      <guid>/posts/o-ranking-da-fifa-e-a-copa-do-mundo/</guid>
+      <description>Resumo O ranking da FIFA não serve para prever a classificação final da Copa do Mundo com acurácia.
+ Introdução Previsões são muito difíceis de serem feitas, principalmente a respeito do futuro. Mesmo assim, todos nos atraímos por elas, seja para imaginarmos como estaremos daqui a alguns anos ou para partiipar de bolões da copa.
+Pensando nisso, resolvi aplicar alguns modelos de predição às informações fornecidas pelo Ranking da FIFA para verificar se ele é uma boa ferramenta para prever o resultado da Copa do Mundo.</description>
+    </item>
+    
+  </channel>
+</rss>
