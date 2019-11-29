@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on Marcus Nunes&#39; Blog</title>
-    <link>/tags/python/</link>
+    <link>/marcusnunes.me/tags/python/</link>
     <description>Recent content in Python on Marcus Nunes&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Wed, 09 Oct 2019 16:26:00 -0300</lastBuildDate>
     
-	<atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/marcusnunes.me/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>R ou Python? Qual a melhor ferramenta para trabalhar com Ciência de Dados?</title>
-      <link>/posts/r-ou-python/</link>
+      <link>/marcusnunes.me/posts/r-ou-python/</link>
       <pubDate>Wed, 09 Oct 2019 16:26:00 -0300</pubDate>
       
-      <guid>/posts/r-ou-python/</guid>
+      <guid>/marcusnunes.me/posts/r-ou-python/</guid>
       <description>Já vou começar este texto opinativo com a resposta definitiva para a pergunta do título:
 Qual é a melhor ferramenta para Análise de Dados? A melhor ferramenta para análise dados é a ferramenta que o usuário mais conhece. Seja Excel, R, python, Minitab, SAS, SPSS ou qualquer outra. O que importa é obter os resultados desejados de maneira rápida e confiável. Cada usuário vai ter necessidades diferentes e é muito provável que a melhor ferramenta para uma pessoa não sirva para outra.</description>
     </item>
     
     <item>
       <title>Urbanismo e Estatística: Como é a Orientação das Ruas das Capitais Brasileiras</title>
-      <link>/posts/como-e-a-orientacao-das-ruas-brasileiras/</link>
+      <link>/marcusnunes.me/posts/como-e-a-orientacao-das-ruas-brasileiras/</link>
       <pubDate>Mon, 21 Jan 2019 06:45:00 -0300</pubDate>
       
-      <guid>/posts/como-e-a-orientacao-das-ruas-brasileiras/</guid>
+      <guid>/marcusnunes.me/posts/como-e-a-orientacao-das-ruas-brasileiras/</guid>
       <description>Uns meses atrás, um professor de planejamento urbano chamado Geoff Boeing criou em seu blog um post chamado Comparing US City Street Orientations. Neste texto ele compara a orientação das ruas de várias cidades dos Estados Unidos a fim de descobrir como é a organização espacial delas. Ele utilizou python para acessar o site Open Street Map e baixar dados a respeito das ruas e suas direções.
 Geoff Boeing foi generoso e disponibilizou um jupyter notebook para quem quisesse reproduzir seu trabalho.</description>
     </item>

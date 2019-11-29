@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ufrn on Marcus Nunes&#39; Blog</title>
-    <link>/tags/ufrn/</link>
+    <link>/marcusnunes.me/tags/ufrn/</link>
     <description>Recent content in Ufrn on Marcus Nunes&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Thu, 31 Oct 2019 19:03:00 -0300</lastBuildDate>
     
-	<atom:link href="/tags/ufrn/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/marcusnunes.me/tags/ufrn/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Resultados da Competição de Ciência de Dados da UFRN 2019</title>
-      <link>/posts/resultados-da-competicao-de-ciencia-de-dados-da-ufrn-2019/</link>
+      <link>/marcusnunes.me/posts/resultados-da-competicao-de-ciencia-de-dados-da-ufrn-2019/</link>
       <pubDate>Thu, 31 Oct 2019 19:03:00 -0300</pubDate>
       
-      <guid>/posts/resultados-da-competicao-de-ciencia-de-dados-da-ufrn-2019/</guid>
+      <guid>/marcusnunes.me/posts/resultados-da-competicao-de-ciencia-de-dados-da-ufrn-2019/</guid>
       <description>Conforme eu havia avisado anteriormente, o Departamento de Estatística da UFRN promoveu mais um vez a sua tradicional competição de Ciência de Dados entre os alunos da universidade.
 Desta vez, a banca avaliadora não contava apenas com professores do Departamento de Estatística como na competição de 2018. No centro da foto abaixo, que contempla todos os competidores, é possível ver lado a lado Leonardo Bezerra, professor do IMD, Carla Vivacqua e eu, professores do Departamento de Estatística.</description>
     </item>
     
     <item>
       <title>Competição de Ciência de Dados da UFRN 2019</title>
-      <link>/posts/competicao-de-ciencia-de-dados-da-ufrn-2019/</link>
+      <link>/marcusnunes.me/posts/competicao-de-ciencia-de-dados-da-ufrn-2019/</link>
       <pubDate>Thu, 03 Oct 2019 19:03:00 -0300</pubDate>
       
-      <guid>/posts/competicao-de-ciencia-de-dados-da-ufrn-2019/</guid>
+      <guid>/marcusnunes.me/posts/competicao-de-ciencia-de-dados-da-ufrn-2019/</guid>
       <description>Alguns professores do Departamento de Estatística da UFRN estão organizando mais uma competição de Ciência de Dados. Ela vai ocorrer entre os dias 23 e 30 de outubro de 2019 e está aberta para qualquer aluno matriculado regularmente em cursos de graduação ou pós-graduação da UFRN.
 Esta competição faz parte das atividades da Semana da Estatística 2019, evento no qual muitas atividades estão programadas para toda a comunidade:
 A competição consistirá em analisar um conjunto de dados fornecido pela organização da competição.</description>
@@ -35,39 +35,39 @@ A competição consistirá em analisar um conjunto de dados fornecido pela organ
     
     <item>
       <title>2º Workshop de R: Levando a Ciência de Dados para Todos</title>
-      <link>/posts/workshop-de-r-na-ufrn/</link>
+      <link>/marcusnunes.me/posts/workshop-de-r-na-ufrn/</link>
       <pubDate>Mon, 30 Sep 2019 11:07:00 -0300</pubDate>
       
-      <guid>/posts/workshop-de-r-na-ufrn/</guid>
+      <guid>/marcusnunes.me/posts/workshop-de-r-na-ufrn/</guid>
       <description>Eu sou um fulbrighter. Como ex-aluno deste programa de intercâmbio, volta e meia sou convidado para participar de ventos promovidos pelo programa U.S.-Brazil Exchange Alumni (USBEA). O último destes eventos do qual participei rolou semana passada, em comemoração ao Dia Nacional do Voluntário no Brasil.
 O projeto que desenvolvi se chamou 2º Workshop de R: Levando a Ciência de Dados para Todos e foi feito com apoio do Departamento de Estatística da UFRN, que cedeu a sala e os computadores com os quais o workshop pode ser desenvolvido.</description>
     </item>
     
     <item>
       <title>Workshop de R na UFRN</title>
-      <link>/posts/42/</link>
+      <link>/marcusnunes.me/posts/42/</link>
       <pubDate>Fri, 27 Sep 2019 14:45:00 -0300</pubDate>
       
-      <guid>/posts/42/</guid>
+      <guid>/marcusnunes.me/posts/42/</guid>
       <description>https://www.youtube.com/watch?v=zyG8Vlw5aAw</description>
     </item>
     
     <item>
       <title>Consultoria Estatística na UFRN: Nosso Trabalho Sendo Divulgado no Oriente</title>
-      <link>/posts/consultoria-estati%CC%81stica-na-ufrn-nosso-trabalho-sendo-divulgado-no-oriente/</link>
+      <link>/marcusnunes.me/posts/consultoria-estati%CC%81stica-na-ufrn-nosso-trabalho-sendo-divulgado-no-oriente/</link>
       <pubDate>Sat, 24 Aug 2019 14:45:00 -0300</pubDate>
       
-      <guid>/posts/consultoria-estati%CC%81stica-na-ufrn-nosso-trabalho-sendo-divulgado-no-oriente/</guid>
+      <guid>/marcusnunes.me/posts/consultoria-estati%CC%81stica-na-ufrn-nosso-trabalho-sendo-divulgado-no-oriente/</guid>
       <description>Um dos meus maiores interesses como professor do Departamento de Estatística da UFRN é formar bons prestadores de serviço de consultoria estatística. Acho fundamental que os bacharéis formados em nosso curso sejam capazes de entender as demandas de outras áreas, traduzi-las para o jargão estatístico e reportar os resultados obtidos numa linguagem fácil de compreender.
 Por isso, junto com a Professora Carla Vivacqua, coordeno o Laboratório de Estatística Aplicada (LEA), órgão do Departamento de Estatística criado para prestar assessoria estatística gratuita para alunos, professores, pesquisadores e técnicos da universidade.</description>
     </item>
     
     <item>
       <title>Como foi a Competição de Ciência de Dados da UFRN</title>
-      <link>/posts/como-foi-a-competicao-de-ciencia-de-dados/</link>
+      <link>/marcusnunes.me/posts/como-foi-a-competicao-de-ciencia-de-dados/</link>
       <pubDate>Tue, 06 Nov 2018 14:29:00 -0300</pubDate>
       
-      <guid>/posts/como-foi-a-competicao-de-ciencia-de-dados/</guid>
+      <guid>/marcusnunes.me/posts/como-foi-a-competicao-de-ciencia-de-dados/</guid>
       <description>Conforme eu havia avisado anteriormente, eu e alguns professores do Departamento de Estatística da UFRN promovemos uma competição de Data Science entre os alunos da universidade. Se eu tivesse que descrevê-la em duas palavras, eu diria que foi um sucesso.
 Acima estamos Eu, Carla Almeida Vivacqua e Eliardo Guimarães Costa, os professores membros da banca avaliadora da competição.
 Foram 24 competidores divididos em seis equipes. O desafio era analisar os microdados do Censo Escolar de 2017.</description>
@@ -75,10 +75,10 @@ Foram 24 competidores divididos em seis equipes. O desafio era analisar os micro
     
     <item>
       <title>Competição de Data Science</title>
-      <link>/posts/competicao-de-data-science/</link>
+      <link>/marcusnunes.me/posts/competicao-de-data-science/</link>
       <pubDate>Wed, 17 Oct 2018 08:08:00 -0300</pubDate>
       
-      <guid>/posts/competicao-de-data-science/</guid>
+      <guid>/marcusnunes.me/posts/competicao-de-data-science/</guid>
       <description>Pois eis que eu e mais alguns professores do Departamento de Estatística da UFRN estamos organizando uma competição de Data Science! Ela vai ocorrer entre os dias 24 e 30 de outubro de 2018 e está aberta para qualquer aluno matriculado regularmente em cursos de graduação ou pós-graduação da UFRN.
 Esta competição faz parte das atividades da Semana da Estatística 2018, evento no qual o Departamento de Estatística da UFRN estará comemorando 45 anos.</description>
     </item>

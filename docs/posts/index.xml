@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Marcus Nunes&#39; Blog</title>
-		<link>/posts/</link>
+		<link>/marcusnunes.me/posts/</link>
 		<description>Recent content on Marcus Nunes&#39; Blog</description>
 		<generator>Hugo -- gohugo.io</generator>
 		<language>pt-br</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
 		<lastBuildDate>Fri, 02 Feb 2018 12:00:00 -0300</lastBuildDate>
-		<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+		<atom:link href="/marcusnunes.me/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		<item>
 			<title>Como simplificar seus relatórios estatísticos usando R Markdown</title>
-			<link>/posts/como-simplificar-seus-relato%CC%81rios-estati%CC%81sticos-usando-r-markdown/</link>
+			<link>/marcusnunes.me/posts/como-simplificar-seus-relato%CC%81rios-estati%CC%81sticos-usando-r-markdown/</link>
 			<pubDate>Mon, 18 Nov 2019 21:55:00 -0300</pubDate>
 			
-			<guid>/posts/como-simplificar-seus-relato%CC%81rios-estati%CC%81sticos-usando-r-markdown/</guid>
+			<guid>/marcusnunes.me/posts/como-simplificar-seus-relato%CC%81rios-estati%CC%81sticos-usando-r-markdown/</guid>
 			<description>Hoje apresentei mais um minicurso. A organização da 2nd Conference on Statistics and Data Science me chamou para contribuir com um assunto referente à ciência de dados no evento. Escolhi falar sobre R Markdown, a tecnologia que utilizamos para escrever os relatórios de consultoria do Laboratório de Estatística Aplicada. Inclusive, temos um pacote no R chamado modeloLEA, escrito para agilizar e padronizar a formatação destes nossos relatórios.
 O material do minicurso pode ser acessado em github.</description>
 			<content type="html"><![CDATA[<p>Hoje apresentei mais um minicurso. A organização da <a href="http://www.csds2019.ime.ufba.br/" target="_blank">2nd Conference on Statistics and Data Science</a> me chamou para contribuir com um assunto referente à ciência de dados no evento. Escolhi falar sobre <a href="https://marcusnunes.me/tags/r%20markdown/" target="_blank">R Markdown</a>, a tecnologia que utilizamos para escrever os relatórios de consultoria do <a href="http://lea.estatistica.ccet.ufrn.br/" target="_blank">Laboratório de Estatística Aplicada</a>. Inclusive, temos um pacote no R chamado <a href="https://github.com/mnunes/modeloLEA/" target="_blank">modeloLEA</a>, escrito para agilizar e padronizar a formatação destes nossos relatórios.</p>
@@ -30,10 +30,10 @@ O material do minicurso pode ser acessado em github.</description>
 		
 		<item>
 			<title>Resultados da Competição de Ciência de Dados da UFRN 2019</title>
-			<link>/posts/resultados-da-competicao-de-ciencia-de-dados-da-ufrn-2019/</link>
+			<link>/marcusnunes.me/posts/resultados-da-competicao-de-ciencia-de-dados-da-ufrn-2019/</link>
 			<pubDate>Thu, 31 Oct 2019 19:03:00 -0300</pubDate>
 			
-			<guid>/posts/resultados-da-competicao-de-ciencia-de-dados-da-ufrn-2019/</guid>
+			<guid>/marcusnunes.me/posts/resultados-da-competicao-de-ciencia-de-dados-da-ufrn-2019/</guid>
 			<description>Conforme eu havia avisado anteriormente, o Departamento de Estatística da UFRN promoveu mais um vez a sua tradicional competição de Ciência de Dados entre os alunos da universidade.
 Desta vez, a banca avaliadora não contava apenas com professores do Departamento de Estatística como na competição de 2018. No centro da foto abaixo, que contempla todos os competidores, é possível ver lado a lado Leonardo Bezerra, professor do IMD, Carla Vivacqua e eu, professores do Departamento de Estatística.</description>
 			<content type="html"><![CDATA[
@@ -106,10 +106,10 @@ Desta vez, a banca avaliadora não contava apenas com professores do Departament
 		
 		<item>
 			<title>R ou Python? Qual a melhor ferramenta para trabalhar com Ciência de Dados?</title>
-			<link>/posts/r-ou-python/</link>
+			<link>/marcusnunes.me/posts/r-ou-python/</link>
 			<pubDate>Wed, 09 Oct 2019 16:26:00 -0300</pubDate>
 			
-			<guid>/posts/r-ou-python/</guid>
+			<guid>/marcusnunes.me/posts/r-ou-python/</guid>
 			<description>Já vou começar este texto opinativo com a resposta definitiva para a pergunta do título:
 Qual é a melhor ferramenta para Análise de Dados? A melhor ferramenta para análise dados é a ferramenta que o usuário mais conhece. Seja Excel, R, python, Minitab, SAS, SPSS ou qualquer outra. O que importa é obter os resultados desejados de maneira rápida e confiável. Cada usuário vai ter necessidades diferentes e é muito provável que a melhor ferramenta para uma pessoa não sirva para outra.</description>
 			<content type="html"><![CDATA[
@@ -152,10 +152,10 @@ Qual é a melhor ferramenta para Análise de Dados? A melhor ferramenta para an�
 		
 		<item>
 			<title>Competição de Ciência de Dados da UFRN 2019</title>
-			<link>/posts/competicao-de-ciencia-de-dados-da-ufrn-2019/</link>
+			<link>/marcusnunes.me/posts/competicao-de-ciencia-de-dados-da-ufrn-2019/</link>
 			<pubDate>Thu, 03 Oct 2019 19:03:00 -0300</pubDate>
 			
-			<guid>/posts/competicao-de-ciencia-de-dados-da-ufrn-2019/</guid>
+			<guid>/marcusnunes.me/posts/competicao-de-ciencia-de-dados-da-ufrn-2019/</guid>
 			<description>Alguns professores do Departamento de Estatística da UFRN estão organizando mais uma competição de Ciência de Dados. Ela vai ocorrer entre os dias 23 e 30 de outubro de 2019 e está aberta para qualquer aluno matriculado regularmente em cursos de graduação ou pós-graduação da UFRN.
 Esta competição faz parte das atividades da Semana da Estatística 2019, evento no qual muitas atividades estão programadas para toda a comunidade:
 A competição consistirá em analisar um conjunto de dados fornecido pela organização da competição.</description>
@@ -232,10 +232,10 @@ A competição consistirá em analisar um conjunto de dados fornecido pela organ
 		
 		<item>
 			<title>2º Workshop de R: Levando a Ciência de Dados para Todos</title>
-			<link>/posts/workshop-de-r-na-ufrn/</link>
+			<link>/marcusnunes.me/posts/workshop-de-r-na-ufrn/</link>
 			<pubDate>Mon, 30 Sep 2019 11:07:00 -0300</pubDate>
 			
-			<guid>/posts/workshop-de-r-na-ufrn/</guid>
+			<guid>/marcusnunes.me/posts/workshop-de-r-na-ufrn/</guid>
 			<description>Eu sou um fulbrighter. Como ex-aluno deste programa de intercâmbio, volta e meia sou convidado para participar de ventos promovidos pelo programa U.S.-Brazil Exchange Alumni (USBEA). O último destes eventos do qual participei rolou semana passada, em comemoração ao Dia Nacional do Voluntário no Brasil.
 O projeto que desenvolvi se chamou 2º Workshop de R: Levando a Ciência de Dados para Todos e foi feito com apoio do Departamento de Estatística da UFRN, que cedeu a sala e os computadores com os quais o workshop pode ser desenvolvido.</description>
 			<content type="html"><![CDATA[<p>Eu sou um <a href="https://fulbright.org.br/comissao/" target="_blank">fulbrighter</a>. Como ex-aluno deste programa de intercâmbio, volta e meia sou convidado para participar de ventos promovidos pelo programa U.S.-Brazil Exchange Alumni (USBEA). O último destes eventos do qual participei rolou semana passada, em comemoração ao Dia Nacional do Voluntário no Brasil.</p>
@@ -254,10 +254,10 @@ O projeto que desenvolvi se chamou 2º Workshop de R: Levando a Ciência de Dado
 		
 		<item>
 			<title>Workshop de R na UFRN</title>
-			<link>/posts/42/</link>
+			<link>/marcusnunes.me/posts/42/</link>
 			<pubDate>Fri, 27 Sep 2019 14:45:00 -0300</pubDate>
 			
-			<guid>/posts/42/</guid>
+			<guid>/marcusnunes.me/posts/42/</guid>
 			<description>https://www.youtube.com/watch?v=zyG8Vlw5aAw</description>
 			<content type="html"><![CDATA[<p><a href="https://www.youtube.com/watch?v=zyG8Vlw5aAw" target="_blank">https://www.youtube.com/watch?v=zyG8Vlw5aAw</a></p>
 ]]></content>
@@ -265,10 +265,10 @@ O projeto que desenvolvi se chamou 2º Workshop de R: Levando a Ciência de Dado
 		
 		<item>
 			<title>Consultoria Estatística na UFRN: Nosso Trabalho Sendo Divulgado no Oriente</title>
-			<link>/posts/consultoria-estati%CC%81stica-na-ufrn-nosso-trabalho-sendo-divulgado-no-oriente/</link>
+			<link>/marcusnunes.me/posts/consultoria-estati%CC%81stica-na-ufrn-nosso-trabalho-sendo-divulgado-no-oriente/</link>
 			<pubDate>Sat, 24 Aug 2019 14:45:00 -0300</pubDate>
 			
-			<guid>/posts/consultoria-estati%CC%81stica-na-ufrn-nosso-trabalho-sendo-divulgado-no-oriente/</guid>
+			<guid>/marcusnunes.me/posts/consultoria-estati%CC%81stica-na-ufrn-nosso-trabalho-sendo-divulgado-no-oriente/</guid>
 			<description>Um dos meus maiores interesses como professor do Departamento de Estatística da UFRN é formar bons prestadores de serviço de consultoria estatística. Acho fundamental que os bacharéis formados em nosso curso sejam capazes de entender as demandas de outras áreas, traduzi-las para o jargão estatístico e reportar os resultados obtidos numa linguagem fácil de compreender.
 Por isso, junto com a Professora Carla Vivacqua, coordeno o Laboratório de Estatística Aplicada (LEA), órgão do Departamento de Estatística criado para prestar assessoria estatística gratuita para alunos, professores, pesquisadores e técnicos da universidade.</description>
 			<content type="html"><![CDATA[
@@ -339,10 +339,10 @@ Por isso, junto com a Professora Carla Vivacqua, coordeno o Laboratório de Esta
 		
 		<item>
 			<title>Análise de Sentimentos com o R: Bojack Horseman vs Brooklyn Nine-Nine</title>
-			<link>/posts/analise-de-sentimentos-com-r-bojack-horseman-vs-brooklyn-99/</link>
+			<link>/marcusnunes.me/posts/analise-de-sentimentos-com-r-bojack-horseman-vs-brooklyn-99/</link>
 			<pubDate>Sun, 28 Jul 2019 08:20:00 -0300</pubDate>
 			
-			<guid>/posts/analise-de-sentimentos-com-r-bojack-horseman-vs-brooklyn-99/</guid>
+			<guid>/marcusnunes.me/posts/analise-de-sentimentos-com-r-bojack-horseman-vs-brooklyn-99/</guid>
 			<description>Introdução Analisar sentimentos em texto é uma das coisas que sempre desejei aprender a fazer. Ao descobrir o post Bojack Horseman and Tidy Data Principles (Part 1) senti que era o momento de dar o pontapé inicial no assunto. Mas em vez de simplesmente reaplicar aquilo que o meu texto inspirador fez, decidi ir além, comparando duas séries de TV que gosto bastante.
 Para tal, escolhi Bojack Horseman e Brooklyn Nine-Nine para a empreitada.</description>
 			<content type="html"><![CDATA[
@@ -679,10 +679,10 @@ brooklyn99_plot &lt;- data.frame(episodio = 1:length(brooklyn99_sentimento_posit
 		
 		<item>
 			<title>Analisando Questionários no R: Uma Abordagem Multivariada</title>
-			<link>/posts/analisando-questionarios-no-r-uma-abordagem-multivariada/</link>
+			<link>/marcusnunes.me/posts/analisando-questionarios-no-r-uma-abordagem-multivariada/</link>
 			<pubDate>Sun, 30 Jun 2019 20:08:00 -0300</pubDate>
 			
-			<guid>/posts/analisando-questionarios-no-r-uma-abordagem-multivariada/</guid>
+			<guid>/marcusnunes.me/posts/analisando-questionarios-no-r-uma-abordagem-multivariada/</guid>
 			<description>Um dos tipos de trabalho que aparece mais frequentemente no Laboratório de Consultoria que coordeno na universidade diz respeito à análise de questionários. Recebemos pedidos de colaboração na preparação dos questionários, cálculo do tamanho amostral para sua aplicação e análise dos resultados coletados.
 Em geral, nossos clientes estão interessados apenas em estatísticas descritivas básicas a respeito dos resultados obtidos em suas pesquisas. Sendo assim, o intuito deste meu post é mostrar que há um outro mundo possível para quem deseja obter informações mais sofisticadas a respeito dos questionários que aplica em seus sujeitos.</description>
 			<content type="html"><![CDATA[
@@ -909,10 +909,10 @@ ggplot(grafico, aes(x = Factor1, y = Factor2)) +
 		
 		<item>
 			<title>Como Instalar o shiny server em seu Próprio Servidor</title>
-			<link>/posts/como-instalar-o-shiny-em-seu-proprio-servidor/</link>
+			<link>/marcusnunes.me/posts/como-instalar-o-shiny-em-seu-proprio-servidor/</link>
 			<pubDate>Wed, 01 May 2019 14:10:00 -0300</pubDate>
 			
-			<guid>/posts/como-instalar-o-shiny-em-seu-proprio-servidor/</guid>
+			<guid>/marcusnunes.me/posts/como-instalar-o-shiny-em-seu-proprio-servidor/</guid>
 			<description>Introdução O pacote shiny do R é uma excelente ferramenta para criar aplicações web com as seguintes funções:
  mostrar como a Estatística pode ser utilizada para ensino divulgação de informações públicas através de uma ferramenta interativa ferramenta de controle de produção em empresas (dashboards, no jargão popular)  Eu mantenho uma página no site da universidade com aplicações criadas por mim e por meus alunos que ilustram o poder desta ferramenta.</description>
 			<content type="html"><![CDATA[

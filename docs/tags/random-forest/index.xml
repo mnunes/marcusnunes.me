@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Random Forest on Marcus Nunes&#39; Blog</title>
-    <link>/tags/random-forest/</link>
+    <link>/marcusnunes.me/tags/random-forest/</link>
     <description>Recent content in Random Forest on Marcus Nunes&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Sun, 01 Jul 2018 08:54:00 -0300</lastBuildDate>
     
-	<atom:link href="/tags/random-forest/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/marcusnunes.me/tags/random-forest/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Tutorial: Como Fazer o Seu Primeiro Projeto de Data Science</title>
-      <link>/posts/primeiro-projeto-de-data-science/</link>
+      <link>/marcusnunes.me/posts/primeiro-projeto-de-data-science/</link>
       <pubDate>Sun, 01 Jul 2018 08:54:00 -0300</pubDate>
       
-      <guid>/posts/primeiro-projeto-de-data-science/</guid>
+      <guid>/marcusnunes.me/posts/primeiro-projeto-de-data-science/</guid>
       <description>Introdução O principal objetivo deste texto é mostrar como é possível, utilizando apenas recursos gratuitos na internet, realizar um projeto de data science do início ao fim. Vamos treinar um algoritmo de classificação de dados baseado em uma técnica chamada Random Forest (link em inglês, pois a Wikipedia em Português ainda não possui um verbete sobre este assunto)], capaz de realizar tanto tarefas de classificação quanto de regressão.
 O público-alvo deste texto são as pessoas que já possuem alguma experiência com Estatística e estão interessadas em aprender melhor como aplicar estes conhecimentos já adquiridos em uma área nova, como machine learning.</description>
     </item>

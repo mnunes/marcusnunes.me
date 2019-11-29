@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Marcus Nunes&#39; Blog</title>
-    <link>/</link>
+    <link>/marcusnunes.me/</link>
     <description>Recent content on Marcus Nunes&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Mon, 18 Nov 2019 21:55:00 -0300</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/marcusnunes.me/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Sobre</title>
-      <link>/sobre/</link>
+      <link>/marcusnunes.me/sobre/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/sobre/</guid>
+      <guid>/marcusnunes.me/sobre/</guid>
       <description>Resumo
 Me chamo Marcus Nunes e sou PhD em Estatística. Atualmente trabalho como Professor Adjunto no Departamento de Estatística da UFRN. Sou um entusiasta do uso do R, além de ser o maior respondedor sobre R no StackOverflow em Português. Sou o atual coordenador do Laboratório de Estatística Aplicada da UFRN, órgão do Departamento de Estatística que presta consultoria estatística à comunidade. Fui professor no Departamento de Estatística da UFJF entre 2013 e 2015.</description>
     </item>
     
     <item>
       <title>Ensino</title>
-      <link>/ensino/</link>
+      <link>/marcusnunes.me/ensino/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/ensino/</guid>
+      <guid>/marcusnunes.me/ensino/</guid>
       <description>Resumo
 Sou professor do Departamento de Estatística da UFRN e, basicamente, dou aulas de estatística para os alunos do Bacharelado em Estatística. Minhas disciplinas preferidas são Métodos Estatísticos, Introdução à Modelagem de Big Data e Introdução à Estatística e Probabilidade.
 Sou o coordenador do Laboratório de Estatística Aplicada, órgão que, em nome do Departamento de Estatística, presta consultorias estatísticas gratuitas para a comunidade acadêmica.
@@ -36,10 +36,10 @@ Mas estou aberto a propostas para ministrar cursos de Estatística na sua Univer
     
     <item>
       <title>Pesquisa</title>
-      <link>/pesquisa/</link>
+      <link>/marcusnunes.me/pesquisa/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/pesquisa/</guid>
+      <guid>/marcusnunes.me/pesquisa/</guid>
       <description>Resumo
 Sou especialista em modelos lineares generalizados e delineamento de experimentos. Tenho profundo conhecimento em Bioestatística. Costumo dizer que se existe um conjunto de dados, eu consigo encontrar um bom modelo para eles, seja utilizando estatística clássica ou machine learning.
 Sou um entusiasta do R. Tenho bastante experiência com planejamento de experimentos e modelos lineares generalizados, principalmente dados biológicos.
@@ -48,60 +48,60 @@ Também tenho interesse em aplicar estatística no controle dos gastos públicos
     
     <item>
       <title>Shiny</title>
-      <link>/shiny/</link>
+      <link>/marcusnunes.me/shiny/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/shiny/</guid>
+      <guid>/marcusnunes.me/shiny/</guid>
       <description>Nos últimos tempos tenho me interessado muito por aplicações web que demonstrem como a Estatística pode ser utilizada para ensino ou divulgação de informações. Por isso criei o site shiny. Neste site divulgo apps criados por mim e por alunos que orientei, a fim de tornar o acesso à Estatística mais amplo do que é atualmente.
  Dashboard Deputados: Dashboard desenvolvido no shiny para o controle de gastos públicos. Baseado em um https://github.</description>
     </item>
     
     <item>
       <title>Mídia</title>
-      <link>/midia/</link>
+      <link>/marcusnunes.me/midia/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/midia/</guid>
+      <guid>/marcusnunes.me/midia/</guid>
       <description> Abaixo listo sites, jornais ou TVs que fizeram matérias sobre mim ou projetos que coordeno.
 2019  Corte de Bolsas - Greg News Entrevista sobre a Competição de Ciência de Dados - Parte I - Por Dentro do Campus (TVU RN) Entrevista sobre a Competição de Ciência de Dados - Parte II - Por Dentro do Campus (TVU RN) UFRN promove competição de Ciência de Dados - Portal da UFRN Matéria para a Band RN a respeito da ferramenta que ajuda a monitorar os gastos dos deputados federais - Band RN Ferramenta criada por estudante ajuda a monitorar gastos de deputados - Tecnoblog Estudante da UFRN cria aplicativo para monitorar gastos de deputados - Bom Dia RN (Globo - InterTV Cabugi) Aluno da UFRN cria ferramenta para monitorar gastos dos deputados - Portal N10 Aluno da UFRN cria ferramenta para monitorar gastos de deputados - Portal no Ar Aluno da UFRN cria ferramenta para monitorar deputados - Portal da UFRN Departamento de Estatística oferece curso de Linguagem R - Portal da UFRN  2017  Departamento de Estatística oferece serviço de consultoria gratuita para a comunidade - Portal da UFRN  2016  UFRN realiza festival de divulgação científica em bares de Natal - Instituto do Cérebro Bares de Natal recebem Festival Internacional de Ciência - G1 RN  </description>
     </item>
     
     <item>
       <title>Como simplificar seus relatórios estatísticos usando R Markdown</title>
-      <link>/posts/como-simplificar-seus-relato%CC%81rios-estati%CC%81sticos-usando-r-markdown/</link>
+      <link>/marcusnunes.me/posts/como-simplificar-seus-relato%CC%81rios-estati%CC%81sticos-usando-r-markdown/</link>
       <pubDate>Mon, 18 Nov 2019 21:55:00 -0300</pubDate>
       
-      <guid>/posts/como-simplificar-seus-relato%CC%81rios-estati%CC%81sticos-usando-r-markdown/</guid>
+      <guid>/marcusnunes.me/posts/como-simplificar-seus-relato%CC%81rios-estati%CC%81sticos-usando-r-markdown/</guid>
       <description>Hoje apresentei mais um minicurso. A organização da 2nd Conference on Statistics and Data Science me chamou para contribuir com um assunto referente à ciência de dados no evento. Escolhi falar sobre R Markdown, a tecnologia que utilizamos para escrever os relatórios de consultoria do Laboratório de Estatística Aplicada. Inclusive, temos um pacote no R chamado modeloLEA, escrito para agilizar e padronizar a formatação destes nossos relatórios.
 O material do minicurso pode ser acessado em github.</description>
     </item>
     
     <item>
       <title>Resultados da Competição de Ciência de Dados da UFRN 2019</title>
-      <link>/posts/resultados-da-competicao-de-ciencia-de-dados-da-ufrn-2019/</link>
+      <link>/marcusnunes.me/posts/resultados-da-competicao-de-ciencia-de-dados-da-ufrn-2019/</link>
       <pubDate>Thu, 31 Oct 2019 19:03:00 -0300</pubDate>
       
-      <guid>/posts/resultados-da-competicao-de-ciencia-de-dados-da-ufrn-2019/</guid>
+      <guid>/marcusnunes.me/posts/resultados-da-competicao-de-ciencia-de-dados-da-ufrn-2019/</guid>
       <description>Conforme eu havia avisado anteriormente, o Departamento de Estatística da UFRN promoveu mais um vez a sua tradicional competição de Ciência de Dados entre os alunos da universidade.
 Desta vez, a banca avaliadora não contava apenas com professores do Departamento de Estatística como na competição de 2018. No centro da foto abaixo, que contempla todos os competidores, é possível ver lado a lado Leonardo Bezerra, professor do IMD, Carla Vivacqua e eu, professores do Departamento de Estatística.</description>
     </item>
     
     <item>
       <title>R ou Python? Qual a melhor ferramenta para trabalhar com Ciência de Dados?</title>
-      <link>/posts/r-ou-python/</link>
+      <link>/marcusnunes.me/posts/r-ou-python/</link>
       <pubDate>Wed, 09 Oct 2019 16:26:00 -0300</pubDate>
       
-      <guid>/posts/r-ou-python/</guid>
+      <guid>/marcusnunes.me/posts/r-ou-python/</guid>
       <description>Já vou começar este texto opinativo com a resposta definitiva para a pergunta do título:
 Qual é a melhor ferramenta para Análise de Dados? A melhor ferramenta para análise dados é a ferramenta que o usuário mais conhece. Seja Excel, R, python, Minitab, SAS, SPSS ou qualquer outra. O que importa é obter os resultados desejados de maneira rápida e confiável. Cada usuário vai ter necessidades diferentes e é muito provável que a melhor ferramenta para uma pessoa não sirva para outra.</description>
     </item>
     
     <item>
       <title>Competição de Ciência de Dados da UFRN 2019</title>
-      <link>/posts/competicao-de-ciencia-de-dados-da-ufrn-2019/</link>
+      <link>/marcusnunes.me/posts/competicao-de-ciencia-de-dados-da-ufrn-2019/</link>
       <pubDate>Thu, 03 Oct 2019 19:03:00 -0300</pubDate>
       
-      <guid>/posts/competicao-de-ciencia-de-dados-da-ufrn-2019/</guid>
+      <guid>/marcusnunes.me/posts/competicao-de-ciencia-de-dados-da-ufrn-2019/</guid>
       <description>Alguns professores do Departamento de Estatística da UFRN estão organizando mais uma competição de Ciência de Dados. Ela vai ocorrer entre os dias 23 e 30 de outubro de 2019 e está aberta para qualquer aluno matriculado regularmente em cursos de graduação ou pós-graduação da UFRN.
 Esta competição faz parte das atividades da Semana da Estatística 2019, evento no qual muitas atividades estão programadas para toda a comunidade:
 A competição consistirá em analisar um conjunto de dados fornecido pela organização da competição.</description>
@@ -109,10 +109,10 @@ A competição consistirá em analisar um conjunto de dados fornecido pela organ
     
     <item>
       <title>2º Workshop de R: Levando a Ciência de Dados para Todos</title>
-      <link>/posts/workshop-de-r-na-ufrn/</link>
+      <link>/marcusnunes.me/posts/workshop-de-r-na-ufrn/</link>
       <pubDate>Mon, 30 Sep 2019 11:07:00 -0300</pubDate>
       
-      <guid>/posts/workshop-de-r-na-ufrn/</guid>
+      <guid>/marcusnunes.me/posts/workshop-de-r-na-ufrn/</guid>
       <description>Eu sou um fulbrighter. Como ex-aluno deste programa de intercâmbio, volta e meia sou convidado para participar de ventos promovidos pelo programa U.S.-Brazil Exchange Alumni (USBEA). O último destes eventos do qual participei rolou semana passada, em comemoração ao Dia Nacional do Voluntário no Brasil.
 O projeto que desenvolvi se chamou 2º Workshop de R: Levando a Ciência de Dados para Todos e foi feito com apoio do Departamento de Estatística da UFRN, que cedeu a sala e os computadores com os quais o workshop pode ser desenvolvido.</description>
     </item>

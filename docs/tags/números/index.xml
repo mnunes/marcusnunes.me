@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Números on Marcus Nunes&#39; Blog</title>
-    <link>/tags/n%C3%BAmeros/</link>
+    <link>/marcusnunes.me/tags/n%C3%BAmeros/</link>
     <description>Recent content in Números on Marcus Nunes&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Fri, 27 Jul 2018 13:12:00 -0300</lastBuildDate>
     
-	<atom:link href="/tags/n%C3%BAmeros/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/marcusnunes.me/tags/n%C3%BAmeros/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Nomes dos Números: Uma Visualização</title>
-      <link>/posts/numeros-por-extenso/</link>
+      <link>/marcusnunes.me/posts/numeros-por-extenso/</link>
       <pubDate>Fri, 27 Jul 2018 13:12:00 -0300</pubDate>
       
-      <guid>/posts/numeros-por-extenso/</guid>
+      <guid>/marcusnunes.me/posts/numeros-por-extenso/</guid>
       <description>Imagine o seguinte procedimento:
 Sorteie um número entre 1 e 100
  Escreva este número por extenso

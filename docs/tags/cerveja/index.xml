@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cerveja on Marcus Nunes&#39; Blog</title>
-    <link>/tags/cerveja/</link>
+    <link>/marcusnunes.me/tags/cerveja/</link>
     <description>Recent content in Cerveja on Marcus Nunes&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Mon, 26 Feb 2018 11:30:00 -0300</lastBuildDate>
     
-	<atom:link href="/tags/cerveja/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/marcusnunes.me/tags/cerveja/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Utilizando Estatística para Decidir qual Cerveja Beber - Parte 1</title>
-      <link>/posts/utilizando-estatistica-para-decidir-qual-cerveja-beber-parte-1/</link>
+      <link>/marcusnunes.me/posts/utilizando-estatistica-para-decidir-qual-cerveja-beber-parte-1/</link>
       <pubDate>Mon, 26 Feb 2018 11:30:00 -0300</pubDate>
       
-      <guid>/posts/utilizando-estatistica-para-decidir-qual-cerveja-beber-parte-1/</guid>
+      <guid>/marcusnunes.me/posts/utilizando-estatistica-para-decidir-qual-cerveja-beber-parte-1/</guid>
       <description>Sou maior de idade, pago meus impostos e contribuo para o PIB. Portanto, nada me impede de ocasionalmente beber uma ou outra cerveja em meus momentos de lazer. Embora eu tenha as minhas preferências pessoais neste assunto, estive pensando qual seria a opinião geral do brasileiro a respeito das cervejas disponíveis no mercado. De acordo com o G1, cada brasileiro consumiu, em média, 60,7 litros de suco de cevada em 2017, o que serve como indicativo do quanto o povo daqui curte uma ampola (ou talvez mais) deste diurético.</description>
     </item>
     

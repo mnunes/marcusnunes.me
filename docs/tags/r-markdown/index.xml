@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R Markdown on Marcus Nunes&#39; Blog</title>
-    <link>/tags/r-markdown/</link>
+    <link>/marcusnunes.me/tags/r-markdown/</link>
     <description>Recent content in R Markdown on Marcus Nunes&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Mon, 18 Nov 2019 21:55:00 -0300</lastBuildDate>
     
-	<atom:link href="/tags/r-markdown/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/marcusnunes.me/tags/r-markdown/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Como simplificar seus relatórios estatísticos usando R Markdown</title>
-      <link>/posts/como-simplificar-seus-relato%CC%81rios-estati%CC%81sticos-usando-r-markdown/</link>
+      <link>/marcusnunes.me/posts/como-simplificar-seus-relato%CC%81rios-estati%CC%81sticos-usando-r-markdown/</link>
       <pubDate>Mon, 18 Nov 2019 21:55:00 -0300</pubDate>
       
-      <guid>/posts/como-simplificar-seus-relato%CC%81rios-estati%CC%81sticos-usando-r-markdown/</guid>
+      <guid>/marcusnunes.me/posts/como-simplificar-seus-relato%CC%81rios-estati%CC%81sticos-usando-r-markdown/</guid>
       <description>Hoje apresentei mais um minicurso. A organização da 2nd Conference on Statistics and Data Science me chamou para contribuir com um assunto referente à ciência de dados no evento. Escolhi falar sobre R Markdown, a tecnologia que utilizamos para escrever os relatórios de consultoria do Laboratório de Estatística Aplicada. Inclusive, temos um pacote no R chamado modeloLEA, escrito para agilizar e padronizar a formatação destes nossos relatórios.
 O material do minicurso pode ser acessado em github.</description>
     </item>

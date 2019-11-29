@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Humor on Marcus Nunes&#39; Blog</title>
-    <link>/tags/humor/</link>
+    <link>/marcusnunes.me/tags/humor/</link>
     <description>Recent content in Humor on Marcus Nunes&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Mon, 22 Apr 2019 05:20:00 -0300</lastBuildDate>
     
-	<atom:link href="/tags/humor/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/marcusnunes.me/tags/humor/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Criando Memes com o R e o Pacote memer</title>
-      <link>/posts/criando-memes-com-o-r-e-o-pacote-memer/</link>
+      <link>/marcusnunes.me/posts/criando-memes-com-o-r-e-o-pacote-memer/</link>
       <pubDate>Mon, 22 Apr 2019 05:20:00 -0300</pubDate>
       
-      <guid>/posts/criando-memes-com-o-r-e-o-pacote-memer/</guid>
+      <guid>/marcusnunes.me/posts/criando-memes-com-o-r-e-o-pacote-memer/</guid>
       <description>O pacote memer foi criado para facilitar a criação de imagens macro (os famosos memes) a partir do R. Abaixo mostro como instalar este pacote e como usá-lo para criar imagens deste tipo.
 Instalação A instalação é bem simples. Como ele está hospedado no github, é necessário instalar o pacote devtools em seu computador para que o pacote memer seja instalado. Os cokandos para isso são os seguintes:
 # install.</description>
