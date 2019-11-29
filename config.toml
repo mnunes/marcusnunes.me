@@ -1,4 +1,4 @@
-baseURL = "https://manunes.github.io/marcusnunes.me/"
+baseURL = "https://mnunes.github.io/marcusnunes.me/"
 publishDir = "docs"
 languageCode = "pt-br"
 title = "Marcus Nunes' Blog"
