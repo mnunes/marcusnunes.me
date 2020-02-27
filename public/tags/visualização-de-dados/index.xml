@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Visualização De Dados on Marcus Nunes&#39; Blog</title>
+    <link>https://marcusnunes.me/tags/visualiza%C3%A7%C3%A3o-de-dados/</link>
+    <description>Recent content in Visualização De Dados on Marcus Nunes&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Thu, 27 Feb 2020 07:57:00 -0300</lastBuildDate>
+    
+	<atom:link href="https://marcusnunes.me/tags/visualiza%C3%A7%C3%A3o-de-dados/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Algumas das piores visualizações de dados já feitas na história das eleições brasileiras e mundiais</title>
+      <link>https://marcusnunes.me/posts/algumas-das-piores-visualizacoes-de-dados-ja-feitas/</link>
+      <pubDate>Thu, 27 Feb 2020 07:57:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/algumas-das-piores-visualizacoes-de-dados-ja-feitas/</guid>
+      <description>2020 é ano de eleição. O que não falta nesta época do ano são eleitores, veículos de imprensa e assessorias de candidatos tentam o possível (e, muitas vezes, o impossível) para mostrar que seus representantes são os melhores. Meu objetivo ao criar este post foi mostrar como é possível mascarar dados reais e mentir com visualizações erradas.
+Presidência da Venezuela, 2013 Um belo exemplo de como exagerar na diferença do percentual de votos entre dois candidatos a presidente, levando o leitor a acreditar que ela é muito maior do que realmente é.</description>
+    </item>
+    
+    <item>
+      <title>Heatmap com os dados de geolocalização do Google Location History: minha viagem pela Itália</title>
+      <link>https://marcusnunes.me/posts/heatmap-de-localizacao-no-google/</link>
+      <pubDate>Mon, 27 Jan 2020 15:14:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/heatmap-de-localizacao-no-google/</guid>
+      <description>Uma das coisas que mais gosto na modernidade são os serviços de localização. Sim, eu sei que a minha suposta privacidade é completamente perdida quando compartilho meus dados de localização o tempo todo, mas acredito que as facilidades que isso me traz superam, e muito, as desvantagens. O problema é que eu não sabia muito o que fazer com estes dados.
+Mas eis que um usuário do github chamado luka1199 criou o repositório Generate an interactive geo heatmap from your Google location data para auxiliar na geração de heatmaps a partir dos dados de localização dos usuários.</description>
+    </item>
+    
+  </channel>
+</rss>

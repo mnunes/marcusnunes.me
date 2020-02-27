@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ciência De Dados on Marcus Nunes&#39; Blog</title>
+    <link>https://marcusnunes.me/tags/ci%C3%AAncia-de-dados/</link>
+    <description>Recent content in Ciência De Dados on Marcus Nunes&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Mon, 27 Jan 2020 15:14:00 -0300</lastBuildDate>
+    
+	<atom:link href="https://marcusnunes.me/tags/ci%C3%AAncia-de-dados/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Heatmap com os dados de geolocalização do Google Location History: minha viagem pela Itália</title>
+      <link>https://marcusnunes.me/posts/heatmap-de-localizacao-no-google/</link>
+      <pubDate>Mon, 27 Jan 2020 15:14:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/heatmap-de-localizacao-no-google/</guid>
+      <description>Uma das coisas que mais gosto na modernidade são os serviços de localização. Sim, eu sei que a minha suposta privacidade é completamente perdida quando compartilho meus dados de localização o tempo todo, mas acredito que as facilidades que isso me traz superam, e muito, as desvantagens. O problema é que eu não sabia muito o que fazer com estes dados.
+Mas eis que um usuário do github chamado luka1199 criou o repositório Generate an interactive geo heatmap from your Google location data para auxiliar na geração de heatmaps a partir dos dados de localização dos usuários.</description>
+    </item>
+    
+    <item>
+      <title>Analise os dados abertos da ANAC</title>
+      <link>https://marcusnunes.me/posts/dados-coletados-da-anac/</link>
+      <pubDate>Thu, 26 Dec 2019 07:36:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/dados-coletados-da-anac/</guid>
+      <description>Organizei todos os registros de voos do site da ANAC em um pacote do R. São mais de 20 milhões de informações referentes a todos os voos civis registrados no Brasil desde 2000, com as seguintes variáveis:
+ ICAOEmpresaAerea - Código designador da empresa no padrão da ICAO, com três letras. NumeroVoo - Numeração do voo, com até 4 caracteres numéricos. CodigoAutorizacaoDI - Caractere utilizado para identificar o tipo de autorização para cada etapa de voo conforme IAC 1504, podendo ser 0 (voo regular), 1 (voo extra com HOTRAN), 2 (voo extra sem HOTRAN), 3 (voo de retorno), 4 (inclusão de etapa em um voo previsto em HOTRAN), 5 (voo cargueiro), 6 (voo de serviço), 7 (voo de fretamento), 9 (voo charter), A (voo de instrução) ou B (voo de experiência).</description>
+    </item>
+    
+    <item>
+      <title>Como simplificar seus relatórios estatísticos usando R Markdown</title>
+      <link>https://marcusnunes.me/posts/como-simplificar-seus-relato%CC%81rios-estati%CC%81sticos-usando-r-markdown/</link>
+      <pubDate>Mon, 18 Nov 2019 21:55:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/como-simplificar-seus-relato%CC%81rios-estati%CC%81sticos-usando-r-markdown/</guid>
+      <description>Hoje apresentei mais um minicurso. A organização da 2nd Conference on Statistics and Data Science me chamou para contribuir com um assunto referente à ciência de dados no evento. Escolhi falar sobre R Markdown, a tecnologia que utilizamos para escrever os relatórios de consultoria do Laboratório de Estatística Aplicada. Inclusive, temos um pacote no R chamado modeloLEA, escrito para agilizar e padronizar a formatação destes nossos relatórios.
+O material do minicurso pode ser acessado em github.</description>
+    </item>
+    
+    <item>
+      <title>Resultados da Competição de Ciência de Dados da UFRN 2019</title>
+      <link>https://marcusnunes.me/posts/resultados-da-competicao-de-ciencia-de-dados-da-ufrn-2019/</link>
+      <pubDate>Thu, 31 Oct 2019 19:03:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/resultados-da-competicao-de-ciencia-de-dados-da-ufrn-2019/</guid>
+      <description>Conforme eu havia avisado anteriormente, o Departamento de Estatística da UFRN promoveu mais um vez a sua tradicional competição de Ciência de Dados entre os alunos da universidade.
+Desta vez, a banca avaliadora não contava apenas com professores do Departamento de Estatística como na competição de 2018. No centro da foto abaixo, que contempla todos os competidores, é possível ver lado a lado Leonardo Bezerra, professor do IMD, Carla Vivacqua e eu, professores do Departamento de Estatística.</description>
+    </item>
+    
+    <item>
+      <title>R ou Python? Qual a melhor ferramenta para trabalhar com Ciência de Dados?</title>
+      <link>https://marcusnunes.me/posts/r-ou-python/</link>
+      <pubDate>Wed, 09 Oct 2019 16:26:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/r-ou-python/</guid>
+      <description>Já vou começar este texto opinativo com a resposta definitiva para a pergunta do título:
+Qual é a melhor ferramenta para Análise de Dados? A melhor ferramenta para análise dados é a ferramenta que o usuário mais conhece. Seja Excel, R, python, Minitab, SAS, SPSS ou qualquer outra. O que importa é obter os resultados desejados de maneira rápida e confiável. Cada usuário vai ter necessidades diferentes e é muito provável que a melhor ferramenta para uma pessoa não sirva para outra.</description>
+    </item>
+    
+    <item>
+      <title>Competição de Ciência de Dados da UFRN 2019</title>
+      <link>https://marcusnunes.me/posts/competicao-de-ciencia-de-dados-da-ufrn-2019/</link>
+      <pubDate>Thu, 03 Oct 2019 19:03:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/competicao-de-ciencia-de-dados-da-ufrn-2019/</guid>
+      <description>Alguns professores do Departamento de Estatística da UFRN estão organizando mais uma competição de Ciência de Dados. Ela vai ocorrer entre os dias 23 e 30 de outubro de 2019 e está aberta para qualquer aluno matriculado regularmente em cursos de graduação ou pós-graduação da UFRN.
+Esta competição faz parte das atividades da Semana da Estatística 2019, evento no qual muitas atividades estão programadas para toda a comunidade:
+A competição consistirá em analisar um conjunto de dados fornecido pela organização da competição.</description>
+    </item>
+    
+    <item>
+      <title>Análise de Sentimentos com o R: Bojack Horseman vs Brooklyn Nine-Nine</title>
+      <link>https://marcusnunes.me/posts/analise-de-sentimentos-com-r-bojack-horseman-vs-brooklyn-99/</link>
+      <pubDate>Sun, 28 Jul 2019 08:20:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/analise-de-sentimentos-com-r-bojack-horseman-vs-brooklyn-99/</guid>
+      <description>Introdução Analisar sentimentos em texto é uma das coisas que sempre desejei aprender a fazer. Ao descobrir o post Bojack Horseman and Tidy Data Principles (Part 1) senti que era o momento de dar o pontapé inicial no assunto. Mas em vez de simplesmente reaplicar aquilo que o meu texto inspirador fez, decidi ir além, comparando duas séries de TV que gosto bastante.
+Para tal, escolhi Bojack Horseman e Brooklyn Nine-Nine para a empreitada.</description>
+    </item>
+    
+    <item>
+      <title>Ciência de Dados e Multidisciplinaridade</title>
+      <link>https://marcusnunes.me/posts/ciencia-de-dados-e-multidisciplinaridade/</link>
+      <pubDate>Fri, 07 Dec 2018 07:00:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/ciencia-de-dados-e-multidisciplinaridade/</guid>
+      <description>Fui convidado pela organização do II Seminário de Aplicações em Ciência de Dados para falar a respeito da visão da Estatística e a importância dos conhecimentos da área em aplicações de Ciência de Dados. Aceitei o convite o resultado foram os slides Ciência de Dados e Multidisciplinaridade.
+Fique à vontade para baixar estes slides e saber mais a respeito das minhas posições sobre o tema de Ciência de Dados e Multidisciplinaridade.</description>
+    </item>
+    
+  </channel>
+</rss>

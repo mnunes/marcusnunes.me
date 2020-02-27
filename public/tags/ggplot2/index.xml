@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ggplot2 on Marcus Nunes&#39; Blog</title>
+    <link>https://marcusnunes.me/tags/ggplot2/</link>
+    <description>Recent content in Ggplot2 on Marcus Nunes&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Mon, 21 May 2018 09:21:00 -0300</lastBuildDate>
+    
+	<atom:link href="https://marcusnunes.me/tags/ggplot2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Curso ggplot2</title>
+      <link>https://marcusnunes.me/posts/curso-ggplot2/</link>
+      <pubDate>Mon, 21 May 2018 09:21:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/curso-ggplot2/</guid>
+      <description>Recentemente fui convidado pela organização do 2º Encontro Paraibano de Estatística para ministrar um minicurso durante o evento. O tema que escolhi foi visualização de dados:
+ Visualização de dados com ggplot2
+Seja na análise dos resultados de algum experimento ou na modelagem de big data, todo trabalho estatístico começa com a visualização dos dados coletados. Embora seja negligenciada às vezes, a visualização é de suma importância para ajudar a levantar hipóteses, confirmar suspeitas e avaliar suposições.</description>
+    </item>
+    
+  </channel>
+</rss>

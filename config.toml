@@ -1,5 +1,4 @@
-baseURL = "https://mnunes.github.io/marcusnunes.me/"
-publishDir = "docs"
+baseURL = "https://marcusnunes.me"
 languageCode = "pt-br"
 title = "Marcus Nunes' Blog"
 theme = "hermit"
@@ -36,7 +35,7 @@ disqusShortname = "marcus-nunes-blog"
   # images = [""]
   themeColor = "#494f5c"
 
-  homeSubtitle = "Sou cientista de dados e meu cachorro se chama Fisher"
+  homeSubtitle = "Ciência de Dados para todos"
   footerCopyright = ' &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
   # bgImg = ""  # Homepage background-image URL
 
@@ -62,19 +61,18 @@ disqusShortname = "marcus-nunes-blog"
   [[params.social]]
     name = "github"
     url = "https://github.com/mnunes"
-
+  
   [[params.social]]
-    name = "stackoverflow"
-    url = "https://pt.stackoverflow.com/users/49033/marcus-nunes"
+    name = "email"
+    url = "https://marcusnunes.me/contato"
+
+  #[[params.social]]
+  #  name = "stackoverflow"
+  #  url = "https://pt.stackoverflow.com/users/49033/marcus-nunes"
 
   [[params.social]]
     name = "linkedin"
     url = "http://www.linkedin.com/in/marcusanunes"
-
-      
-  [[params.social]]
-    name = "email"
-    url = "https://marcusnunes.me/contato"
 
 
 [menu]

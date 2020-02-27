@@ -10,7 +10,13 @@ weight: 50
 
 Abaixo listo sites, jornais ou TVs que fizeram matérias sobre mim ou projetos que coordeno.
 
-### 2019
+**2020**
+
+- [Edital Internacional da LISA seleciona projeto da UFRN
+](https://www.ufrn.br/imprensa/noticias/33581/edital-internacional-da-lisa-seleciona-projeto-da-ufrn) - Portal da UFRN
+- [Infográfico: Caos nas cidades](https://super.abril.com.br/sociedade/infografico-caos-nas-cidades/) - Superinteressante
+
+**2019**
 
 - [Corte de Bolsas](https://www.youtube.com/watch?v=XmJlXlnS2Pg#t=17m2s) - Greg News
 - [Entrevista sobre a Competição de Ciência de Dados - Parte I](https://www.youtube.com/watch?v=3gzdOo-pkcw&feature=youtu.be&t=617) - Por Dentro do Campus (TVU RN)
@@ -24,11 +30,11 @@ Abaixo listo sites, jornais ou TVs que fizeram matérias sobre mim ou projetos q
 - [Aluno da UFRN cria ferramenta para monitorar deputados](https://www.ufrn.br/imprensa/noticias/28976/aluno-da-ufrn-cria-ferramenta-para-monitorar-deputados) - Portal da UFRN
 - [Departamento de Estatística oferece curso de Linguagem R](https://ufrn.br/imprensa/noticias/28794/departamento-de-estatistica-oferece-curso-de-linguagem-r) - Portal da UFRN
 
-### 2017
+**2017**
 
 - [Departamento de Estatística oferece serviço de consultoria gratuita para a comunidade](https://ufrn.br/imprensa/materias-especiais/3041/departamento-de-estatistica-oferece-servico-de-consultoria-gratuita-para-a-comunidade) - Portal da UFRN
 
-### 2016
+**2016** 
 
 - [UFRN realiza festival de divulgação científica em bares de Natal](https://neuro.ufrn.br/news/235) - Instituto do Cérebro
 - [Bares de Natal recebem Festival Internacional de Ciência](https://g1.globo.com/rn/rio-grande-do-norte/noticia/bares-de-natal-recebem-festival-internacional-de-ciencia.ghtml) - G1 RN

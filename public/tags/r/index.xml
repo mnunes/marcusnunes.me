@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Marcus Nunes&#39; Blog</title>
+    <link>https://marcusnunes.me/tags/r/</link>
+    <description>Recent content in R on Marcus Nunes&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Thu, 26 Dec 2019 07:36:00 -0300</lastBuildDate>
+    
+	<atom:link href="https://marcusnunes.me/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Analise os dados abertos da ANAC</title>
+      <link>https://marcusnunes.me/posts/dados-coletados-da-anac/</link>
+      <pubDate>Thu, 26 Dec 2019 07:36:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/dados-coletados-da-anac/</guid>
+      <description>Organizei todos os registros de voos do site da ANAC em um pacote do R. São mais de 20 milhões de informações referentes a todos os voos civis registrados no Brasil desde 2000, com as seguintes variáveis:
+ ICAOEmpresaAerea - Código designador da empresa no padrão da ICAO, com três letras. NumeroVoo - Numeração do voo, com até 4 caracteres numéricos. CodigoAutorizacaoDI - Caractere utilizado para identificar o tipo de autorização para cada etapa de voo conforme IAC 1504, podendo ser 0 (voo regular), 1 (voo extra com HOTRAN), 2 (voo extra sem HOTRAN), 3 (voo de retorno), 4 (inclusão de etapa em um voo previsto em HOTRAN), 5 (voo cargueiro), 6 (voo de serviço), 7 (voo de fretamento), 9 (voo charter), A (voo de instrução) ou B (voo de experiência).</description>
+    </item>
+    
+    <item>
+      <title>Como simplificar seus relatórios estatísticos usando R Markdown</title>
+      <link>https://marcusnunes.me/posts/como-simplificar-seus-relato%CC%81rios-estati%CC%81sticos-usando-r-markdown/</link>
+      <pubDate>Mon, 18 Nov 2019 21:55:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/como-simplificar-seus-relato%CC%81rios-estati%CC%81sticos-usando-r-markdown/</guid>
+      <description>Hoje apresentei mais um minicurso. A organização da 2nd Conference on Statistics and Data Science me chamou para contribuir com um assunto referente à ciência de dados no evento. Escolhi falar sobre R Markdown, a tecnologia que utilizamos para escrever os relatórios de consultoria do Laboratório de Estatística Aplicada. Inclusive, temos um pacote no R chamado modeloLEA, escrito para agilizar e padronizar a formatação destes nossos relatórios.
+O material do minicurso pode ser acessado em github.</description>
+    </item>
+    
+    <item>
+      <title>R ou Python? Qual a melhor ferramenta para trabalhar com Ciência de Dados?</title>
+      <link>https://marcusnunes.me/posts/r-ou-python/</link>
+      <pubDate>Wed, 09 Oct 2019 16:26:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/r-ou-python/</guid>
+      <description>Já vou começar este texto opinativo com a resposta definitiva para a pergunta do título:
+Qual é a melhor ferramenta para Análise de Dados? A melhor ferramenta para análise dados é a ferramenta que o usuário mais conhece. Seja Excel, R, python, Minitab, SAS, SPSS ou qualquer outra. O que importa é obter os resultados desejados de maneira rápida e confiável. Cada usuário vai ter necessidades diferentes e é muito provável que a melhor ferramenta para uma pessoa não sirva para outra.</description>
+    </item>
+    
+    <item>
+      <title>2º Workshop de R: Levando a Ciência de Dados para Todos</title>
+      <link>https://marcusnunes.me/posts/workshop-de-r-na-ufrn/</link>
+      <pubDate>Mon, 30 Sep 2019 11:07:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/workshop-de-r-na-ufrn/</guid>
+      <description>Eu sou um fulbrighter. Como ex-aluno deste programa de intercâmbio, volta e meia sou convidado para participar de ventos promovidos pelo programa U.S.-Brazil Exchange Alumni (USBEA). O último destes eventos do qual participei rolou semana passada, em comemoração ao Dia Nacional do Voluntário no Brasil.
+O projeto que desenvolvi se chamou 2º Workshop de R: Levando a Ciência de Dados para Todos e foi feito com apoio do Departamento de Estatística da UFRN, que cedeu a sala e os computadores com os quais o workshop pode ser desenvolvido.</description>
+    </item>
+    
+    <item>
+      <title>Análise de Sentimentos com o R: Bojack Horseman vs Brooklyn Nine-Nine</title>
+      <link>https://marcusnunes.me/posts/analise-de-sentimentos-com-r-bojack-horseman-vs-brooklyn-99/</link>
+      <pubDate>Sun, 28 Jul 2019 08:20:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/analise-de-sentimentos-com-r-bojack-horseman-vs-brooklyn-99/</guid>
+      <description>Introdução Analisar sentimentos em texto é uma das coisas que sempre desejei aprender a fazer. Ao descobrir o post Bojack Horseman and Tidy Data Principles (Part 1) senti que era o momento de dar o pontapé inicial no assunto. Mas em vez de simplesmente reaplicar aquilo que o meu texto inspirador fez, decidi ir além, comparando duas séries de TV que gosto bastante.
+Para tal, escolhi Bojack Horseman e Brooklyn Nine-Nine para a empreitada.</description>
+    </item>
+    
+    <item>
+      <title>Como Instalar o shiny server em seu Próprio Servidor</title>
+      <link>https://marcusnunes.me/posts/como-instalar-o-shiny-em-seu-proprio-servidor/</link>
+      <pubDate>Wed, 01 May 2019 14:10:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/como-instalar-o-shiny-em-seu-proprio-servidor/</guid>
+      <description>Introdução O pacote shiny do R é uma excelente ferramenta para criar aplicações web com as seguintes funções:
+ mostrar como a Estatística pode ser utilizada para ensino divulgação de informações públicas através de uma ferramenta interativa ferramenta de controle de produção em empresas (dashboards, no jargão popular)  Eu mantenho uma página no site da universidade com aplicações criadas por mim e por meus alunos que ilustram o poder desta ferramenta.</description>
+    </item>
+    
+    <item>
+      <title>Criando Memes com o R e o Pacote memer</title>
+      <link>https://marcusnunes.me/posts/criando-memes-com-o-r-e-o-pacote-memer/</link>
+      <pubDate>Mon, 22 Apr 2019 05:20:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/criando-memes-com-o-r-e-o-pacote-memer/</guid>
+      <description>O pacote memer foi criado para facilitar a criação de imagens macro (os famosos memes) a partir do R. Abaixo mostro como instalar este pacote e como usá-lo para criar imagens deste tipo.
+Instalação A instalação é bem simples. Como ele está hospedado no github, é necessário instalar o pacote devtools em seu computador para que o pacote memer seja instalado. Os cokandos para isso são os seguintes:
+# install.</description>
+    </item>
+    
+    <item>
+      <title>Ciência de Dados e Multidisciplinaridade</title>
+      <link>https://marcusnunes.me/posts/ciencia-de-dados-e-multidisciplinaridade/</link>
+      <pubDate>Fri, 07 Dec 2018 07:00:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/ciencia-de-dados-e-multidisciplinaridade/</guid>
+      <description>Fui convidado pela organização do II Seminário de Aplicações em Ciência de Dados para falar a respeito da visão da Estatística e a importância dos conhecimentos da área em aplicações de Ciência de Dados. Aceitei o convite o resultado foram os slides Ciência de Dados e Multidisciplinaridade.
+Fique à vontade para baixar estes slides e saber mais a respeito das minhas posições sobre o tema de Ciência de Dados e Multidisciplinaridade.</description>
+    </item>
+    
+    <item>
+      <title>Curso ggplot2</title>
+      <link>https://marcusnunes.me/posts/curso-ggplot2/</link>
+      <pubDate>Mon, 21 May 2018 09:21:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/curso-ggplot2/</guid>
+      <description>Recentemente fui convidado pela organização do 2º Encontro Paraibano de Estatística para ministrar um minicurso durante o evento. O tema que escolhi foi visualização de dados:
+ Visualização de dados com ggplot2
+Seja na análise dos resultados de algum experimento ou na modelagem de big data, todo trabalho estatístico começa com a visualização dos dados coletados. Embora seja negligenciada às vezes, a visualização é de suma importância para ajudar a levantar hipóteses, confirmar suspeitas e avaliar suposições.</description>
+    </item>
+    
+    <item>
+      <title>Regressão Linear Interativa</title>
+      <link>https://marcusnunes.me/posts/regressao-linear-interativa/</link>
+      <pubDate>Wed, 02 May 2018 07:21:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/regressao-linear-interativa/</guid>
+      <description>tl; dr Este é o link do aplicativo, caso o texto abaixo seja desinteressante.
+Introdução Regressão linear é um dos tópicos que ensino em uma disciplina chamada Métodos Estatísticos. Como é uma disciplina do terceiro semestre do Bacharelado em Estatística, é comum encontrar alunos que nunca viram um tópico como este ser tratado anteriormente. Assim, alguns ficam sem entender direito quando falo sobre relação linear, pontos de influência e tudo o mais.</description>
+    </item>
+    
+  </channel>
+</rss>

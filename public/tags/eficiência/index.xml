@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Eficiência on Marcus Nunes&#39; Blog</title>
+    <link>https://marcusnunes.me/tags/efici%C3%AAncia/</link>
+    <description>Recent content in Eficiência on Marcus Nunes&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 25 Aug 2018 18:30:00 -0300</lastBuildDate>
+    
+	<atom:link href="https://marcusnunes.me/tags/efici%C3%AAncia/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>De Dois Meses e Meio para Menos de Uma Hora: Como Otimizei o Código de um Programa no R</title>
+      <link>https://marcusnunes.me/posts/otimizar-codigo-no-r/</link>
+      <pubDate>Sat, 25 Aug 2018 18:30:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/otimizar-codigo-no-r/</guid>
+      <description>Estou trabalhando em um novo projeto com meu conjunto de dados sobre os pedidos de reembolso dos deputados federais brasileiros (falei com detalhes sobre este projeto neste link).
+Um aspecto importante neste novo projeto é encontrar os pedidos de reembolso dos deputados por empresa contratada. O problema é que o cadastro destes pedidos é feito por seres humanos e, ao procurar os das empresas, encontramos situações assim:
+vivo VIVO VIVO - TELEFONICA BRASIL VIVO - TELEFONICA Brasil S.</description>
+    </item>
+    
+  </channel>
+</rss>

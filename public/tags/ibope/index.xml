@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ibope on Marcus Nunes&#39; Blog</title>
+    <link>https://marcusnunes.me/tags/ibope/</link>
+    <description>Recent content in Ibope on Marcus Nunes&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Thu, 27 Feb 2020 07:57:00 -0300</lastBuildDate>
+    
+	<atom:link href="https://marcusnunes.me/tags/ibope/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Algumas das piores visualizações de dados já feitas na história das eleições brasileiras e mundiais</title>
+      <link>https://marcusnunes.me/posts/algumas-das-piores-visualizacoes-de-dados-ja-feitas/</link>
+      <pubDate>Thu, 27 Feb 2020 07:57:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/algumas-das-piores-visualizacoes-de-dados-ja-feitas/</guid>
+      <description>2020 é ano de eleição. O que não falta nesta época do ano são eleitores, veículos de imprensa e assessorias de candidatos tentam o possível (e, muitas vezes, o impossível) para mostrar que seus representantes são os melhores. Meu objetivo ao criar este post foi mostrar como é possível mascarar dados reais e mentir com visualizações erradas.
+Presidência da Venezuela, 2013 Um belo exemplo de como exagerar na diferença do percentual de votos entre dois candidatos a presidente, levando o leitor a acreditar que ela é muito maior do que realmente é.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+
+<meta itemprop="name" content="Análise de Sentimentos com o R: Bojack Horseman vs Brooklyn Nine-Nine">
+<meta itemprop="description" content="Veja quais são os assuntos mais tratados por estas duas séries de TV">
+
+
+<meta itemprop="datePublished" content="2019-07-28T08:20:00-03:00" />
+<meta itemprop="dateModified" content="2019-07-28T08:20:00-03:00" />
+<meta itemprop="wordCount" content="1715">
+
+
+
+<meta itemprop="keywords" content="análise de sentimentos,bojack horseman,brooklyn nine-nine,ciência de dados,r,séries de tv," />
+<meta property="og:title" content="Análise de Sentimentos com o R: Bojack Horseman vs Brooklyn Nine-Nine" />
+<meta property="og:description" content="Veja quais são os assuntos mais tratados por estas duas séries de TV" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://marcusnunes.me/posts/analise-de-sentimentos-com-r-bojack-horseman-vs-brooklyn-99/" />
+<meta property="article:published_time" content="2019-07-28T08:20:00-03:00"/>
+<meta property="article:modified_time" content="2019-07-28T08:20:00-03:00"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Análise de Sentimentos com o R: Bojack Horseman vs Brooklyn Nine-Nine"/>
+<meta name="twitter:description" content="Veja quais são os assuntos mais tratados por estas duas séries de TV"/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Análise de Sentimentos com o R: Bojack Horseman vs Brooklyn Nine-Nine</title>
+	<link rel="stylesheet" href="https://marcusnunes.me/css/style.min.2abea836b35631572d081e3a3c4e1ab54d8a33a8d87fa93c9b79831551fd44ce.css" integrity="sha256-Kr6oNrNWMVctCB46PE4atU2KM6jYf6k8m3mDFVH9RM4=">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://marcusnunes.me">Marcus Nunes&#39; Blog</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					<a href="https://marcusnunes.me/posts/">Posts</a>
+					<a href="https://marcusnunes.me/sobre/">Sobre</a>
+					<a href="https://marcusnunes.me/ensino/">Ensino</a>
+					<a href="https://marcusnunes.me/pesquisa/">Pesquisa</a>
+					<a href="https://marcusnunes.me/shiny/">Shiny</a>
+					<a href="https://marcusnunes.me/midia/">Mídia</a>
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://twitter.com/_marcus_nunes_" target="_blank" rel="noopener" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/grandeabobora" target="_blank" rel="noopener" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/mnunes" target="_blank" rel="noopener" title="Github"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://marcusnunes.me/contato" target="_blank" rel="noopener" title="Email"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a><a href="http://www.linkedin.com/in/marcusanunes" target="_blank" rel="noopener" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://marcusnunes.me/posts/">Posts</a></li>
+			<li><a href="https://marcusnunes.me/sobre/">Sobre</a></li>
+			<li><a href="https://marcusnunes.me/ensino/">Ensino</a></li>
+			<li><a href="https://marcusnunes.me/pesquisa/">Pesquisa</a></li>
+			<li><a href="https://marcusnunes.me/shiny/">Shiny</a></li>
+			<li><a href="https://marcusnunes.me/midia/">Mídia</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Jul 28, 2019</span></div>
+				<h1>Análise de Sentimentos com o R: Bojack Horseman vs Brooklyn Nine-Nine</h1>
+			</header>
+			<div class="content">
+				
+
+
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
+<p>Analisar sentimentos em texto é uma das coisas que sempre desejei aprender a fazer. Ao descobrir o post <a href="https://pacha.hk/blog/2019/07/16/bojack-horseman-and-tidy-data-principles-part-1/">Bojack Horseman and Tidy Data Principles (Part 1)</a> senti que era o momento de dar o pontapé inicial no assunto. Mas em vez de simplesmente reaplicar aquilo que o meu texto inspirador fez, decidi ir além, comparando duas séries de TV que gosto bastante.</p>
+<p>Para tal, escolhi <a href="https://pt.wikipedia.org/wiki/BoJack_Horseman">Bojack Horseman</a> e <a href="https://pt.wikipedia.org/wiki/Brooklyn_Nine-Nine">Brooklyn Nine-Nine</a> para a empreitada. Optei pelas duas por uma série de motivos. O principal deles, como dito anteriormente, é o fato de eu gostar de ambas. Além disso, as duas séries são consideradas <em>sitcoms</em>, o que as coloca no mesmo gênero televisivo. Não obstante, são séries contemporâneas: Bojack Horseman estreou em 2014, enquanto Brooklyn Nine-Nine é apenas um ano mais velha. Assm, decidi me concentrar nas cinco primeiras temporadas de cada seriado.</p>
+<p>O que as difere são os temas abordados. Enquanto Bojack Horseman é uma série brutalmente triste, que explora a relação do protagonista com a sua depressão, Brooklyn Nine-Nine aposta em piadas leves e temas como inclusão para contar a sua história.</p>
+<p>Assim, a minha hipótese é que Bojack Horseman use sentimentos mais negativos em seus diálogos, enquanto Brooklyn Nine-Nine seja uma série mais positiva.</p>
+</div>
+<div id="obtenção-dos-dados" class="section level1">
+<h1>Obtenção dos Dados</h1>
+<p>O ideal seria utilizar os roteiros dos seriados como base para a minha análise. Mas isto so mostrou impossível, pois desejo encontrar resultados em português. Portanto, decidi utilizar as legendas traduzidas para fazer a minha análise. Por sorte, o site <a href="http://legendas.tv">Legendas TV</a> possui todas as legendas das cinco primeiras temporadas destes seriados. Como estas legendas estão organizadas em um arquivo único por temporada, o trabalho de baixá-las tornou-se bem menor.</p>
+</div>
+<div id="tratamento-e-análise-dos-dados" class="section level1">
+<h1>Tratamento e Análise dos Dados</h1>
+<div id="palavras-mais-frequentes" class="section level2">
+<h2>Palavras Mais Frequentes</h2>
+<p>A primeira parte da análise é carregar os pacotes necessários para realizá-la. Note que o pacote <code>subtools</code> está hospedado no GitHub, o que implica que não basta rodar <code>install.packages(subtools)</code> para que ele seja instalado.</p>
+<pre class="r"><code># pacotes necessarios
+
+library(subtools) # devtools::install_github(&quot;fkeck/subtools&quot;)
+library(tm)
+library(tidyverse)
+theme_set(theme_bw())
+library(gridExtra)
+library(reshape2)</code></pre>
+<p>Como cada episódio dos seriados está armazenado em um arquivo .srt diferente, é necessário ter uma forma prática de ler todos estes arquivos de uma vez. A função <code>subtools::read.subtitles.serie</code> é perfeita para isso, pois além de ler todos os arquivos de uma vez só, ela também os organiza por episódio e temporada.</p>
+<pre class="r"><code>#######################
+### bojack horseman ###
+#######################
+
+# leitura das legendas dos episodios
+
+bojack &lt;- read.subtitles.serie(dir = &quot;subtitles/bojack_horseman/&quot;)</code></pre>
+<p>Após a leitura das legendas, precisamos transformá-las em um <em><a href="https://pt.wikipedia.org/wiki/Corpus_lingu%C3%ADstico">corpus</a></em>. Isto é fundamental para que possamos proceder com a limpeza do texto, aplicando nele as seguintes transformações:</p>
+<ul>
+<li>converter todas as letras para sua versão minúscula</li>
+<li>remover sinais de pontuação</li>
+<li>remover números</li>
+<li>remover <em><a href="https://pt.wikipedia.org/wiki/Palavra_vazia">stopwords</a></em> (palavras vazias de sentido, como: e, para, de e similares)</li>
+<li>remover espaços em branco</li>
+</ul>
+<pre class="r"><code># limpeza do texto
+
+bojack_corpus &lt;- tmCorpus(bojack)
+
+bojack_corpus &lt;- tm_map(bojack_corpus, content_transformer(tolower))
+bojack_corpus &lt;- tm_map(bojack_corpus, removePunctuation)
+bojack_corpus &lt;- tm_map(bojack_corpus, removeNumbers)
+bojack_corpus &lt;- tm_map(bojack_corpus, removeWords, stopwords(&quot;portuguese&quot;))
+bojack_corpus &lt;- tm_map(bojack_corpus, stripWhitespace)
+bojack_corpus &lt;- TermDocumentMatrix(bojack_corpus)
+
+bojack_corpus_matrix &lt;- as.matrix(bojack_corpus)</code></pre>
+<p>Em seguida, é preciso proceder com a lematização do texto. É necessário identificar e converter formas flexionadas das palavras para as suas versões dicionarizadas. Por exemplo, é preciso tomar as palavras <em>comi</em>, <em>comemos</em>. <em>comeríamos</em>, <em>comia</em> e transformá-las todas em <em>comer</em>.</p>
+<p>Não encontrei nenhum pacote que fizesse uma lematização aceitável em português. Assim, tive que implementar a minha própria, baseado no <a href="https://github.com/michmech/lemmatization-lists">dicionário de lematização encontrado neste link</a>. Ela ficou um pouco lenta de ser aplicada, mas foi a melhor solução que encontrei na minha pesquisa.</p>
+<pre class="r"><code># lemmatizacao
+
+lemma_dic &lt;- read.delim(file = &quot;lemmatization/lemmatization-pt.txt&quot;, header = FALSE, stringsAsFactors = FALSE)
+names(lemma_dic) &lt;- c(&quot;stem&quot;, &quot;term&quot;)
+
+# palavras do bojack que estao no dicionario
+
+palavras &lt;- row.names(bojack_corpus_matrix)
+
+for (j in 1:length(palavras)){
+  comparacao &lt;- palavras[j] == lemma_dic$term
+  if (sum(comparacao) == 1){
+    palavras[j] &lt;- as.character(lemma_dic$stem[comparacao])
+  } else {
+    palavras[j] &lt;- palavras[j]
+  }
+}
+
+palavras_bojack &lt;- palavras
+
+bojack_corpus_df &lt;- as.data.frame(bojack_corpus_matrix)
+row.names(bojack_corpus_df) &lt;- NULL
+bojack_corpus_df$palavras &lt;- palavras_bojack</code></pre>
+<p>Após a lematização, é preciso contar as ocorrências de cada palavra e preparar os conjuntos de dados para que sejam plotados:</p>
+<pre class="r"><code># agrupar os resultados 
+
+bojack_corpus_df &lt;- bojack_corpus_df %&gt;%
+  group_by(palavras) %&gt;%
+  summarise_all(sum)
+
+temporadas &lt;- rep(1:5, each = 12)
+bojack_corpus_df_col &lt;- t(apply(bojack_corpus_df[, 2:61], 1, function(x) tapply(x, temporadas, sum)))
+colnames(bojack_corpus_df_col) &lt;- paste(&quot;S0&quot;, 1:5, sep = &quot;&quot;)
+bojack_corpus_df_col &lt;- data.frame(palavra = bojack_corpus_df$palavras,
+                                   bojack_corpus_df_col)
+
+bojack_corpus_melt &lt;- melt(bojack_corpus_df_col)
+names(bojack_corpus_melt) &lt;- c(&quot;palavra&quot;, &quot;temporada&quot;, &quot;ocorrencias&quot;)
+
+
+# funcao para plotar os graficos de barra
+
+plot.seriado &lt;- function(dados, season, cor = 0){
+  
+  grafico &lt;- dados %&gt;%
+    filter(temporada == season) %&gt;%
+    top_n(n = 10, wt = ocorrencias) %&gt;%
+    arrange(desc(ocorrencias)) %&gt;%
+    ggplot(., aes(x = reorder(palavra, ocorrencias), y = ocorrencias, fill = temporada)) +
+    geom_col(show.legend = FALSE) +
+    labs(x = &quot;&quot;, y = &quot;&quot;, title = season) +
+    coord_flip() +
+    scale_fill_viridis_d(begin = cor)
+  
+  return(grafico)  
+  
+}</code></pre>
+<p>No fim, o que obtemos é o seguinte gráfico:</p>
+<pre class="r"><code>s01 &lt;- plot.seriado(bojack_corpus_melt, &quot;S01&quot;, 0.00)
+s02 &lt;- plot.seriado(bojack_corpus_melt, &quot;S02&quot;, 0.25)
+s03 &lt;- plot.seriado(bojack_corpus_melt, &quot;S03&quot;, 0.50)
+s04 &lt;- plot.seriado(bojack_corpus_melt, &quot;S04&quot;, 0.75)
+s05 &lt;- plot.seriado(bojack_corpus_melt, &quot;S05&quot;, 1.00)
+
+grid.arrange(s01, s02, s03, s04, s05, left = &quot;Palavras&quot;, bottom = &quot;Número de Ocorrências&quot;)</code></pre>
+<p><img src="/posts/analise-de-sentimentos-com-R-bojack-horseman-vs-brooklyn-99_files/figure-html/bojack_plots-1.png" width="672" /></p>
+<p>Note que o verbo <strong>ir</strong> é o que mais aparece em todas as temporadas de Bojack Horseman, com <strong>querer</strong> e <strong>fazer</strong> alternando a segunda posição.</p>
+<p>A preparação dos dados para a análise dos diálogos de Brooklyn Nine-Nine é análoga à realizada para Bojack Horseman.</p>
+<pre class="r"><code>###################
+### brooklyn 99 ###
+###################
+
+# leitura das legendas dos episodios
+
+brooklyn99 &lt;- read.subtitles.serie(dir = &quot;subtitles/brooklyn99/&quot;)
+
+# limpeza do texto
+
+brooklyn99_corpus &lt;- tmCorpus(brooklyn99)
+
+brooklyn99_corpus &lt;- tm_map(brooklyn99_corpus, content_transformer(tolower))
+brooklyn99_corpus &lt;- tm_map(brooklyn99_corpus, removePunctuation)
+brooklyn99_corpus &lt;- tm_map(brooklyn99_corpus, removeNumbers)
+brooklyn99_corpus &lt;- tm_map(brooklyn99_corpus, removeWords, stopwords(&quot;portuguese&quot;))
+brooklyn99_corpus &lt;- tm_map(brooklyn99_corpus, stripWhitespace)
+brooklyn99_corpus &lt;- TermDocumentMatrix(brooklyn99_corpus)
+
+brooklyn99_corpus_matrix &lt;- as.matrix(brooklyn99_corpus)
+
+# lemmatizacao
+
+lemma_dic &lt;- read.delim(file = &quot;lemmatization/lemmatization-pt.txt&quot;, header = FALSE, stringsAsFactors = FALSE)
+names(lemma_dic) &lt;- c(&quot;stem&quot;, &quot;term&quot;)
+
+# palavras do brooklyn99 que estao no dicionario
+
+palavras &lt;- row.names(brooklyn99_corpus_matrix)
+
+for (j in 1:length(palavras)){
+  comparacao &lt;- palavras[j] == lemma_dic$term
+  if (sum(comparacao) == 1){
+    palavras[j] &lt;- as.character(lemma_dic$stem[comparacao])
+  } else {
+    palavras[j] &lt;- palavras[j]
+  }
+}
+
+palavras_brooklyn99 &lt;- palavras
+
+brooklyn99_corpus_df &lt;- as.data.frame(brooklyn99_corpus_matrix)
+row.names(brooklyn99_corpus_df) &lt;- NULL
+brooklyn99_corpus_df$palavras &lt;- palavras_brooklyn99
+
+# agrupar os resultados 
+
+brooklyn99_corpus_df &lt;- brooklyn99_corpus_df %&gt;%
+  group_by(palavras) %&gt;%
+  summarise_all(sum)
+
+temporadas &lt;- c(rep(1, 22), 
+                rep(2, 23), 
+                rep(3, 23), 
+                rep(4, 22), 
+                rep(5, 22))
+
+brooklyn99_corpus_df_col &lt;- t(apply(brooklyn99_corpus_df[, 2:113], 1, function(x) tapply(x, temporadas, sum)))
+colnames(brooklyn99_corpus_df_col) &lt;- paste(&quot;S0&quot;, 1:5, sep = &quot;&quot;)
+brooklyn99_corpus_df_col &lt;- data.frame(palavra = brooklyn99_corpus_df$palavras,
+                                       brooklyn99_corpus_df_col)
+
+brooklyn99_corpus_melt &lt;- melt(brooklyn99_corpus_df_col)
+names(brooklyn99_corpus_melt) &lt;- c(&quot;palavra&quot;, &quot;temporada&quot;, &quot;ocorrencias&quot;)
+
+# funcao para plotar os graficos de barra
+
+plot.seriado &lt;- function(dados, season, cor = 0){
+  
+  grafico &lt;- dados %&gt;%
+    filter(temporada == season) %&gt;%
+    top_n(n = 10, wt = ocorrencias) %&gt;%
+    arrange(desc(ocorrencias)) %&gt;%
+    ggplot(., aes(x = reorder(palavra, ocorrencias), y = ocorrencias, fill = temporada)) +
+    geom_col(show.legend = FALSE) +
+    labs(x = &quot;&quot;, y = &quot;&quot;, title = season) +
+    coord_flip() +
+    scale_fill_viridis_d(begin = cor)
+  
+  return(grafico)  
+  
+}</code></pre>
+<p>E ao fazer a contagem das palavras que mais aparecem e colocá-las em um gráfico, eis que o resultado é praticamente idêntico ao de Bojack Horseman:</p>
+<pre class="r"><code>s01 &lt;- plot.seriado(brooklyn99_corpus_melt, &quot;S01&quot;, 0.00)
+s02 &lt;- plot.seriado(brooklyn99_corpus_melt, &quot;S02&quot;, 0.25)
+s03 &lt;- plot.seriado(brooklyn99_corpus_melt, &quot;S03&quot;, 0.50)
+s04 &lt;- plot.seriado(brooklyn99_corpus_melt, &quot;S04&quot;, 0.75)
+s05 &lt;- plot.seriado(brooklyn99_corpus_melt, &quot;S05&quot;, 1.00)
+
+grid.arrange(s01, s02, s03, s04, s05, left = &quot;Palavras&quot;, bottom = &quot;Número de Ocorrências&quot;)</code></pre>
+<p><img src="/posts/analise-de-sentimentos-com-R-bojack-horseman-vs-brooklyn-99_files/figure-html/b99_plot-1.png" width="672" /></p>
+<pre class="r"><code>sentimentos &lt;- read.table(file = &quot;sentiment/sentiword.txt&quot;, sep = &quot;\t&quot;, header = TRUE)
+
+sentimentos &lt;- sentimentos %&gt;%
+  group_by(Termo) %&gt;%
+  summarise(positivo = max(PosScore), negativo = max(NegScore)) %&gt;%
+  mutate(Termo = trimws(Termo, which = &quot;left&quot;))
+
+pos &lt;- sentimentos[, c(1, 2)]
+neg &lt;- sentimentos[, c(1, 3)]
+
+# sentimento para cada episodio
+
+bojack_sentimento_positivo &lt;- 0
+bojack_sentimento_negativo &lt;- 0
+
+for (j in 1:(dim(bojack_corpus_df)[2]-1)){
+  
+  # palavras do j-esimo episodio
+  
+  a &lt;- bojack_corpus_matrix[, j]
+  a &lt;- data.frame(Termo = names(a),
+                  Ocorrencias = a)
+
+  row.names(a) &lt;- NULL
+  
+  # juntando sentimentos com as palavras do episodio - caso positivo
+  
+  x &lt;- left_join(a, pos, by = &quot;Termo&quot;) %&gt;%
+    na.omit()
+
+  sentimento_positivo &lt;- sum(x$Ocorrencias*x$positivo)/sum(a$Ocorrencias)
+  
+  # juntando sentimentos com as palavras do episodio - caso negativo
+
+  x &lt;- left_join(a, neg, by = &quot;Termo&quot;) %&gt;%
+    na.omit()
+
+  sentimento_negativo &lt;- sum(x$Ocorrencias*x$negativo)/sum(a$Ocorrencias)
+  
+  bojack_sentimento_positivo[j] &lt;- sentimento_positivo
+  bojack_sentimento_negativo[j] &lt;- sentimento_negativo
+}
+
+bojack_plot &lt;- data.frame(episodio = 1:length(bojack_sentimento_positivo),
+                          temporada = factor(temporadas),
+                          positivo = bojack_sentimento_positivo,
+                          negativo = bojack_sentimento_negativo)
+
+# sentimento para cada episodio
+
+brooklyn99_sentimento_positivo &lt;- 0
+brooklyn99_sentimento_negativo &lt;- 0
+
+for (j in 1:(dim(brooklyn99_corpus_df)[2]-1)){
+  
+  # palavras do j-esimo episodio
+  
+  a &lt;- brooklyn99_corpus_matrix[, j]
+  a &lt;- data.frame(Termo = names(a),
+                  Ocorrencias = a)
+  
+  row.names(a) &lt;- NULL
+  
+  # juntando sentimentos com as palavras do episodio - caso positivo
+  
+  x &lt;- left_join(a, pos, by = &quot;Termo&quot;) %&gt;%
+    na.omit()
+  
+  sentimento_positivo &lt;- sum(x$Ocorrencias*x$positivo)/sum(a$Ocorrencias)
+  
+  # juntando sentimentos com as palavras do episodio - caso negativo
+  
+  x &lt;- left_join(a, neg, by = &quot;Termo&quot;) %&gt;%
+    na.omit()
+  
+  sentimento_negativo &lt;- sum(x$Ocorrencias*x$negativo)/sum(a$Ocorrencias)
+  
+  brooklyn99_sentimento_positivo[j] &lt;- sentimento_positivo
+  brooklyn99_sentimento_negativo[j] &lt;- sentimento_negativo
+}
+
+brooklyn99_plot &lt;- data.frame(episodio = 1:length(brooklyn99_sentimento_positivo),
+                              temporada = factor(temporadas),
+                              positivo = brooklyn99_sentimento_positivo,
+                              negativo = brooklyn99_sentimento_negativo)</code></pre>
+</div>
+<div id="análise-de-sentimentos" class="section level2">
+<h2>Análise de Sentimentos</h2>
+<p>É possível atribuir pesos positivos e negativos a palavras, em uma escala de 0 a 1. Por exemplo, a palavra incapaz pode ter valor 0.75 positivo, enquanto a palavra hiperventilar tem peso negativo de 0.5. Ao atribuir estes pesos para as palavras ditas no seriado, é possível verificar como, em uma escala de 0 a 1 para valores positivos e de -1 a 0 para valores negativos, como estão os diálogos das séries. O dicionário <a href="https://github.com/Pedro-Thales/SentiWordNet-PT-BR">SentiWordNet-PT-BR</a>, criado pelo Pedro Thales, me ajudou muito nesta tarefa. Os resultados obtidos estão nas figuras abaixo.</p>
+<pre class="r"><code>ggplot(bojack_plot, aes(x = episodio, colour = temporada)) +
+  geom_line(aes(y = positivo)) +
+  geom_line(aes(y = -negativo)) +
+  scale_x_continuous(breaks = seq(12, 60, 12)) +
+  labs(x = &quot;Episódio&quot;, y = &quot;Sentimento&quot;, colour = &quot;Temporada&quot;, title = &quot;Bojack Horseman&quot;) +
+  scale_colour_viridis_d()</code></pre>
+<p><img src="/posts/analise-de-sentimentos-com-R-bojack-horseman-vs-brooklyn-99_files/figure-html/plotSentimento-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(brooklyn99_plot, aes(x = episodio, colour = temporada)) +
+  geom_line(aes(y = positivo)) +
+  geom_line(aes(y = -negativo)) +
+  scale_x_continuous(breaks = c(22, 45, 68, 90, 112)) +
+  labs(x = &quot;Episódio&quot;, y = &quot;Sentimento&quot;, colour = &quot;Temporada&quot;, title = &quot;Brooklyn 99&quot;) +
+  scale_colour_viridis_d()</code></pre>
+<p><img src="/posts/analise-de-sentimentos-com-R-bojack-horseman-vs-brooklyn-99_files/figure-html/plotSentimento-2.png" width="672" /></p>
+<p>Novamente, parece não haver muita diferença de uma série para outra.</p>
+</div>
+</div>
+<div id="conclusão" class="section level1">
+<h1>Conclusão</h1>
+<p>Reconheço que este não é o resultado que eu esperava. Eu imaginava que as palavras com maior frequência para Bojack Horseman teriam conotação negativa, enquanto em Brooklyn Nine-Nine elas teriam mais conotação positiva. Pelo visto, me enganei.</p>
+<p>Caberia fazer uma segunda análise nestes dados, talvez com os diálogos originais. Afinal, como as traduções que usei não são, pode ser que elas estejam influenciando no resultado final da análise. Além disso, é possível que meus dicionários de lematização e sentimentos possuam problemas, fazendo com que os resultados não sejam exatamente aqueles que ocorrem na língua original dos seriados.</p>
+<p>De toda forma, foi uma análise divertida de fazer. Tentarei repeti-la co fututo, mas aí com <em>corpus</em> originais do português.</p>
+<p>Os arquivos utilizados nesta análise estão <a href="https://github.com/mnunes/tv_series">neste repositório do GitHub</a>.</p>
+</div>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="2" height="2" viewBox="0 0 2 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://marcusnunes.me/tags/an%C3%A1lise-de-sentimentos">análise de sentimentos</a></span><span class="tag"><a href="https://marcusnunes.me/tags/bojack-horseman">bojack horseman</a></span><span class="tag"><a href="https://marcusnunes.me/tags/brooklyn-nine-nine">brooklyn nine-nine</a></span><span class="tag"><a href="https://marcusnunes.me/tags/ci%C3%AAncia-de-dados">ciência de dados</a></span><span class="tag"><a href="https://marcusnunes.me/tags/r">r</a></span><span class="tag"><a href="https://marcusnunes.me/tags/s%C3%A9ries-de-tv">séries de tv</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1715 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-07-28 08:20 -0300</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://marcusnunes.me/posts/consultoria-estati%CC%81stica-na-ufrn-nosso-trabalho-sendo-divulgado-no-oriente/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Consultoria Estatística na UFRN: Nosso Trabalho Sendo Divulgado no Oriente</span>
+			</a>
+			<a class="prev-post" href="https://marcusnunes.me/posts/analisando-questionarios-no-r-uma-abordagem-multivariada/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Analisando Questionários no R: Uma Abordagem Multivariada</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "marcus-nunes-blog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2013-2020 <a href="https://marcusnunes.me">Marcus Nunes</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://marcusnunes.me/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+	<script src="https://marcusnunes.me/js/main.min.784417f5847151f848c339cf0acb13a06cbb648b1483435a28ed4556c4ead69b.js" integrity="sha256-eEQX9YRxUfhIwznPCssToGy7ZIsUg0NaKO1FVsTq1ps="></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-201649-7', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+</body>
+
+</html>

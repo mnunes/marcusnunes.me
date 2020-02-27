@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+
+<meta itemprop="name" content="Analisando Questionários no R: Uma Abordagem Multivariada">
+<meta itemprop="description" content="Como usar o Google para provar ou desprovar esta afirmação">
+
+
+<meta itemprop="datePublished" content="2019-06-30T20:08:00-03:00" />
+<meta itemprop="dateModified" content="2019-06-30T20:08:00-03:00" />
+<meta itemprop="wordCount" content="1737">
+
+
+
+<meta itemprop="keywords" content="análise,análise fatorial,estatística multivariada,likert,questionários," />
+<meta property="og:title" content="Analisando Questionários no R: Uma Abordagem Multivariada" />
+<meta property="og:description" content="Como usar o Google para provar ou desprovar esta afirmação" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://marcusnunes.me/posts/analisando-questionarios-no-r-uma-abordagem-multivariada/" />
+<meta property="article:published_time" content="2019-06-30T20:08:00-03:00"/>
+<meta property="article:modified_time" content="2019-06-30T20:08:00-03:00"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Analisando Questionários no R: Uma Abordagem Multivariada"/>
+<meta name="twitter:description" content="Como usar o Google para provar ou desprovar esta afirmação"/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Analisando Questionários no R: Uma Abordagem Multivariada</title>
+	<link rel="stylesheet" href="https://marcusnunes.me/css/style.min.2abea836b35631572d081e3a3c4e1ab54d8a33a8d87fa93c9b79831551fd44ce.css" integrity="sha256-Kr6oNrNWMVctCB46PE4atU2KM6jYf6k8m3mDFVH9RM4=">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://marcusnunes.me">Marcus Nunes&#39; Blog</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					<a href="https://marcusnunes.me/posts/">Posts</a>
+					<a href="https://marcusnunes.me/sobre/">Sobre</a>
+					<a href="https://marcusnunes.me/ensino/">Ensino</a>
+					<a href="https://marcusnunes.me/pesquisa/">Pesquisa</a>
+					<a href="https://marcusnunes.me/shiny/">Shiny</a>
+					<a href="https://marcusnunes.me/midia/">Mídia</a>
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://twitter.com/_marcus_nunes_" target="_blank" rel="noopener" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/grandeabobora" target="_blank" rel="noopener" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/mnunes" target="_blank" rel="noopener" title="Github"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://marcusnunes.me/contato" target="_blank" rel="noopener" title="Email"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a><a href="http://www.linkedin.com/in/marcusanunes" target="_blank" rel="noopener" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://marcusnunes.me/posts/">Posts</a></li>
+			<li><a href="https://marcusnunes.me/sobre/">Sobre</a></li>
+			<li><a href="https://marcusnunes.me/ensino/">Ensino</a></li>
+			<li><a href="https://marcusnunes.me/pesquisa/">Pesquisa</a></li>
+			<li><a href="https://marcusnunes.me/shiny/">Shiny</a></li>
+			<li><a href="https://marcusnunes.me/midia/">Mídia</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Jun 30, 2019</span></div>
+				<h1>Analisando Questionários no R: Uma Abordagem Multivariada</h1>
+			</header>
+			<div class="content">
+				
+
+
+<p>Um dos tipos de trabalho que aparece mais frequentemente no <a href="https://marcusnunes.me/consultoria/">Laboratório de Consultoria</a> que coordeno na universidade diz respeito à análise de questionários. Recebemos pedidos de colaboração na preparação dos questionários, cálculo do tamanho amostral para sua aplicação e análise dos resultados coletados.</p>
+<p>Em geral, nossos clientes estão interessados apenas em estatísticas descritivas básicas a respeito dos resultados obtidos em suas pesquisas. Sendo assim, o intuito deste meu post é mostrar que há um outro mundo possível para quem deseja obter informações mais sofisticadas a respeito dos questionários que aplica em seus sujeitos. Para ilustrar estas ideias, compartilho o código de uma análise de questionário realizada por mim no software R.</p>
+<div id="questionário" class="section level1">
+<h1>Questionário</h1>
+<p>Um questionário aplicado a 13156 sujeitos se propôs a avaliar o que estas pessoas achavam de uma série de preceitos morais. Foram feitas 20 afirmações que deveriam ser respondidas de acordo com uma escala Likert, definida da seguinte maneira:</p>
+<ol style="list-style-type: decimal">
+<li><p>Discordo totalmente</p></li>
+<li><p>Discordo parcialmente</p></li>
+<li><p>Indiferente</p></li>
+<li><p>Concordo parcialmente</p></li>
+<li><p>Concordo totalmente</p></li>
+</ol>
+<p>Caso o respondente não soubesse classificar alguma informação, ele poderia responder 0. As afirmações feitas foram as seguintes:</p>
+<ul>
+<li><p>Q01. Nunca conte as suas reais intenções a respeito de algo que você fez a não ser que seja útil fazer isso.</p></li>
+<li><p>Q02. A melhor maneira de lidar com pessoas é falando o que elas desejam ouvir.</p></li>
+<li><p>Q03. As pessoas devem agir apenas quando é moralmente correto.</p></li>
+<li><p>Q04. A maioria das pessoas é boa e gentil.</p></li>
+<li><p>Q05. É mais seguro assumir que todas as pessoas possuem um lado mau e ele virá à nota quando houver oportunidade.</p></li>
+<li><p>Q06. Honestidade é um princípio a ser adotado em todas as situações.</p></li>
+<li><p>Q07. Não há desculpa para mentir.</p></li>
+<li><p>Q08. De maneira geral, as pessoas não vão trabalhar duro a não ser que sejam forçadas a isso.</p></li>
+<li><p>Q09. De modo geral, é melhor ser modesto e honesto do que arrogante e desonesto.</p></li>
+<li><p>Q10. Quando você pede para alguém fazer algo para você é melhor dar a verdadeira razão do pedido do que dar razões que sejam particularmente mais fortes para quem as ouve.</p></li>
+<li><p>Q11. A maioria das pessoas que chegam longe na vida são honestas, possuindo vidas limpas e de acordo com a moral.</p></li>
+<li><p>Q12. Qualquer pessoas que acredite seriamente nos outros está pedindo para ter problemas.</p></li>
+<li><p>Q13. A principal diferença entre a maioria dos criminosos e as outras pessoas é que os criminosos são estúpidos o suficiente para terem sido pegos.</p></li>
+<li><p>Q14. A maioria das pessoas é corajosa.</p></li>
+<li><p>Q15. É sábio elogiar pessoas importantes.</p></li>
+<li><p>Q16. É possível ser bom em todos os aspectos.</p></li>
+<li><p>Q17. A autor da frase “nasce um otário a cada minuto” estava errado.</p></li>
+<li><p>Q18. É difícil chegar longe na vida sem tomar alguns atalhos aqui e ali.</p></li>
+<li><p>Q19. Pessoas que sofrem de doenças incuráveis deveria ter a escolha de optar por serem mortas sem dor.</p></li>
+<li><p>Q20. A maioria das pessoas esquecerá mais fácil a morte dos seus pais do que a perda do seu patrimônio.</p></li>
+</ul>
+<p>Além destas, outras variáveis foram coletadas:</p>
+<ul>
+<li><p><code>score</code>: variando de 20 a 100, é um índice calculado a partir das respostas dos sujeitos às aformações Q01 a Q20</p></li>
+<li><p><code>genero</code>: 1 para masculino, 2 para feminino, 3 para outro, 0 sem resposta</p></li>
+<li><p><code>idade</code>: idade de cada sujeito, em anos</p></li>
+<li><p><code>tempo_decorrido</code>: tempo, em segundos, que cada sujeito levou para responder ao questionário</p></li>
+</ul>
+<p>Os dados brutos podem ser obtidos <a href="https://marcusnunes.me/images/dados/maquiavel.csv">através deste link</a>.</p>
+</div>
+<div id="preparação-dos-dados" class="section level1">
+<h1>Preparação dos Dados</h1>
+<p>Antes de proceder com a análise em si, é necessário preparar os dados. Todo mundo que já aplicou um questionário, principalmente via internet, sabe que o maior problema depois da não-resposta é a falta de compromisso de alguns respondentes. É muito difícil localizar respostas dadas de maneira deliberadamente equivocada para as questões de um questionário. Em geral, confiamos na boa-fé de quem responde.</p>
+<p>Entretanto, outras perguntas pode ser utilizadas como balizas do que podemos ou não confiar naquilo que estamos analisando. Pensando nisso e de modo a ter um questionário o mais fiel possível à realidade, vamos remover do conjunto de dados analisado todo sujeito que satisfaça pelo menos uma das condições abaixo:</p>
+<ol style="list-style-type: lower-roman">
+<li><p>respondeu 0 para ao menos uma afirmação</p></li>
+<li><p>idade inferior a 18 anos</p></li>
+<li><p>idade superior a 90 anos</p></li>
+<li><p>tempo de resposta do questionário superior à média mais três desvios padrão dos demais respondentes</p></li>
+</ol>
+<p>O código para fazer isto neste conjunto de dados é o seguinte:</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ───────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 3.2.1     ✔ purrr   0.3.3
+## ✔ tibble  2.1.3     ✔ dplyr   0.8.3
+## ✔ tidyr   1.0.0     ✔ stringr 1.4.0
+## ✔ readr   1.3.1     ✔ forcats 0.4.0</code></pre>
+<pre><code>## ── Conflicts ──────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>theme_set(theme_bw())
+library(reshape2)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;reshape2&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
+## 
+##     smiths</code></pre>
+<pre class="r"><code># leitura dos dados
+
+maquiavel &lt;- read.csv(file=&quot;maquiavel.csv&quot;)
+
+# limpeza dos dados de acordo com as regras acima
+
+maquiavel &lt;- maquiavel %&gt;%
+  na_if(., 0) %&gt;% # i
+  na.omit() %&gt;%
+  filter(idade &gt;= 18) %&gt;% # ii
+  filter(idade &lt;= 90) %&gt;%
+  filter(tempo_decorrido&lt;=(mean(tempo_decorrido)+(3*sd(tempo_decorrido))))
+
+dim(maquiavel)</code></pre>
+<pre><code>## [1] 10875    24</code></pre>
+<p>No final, ficamos com 20 respostas de 10875 sujeitos. E agora, com o conjunto de dados limpo, é possível proceder com a análise exploratória.</p>
+</div>
+<div id="análise-exploratória" class="section level1">
+<h1>Análise Exploratória</h1>
+<p>A primeira análise que faço é a da comparação da proporção de respostas para cada pergunta. Abaixo eu mostro como fazer isso de maneira prática no R, além de exibir o resultado que obtive para este problema.</p>
+<pre class="r"><code>maquiavel %&gt;%
+  select(-idade, -genero, -score, -tempo_decorrido) %&gt;% 
+  melt() %&gt;% 
+  group_by(variable, value) %&gt;%
+  count() %&gt;%
+  group_by(variable) %&gt;%
+  mutate(prop = n/sum(n)) %&gt;%
+  ggplot(., aes(x = variable, y = prop, fill = factor(value, levels = 5:1))) +
+  geom_col() +
+  coord_flip() +
+  labs(x = &quot;Proporção&quot;, y = &quot;Pergunta&quot;, fill = &quot;Resposta&quot;) +
+  scale_fill_viridis_d()</code></pre>
+<pre><code>## No id variables; using all as measure variables</code></pre>
+<p><img src="/posts/analisando-questionarios-no-r-uma-abordagem-multivariada_files/figure-html/maquiavel_2-1.png" width="672" /></p>
+<p>A primeira coisa que podemos perceber neste conjunto de dados é que se em dada pergunta a proporção de respostas 1 é grande, a proporção de respostas 5 é pequena e vice-versa. Para o primeiro caso, veja o comportamento das questões Q07, Q11 e Q20. Para o segundo caso, as questões Q01, Q02 e Q05 são bons exemplos.</p>
+<p>Com a análise exploratória realizada, é hora de procedermos com a análise fatorial deste questionário.</p>
+</div>
+<div id="análise-fatorial" class="section level1">
+<h1>Análise Fatorial</h1>
+<p>Isto nos leva a perguntar se seria possível agrupar as questões realizadas. Ou seja, será que é possível utilizar menos do que 20 questões para descrever o perfil psicológico das pessoas que responderam este questionário? Em outras palavras, como podemos simplificar este resultado e obter uma maneira direta de classificar os seus respondentes?</p>
+<p>Uma forma de fazer isto é através da análise de componentes principais. Ao fazermos ela, obtemos uma sugestão de quantas variáveis latentes devemos utilizar em nossa análise fatorial. Entretanto, só podemos usar os resultados das questões para fazer a análise fatorial: todas as outras variáveis devem ser retiradas do conjunto de dados.</p>
+<pre class="r"><code>maquiavel_questoes &lt;- maquiavel %&gt;%
+  select(-idade, -genero, -score, -tempo_decorrido)
+
+pca &lt;- prcomp(maquiavel_questoes, center = TRUE, scale. = TRUE)
+
+summary(pca)</code></pre>
+<pre><code>## Importance of components:
+##                           PC1     PC2     PC3     PC4     PC5     PC6
+## Standard deviation     2.5697 1.27549 1.09430 0.98368 0.94074 0.89568
+## Proportion of Variance 0.3302 0.08134 0.05987 0.04838 0.04425 0.04011
+## Cumulative Proportion  0.3302 0.41152 0.47139 0.51977 0.56402 0.60414
+##                           PC7     PC8     PC9    PC10    PC11    PC12
+## Standard deviation     0.8614 0.83463 0.81811 0.80676 0.78671 0.76848
+## Proportion of Variance 0.0371 0.03483 0.03347 0.03254 0.03095 0.02953
+## Cumulative Proportion  0.6412 0.67607 0.70953 0.74208 0.77302 0.80255
+##                           PC13    PC14   PC15    PC16    PC17    PC18
+## Standard deviation     0.76328 0.75608 0.7402 0.72352 0.70890 0.67555
+## Proportion of Variance 0.02913 0.02858 0.0274 0.02617 0.02513 0.02282
+## Cumulative Proportion  0.83168 0.86026 0.8877 0.91384 0.93896 0.96178
+##                           PC19    PC20
+## Standard deviation     0.63914 0.59654
+## Proportion of Variance 0.02042 0.01779
+## Cumulative Proportion  0.98221 1.00000</code></pre>
+<pre class="r"><code>plot.pca &lt;- data.frame(
+  x = 1:20,
+  y = unlist(as.data.frame(summary(pca)[6])[1, ])
+)
+
+plot.pca %&gt;%
+  head(10) %&gt;%
+  ggplot(., aes(x = x, y = y^2)) +
+  geom_line() +
+  labs(x = &quot;Componente Principal&quot;, y = &quot;Variância&quot;) +
+  scale_colour_viridis_d() +
+  scale_x_continuous(breaks = 1:10, minor_breaks = 1:10)</code></pre>
+<p><img src="/posts/analisando-questionarios-no-r-uma-abordagem-multivariada_files/figure-html/maquiavel_03-1.png" width="672" /></p>
+<p>Pelo gráfico acima, vemos que a variância estabiliza por volta da terceira ou quarta componente principal. Sendo assim, vou criar a representação gráfica da análise fatorial com quatro variáveis latentes:</p>
+<pre class="r"><code>ajuste_4 &lt;- factanal(maquiavel_questoes, 
+                     factors = 4,
+                     scores = c(&quot;regression&quot;),
+                     rotation = &quot;none&quot;)
+
+ajuste_4</code></pre>
+<pre><code>## 
+## Call:
+## factanal(x = maquiavel_questoes, factors = 4, scores = c(&quot;regression&quot;),     rotation = &quot;none&quot;)
+## 
+## Uniquenesses:
+##   Q01   Q02   Q03   Q04   Q05   Q06   Q07   Q08   Q09   Q10   Q11   Q12 
+## 0.539 0.527 0.607 0.541 0.587 0.377 0.369 0.619 0.327 0.514 0.621 0.600 
+##   Q13   Q14   Q15   Q16   Q17   Q18   Q19   Q20 
+## 0.558 0.609 0.674 0.735 0.831 0.692 0.877 0.722 
+## 
+## Loadings:
+##     Factor1 Factor2 Factor3 Factor4
+## Q01 -0.618   0.257                 
+## Q02 -0.592   0.180   0.230   0.193 
+## Q03  0.553   0.201           0.214 
+## Q04  0.566           0.323   0.168 
+## Q05 -0.538   0.325  -0.126         
+## Q06  0.697   0.360                 
+## Q07  0.623   0.445          -0.210 
+## Q08 -0.485   0.381                 
+## Q09  0.729          -0.225   0.290 
+## Q10  0.672   0.107  -0.133         
+## Q11  0.500   0.112   0.339         
+## Q12 -0.551   0.268  -0.135         
+## Q13 -0.573   0.336                 
+## Q14  0.528           0.332         
+## Q15 -0.478   0.114   0.248   0.151 
+## Q16  0.465   0.132   0.168         
+## Q17  0.344           0.200         
+## Q18 -0.518   0.171           0.101 
+## Q19 -0.308                   0.150 
+## Q20 -0.430   0.290                 
+## 
+##                Factor1 Factor2 Factor3 Factor4
+## SS loadings      6.012   1.091   0.631   0.339
+## Proportion Var   0.301   0.055   0.032   0.017
+## Cumulative Var   0.301   0.355   0.387   0.404
+## 
+## Test of the hypothesis that 4 factors are sufficient.
+## The chi square statistic is 1419.32 on 116 degrees of freedom.
+## The p-value is 5.45e-223</code></pre>
+<pre class="r"><code>grafico &lt;- as.data.frame(ajuste_4$loadings[, 1:2])
+
+ggplot(grafico, aes(x = Factor1, y = Factor2)) +
+  geom_text(label=rownames(grafico)) +
+  labs(x = &quot;Fator 1&quot;, y = &quot;Fator 2&quot;) +
+  scale_colour_viridis_d()</code></pre>
+<p><img src="/posts/analisando-questionarios-no-r-uma-abordagem-multivariada_files/figure-html/maquiavel_04-1.png" width="672" /></p>
+<p>Note como há quatro grupos bem definidos no gráfico. Separando-os por proximidade e me baseando nas questões definidas no começo deste post, eu os nomeria da seguinte maneira:</p>
+<ul>
+<li><p><em>manipulação:</em> Q01, Q02, Q05, Q08, Q12, Q13, Q15, Q18, Q20</p></li>
+<li><p><em>bondade:</em> Q03, Q04, Q09, Q10, Q11, Q14, Q16, Q17</p></li>
+<li><p><em>honestidade:</em> Q06, Q07</p></li>
+<li><p><em>compaixao:</em> Q19</p></li>
+</ul>
+<p>Ou seja, podemos reduzir oito questões (Q01, Q02, Q05, Q08, Q12, Q13, Q15, Q18, Q20) a apenas uma qualidade: manipulação. Parece-me que estas questões tratam todas, em maior ou menor grau, do mesmo assunto. Resultados similares podem ser deduzidos para as demais variáveis e questões aplicadas.</p>
+</div>
+<div id="conclusão" class="section level1">
+<h1>Conclusão</h1>
+<p>Conseguimos pegar um questionário com 20 questões, que é algo bastante complexo, e reduzi-lo para quatro variáveis latentes. Uma ferramenta assim é muito útil para resumir informações obtidas a partir de questionários aplicados aos mais diversos sujeitos.</p>
+</div>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="2" height="2" viewBox="0 0 2 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://marcusnunes.me/tags/an%C3%A1lise">análise</a></span><span class="tag"><a href="https://marcusnunes.me/tags/an%C3%A1lise-fatorial">análise fatorial</a></span><span class="tag"><a href="https://marcusnunes.me/tags/estat%C3%ADstica-multivariada">estatística multivariada</a></span><span class="tag"><a href="https://marcusnunes.me/tags/likert">likert</a></span><span class="tag"><a href="https://marcusnunes.me/tags/question%C3%A1rios">questionários</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1737 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-06-30 20:08 -0300</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://marcusnunes.me/posts/analise-de-sentimentos-com-r-bojack-horseman-vs-brooklyn-99/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Análise de Sentimentos com o R: Bojack Horseman vs Brooklyn Nine-Nine</span>
+			</a>
+			<a class="prev-post" href="https://marcusnunes.me/posts/como-instalar-o-shiny-em-seu-proprio-servidor/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Como Instalar o shiny server em seu Próprio Servidor</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "marcus-nunes-blog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2013-2020 <a href="https://marcusnunes.me">Marcus Nunes</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://marcusnunes.me/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+	<script src="https://marcusnunes.me/js/main.min.784417f5847151f848c339cf0acb13a06cbb648b1483435a28ed4556c4ead69b.js" integrity="sha256-eEQX9YRxUfhIwznPCssToGy7ZIsUg0NaKO1FVsTq1ps="></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-201649-7', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+</body>
+
+</html>

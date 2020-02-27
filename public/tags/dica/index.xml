@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dica on Marcus Nunes&#39; Blog</title>
+    <link>https://marcusnunes.me/tags/dica/</link>
+    <description>Recent content in Dica on Marcus Nunes&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Fri, 07 Sep 2018 12:45:00 -0300</lastBuildDate>
+    
+	<atom:link href="https://marcusnunes.me/tags/dica/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Google e o novo buscador para conjuntos de dados</title>
+      <link>https://marcusnunes.me/posts/google-data-search-engine/</link>
+      <pubDate>Fri, 07 Sep 2018 12:45:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/google-data-search-engine/</guid>
+      <description>Nesta semana, mais precisamente em 5 de setembro, o Google lançou o Dataset Search, seu mais novo serviço de busca. O intuito deste serviço é facilitar o acesso de pesquisadores, estudantes e curiosos a conjuntos de dados gratuitos.
+O Dataset Search realiza uma procura mais especializada do que a ferramenta de busca tradicional do Google, indo atrás de informações em fontes de dados conhecidas por disponibilizar dados. É um serviço equivalente ao que o Google Scholar presta a quem quem encontrar artigos científicos.</description>
+    </item>
+    
+    <item>
+      <title>Os Elementos de Euclides</title>
+      <link>https://marcusnunes.me/posts/os-elementos-de-euclides/</link>
+      <pubDate>Sun, 03 Jun 2018 21:50:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/os-elementos-de-euclides/</guid>
+      <description>O Estadão lançou na semana passada o podcast &amp;ldquo;Os Elementos&amp;rdquo; de Euclides. Como todo poscast, é um bate-papo entre pessoas discutindo um assunto em particular. Neste caso específico, a pauta é o livro Os Elementos, do matemático grego Euclides.
+Os participantes do programa são
+ Irineu Bicudo: professor titular do Instituto de Geociências e Ciências Exatas da Universidade Estadual Paulista e tradutor dos Elementos João Cortese: Doutor em Filosofia pela Universidade de São Paulo e em Epistemologia e História da Ciência pela Universidade Paris 7 Tiago Tranjan: Professor doutor de Lógica e Filosofia da Matemática da Universidade Federal de São Paulo  Este livro é a obra mais antiga sobre tratamento dedutivo da Matemática a chegar à Idade Contemporânea.</description>
+    </item>
+    
+    <item>
+      <title>Correlações e Gráficos de Dispersão</title>
+      <link>https://marcusnunes.me/posts/correlacoes-e-graficos-de-dispersao/</link>
+      <pubDate>Sun, 03 Jun 2018 07:15:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/correlacoes-e-graficos-de-dispersao/</guid>
+      <description>Um dos pontos que mais reforço em minhas aulas é visualização de dados. A tag visualização aqui no site não me deixa mentir. Um dos exemplos que mais gosto sobre este assunto está presente do pacote datasauRus do R. Este pacote traz 13 conjuntos de dados bivariados que possuem uma característica muito marcante: as correlações entre as variáveis \(x\) e \(y\) destes conjuntos de dados são muito parecidas entre si.</description>
+    </item>
+    
+  </channel>
+</rss>

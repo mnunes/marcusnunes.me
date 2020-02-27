@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>4chan on Marcus Nunes&#39; Blog</title>
+    <link>https://marcusnunes.me/tags/4chan/</link>
+    <description>Recent content in 4chan on Marcus Nunes&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Thu, 25 Oct 2018 08:20:00 -0300</lastBuildDate>
+    
+	<atom:link href="https://marcusnunes.me/tags/4chan/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A Prova de um Teorema feita no 4chan</title>
+      <link>https://marcusnunes.me/posts/a-prova-de-um-teorema-feita-no-4chan/</link>
+      <pubDate>Thu, 25 Oct 2018 08:20:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/a-prova-de-um-teorema-feita-no-4chan/</guid>
+      <description>O 4chan é um site que existe desde 2003 e serve para que seus usuários compartilhem imagens (e posteriormente memes) de forma anônima. Em 2011, um usuário publicou a seguinte pergunta no 4chan:
+ Qual é o menor número de episódios de Haruhi que você deve assistir para que todos os 14 episódios originais sejam vistos em todas as ordens possíveis?
+ Este problema pode ser generalizado da seguinte maneira:</description>
+    </item>
+    
+  </channel>
+</rss>
