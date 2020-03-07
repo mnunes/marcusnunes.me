@@ -61,10 +61,6 @@ disqusShortname = "marcus-nunes-blog"
   [[params.social]]
     name = "github"
     url = "https://github.com/mnunes"
-  
-  [[params.social]]
-    name = "email"
-    url = "https://marcusnunes.me/contato"
 
   #[[params.social]]
   #  name = "stackoverflow"
@@ -74,6 +70,9 @@ disqusShortname = "marcus-nunes-blog"
     name = "linkedin"
     url = "http://www.linkedin.com/in/marcusanunes"
 
+  [[params.social]]
+    name = "email"
+    url = "https://marcusnunes.me/contato"
 
 [menu]
 
