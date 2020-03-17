@@ -12,7 +12,7 @@ Abaixo listo sites, jornais ou TVs que fizeram matérias sobre mim ou projetos q
 
 **2020**
 
-- [Aplicativo ganha destaque em competição mundial](https://portal.ifrn.edu.br/campus/natalzonanorte/noticias/aplicativo-ganha-destaque-em-competicao-mundial) - Portal do IFRN
+- [Aplicativo ganha destaque em competição mundial](https://webcache.googleusercontent.com/search?q=cache:-Y6MnQ2jFzUJ:https://portal.ifrn.edu.br/campus/natalzonanorte/noticias/aplicativo-ganha-destaque-em-competicao-mundial+&cd=1&hl=en&ct=clnk&gl=br) - Portal do IFRN
 - [Edital Internacional da LISA seleciona projeto da UFRN](https://www.ufrn.br/imprensa/noticias/33581/edital-internacional-da-lisa-seleciona-projeto-da-ufrn) - Portal da UFRN
 - [Infográfico: Caos nas cidades](https://super.abril.com.br/sociedade/infografico-caos-nas-cidades/) - Superinteressante
 

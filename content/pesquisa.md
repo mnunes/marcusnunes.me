@@ -45,7 +45,9 @@ Sou usuário avançado de sistemas Unix (como macOS) e Linux.
 
 **Palestras**
 
+* Estatística e Coronavírus: Uma Relação Contagiante - Recepção aos Calouros do Curso de Estatística 2020 - [Slides](/images/Recepcao2020.pdf)
 
+* Como meu projeto de final de semana sobre urbanismo virou matéria na Superinteressante - [Slides](/images/ODD_2020.pdf)
 
 * Pesquisa Científica Utilizando Ciência de Dados - Ciclo de Seminários do Instituto do Cérebro - [Slides](/images/Pesquisa_e_DS.pdf)
 
