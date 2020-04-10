@@ -51,7 +51,7 @@ Sou usuário avançado de sistemas Unix (como macOS) e Linux.
 
 * Pesquisa Científica Utilizando Ciência de Dados - Ciclo de Seminários do Instituto do Cérebro - [Slides](/images/Pesquisa_e_DS.pdf)
 
-* Ciência de Dados sob a Ótica da Estatística - [UFRN Telecom Day 2019](http://telecomday.ct.ufrn.br/) - [Slides](/images/minicursos/telecom-day-2019/telecom-day-2019.pdf)
+* Ciência de Dados sob a Ótica da Estatística - [UFRN Telecom Day 2019](http://telecomday.ct.ufrn.br/) - [Slides](/images/telecom-day-2019.pdf)
 
 
 
