@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Mon, 27 Jan 2020 15:14:00 -0300</lastBuildDate>
+    <lastBuildDate>Thu, 09 Apr 2020 14:50:00 -0300</lastBuildDate>
     
 	<atom:link href="https://marcusnunes.me/tags/ci%C3%AAncia-de-dados/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Livros de Ciência de Dados Gratuitos na Amazon</title>
+      <link>https://marcusnunes.me/posts/livros-gratuitos-da-amazon/</link>
+      <pubDate>Thu, 09 Apr 2020 14:50:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/livros-gratuitos-da-amazon/</guid>
+      <description>Recebi esta dica no grupo de telegram Ciência de Dados RN. A Amazon está disponibilizando gratuitamente 28 de livros sobre Ciência de Dados, Big Data e programação em suas versões para Kindle.
+Assim como no casos dos livros gratuitos da Springer, basta entrar nos link fornecidos abaixo e mandar o livro ser baixado. Dá para enviar diretamente para o Kindle ou ler através do aplicativo da Amazon em outras plataformas.</description>
+    </item>
     
     <item>
       <title>Heatmap com os dados de geolocalização do Google Location History: minha viagem pela Itália</title>

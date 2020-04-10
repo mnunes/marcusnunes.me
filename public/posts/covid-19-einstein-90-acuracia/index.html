@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+
+<meta itemprop="name" content="Análise dos Dados de Coronavírus do Hospital Albert Einstein: 90% de Acurácia e Porque isso é Ruim">
+<meta itemprop="description" content="Vamos usar machine learning para mostrar como criar um modelo de predição para ">
+
+
+<meta itemprop="datePublished" content="2020-03-31T12:56:00-03:00" />
+<meta itemprop="dateModified" content="2020-03-31T12:56:00-03:00" />
+<meta itemprop="wordCount" content="2972">
+
+
+
+<meta itemprop="keywords" content="análise,aprendizagem de máquina,caret,coronavírus,kaggle,machine learning,random forest," />
+<meta property="og:title" content="Análise dos Dados de Coronavírus do Hospital Albert Einstein: 90% de Acurácia e Porque isso é Ruim" />
+<meta property="og:description" content="Vamos usar machine learning para mostrar como criar um modelo de predição para " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://marcusnunes.me/posts/covid-19-einstein-90-acuracia/" />
+<meta property="article:published_time" content="2020-03-31T12:56:00-03:00"/>
+<meta property="article:modified_time" content="2020-03-31T12:56:00-03:00"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Análise dos Dados de Coronavírus do Hospital Albert Einstein: 90% de Acurácia e Porque isso é Ruim"/>
+<meta name="twitter:description" content="Vamos usar machine learning para mostrar como criar um modelo de predição para "/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Análise dos Dados de Coronavírus do Hospital Albert Einstein: 90% de Acurácia e Porque isso é Ruim</title>
+	<link rel="stylesheet" href="https://marcusnunes.me/css/style.min.31706917653d2b9e8410abd431f30ec4359a88a94fc87a63654779d87329edec.css" integrity="sha256-MXBpF2U9K56EEKvUMfMOxDWaiKlPyHpjZUd52HMp7ew=">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://marcusnunes.me">Marcus Nunes&#39; Blog</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					<a href="https://marcusnunes.me/posts/">Posts</a>
+					<a href="https://marcusnunes.me/sobre/">Sobre</a>
+					<a href="https://marcusnunes.me/ensino/">Ensino</a>
+					<a href="https://marcusnunes.me/pesquisa/">Pesquisa</a>
+					<a href="https://marcusnunes.me/shiny/">Shiny</a>
+					<a href="https://marcusnunes.me/midia/">Mídia</a>
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://twitter.com/_marcus_nunes_" target="_blank" rel="noopener" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://instagram.com/grandeabobora" target="_blank" rel="noopener" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a><a href="https://github.com/mnunes" target="_blank" rel="noopener" title="Github"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="http://www.linkedin.com/in/marcusanunes" target="_blank" rel="noopener" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="https://marcusnunes.me/contato" target="_blank" rel="noopener" title="Email"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://marcusnunes.me/posts/">Posts</a></li>
+			<li><a href="https://marcusnunes.me/sobre/">Sobre</a></li>
+			<li><a href="https://marcusnunes.me/ensino/">Ensino</a></li>
+			<li><a href="https://marcusnunes.me/pesquisa/">Pesquisa</a></li>
+			<li><a href="https://marcusnunes.me/shiny/">Shiny</a></li>
+			<li><a href="https://marcusnunes.me/midia/">Mídia</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Mar 31, 2020</span></div>
+				<h1>Análise dos Dados de Coronavírus do Hospital Albert Einstein: 90% de Acurácia e Porque isso é Ruim</h1>
+			</header>
+			<div class="content">
+				
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
+<p>Recentemente, o Hospital Albert Einstein compartilhou um conjunto de dados com observações de 5644 pacientes. Os dados possuem 111 características relacionadas a exames médicos, como sangue, urina e muito mais. A tarefa que me propus a resolver foi classificar os pacientes testados em dois grupos, aqueles que posssuem e aqueles que não possuem coronavírus. Farei isso a partir a partir dos resultados dos exames laboratoriais, sem utilizar informação alguma sobre o diagnóstico realizado em relação à contaminação do vírus.</p>
+<p>Caso a técnica utilizada neste posto não tenha ficado muito clara, recomendo a leitura do meu post <a href="https://marcusnunes.me/posts/primeiro-projeto-de-data-science/">Tutorial: Como Fazer o Seu Primeiro Projeto de Data Science</a>, que mostra com mais detalhes como ajustar o modelo random forest a um conjunto de dados.</p>
+<p>Os dados utilizados aqui, bem como o código utilizado nesta análise, estão disponíveis em meu <a href="https://github.com/mnunes/einstein-covid-19">github</a>.</p>
+</div>
+<div id="análise-exploratória-dos-dados" class="section level1">
+<h1>Análise Exploratória dos Dados</h1>
+<p>O primeiro passo em qualquer análise de dados é a análise exploratória. É possível gerar ideias e insights apenas olhando para os dados plotados. Vou começar minha análise exploratória carregando alguns pacotes no R:</p>
+<pre class="r"><code>library(tidyverse)
+theme_set(theme_bw())
+library(naniar)
+library(readxl)
+library(caret)
+library(reshape2)
+library(GGally)
+library(mice)</code></pre>
+<p>Com os pacotes carregados, vou ler os dados e realizar pequenas correções neles. Cada passo a seguir foi explicado com um comentário dentro do próprio código.</p>
+<pre class="r"><code>dataset &lt;- read_excel(path = &quot;data/dataset.xlsx&quot;)
+
+# fix column names
+
+names(dataset) &lt;- make.names(names(dataset), unique = TRUE)
+
+#################################
+### exploratory data analysis ###
+#################################
+
+# first look at the dataset
+
+glimpse(dataset)</code></pre>
+<pre><code>## Rows: 5,644
+## Columns: 111
+## $ Patient.ID                                            &lt;chr&gt; &quot;44477f75e8169d…
+## $ Patient.age.quantile                                  &lt;dbl&gt; 13, 17, 8, 5, 1…
+## $ SARS.Cov.2.exam.result                                &lt;chr&gt; &quot;negative&quot;, &quot;ne…
+## $ Patient.addmited.to.regular.ward..1.yes..0.no.        &lt;dbl&gt; 0, 0, 0, 0, 0, …
+## $ Patient.addmited.to.semi.intensive.unit..1.yes..0.no. &lt;dbl&gt; 0, 0, 0, 0, 0, …
+## $ Patient.addmited.to.intensive.care.unit..1.yes..0.no. &lt;dbl&gt; 0, 0, 0, 0, 0, …
+## $ Hematocrit                                            &lt;dbl&gt; NA, 0.2365154, …
+## $ Hemoglobin                                            &lt;dbl&gt; NA, -0.02234027…
+## $ Platelets                                             &lt;dbl&gt; NA, -0.51741302…
+## $ Mean.platelet.volume                                  &lt;dbl&gt; NA, 0.01067657,…
+## $ Red.blood.Cells                                       &lt;dbl&gt; NA, 0.1020042, …
+## $ Lymphocytes                                           &lt;dbl&gt; NA, 0.318365753…
+## $ Mean.corpuscular.hemoglobin.concentration..MCHC.      &lt;dbl&gt; NA, -0.9507903,…
+## $ Leukocytes                                            &lt;dbl&gt; NA, -0.09461035…
+## $ Basophils                                             &lt;dbl&gt; NA, -0.22376651…
+## $ Mean.corpuscular.hemoglobin..MCH.                     &lt;dbl&gt; NA, -0.29226932…
+## $ Eosinophils                                           &lt;dbl&gt; NA, 1.4821582, …
+## $ Mean.corpuscular.volume..MCV.                         &lt;dbl&gt; NA, 0.1661924, …
+## $ Monocytes                                             &lt;dbl&gt; NA, 0.35754666,…
+## $ Red.blood.cell.distribution.width..RDW.               &lt;dbl&gt; NA, -0.6250727,…
+## $ Serum.Glucose                                         &lt;dbl&gt; NA, -0.1406481,…
+## $ Respiratory.Syncytial.Virus                           &lt;chr&gt; NA, &quot;not_detect…
+## $ Influenza.A                                           &lt;chr&gt; NA, &quot;not_detect…
+## $ Influenza.B                                           &lt;chr&gt; NA, &quot;not_detect…
+## $ Parainfluenza.1                                       &lt;chr&gt; NA, &quot;not_detect…
+## $ CoronavirusNL63                                       &lt;chr&gt; NA, &quot;not_detect…
+## $ Rhinovirus.Enterovirus                                &lt;chr&gt; NA, &quot;detected&quot;,…
+## $ Mycoplasma.pneumoniae                                 &lt;lgl&gt; NA, NA, NA, NA,…
+## $ Coronavirus.HKU1                                      &lt;chr&gt; NA, &quot;not_detect…
+## $ Parainfluenza.3                                       &lt;chr&gt; NA, &quot;not_detect…
+## $ Chlamydophila.pneumoniae                              &lt;chr&gt; NA, &quot;not_detect…
+## $ Adenovirus                                            &lt;chr&gt; NA, &quot;not_detect…
+## $ Parainfluenza.4                                       &lt;chr&gt; NA, &quot;not_detect…
+## $ Coronavirus229E                                       &lt;chr&gt; NA, &quot;not_detect…
+## $ CoronavirusOC43                                       &lt;chr&gt; NA, &quot;not_detect…
+## $ Inf.A.H1N1.2009                                       &lt;chr&gt; NA, &quot;not_detect…
+## $ Bordetella.pertussis                                  &lt;chr&gt; NA, &quot;not_detect…
+## $ Metapneumovirus                                       &lt;chr&gt; NA, &quot;not_detect…
+## $ Parainfluenza.2                                       &lt;chr&gt; NA, &quot;not_detect…
+## $ Neutrophils                                           &lt;dbl&gt; NA, -0.6190860,…
+## $ Urea                                                  &lt;dbl&gt; NA, 1.19805908,…
+## $ Proteina.C.reativa.mg.dL                              &lt;dbl&gt; NA, -0.1478949,…
+## $ Creatinine                                            &lt;dbl&gt; NA, 2.0899284, …
+## $ Potassium                                             &lt;dbl&gt; NA, -0.3057871,…
+## $ Sodium                                                &lt;dbl&gt; NA, 0.8625116, …
+## $ Influenza.B..rapid.test                               &lt;chr&gt; NA, &quot;negative&quot;,…
+## $ Influenza.A..rapid.test                               &lt;chr&gt; NA, &quot;negative&quot;,…
+## $ Alanine.transaminase                                  &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Aspartate.transaminase                                &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Gamma.glutamyltransferase.                            &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Total.Bilirubin                                       &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Direct.Bilirubin                                      &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Indirect.Bilirubin                                    &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Alkaline.phosphatase                                  &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Ionized.calcium.                                      &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Strepto.A                                             &lt;chr&gt; NA, NA, NA, NA,…
+## $ Magnesium                                             &lt;dbl&gt; NA, NA, NA, NA,…
+## $ pCO2..venous.blood.gas.analysis.                      &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Hb.saturation..venous.blood.gas.analysis.             &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Base.excess..venous.blood.gas.analysis.               &lt;dbl&gt; NA, NA, NA, NA,…
+## $ pO2..venous.blood.gas.analysis.                       &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Fio2..venous.blood.gas.analysis.                      &lt;lgl&gt; NA, NA, NA, NA,…
+## $ Total.CO2..venous.blood.gas.analysis.                 &lt;dbl&gt; NA, NA, NA, NA,…
+## $ pH..venous.blood.gas.analysis.                        &lt;dbl&gt; NA, NA, NA, NA,…
+## $ HCO3..venous.blood.gas.analysis.                      &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Rods..                                                &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Segmented                                             &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Promyelocytes                                         &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Metamyelocytes                                        &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Myelocytes                                            &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Myeloblasts                                           &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Urine...Esterase                                      &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Aspect                                        &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...pH                                            &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Hemoglobin                                    &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Bile.pigments                                 &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Ketone.Bodies                                 &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Nitrite                                       &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Density                                       &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Urine...Urobilinogen                                  &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Protein                                       &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Sugar                                         &lt;lgl&gt; NA, NA, NA, NA,…
+## $ Urine...Leukocytes                                    &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Crystals                                      &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Red.blood.cells                               &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Urine...Hyaline.cylinders                             &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Granular.cylinders                            &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Yeasts                                        &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Color                                         &lt;chr&gt; NA, NA, NA, NA,…
+## $ Partial.thromboplastin.time..PTT..                    &lt;lgl&gt; NA, NA, NA, NA,…
+## $ Relationship..Patient.Normal.                         &lt;dbl&gt; NA, NA, NA, NA,…
+## $ International.normalized.ratio..INR.                  &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Lactic.Dehydrogenase                                  &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Prothrombin.time..PT...Activity                       &lt;lgl&gt; NA, NA, NA, NA,…
+## $ Vitamin.B12                                           &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Creatine.phosphokinase..CPK..                         &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Ferritin                                              &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Arterial.Lactic.Acid                                  &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Lipase.dosage                                         &lt;lgl&gt; NA, NA, NA, NA,…
+## $ D.Dimer                                               &lt;lgl&gt; NA, NA, NA, NA,…
+## $ Albumin                                               &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Hb.saturation..arterial.blood.gases.                  &lt;dbl&gt; NA, NA, NA, NA,…
+## $ pCO2..arterial.blood.gas.analysis.                    &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Base.excess..arterial.blood.gas.analysis.             &lt;dbl&gt; NA, NA, NA, NA,…
+## $ pH..arterial.blood.gas.analysis.                      &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Total.CO2..arterial.blood.gas.analysis.               &lt;dbl&gt; NA, NA, NA, NA,…
+## $ HCO3..arterial.blood.gas.analysis.                    &lt;dbl&gt; NA, NA, NA, NA,…
+## $ pO2..arterial.blood.gas.analysis.                     &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Arteiral.Fio2                                         &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Phosphor                                              &lt;dbl&gt; NA, NA, NA, NA,…
+## $ ctO2..arterial.blood.gas.analysis.                    &lt;dbl&gt; NA, NA, NA, NA,…</code></pre>
+<pre class="r"><code># remove columns that won&#39;t help on diagnosis
+
+dataset_clean &lt;- dataset %&gt;%
+  select(-Patient.ID, 
+         -Patient.addmited.to.regular.ward..1.yes..0.no.,
+         -Patient.addmited.to.semi.intensive.unit..1.yes..0.no.,
+         -Patient.addmited.to.intensive.care.unit..1.yes..0.no.)
+
+# convert level Urine...Leukocytes &lt;1000 to 1000
+
+dataset_clean$Urine...Leukocytes[dataset_clean$`Urine...Leukocytes` == &quot;&lt;1000&quot;] &lt;- 1000
+dataset_clean$`Urine...Leukocytes` &lt;- as.numeric(dataset_clean$`Urine...Leukocytes`)
+
+# fix Urine...pH
+
+dataset_clean$`Urine...pH`[dataset_clean$`Urine...pH` == &quot;Não Realizado&quot;] &lt;- NA
+dataset_clean$`Urine...pH` &lt;- as.numeric(dataset_clean$`Urine...pH`)
+
+# Urine...Hemoglobin
+
+dataset_clean$`Urine...Hemoglobin`[dataset_clean$`Urine...Hemoglobin` == &quot;not_done&quot;] &lt;- NA
+
+# Urine...Aspect
+
+dataset_clean$`Urine...Aspect` &lt;- factor(dataset_clean$`Urine...Aspect`, 
+                                         levels = c(&quot;clear&quot;, &quot;lightly_cloudy&quot;, &quot;cloudy&quot;, &quot;altered_coloring&quot;))
+
+# Strepto A
+
+dataset_clean$`Strepto.A`[dataset_clean$`Strepto.A` == &quot;not_done&quot;] &lt;- NA
+
+# transform character to factor
+
+dataset_clean_num &lt;- dataset_clean %&gt;%
+  select_if(is.numeric)
+
+dataset_clean_cat &lt;- dataset_clean %&gt;%
+  select_if(negate(is.numeric)) %&gt;%
+  mutate_all(as.factor)
+
+dataset_clean &lt;- base::cbind(dataset_clean_num, dataset_clean_cat)
+
+# fix factor levels
+
+# sort(sapply(dataset_clean[,sapply(dataset_clean, is.factor)], nlevels))</code></pre>
+<p>Com os dados lidos e processados, eu dou uma olhada nos dados faltantes:</p>
+<pre class="r"><code># let&#39;s take a look on missing data
+
+missing_values &lt;- dataset_clean %&gt;%
+  gather(key = &quot;key&quot;, value = &quot;val&quot;) %&gt;%
+  mutate(is.missing = is.na(val)) %&gt;%
+  group_by(key, is.missing) %&gt;%
+  summarise(num.missing = n()) %&gt;%
+  filter(is.missing == TRUE) %&gt;%
+  select(-is.missing) %&gt;%
+  ungroup() %&gt;%
+  mutate(key = reorder(key, -num.missing)) %&gt;%
+  arrange(desc(num.missing)) %&gt;%
+  print(n = Inf)</code></pre>
+<pre><code>## Warning: attributes are not identical across measure variables;
+## they will be dropped</code></pre>
+<pre><code>## # A tibble: 105 x 2
+##     key                                              num.missing
+##     &lt;fct&gt;                                                  &lt;int&gt;
+##   1 D.Dimer                                                 5644
+##   2 Mycoplasma.pneumoniae                                   5644
+##   3 Partial.thromboplastin.time..PTT..                      5644
+##   4 Prothrombin.time..PT...Activity                         5644
+##   5 Urine...Sugar                                           5644
+##   6 Fio2..venous.blood.gas.analysis.                        5643
+##   7 Urine...Nitrite                                         5643
+##   8 Vitamin.B12                                             5641
+##   9 Lipase.dosage                                           5636
+##  10 Albumin                                                 5631
+##  11 Arteiral.Fio2                                           5624
+##  12 Phosphor                                                5624
+##  13 Ferritin                                                5621
+##  14 Arterial.Lactic.Acid                                    5617
+##  15 Base.excess..arterial.blood.gas.analysis.               5617
+##  16 ctO2..arterial.blood.gas.analysis.                      5617
+##  17 Hb.saturation..arterial.blood.gases.                    5617
+##  18 HCO3..arterial.blood.gas.analysis.                      5617
+##  19 pCO2..arterial.blood.gas.analysis.                      5617
+##  20 pH..arterial.blood.gas.analysis.                        5617
+##  21 pO2..arterial.blood.gas.analysis.                       5617
+##  22 Total.CO2..arterial.blood.gas.analysis.                 5617
+##  23 Magnesium                                               5604
+##  24 Ionized.calcium.                                        5594
+##  25 Urine...Ketone.Bodies                                   5587
+##  26 Urine...Esterase                                        5584
+##  27 Urine...Protein                                         5584
+##  28 Urine...Hyaline.cylinders                               5577
+##  29 Urine...Granular.cylinders                              5575
+##  30 Urine...Hemoglobin                                      5575
+##  31 Urine...pH                                              5575
+##  32 Urine...Urobilinogen                                    5575
+##  33 Urine...Aspect                                          5574
+##  34 Urine...Bile.pigments                                   5574
+##  35 Urine...Color                                           5574
+##  36 Urine...Crystals                                        5574
+##  37 Urine...Density                                         5574
+##  38 Urine...Leukocytes                                      5574
+##  39 Urine...Red.blood.cells                                 5574
+##  40 Urine...Yeasts                                          5574
+##  41 Relationship..Patient.Normal.                           5553
+##  42 Metamyelocytes                                          5547
+##  43 Myeloblasts                                             5547
+##  44 Myelocytes                                              5547
+##  45 Promyelocytes                                           5547
+##  46 Rods..                                                  5547
+##  47 Segmented                                               5547
+##  48 Lactic.Dehydrogenase                                    5543
+##  49 Creatine.phosphokinase..CPK..                           5540
+##  50 International.normalized.ratio..INR.                    5511
+##  51 Base.excess..venous.blood.gas.analysis.                 5508
+##  52 Hb.saturation..venous.blood.gas.analysis.               5508
+##  53 HCO3..venous.blood.gas.analysis.                        5508
+##  54 pCO2..venous.blood.gas.analysis.                        5508
+##  55 pH..venous.blood.gas.analysis.                          5508
+##  56 pO2..venous.blood.gas.analysis.                         5508
+##  57 Total.CO2..venous.blood.gas.analysis.                   5508
+##  58 Alkaline.phosphatase                                    5500
+##  59 Gamma.glutamyltransferase.                              5491
+##  60 Direct.Bilirubin                                        5462
+##  61 Indirect.Bilirubin                                      5462
+##  62 Total.Bilirubin                                         5462
+##  63 Serum.Glucose                                           5436
+##  64 Alanine.transaminase                                    5419
+##  65 Aspartate.transaminase                                  5418
+##  66 Strepto.A                                               5313
+##  67 Sodium                                                  5274
+##  68 Potassium                                               5273
+##  69 Urea                                                    5247
+##  70 Creatinine                                              5220
+##  71 Proteina.C.reativa.mg.dL                                5138
+##  72 Neutrophils                                             5131
+##  73 Mean.platelet.volume                                    5045
+##  74 Monocytes                                               5043
+##  75 Basophils                                               5042
+##  76 Eosinophils                                             5042
+##  77 Leukocytes                                              5042
+##  78 Lymphocytes                                             5042
+##  79 Mean.corpuscular.hemoglobin..MCH.                       5042
+##  80 Mean.corpuscular.hemoglobin.concentration..MCHC.        5042
+##  81 Mean.corpuscular.volume..MCV.                           5042
+##  82 Platelets                                               5042
+##  83 Red.blood.cell.distribution.width..RDW.                 5042
+##  84 Red.blood.Cells                                         5042
+##  85 Hematocrit                                              5041
+##  86 Hemoglobin                                              5041
+##  87 Influenza.A..rapid.test                                 4824
+##  88 Influenza.B..rapid.test                                 4824
+##  89 Adenovirus                                              4292
+##  90 Bordetella.pertussis                                    4292
+##  91 Chlamydophila.pneumoniae                                4292
+##  92 Coronavirus.HKU1                                        4292
+##  93 Coronavirus229E                                         4292
+##  94 CoronavirusNL63                                         4292
+##  95 CoronavirusOC43                                         4292
+##  96 Inf.A.H1N1.2009                                         4292
+##  97 Metapneumovirus                                         4292
+##  98 Parainfluenza.1                                         4292
+##  99 Parainfluenza.2                                         4292
+## 100 Parainfluenza.3                                         4292
+## 101 Parainfluenza.4                                         4292
+## 102 Rhinovirus.Enterovirus                                  4292
+## 103 Influenza.A                                             4290
+## 104 Influenza.B                                             4290
+## 105 Respiratory.Syncytial.Virus                             4290</code></pre>
+<pre class="r"><code>missing_values %&gt;%
+  ggplot() +
+  geom_bar(aes(x = key, y = 100*num.missing/dim(dataset_clean)[1]), stat = &quot;identity&quot;) +
+  labs(x = &quot;Variable&quot;, y=&quot;Percent of missing values&quot;) +  
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8))</code></pre>
+<p><img src="/posts/covid-19-einstein-90-acuracia_files/figure-html/missingData01-1.png" width="672" /></p>
+<p>Este gráfico mostra quais são as variáveis com maior quantidade de dados faltantes. Note que algumas delas possuem quase 100% de dados faltantes! Veja o gráfico a seguir para que tenhamos uma ideia melhor da magnitude da falta de dados que estamos enfrentando:</p>
+<pre class="r"><code>vis_miss(dataset_clean) +
+  theme(axis.text.x = element_text(size = 6))</code></pre>
+<p><img src="/posts/covid-19-einstein-90-acuracia_files/figure-html/missingData02-1.png" width="672" /></p>
+<p>Mais de 91% de dados faltantes é muita coisa. Este tipo de informação não me dá muita esperança em encontrar um modelo bom para estes dados. Mesmo assim, vou tentar algo e ver o que acontece. Para isso, vou manter no conjunto a ser analisado apenas as colunas com pelo menos 1000 observações. Ou seja, vou retirar todas as colunas com muito poucos dados registrados.</p>
+<pre class="r"><code># keep only columns with at least n observations
+
+n &lt;- 1000
+
+dataset_clean &lt;- dataset_clean[, which(dim(dataset_clean)[1] - apply(apply(dataset_clean, 2, is.na), 2, sum) &gt;= n)]
+
+# remove quantitative variables with variance equal to zero 
+
+dataset_model_num &lt;- dataset_clean %&gt;%
+  select_if(is.numeric)
+
+if (sum(apply(dataset_model_num, 2, var, na.rm = TRUE) == 0) != 0) {
+  dataset_model_num &lt;- dataset_model_num[, which(apply(dataset_model_num, 2, var, na.rm = TRUE) == 0)]
+}
+
+# remove categorical variables with only one level 
+
+dataset_model_cat &lt;- dataset_clean %&gt;%
+  select_if(negate(is.numeric))
+
+dataset_model_cat &lt;- dataset_model_cat[, sapply(dataset_model_cat, nlevels) &gt; 1]
+  
+# final dataset
+
+dataset_model &lt;- base::cbind(dataset_model_num, dataset_model_cat)
+
+vis_miss(dataset_model) + # it needs naniar package
+  theme(axis.text.x = element_text(size = 6))</code></pre>
+<p><img src="/posts/covid-19-einstein-90-acuracia_files/figure-html/preparation-1.png" width="672" /></p>
+<p>É possíver ver que há uma proporção menor de dados faltantes neste conjunto processado. Baixamos a proporção de dados faltantes de 91,4% para 68%. Ainda é um valor bastante alto, mas está um pouco menos pior do que o original.</p>
+<p>Abaixo coloco mais alguns gráficos que tentam relacionar as variáveis que restaram no conjunto de dados, mas aparentemente não há relação alguma entre elas.</p>
+<pre class="r"><code># some other plots
+
+ggpairs(dataset_model[, c(1:10)])</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="/posts/covid-19-einstein-90-acuracia_files/figure-html/edaSimples-1.png" width="672" /></p>
+<pre class="r"><code>ggpairs(dataset_model[, c(11:ncol(dataset_model))])</code></pre>
+<p><img src="/posts/covid-19-einstein-90-acuracia_files/figure-html/edaSimples-2.png" width="672" /></p>
+<pre class="r"><code># it seems there is no relation between any pair of variables</code></pre>
+</div>
+<div id="modelagem-1" class="section level1">
+<h1>Modelagem 1</h1>
+<p>Poucos modelos de aprendizagem de máquina conseguem lidar com dados faltantes. Por este motivo, decidi escolher um modelo chamado <a href="https://en.wikipedia.org/wiki/Decision_tree_learning">CART</a> (Classification and Regression Tree - Árvore de Classificação e Regressão). Abaixo estão os resultados obtidos, após a separação do conjunto de dados original em treinamento e teste. Os resultados reportados foram obtidos após a aplicação do modelo ajustado no conjunto de teste. Para saber mais porque fazer isso, recomendo novamente meu post <a href="https://marcusnunes.me/posts/primeiro-projeto-de-data-science/">Tutorial: Como Fazer o Seu Primeiro Projeto de Data Science</a>.</p>
+<pre class="r"><code>################
+### modeling ###
+################
+
+# train/test split
+
+covid &lt;- dataset_model
+
+set.seed(1)
+
+index       &lt;- createDataPartition(covid$SARS.Cov.2.exam.result, 
+                                   p = 0.75, 
+                                   list = FALSE)
+covid_train &lt;- covid[ index, ]
+covid_test  &lt;- covid[-index, ]
+
+dim(covid_train)
+table(covid_train$SARS.Cov.2.exam.result)
+
+dim(covid_test)
+table(covid_test$SARS.Cov.2.exam.result)
+
+# parameters for cart
+
+fitControl &lt;- trainControl(method = &quot;cv&quot;,
+                           number = 5,
+                           savePred = TRUE, 
+                           classProb = TRUE)
+
+tune.grid &lt;- expand.grid(mincriterion = seq(from = 0.01, 
+                                            to = .99, 
+                                            by = 0.01))
+
+set.seed(1)
+
+x &lt;- covid_train %&gt;%
+  select(-SARS.Cov.2.exam.result)
+
+y &lt;- covid_train %&gt;%
+  select(SARS.Cov.2.exam.result) %&gt;%
+  unlist()
+
+covid_ctree &lt;- train(x, y,
+                     method = &quot;ctree&quot;, 
+                     tuneGrid = tune.grid,
+                     trControl = fitControl)</code></pre>
+<pre class="r"><code>ggplot(covid_ctree)</code></pre>
+<p><img src="/posts/covid-19-einstein-90-acuracia_files/figure-html/cart02-1.png" width="672" /></p>
+<pre class="r"><code>prediction &lt;- predict(covid_ctree, covid_test)
+
+confusionMatrix(prediction, covid_test$SARS.Cov.2.exam.result)</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction negative positive
+##   negative     1271      139
+##   positive        0        0
+##                                           
+##                Accuracy : 0.9014          
+##                  95% CI : (0.8847, 0.9165)
+##     No Information Rate : 0.9014          
+##     P-Value [Acc &gt; NIR] : 0.5226          
+##                                           
+##                   Kappa : 0               
+##                                           
+##  Mcnemar&#39;s Test P-Value : &lt;2e-16          
+##                                           
+##             Sensitivity : 1.0000          
+##             Specificity : 0.0000          
+##          Pos Pred Value : 0.9014          
+##          Neg Pred Value :    NaN          
+##              Prevalence : 0.9014          
+##          Detection Rate : 0.9014          
+##    Detection Prevalence : 1.0000          
+##       Balanced Accuracy : 0.5000          
+##                                           
+##        &#39;Positive&#39; Class : negative        
+## </code></pre>
+<pre class="r"><code># 90% accuracy seems good, but No Information Rate is also 90%
+# so, using this model or a random process gives the same answer
+# high sensitivity, but very low specificity :(</code></pre>
+<p>Note que obtive 90% de acurácia no meu modelo. Ou seja, ele acerta 90% das tentativas de classificar um paciente como positivo ou negativo em relação ao coronavírus. Parece um resultado muito bom, mas não é. Ele é péssimo, na realidade.</p>
+<p>No conjunto de dados original, aproximadamente 90% dos pacientes não possuem coronavírus, enquanto 10% estão infectados. O meu modelo encontra, com 100% de certeza, quem não tem coronavírus (é o valor de <code>Sensitivity</code> no output acima). Entretanto, encontra 0% dos pacientes com coronavírus (é o valor de <code>Specificity</code> no output acima). Ou seja, ele vai mandar para casa todo mundo que chegar no hospital, tendo coronavírus ou não.</p>
+<p>Isso me fez partir para uma segunda modelagem.</p>
+</div>
+<div id="modelagem-2" class="section level1">
+<h1>Modelagem 2</h1>
+<p>Vimos que a primeira modelagem não deu bons resultados. Com o intuito de tentar obter resultados melhores, vou proceder com a imputação de dados. Se for tentar rodar o código abaixo em seu computador, prepare-se para esperar uns bons minutos.</p>
+<pre class="r"><code>#######################
+### data imputation ###
+#######################
+
+covid_imp &lt;- mice(covid, meth = &quot;rf&quot;, ntree = 5) # be patient
+
+covid &lt;- complete(covid_imp)</code></pre>
+<pre class="r"><code>################
+### modeling ###
+################
+
+# train/test split
+
+set.seed(1)
+
+index       &lt;- createDataPartition(covid$SARS.Cov.2.exam.result, 
+                                   p = 0.75, 
+                                   list = FALSE)
+covid_train &lt;- covid[ index, ]
+covid_test  &lt;- covid[-index, ]
+
+dim(covid_train)
+table(covid_train$SARS.Cov.2.exam.result)
+
+dim(covid_test)
+table(covid_test$SARS.Cov.2.exam.result)
+
+# parameters for random forest
+
+fitControl &lt;- trainControl(method = &quot;cv&quot;,
+                           number = 5,
+                           savePred = TRUE, 
+                           classProb = TRUE)
+
+tune.grid &lt;- expand.grid(mtry = 1:35)
+
+set.seed(1)
+
+x &lt;- covid_train %&gt;%
+  select(-SARS.Cov.2.exam.result)
+
+y &lt;- covid_train %&gt;%
+  select(SARS.Cov.2.exam.result) %&gt;%
+  unlist()
+
+covid_rf &lt;- train(x, y,
+                  method = &quot;rf&quot;, 
+                  tuneGrid = tune.grid,
+                  trControl = fitControl)</code></pre>
+<pre class="r"><code>ggplot(covid_rf)</code></pre>
+<p><img src="/posts/covid-19-einstein-90-acuracia_files/figure-html/random_forest2-1.png" width="672" /></p>
+<pre class="r"><code>prediction &lt;- predict(covid_rf, covid_test)
+
+confusionMatrix(prediction, covid_test$SARS.Cov.2.exam.result)</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction negative positive
+##   negative     1271      139
+##   positive        0        0
+##                                           
+##                Accuracy : 0.9014          
+##                  95% CI : (0.8847, 0.9165)
+##     No Information Rate : 0.9014          
+##     P-Value [Acc &gt; NIR] : 0.5226          
+##                                           
+##                   Kappa : 0               
+##                                           
+##  Mcnemar&#39;s Test P-Value : &lt;2e-16          
+##                                           
+##             Sensitivity : 1.0000          
+##             Specificity : 0.0000          
+##          Pos Pred Value : 0.9014          
+##          Neg Pred Value :    NaN          
+##              Prevalence : 0.9014          
+##          Detection Rate : 0.9014          
+##    Detection Prevalence : 1.0000          
+##       Balanced Accuracy : 0.5000          
+##                                           
+##        &#39;Positive&#39; Class : negative        
+## </code></pre>
+<pre class="r"><code># high sensitivity, but very low specificity :(</code></pre>
+<p>De novo, o mesmo problema: alta sensitividade e baixíssima especificidade neste modelo. Ou seja, não é melhor do que o modelo anterior ou uma seleção aleatória de diagnóstico.</p>
+</div>
+<div id="conclusão" class="section level1">
+<h1>Conclusão</h1>
+<p>Eu cheguei no meu modelo final. 90% de acurácia usando random forest. Mas como a variável resposta é desbalanceada, com 90% para uma classe e 10% para outra, este meu modelo não serve pra nada.</p>
+<p>Mesmo tentando abordagens diversas, como filtragem de dados faltantes e imputação, nada deu certo pra mim. Aparentemente este é um resultado geral para este problema. Os outros participantes deste desafio no kaggle criaram várias <a href="https://www.kaggle.com/einsteindata4u/covid19/kernels">análises diferentes</a>, com muitas abordagens interessantes, mas ninguém consegue uma boa detecção de verdadeiros positivos.</p>
+<p>Tenho pouca esperança que, com este conjunto de dados específico, seja possível fazer algo preditivo de qualidade. Talvez com uma feature engineering muito boa? Pode ser, mas não podemos esquecer que são muitos dados faltantes. No conjunto original, sem pré-processamento, são 91% de dados faltantes. Não dá pra fazer milagre.</p>
+<p>Como sempre, o código utilizado nesta análise está disponível em meu <a href="https://github.com/mnunes/einstein-covid-19">github</a>.</p>
+</div>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="2" height="2" viewBox="0 0 2 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://marcusnunes.me/tags/an%C3%A1lise">análise</a></span><span class="tag"><a href="https://marcusnunes.me/tags/aprendizagem-de-m%C3%A1quina">aprendizagem de máquina</a></span><span class="tag"><a href="https://marcusnunes.me/tags/caret">caret</a></span><span class="tag"><a href="https://marcusnunes.me/tags/coronav%C3%ADrus">coronavírus</a></span><span class="tag"><a href="https://marcusnunes.me/tags/kaggle">kaggle</a></span><span class="tag"><a href="https://marcusnunes.me/tags/machine-learning">machine learning</a></span><span class="tag"><a href="https://marcusnunes.me/tags/random-forest">random forest</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>2972 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-03-31 12:56 -0300</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://marcusnunes.me/posts/livros-gratuitos-da-springer/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Livros Gratuitos da Springer</span>
+			</a>
+			<a class="prev-post" href="https://marcusnunes.me/posts/analise-descritiva-do-coronavirus/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Análise Descritiva do Coronavírus nos Estados Brasileiros</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "marcus-nunes-blog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2013-2020 <a href="https://marcusnunes.me">Marcus Nunes</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://marcusnunes.me/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+	<script src="https://marcusnunes.me/js/main.min.784417f5847151f848c339cf0acb13a06cbb648b1483435a28ed4556c4ead69b.js" integrity="sha256-eEQX9YRxUfhIwznPCssToGy7ZIsUg0NaKO1FVsTq1ps="></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-201649-7', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+</body>
+
+</html>

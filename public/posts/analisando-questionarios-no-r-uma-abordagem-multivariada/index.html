@@ -9,25 +9,25 @@
 	<meta name="msapplication-TileColor" content="#494f5c">
 
 <meta itemprop="name" content="Analisando Questionários no R: Uma Abordagem Multivariada">
-<meta itemprop="description" content="Como usar o Google para provar ou desprovar esta afirmação">
+<meta itemprop="description" content="Analise respostas de questionários fugindo das análises triviais">
 
 
 <meta itemprop="datePublished" content="2019-06-30T20:08:00-03:00" />
 <meta itemprop="dateModified" content="2019-06-30T20:08:00-03:00" />
-<meta itemprop="wordCount" content="1737">
+<meta itemprop="wordCount" content="1726">
 
 
 
 <meta itemprop="keywords" content="análise,análise fatorial,estatística multivariada,likert,questionários," />
 <meta property="og:title" content="Analisando Questionários no R: Uma Abordagem Multivariada" />
-<meta property="og:description" content="Como usar o Google para provar ou desprovar esta afirmação" />
+<meta property="og:description" content="Analise respostas de questionários fugindo das análises triviais" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://marcusnunes.me/posts/analisando-questionarios-no-r-uma-abordagem-multivariada/" />
 <meta property="article:published_time" content="2019-06-30T20:08:00-03:00"/>
 <meta property="article:modified_time" content="2019-06-30T20:08:00-03:00"/>
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Analisando Questionários no R: Uma Abordagem Multivariada"/>
-<meta name="twitter:description" content="Como usar o Google para provar ou desprovar esta afirmação"/>
+<meta name="twitter:description" content="Analise respostas de questionários fugindo das análises triviais"/>
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -37,7 +37,7 @@
 	<link rel="shortcut icon" href="/favicon.ico">
 
 	<title>Analisando Questionários no R: Uma Abordagem Multivariada</title>
-	<link rel="stylesheet" href="https://marcusnunes.me/css/style.min.2abea836b35631572d081e3a3c4e1ab54d8a33a8d87fa93c9b79831551fd44ce.css" integrity="sha256-Kr6oNrNWMVctCB46PE4atU2KM6jYf6k8m3mDFVH9RM4=">
+	<link rel="stylesheet" href="https://marcusnunes.me/css/style.min.31706917653d2b9e8410abd431f30ec4359a88a94fc87a63654779d87329edec.css" integrity="sha256-MXBpF2U9K56EEKvUMfMOxDWaiKlPyHpjZUd52HMp7ew=">
 	
 </head>
 
@@ -83,6 +83,7 @@
 			</header>
 			<div class="content">
 				
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <p>Um dos tipos de trabalho que aparece mais frequentemente no <a href="https://marcusnunes.me/consultoria/">Laboratório de Consultoria</a> que coordeno na universidade diz respeito à análise de questionários. Recebemos pedidos de colaboração na preparação dos questionários, cálculo do tamanho amostral para sua aplicação e análise dos resultados coletados.</p>
@@ -141,14 +142,14 @@
 </ol>
 <p>O código para fazer isto neste conjunto de dados é o seguinte:</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ───────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
-<pre><code>## ✔ ggplot2 3.2.1     ✔ purrr   0.3.3
-## ✔ tibble  2.1.3     ✔ dplyr   0.8.3
-## ✔ tidyr   1.0.0     ✔ stringr 1.4.0
-## ✔ readr   1.3.1     ✔ forcats 0.4.0</code></pre>
+<pre><code>## ── Attaching packages ───────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.0     ✓ purrr   0.3.3
+## ✓ tibble  3.0.0     ✓ dplyr   0.8.5
+## ✓ tidyr   1.0.2     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
 <pre><code>## ── Conflicts ──────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>theme_set(theme_bw())
 library(reshape2)</code></pre>
 <pre><code>## 
@@ -204,22 +205,18 @@ pca &lt;- prcomp(maquiavel_questoes, center = TRUE, scale. = TRUE)
 
 summary(pca)</code></pre>
 <pre><code>## Importance of components:
-##                           PC1     PC2     PC3     PC4     PC5     PC6
-## Standard deviation     2.5697 1.27549 1.09430 0.98368 0.94074 0.89568
-## Proportion of Variance 0.3302 0.08134 0.05987 0.04838 0.04425 0.04011
-## Cumulative Proportion  0.3302 0.41152 0.47139 0.51977 0.56402 0.60414
-##                           PC7     PC8     PC9    PC10    PC11    PC12
-## Standard deviation     0.8614 0.83463 0.81811 0.80676 0.78671 0.76848
-## Proportion of Variance 0.0371 0.03483 0.03347 0.03254 0.03095 0.02953
-## Cumulative Proportion  0.6412 0.67607 0.70953 0.74208 0.77302 0.80255
-##                           PC13    PC14   PC15    PC16    PC17    PC18
-## Standard deviation     0.76328 0.75608 0.7402 0.72352 0.70890 0.67555
-## Proportion of Variance 0.02913 0.02858 0.0274 0.02617 0.02513 0.02282
-## Cumulative Proportion  0.83168 0.86026 0.8877 0.91384 0.93896 0.96178
-##                           PC19    PC20
-## Standard deviation     0.63914 0.59654
-## Proportion of Variance 0.02042 0.01779
-## Cumulative Proportion  0.98221 1.00000</code></pre>
+##                           PC1     PC2     PC3     PC4     PC5     PC6    PC7
+## Standard deviation     2.5697 1.27549 1.09430 0.98368 0.94074 0.89568 0.8614
+## Proportion of Variance 0.3302 0.08134 0.05987 0.04838 0.04425 0.04011 0.0371
+## Cumulative Proportion  0.3302 0.41152 0.47139 0.51977 0.56402 0.60414 0.6412
+##                            PC8     PC9    PC10    PC11    PC12    PC13    PC14
+## Standard deviation     0.83463 0.81811 0.80676 0.78671 0.76848 0.76328 0.75608
+## Proportion of Variance 0.03483 0.03347 0.03254 0.03095 0.02953 0.02913 0.02858
+## Cumulative Proportion  0.67607 0.70953 0.74208 0.77302 0.80255 0.83168 0.86026
+##                          PC15    PC16    PC17    PC18    PC19    PC20
+## Standard deviation     0.7402 0.72352 0.70890 0.67555 0.63914 0.59654
+## Proportion of Variance 0.0274 0.02617 0.02513 0.02282 0.02042 0.01779
+## Cumulative Proportion  0.8877 0.91384 0.93896 0.96178 0.98221 1.00000</code></pre>
 <pre class="r"><code>plot.pca &lt;- data.frame(
   x = 1:20,
   y = unlist(as.data.frame(summary(pca)[6])[1, ])
@@ -245,10 +242,10 @@ ajuste_4</code></pre>
 ## factanal(x = maquiavel_questoes, factors = 4, scores = c(&quot;regression&quot;),     rotation = &quot;none&quot;)
 ## 
 ## Uniquenesses:
-##   Q01   Q02   Q03   Q04   Q05   Q06   Q07   Q08   Q09   Q10   Q11   Q12 
-## 0.539 0.527 0.607 0.541 0.587 0.377 0.369 0.619 0.327 0.514 0.621 0.600 
-##   Q13   Q14   Q15   Q16   Q17   Q18   Q19   Q20 
-## 0.558 0.609 0.674 0.735 0.831 0.692 0.877 0.722 
+##   Q01   Q02   Q03   Q04   Q05   Q06   Q07   Q08   Q09   Q10   Q11   Q12   Q13 
+## 0.539 0.527 0.607 0.541 0.587 0.377 0.369 0.619 0.327 0.514 0.621 0.600 0.558 
+##   Q14   Q15   Q16   Q17   Q18   Q19   Q20 
+## 0.609 0.674 0.735 0.831 0.692 0.877 0.722 
 ## 
 ## Loadings:
 ##     Factor1 Factor2 Factor3 Factor4
@@ -308,7 +305,7 @@ ggplot(grafico, aes(x = Factor1, y = Factor2)) +
 				<p>
 					<svg xmlns="http://www.w3.org/2000/svg" width="2" height="2" viewBox="0 0 2 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://marcusnunes.me/tags/an%C3%A1lise">análise</a></span><span class="tag"><a href="https://marcusnunes.me/tags/an%C3%A1lise-fatorial">análise fatorial</a></span><span class="tag"><a href="https://marcusnunes.me/tags/estat%C3%ADstica-multivariada">estatística multivariada</a></span><span class="tag"><a href="https://marcusnunes.me/tags/likert">likert</a></span><span class="tag"><a href="https://marcusnunes.me/tags/question%C3%A1rios">questionários</a></span>
 				</p>
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1737 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1726 Words</p>
 				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-06-30 20:08 -0300</p>
 			</footer>
 		</article>

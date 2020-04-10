@@ -1,6 +1,6 @@
 ---
 title: "Analisando Questionários no R: Uma Abordagem Multivariada"
-description: "Como usar o Google para provar ou desprovar esta afirmação"
+description: "Analise respostas de questionários fugindo das análises triviais"
 tags: ["análise", "análise fatorial", "estatística multivariada", "likert", "questionários"]
 draft: false
 date: 2019-06-30T20:08:00-03:00

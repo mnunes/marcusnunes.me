@@ -1,0 +1,344 @@
+---
+title: "Análise dos Dados de Coronavírus do Hospital Albert Einstein: 90% de Acurácia e Porque isso é Ruim"
+description: "Vamos usar machine learning para mostrar como criar um modelo de predição para "
+tags: ["análise", "aprendizagem de máquina", "caret", "coronavírus", "kaggle", "machine learning", "random forest"]
+draft: false
+date: 2020-03-31T12:56:00-03:00
+---
+
+```{r resultadosFinais, include=FALSE}
+library(tidyverse)
+theme_set(theme_bw())
+library(naniar)
+library(readxl)
+library(caret)
+library(reshape2)
+library(GGally)
+library(mice)
+
+load(file = "einstein-covid-19.RData")
+```
+
+# Introdução
+
+Recentemente, o Hospital Albert Einstein compartilhou um conjunto de dados com observações de 5644 pacientes. Os dados possuem 111 características relacionadas a exames médicos, como sangue, urina e muito mais. A tarefa que me propus a resolver foi classificar os pacientes testados em dois grupos, aqueles que posssuem e aqueles que não possuem coronavírus. Farei isso a partir a partir dos resultados dos exames laboratoriais, sem utilizar informação alguma sobre o diagnóstico realizado em relação à contaminação do vírus.
+
+Caso a técnica utilizada neste posto não tenha ficado muito clara, recomendo a leitura do meu post [Tutorial: Como Fazer o Seu Primeiro Projeto de Data Science](https://marcusnunes.me/posts/primeiro-projeto-de-data-science/), que mostra com mais detalhes como ajustar o modelo random forest a um conjunto de dados.
+
+Os dados utilizados aqui, bem como o código utilizado nesta análise, estão disponíveis em meu [github](https://github.com/mnunes/einstein-covid-19).
+
+# Análise Exploratória dos Dados
+
+O primeiro passo em qualquer análise de dados é a análise exploratória. É possível gerar ideias e insights apenas olhando para os dados plotados. Vou começar minha análise exploratória carregando alguns pacotes no R:
+
+```{r pacotes}
+library(tidyverse)
+theme_set(theme_bw())
+library(naniar)
+library(readxl)
+library(caret)
+library(reshape2)
+library(GGally)
+library(mice)
+```
+
+Com os pacotes carregados, vou ler os dados e realizar pequenas correções neles. Cada passo a seguir foi explicado com um comentário dentro do próprio código.
+
+```{r LeituraDosDados, eval=TRUE}
+dataset <- read_excel(path = "data/dataset.xlsx")
+
+# fix column names
+
+names(dataset) <- make.names(names(dataset), unique = TRUE)
+
+#################################
+### exploratory data analysis ###
+#################################
+
+# first look at the dataset
+
+glimpse(dataset)
+
+# remove columns that won't help on diagnosis
+
+dataset_clean <- dataset %>%
+  select(-Patient.ID, 
+         -Patient.addmited.to.regular.ward..1.yes..0.no.,
+         -Patient.addmited.to.semi.intensive.unit..1.yes..0.no.,
+         -Patient.addmited.to.intensive.care.unit..1.yes..0.no.)
+
+# convert level Urine...Leukocytes <1000 to 1000
+
+dataset_clean$Urine...Leukocytes[dataset_clean$`Urine...Leukocytes` == "<1000"] <- 1000
+dataset_clean$`Urine...Leukocytes` <- as.numeric(dataset_clean$`Urine...Leukocytes`)
+
+# fix Urine...pH
+
+dataset_clean$`Urine...pH`[dataset_clean$`Urine...pH` == "Não Realizado"] <- NA
+dataset_clean$`Urine...pH` <- as.numeric(dataset_clean$`Urine...pH`)
+
+# Urine...Hemoglobin
+
+dataset_clean$`Urine...Hemoglobin`[dataset_clean$`Urine...Hemoglobin` == "not_done"] <- NA
+
+# Urine...Aspect
+
+dataset_clean$`Urine...Aspect` <- factor(dataset_clean$`Urine...Aspect`, 
+                                         levels = c("clear", "lightly_cloudy", "cloudy", "altered_coloring"))
+
+# Strepto A
+
+dataset_clean$`Strepto.A`[dataset_clean$`Strepto.A` == "not_done"] <- NA
+
+# transform character to factor
+
+dataset_clean_num <- dataset_clean %>%
+  select_if(is.numeric)
+
+dataset_clean_cat <- dataset_clean %>%
+  select_if(negate(is.numeric)) %>%
+  mutate_all(as.factor)
+
+dataset_clean <- base::cbind(dataset_clean_num, dataset_clean_cat)
+
+# fix factor levels
+
+# sort(sapply(dataset_clean[,sapply(dataset_clean, is.factor)], nlevels))
+```
+
+Com os dados lidos e processados, eu dou uma olhada nos dados faltantes:
+
+```{r missingData01}
+# let's take a look on missing data
+
+missing_values <- dataset_clean %>%
+  gather(key = "key", value = "val") %>%
+  mutate(is.missing = is.na(val)) %>%
+  group_by(key, is.missing) %>%
+  summarise(num.missing = n()) %>%
+  filter(is.missing == TRUE) %>%
+  select(-is.missing) %>%
+  ungroup() %>%
+  mutate(key = reorder(key, -num.missing)) %>%
+  arrange(desc(num.missing)) %>%
+  print(n = Inf)
+  
+missing_values %>%
+  ggplot() +
+  geom_bar(aes(x = key, y = 100*num.missing/dim(dataset_clean)[1]), stat = "identity") +
+  labs(x = "Variable", y="Percent of missing values") +  
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8))
+```
+
+Este gráfico mostra quais são as variáveis com maior quantidade de dados faltantes. Note que algumas delas possuem quase 100% de dados faltantes! Veja o gráfico a seguir para que tenhamos uma ideia melhor da magnitude da falta de dados que estamos enfrentando:
+
+```{r missingData02}
+vis_miss(dataset_clean) +
+  theme(axis.text.x = element_text(size = 6))
+```
+
+Mais de 91% de dados faltantes é muita coisa. Este tipo de informação não me dá muita esperança em encontrar um modelo bom para estes dados. Mesmo assim, vou tentar algo e ver o que acontece. Para isso, vou manter no conjunto a ser analisado apenas as colunas com pelo menos 1000 observações. Ou seja, vou retirar todas as colunas com muito poucos dados registrados.
+
+
+```{r preparation}
+# keep only columns with at least n observations
+
+n <- 1000
+
+dataset_clean <- dataset_clean[, which(dim(dataset_clean)[1] - apply(apply(dataset_clean, 2, is.na), 2, sum) >= n)]
+
+# remove quantitative variables with variance equal to zero 
+
+dataset_model_num <- dataset_clean %>%
+  select_if(is.numeric)
+
+if (sum(apply(dataset_model_num, 2, var, na.rm = TRUE) == 0) != 0) {
+  dataset_model_num <- dataset_model_num[, which(apply(dataset_model_num, 2, var, na.rm = TRUE) == 0)]
+}
+
+# remove categorical variables with only one level 
+
+dataset_model_cat <- dataset_clean %>%
+  select_if(negate(is.numeric))
+
+dataset_model_cat <- dataset_model_cat[, sapply(dataset_model_cat, nlevels) > 1]
+  
+# final dataset
+
+dataset_model <- base::cbind(dataset_model_num, dataset_model_cat)
+
+vis_miss(dataset_model) + # it needs naniar package
+  theme(axis.text.x = element_text(size = 6))
+```
+
+É possíver ver que há uma proporção menor de dados faltantes neste conjunto processado. Baixamos a proporção de dados faltantes de 91,4% para 68%. Ainda é um valor bastante alto, mas está um pouco menos pior do que o original.
+
+Abaixo coloco mais alguns gráficos que tentam relacionar as variáveis que restaram no conjunto de dados, mas aparentemente não há relação alguma entre elas.
+
+```{r edaSimples}
+# some other plots
+
+ggpairs(dataset_model[, c(1:10)])
+
+ggpairs(dataset_model[, c(11:ncol(dataset_model))])
+
+# it seems there is no relation between any pair of variables
+```
+
+
+# Modelagem 1
+
+Poucos modelos de aprendizagem de máquina conseguem lidar com dados faltantes. Por este motivo, decidi escolher um modelo chamado [CART](https://en.wikipedia.org/wiki/Decision_tree_learning) (Classification and Regression Tree - Árvore de Classificação e Regressão). Abaixo estão os resultados obtidos, após a separação do conjunto de dados original em treinamento e teste. Os resultados reportados foram obtidos após a aplicação do modelo ajustado no conjunto de teste. Para saber mais porque fazer isso, recomendo novamente meu post [Tutorial: Como Fazer o Seu Primeiro Projeto de Data Science](https://marcusnunes.me/posts/primeiro-projeto-de-data-science/).
+
+```{r cart, eval=FALSE}
+################
+### modeling ###
+################
+
+# train/test split
+
+covid <- dataset_model
+
+set.seed(1)
+
+index       <- createDataPartition(covid$SARS.Cov.2.exam.result, 
+                                   p = 0.75, 
+                                   list = FALSE)
+covid_train <- covid[ index, ]
+covid_test  <- covid[-index, ]
+
+dim(covid_train)
+table(covid_train$SARS.Cov.2.exam.result)
+
+dim(covid_test)
+table(covid_test$SARS.Cov.2.exam.result)
+
+# parameters for cart
+
+fitControl <- trainControl(method = "cv",
+                           number = 5,
+                           savePred = TRUE, 
+                           classProb = TRUE)
+
+tune.grid <- expand.grid(mincriterion = seq(from = 0.01, 
+                                            to = .99, 
+                                            by = 0.01))
+
+set.seed(1)
+
+x <- covid_train %>%
+  select(-SARS.Cov.2.exam.result)
+
+y <- covid_train %>%
+  select(SARS.Cov.2.exam.result) %>%
+  unlist()
+
+covid_ctree <- train(x, y,
+                     method = "ctree", 
+                     tuneGrid = tune.grid,
+                     trControl = fitControl)
+```
+
+```{r cart02}
+ggplot(covid_ctree)
+
+prediction <- predict(covid_ctree, covid_test)
+
+confusionMatrix(prediction, covid_test$SARS.Cov.2.exam.result)
+
+# 90% accuracy seems good, but No Information Rate is also 90%
+# so, using this model or a random process gives the same answer
+# high sensitivity, but very low specificity :(
+```
+
+Note que obtive 90% de acurácia no meu modelo. Ou seja, ele acerta 90% das tentativas de classificar um paciente como positivo ou negativo em relação ao coronavírus. Parece um resultado muito bom, mas não é. Ele é péssimo, na realidade.
+
+No conjunto de dados original, aproximadamente 90% dos pacientes não possuem coronavírus, enquanto 10% estão infectados. O meu modelo encontra, com 100% de certeza, quem não tem coronavírus (é o valor de `Sensitivity` no output acima). Entretanto, encontra 0% dos pacientes com coronavírus (é o valor de `Specificity` no output acima). Ou seja, ele vai mandar para casa todo mundo que chegar no hospital, tendo coronavírus ou não.
+
+Isso me fez partir para uma segunda modelagem.
+
+
+# Modelagem 2
+
+Vimos que a primeira modelagem não deu bons resultados. Com o intuito de tentar obter resultados melhores, vou proceder com a imputação de dados. Se for tentar rodar o código abaixo em seu computador, prepare-se para esperar uns bons minutos.
+
+```{r input, eval=FALSE}
+#######################
+### data imputation ###
+#######################
+
+covid_imp <- mice(covid, meth = "rf", ntree = 5) # be patient
+
+covid <- complete(covid_imp)
+```
+
+
+```{r random_forest, eval=FALSE}
+################
+### modeling ###
+################
+
+# train/test split
+
+set.seed(1)
+
+index       <- createDataPartition(covid$SARS.Cov.2.exam.result, 
+                                   p = 0.75, 
+                                   list = FALSE)
+covid_train <- covid[ index, ]
+covid_test  <- covid[-index, ]
+
+dim(covid_train)
+table(covid_train$SARS.Cov.2.exam.result)
+
+dim(covid_test)
+table(covid_test$SARS.Cov.2.exam.result)
+
+# parameters for random forest
+
+fitControl <- trainControl(method = "cv",
+                           number = 5,
+                           savePred = TRUE, 
+                           classProb = TRUE)
+
+tune.grid <- expand.grid(mtry = 1:35)
+
+set.seed(1)
+
+x <- covid_train %>%
+  select(-SARS.Cov.2.exam.result)
+
+y <- covid_train %>%
+  select(SARS.Cov.2.exam.result) %>%
+  unlist()
+
+covid_rf <- train(x, y,
+                  method = "rf", 
+                  tuneGrid = tune.grid,
+                  trControl = fitControl)
+```
+
+```{r random_forest2}
+ggplot(covid_rf)
+
+prediction <- predict(covid_rf, covid_test)
+
+confusionMatrix(prediction, covid_test$SARS.Cov.2.exam.result)
+
+# high sensitivity, but very low specificity :(
+```
+
+De novo, o mesmo problema: alta sensitividade e baixíssima especificidade neste modelo. Ou seja, não é melhor do que o modelo anterior ou uma seleção aleatória de diagnóstico.
+
+# Conclusão
+
+Eu cheguei no meu modelo final. 90% de acurácia usando random forest. Mas como a variável resposta é desbalanceada, com 90% para uma classe e 10% para outra, este meu modelo não serve pra nada. 
+
+Mesmo tentando abordagens diversas, como filtragem de dados faltantes e imputação, nada deu certo pra mim. Aparentemente este é um resultado geral para este problema. Os outros participantes deste desafio no kaggle criaram várias [análises diferentes](https://www.kaggle.com/einsteindata4u/covid19/kernels), com muitas abordagens interessantes, mas ninguém consegue uma boa detecção de verdadeiros positivos.
+
+Tenho pouca esperança que, com este conjunto de dados específico, seja possível fazer algo preditivo de qualidade. Talvez com uma feature engineering muito boa? Pode ser, mas não podemos esquecer que são muitos dados faltantes. No conjunto original, sem pré-processamento, são 91% de dados faltantes. Não dá pra fazer milagre.
+
+Como sempre, o código utilizado nesta análise está disponível em meu [github](https://github.com/mnunes/einstein-covid-19).
+
+
+

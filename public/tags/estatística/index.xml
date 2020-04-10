@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Fri, 02 Feb 2018 12:54:00 -0300</lastBuildDate>
+    <lastBuildDate>Fri, 03 Apr 2020 06:57:00 -0300</lastBuildDate>
     
 	<atom:link href="https://marcusnunes.me/tags/estat%C3%ADstica/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Livros Gratuitos da Springer</title>
+      <link>https://marcusnunes.me/posts/livros-gratuitos-da-springer/</link>
+      <pubDate>Fri, 03 Apr 2020 06:57:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/livros-gratuitos-da-springer/</guid>
+      <description>Acabei de saber na lista de emails da Associação Brasileira de Estatística que a editora Springer disponibilizou mais de 500 livros gratuitamente. Basta visitar o site e baixar, sem sequer necessitar fazer cadastro. A lista completa de livros está nesta planilha do Excel, mas abaixo eu coloquei a listagem de livros de Matemática e Estatística, colocados em ordem alfabética do título. Aproveitem.
+ A Beginner&amp;rsquo;s Guide to R - Alain Zuur, Elena N.</description>
+    </item>
     
     <item>
       <title>Intervalos de Confiança na Prática</title>

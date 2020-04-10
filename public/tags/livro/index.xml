@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Livro on Marcus Nunes&#39; Blog</title>
+    <link>https://marcusnunes.me/tags/livro/</link>
+    <description>Recent content in Livro on Marcus Nunes&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Thu, 09 Apr 2020 14:50:00 -0300</lastBuildDate>
+    
+	<atom:link href="https://marcusnunes.me/tags/livro/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Livros de Ciência de Dados Gratuitos na Amazon</title>
+      <link>https://marcusnunes.me/posts/livros-gratuitos-da-amazon/</link>
+      <pubDate>Thu, 09 Apr 2020 14:50:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/livros-gratuitos-da-amazon/</guid>
+      <description>Recebi esta dica no grupo de telegram Ciência de Dados RN. A Amazon está disponibilizando gratuitamente 28 de livros sobre Ciência de Dados, Big Data e programação em suas versões para Kindle.
+Assim como no casos dos livros gratuitos da Springer, basta entrar nos link fornecidos abaixo e mandar o livro ser baixado. Dá para enviar diretamente para o Kindle ou ler através do aplicativo da Amazon em outras plataformas.</description>
+    </item>
+    
+    <item>
+      <title>Livros Gratuitos da Springer</title>
+      <link>https://marcusnunes.me/posts/livros-gratuitos-da-springer/</link>
+      <pubDate>Fri, 03 Apr 2020 06:57:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/livros-gratuitos-da-springer/</guid>
+      <description>Acabei de saber na lista de emails da Associação Brasileira de Estatística que a editora Springer disponibilizou mais de 500 livros gratuitamente. Basta visitar o site e baixar, sem sequer necessitar fazer cadastro. A lista completa de livros está nesta planilha do Excel, mas abaixo eu coloquei a listagem de livros de Matemática e Estatística, colocados em ordem alfabética do título. Aproveitem.
+ A Beginner&amp;rsquo;s Guide to R - Alain Zuur, Elena N.</description>
+    </item>
+    
+  </channel>
+</rss>

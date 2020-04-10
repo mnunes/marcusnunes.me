@@ -7,10 +7,29 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 30 Jun 2019 20:08:00 -0300</lastBuildDate>
+    <lastBuildDate>Tue, 31 Mar 2020 12:56:00 -0300</lastBuildDate>
     
 	<atom:link href="https://marcusnunes.me/tags/an%C3%A1lise/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Análise dos Dados de Coronavírus do Hospital Albert Einstein: 90% de Acurácia e Porque isso é Ruim</title>
+      <link>https://marcusnunes.me/posts/covid-19-einstein-90-acuracia/</link>
+      <pubDate>Tue, 31 Mar 2020 12:56:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/covid-19-einstein-90-acuracia/</guid>
+      <description>Introdução Recentemente, o Hospital Albert Einstein compartilhou um conjunto de dados com observações de 5644 pacientes. Os dados possuem 111 características relacionadas a exames médicos, como sangue, urina e muito mais. A tarefa que me propus a resolver foi classificar os pacientes testados em dois grupos, aqueles que posssuem e aqueles que não possuem coronavírus. Farei isso a partir a partir dos resultados dos exames laboratoriais, sem utilizar informação alguma sobre o diagnóstico realizado em relação à contaminação do vírus.</description>
+    </item>
+    
+    <item>
+      <title>Análise Descritiva do Coronavírus nos Estados Brasileiros</title>
+      <link>https://marcusnunes.me/posts/analise-descritiva-do-coronavirus/</link>
+      <pubDate>Tue, 24 Mar 2020 10:12:00 -0300</pubDate>
+      
+      <guid>https://marcusnunes.me/posts/analise-descritiva-do-coronavirus/</guid>
+      <description>Justificativa Hoje, 24 de março de 2020, o coronavírus está muito presente em todas as conversas dos brasileiros. Aqueles que podem estão em quarentena, tentando evitar ao máximo que a doença se espalhe.
+Estou aproveitando este tempo de molho para aprender sobre um assunto que domino muito pouco: a criação de mapas no R. Por isso, resolvi utilizar os dados disponibilizados pela equipe do site Brasil.</description>
+    </item>
     
     <item>
       <title>Analisando Questionários no R: Uma Abordagem Multivariada</title>
@@ -86,26 +105,6 @@ Inclusive, tenho para mim que, quando eu menos esperar, os supermercados vão es
       
       <guid>https://marcusnunes.me/posts/utilizando-estatistica-para-decidir-qual-cerveja-beber-parte-1/</guid>
       <description>Sou maior de idade, pago meus impostos e contribuo para o PIB. Portanto, nada me impede de ocasionalmente beber uma ou outra cerveja em meus momentos de lazer. Embora eu tenha as minhas preferências pessoais neste assunto, estive pensando qual seria a opinião geral do brasileiro a respeito das cervejas disponíveis no mercado. De acordo com o G1, cada brasileiro consumiu, em média, 60,7 litros de suco de cevada em 2017, o que serve como indicativo do quanto o povo daqui curte uma ampola (ou talvez mais) deste diurético.</description>
-    </item>
-    
-    <item>
-      <title>Teria sido possível evitar o desastre da Challenger?</title>
-      <link>https://marcusnunes.me/posts/teria-sido-possivel-evitar-o-desastre-da-challenger/</link>
-      <pubDate>Thu, 15 Feb 2018 12:04:00 -0300</pubDate>
-      
-      <guid>https://marcusnunes.me/posts/teria-sido-possivel-evitar-o-desastre-da-challenger/</guid>
-      <description>Creio que as duas imagens mais marcantes em toda a história do programa espacial norte-americano sejam a caminhada de Neil Armostrong na Lua e a explosão do ônibus espacial Challenger. Esta tragédia, exibida ao vivo pela TV em 28 de janeiro de 1986, chocou o mundo.
-Após uma cuidadosa investigação, a NASA concluiu que a explosão ocorreu devido ao mau funcionamento de uma peça chamada O-ring, que deveria manter a junção entre as partes dos foguetes que levariam a Challenger para o espaço.</description>
-    </item>
-    
-    <item>
-      <title>Natal ou Porto Alegre: Onde o Verão é Mais Quente?</title>
-      <link>https://marcusnunes.me/posts/natal-ou-porto-alegre-onde-o-verao-e-mais-quente/</link>
-      <pubDate>Tue, 06 Feb 2018 16:01:00 -0300</pubDate>
-      
-      <guid>https://marcusnunes.me/posts/natal-ou-porto-alegre-onde-o-verao-e-mais-quente/</guid>
-      <description>Um Pouco de História Eu moro em Natal, RN, mas sou natural de São Leopoldo, RS. Também sou professor de Estatística. Quando falo de análise de dados com meus alunos, tem uma afirmação minha da qual eles sempre duvidam: Porto Alegre é mais quente do que Natal no verão.
-Só quem morou no sul e sudeste, em cidades com clima subtropical e afetadas pela continentalidade, sabem do que estou falando.</description>
     </item>
     
   </channel>

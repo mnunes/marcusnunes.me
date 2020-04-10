@@ -23,6 +23,26 @@
   </url>
   
   <url>
+    <loc>https://marcusnunes.me/posts/livros-gratuitos-da-amazon/</loc>
+    <lastmod>2020-04-09T14:50:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marcusnunes.me/posts/livros-gratuitos-da-springer/</loc>
+    <lastmod>2020-04-03T06:57:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marcusnunes.me/posts/covid-19-einstein-90-acuracia/</loc>
+    <lastmod>2020-03-31T12:56:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://marcusnunes.me/posts/analise-descritiva-do-coronavirus/</loc>
+    <lastmod>2020-03-24T10:12:00-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://marcusnunes.me/posts/algumas-das-piores-visualizacoes-de-dados-ja-feitas/</loc>
     <lastmod>2020-02-27T07:57:00-03:00</lastmod>
   </url>
@@ -234,7 +254,7 @@
   
   <url>
     <loc>https://marcusnunes.me/tags/amazon/</loc>
-    <lastmod>2018-11-28T08:29:00-03:00</lastmod>
+    <lastmod>2020-04-09T14:50:00-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -258,7 +278,7 @@
   
   <url>
     <loc>https://marcusnunes.me/tags/an%C3%A1lise/</loc>
-    <lastmod>2019-06-30T20:08:00-03:00</lastmod>
+    <lastmod>2020-03-31T12:56:00-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -269,14 +289,32 @@
   </url>
   
   <url>
+    <loc>https://marcusnunes.me/tags/an%C3%A1lise-descritiva/</loc>
+    <lastmod>2020-03-24T10:12:00-03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://marcusnunes.me/tags/an%C3%A1lise-fatorial/</loc>
     <lastmod>2019-06-30T20:08:00-03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://marcusnunes.me/tags/aprendizagem-de-m%C3%A1quina/</loc>
+    <lastmod>2020-03-31T12:56:00-03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://marcusnunes.me/tags/bibliografia/</loc>
     <lastmod>2018-09-07T12:45:00-03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marcusnunes.me/tags/big-data/</loc>
+    <lastmod>2020-04-09T14:50:00-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -299,6 +337,12 @@
   </url>
   
   <url>
+    <loc>https://marcusnunes.me/tags/caret/</loc>
+    <lastmod>2020-03-31T12:56:00-03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://marcusnunes.me/tags/cerveja/</loc>
     <lastmod>2018-02-26T11:30:00-03:00</lastmod>
     <priority>0</priority>
@@ -306,7 +350,7 @@
   
   <url>
     <loc>https://marcusnunes.me/tags/ci%C3%AAncia-de-dados/</loc>
-    <lastmod>2020-01-27T15:14:00-03:00</lastmod>
+    <lastmod>2020-04-09T14:50:00-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -331,6 +375,12 @@
   <url>
     <loc>https://marcusnunes.me/tags/consultoria-estat%C3%ADstica/</loc>
     <lastmod>2019-11-18T21:55:00-03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marcusnunes.me/tags/coronav%C3%ADrus/</loc>
+    <lastmod>2020-04-09T14:50:00-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -396,7 +446,7 @@
   
   <url>
     <loc>https://marcusnunes.me/tags/estat%C3%ADstica/</loc>
-    <lastmod>2018-02-02T12:54:00-03:00</lastmod>
+    <lastmod>2020-04-03T06:57:00-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -426,7 +476,7 @@
   
   <url>
     <loc>https://marcusnunes.me/tags/ggplot2/</loc>
-    <lastmod>2018-05-21T09:21:00-03:00</lastmod>
+    <lastmod>2020-03-24T10:12:00-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -491,6 +541,12 @@
   </url>
   
   <url>
+    <loc>https://marcusnunes.me/tags/kaggle/</loc>
+    <lastmod>2020-03-31T12:56:00-03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://marcusnunes.me/tags/last.fm/</loc>
     <lastmod>2019-02-25T05:20:00-03:00</lastmod>
     <priority>0</priority>
@@ -521,20 +577,32 @@
   </url>
   
   <url>
+    <loc>https://marcusnunes.me/tags/livro/</loc>
+    <lastmod>2020-04-09T14:50:00-03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://marcusnunes.me/tags/machine-learning/</loc>
-    <lastmod>2018-11-28T08:29:00-03:00</lastmod>
+    <lastmod>2020-03-31T12:56:00-03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marcusnunes.me/tags/mapas/</loc>
+    <lastmod>2020-03-24T10:12:00-03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://marcusnunes.me/</loc>
-    <lastmod>2020-02-27T07:57:00-03:00</lastmod>
+    <lastmod>2020-04-09T14:50:00-03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://marcusnunes.me/tags/matem%C3%A1tica/</loc>
-    <lastmod>2019-03-14T06:51:00-03:00</lastmod>
+    <lastmod>2020-04-03T06:57:00-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -594,7 +662,7 @@
   
   <url>
     <loc>https://marcusnunes.me/tags/programa%C3%A7%C3%A3o/</loc>
-    <lastmod>2019-10-09T16:26:00-03:00</lastmod>
+    <lastmod>2020-04-09T14:50:00-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -624,7 +692,7 @@
   
   <url>
     <loc>https://marcusnunes.me/tags/random-forest/</loc>
-    <lastmod>2018-07-01T08:54:00-03:00</lastmod>
+    <lastmod>2020-03-31T12:56:00-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -655,6 +723,12 @@
   <url>
     <loc>https://marcusnunes.me/tags/shiny/</loc>
     <lastmod>2019-05-01T14:10:00-03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://marcusnunes.me/tags/springer/</loc>
+    <lastmod>2020-04-03T06:57:00-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -714,7 +788,7 @@
   
   <url>
     <loc>https://marcusnunes.me/tags/visualiza%C3%A7%C3%A3o/</loc>
-    <lastmod>2018-12-12T09:34:00-03:00</lastmod>
+    <lastmod>2020-03-24T10:12:00-03:00</lastmod>
     <priority>0</priority>
   </url>
   

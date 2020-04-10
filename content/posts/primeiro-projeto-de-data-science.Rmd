@@ -60,7 +60,7 @@ Seu nome é Iris porque foram coletadas observações de 150 sujeitos de 3 espé
 
 Embora o conjunto de dados iris esteja disponível em qualquer instalação do R, este tutorial vai mostrar como obter dados diretamente da internet. Então é isto que faremos abaixo, baixando este conjunto iris diretamente do site do [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/) e processando-o na sequência para análise.
 
-```{r eda01}
+```{r eda01, eval=FALSE}
 # definir o endereco do conjunto de dados e baixa-lo
 
 url <- "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
@@ -76,6 +76,19 @@ iris$especie <- as.factor(gsub("Iris-", "", iris$especie))
 
 summary(iris)
 ```
+
+```{r eda01b, include=FALSE}
+names(iris) <- c("c_sepala", "l_sepala", "c_petala", "l_petala", "especie")
+
+# remover a string 'Iris-' do inicio de cada tipo de especie
+
+iris$especie <- as.factor(gsub("Iris-", "", iris$especie))
+
+# estatistica descritiva basica
+
+summary(iris)
+```
+
 
 Com isso, percebemos que temos um conjunto de dados formado por cinco variáveis. Quatro destas variáveis são quantitativas e uma é categórica. As variáveis são
 

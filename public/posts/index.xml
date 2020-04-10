@@ -11,6 +11,905 @@
 		<atom:link href="https://marcusnunes.me/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		<item>
+			<title>Livros de Ciência de Dados Gratuitos na Amazon</title>
+			<link>https://marcusnunes.me/posts/livros-gratuitos-da-amazon/</link>
+			<pubDate>Thu, 09 Apr 2020 14:50:00 -0300</pubDate>
+			
+			<guid>https://marcusnunes.me/posts/livros-gratuitos-da-amazon/</guid>
+			<description>Recebi esta dica no grupo de telegram Ciência de Dados RN. A Amazon está disponibilizando gratuitamente 28 de livros sobre Ciência de Dados, Big Data e programação em suas versões para Kindle.
+Assim como no casos dos livros gratuitos da Springer, basta entrar nos link fornecidos abaixo e mandar o livro ser baixado. Dá para enviar diretamente para o Kindle ou ler através do aplicativo da Amazon em outras plataformas.</description>
+			<content type="html"><![CDATA[<p>Recebi esta dica no grupo de telegram Ciência de Dados RN. A Amazon está disponibilizando gratuitamente 28 de livros sobre Ciência de Dados, Big Data e programação em suas versões para Kindle.</p>
+
+<p><img src="/images/amazon-free.png" alt="The Everyday Life of an Algorithm" /></p>
+
+<p>Assim como no casos dos <a href="https://marcusnunes.me/posts/livros-gratuitos-da-springer/" target="_blank">livros gratuitos da Springer</a>, basta entrar nos link fornecidos abaixo e mandar o livro ser baixado. Dá para enviar diretamente para o Kindle ou ler através do aplicativo da Amazon em outras plataformas.</p>
+
+<ul>
+<li><a href="https://amzn.to/2y9g4KN" target="_blank">Automated Machine Learning</a></li>
+<li><a href="https://amzn.to/2QIBjJQ" target="_blank">Big Data Analytics Options on AWS</a></li>
+<li><a href="https://amzn.to/2xZ5aH8" target="_blank">Big Data for Executives and Market Professionals (English Edition)</a></li>
+<li><a href="https://amzn.to/2UeuRMw" target="_blank">Big Data in Context</a></li>
+<li><a href="https://amzn.to/2wzaFvW" target="_blank">Big Data Now 2012 Edition</a></li>
+<li><a href="https://amzn.to/2UxIzt5" target="_blank">Big Data Now Current Perspectives from O&rsquo;Reilly Radar</a></li>
+<li><a href="https://amzn.to/2wq7rej" target="_blank">Bioimage Data Analysis Workflows</a></li>
+<li><a href="https://amzn.to/3bi2u5Q" target="_blank">Building Data Science Teams (English Edition)</a></li>
+<li><a href="https://amzn.to/2QGpaF0" target="_blank">Data &amp; Analytics Reading Sampler Excerpts (English Edition)</a></li>
+<li><a href="https://amzn.to/3bsluhZ" target="_blank">Data Manipulation (R Fundamentals Book 2)</a></li>
+<li><a href="https://amzn.to/3bpzb1q" target="_blank">Fundamentals of Clinical Data Science</a></li>
+<li><a href="https://amzn.to/2WFYb0g" target="_blank">High-Performance Modelling and Simulation for Big Data Applications</a></li>
+<li><a href="https://amzn.to/2xZ4Hom" target="_blank">How Data Science Is Transforming Health Care (English Edition)</a></li>
+<li><a href="https://amzn.to/2WHgGkM" target="_blank">Introduction to Data Analysis in Qualitative Research (English Edition)</a></li>
+<li><a href="https://amzn.to/2UCBQhz" target="_blank">Market Segmentation Analysis</a></li>
+<li><a href="https://amzn.to/2WFl6Zv" target="_blank">New Horizons for a Data-Driven Economy</a></li>
+<li><a href="https://amzn.to/2QIaEN6" target="_blank">Planning for Big Data (English Edition)</a></li>
+<li><a href="https://amzn.to/2UxFjhg" target="_blank">Programming for Computations - Python</a></li>
+<li><a href="https://amzn.to/2QYeC4v" target="_blank">Python 3 Manuscripts in 1 book</a></li>
+<li><a href="https://amzn.to/3dpzQSd" target="_blank">Python for Beginners</a></li>
+<li><a href="https://amzn.to/2JcoL9h" target="_blank">Python Programming 2 book in 1</a></li>
+<li><a href="https://amzn.to/3ai6Mds" target="_blank">Python Programming For Beginners</a></li>
+<li><a href="https://amzn.to/2wD2nmP" target="_blank">Real-Time Big Data Analytics Emerging Architecture</a></li>
+<li><a href="https://amzn.to/2QKEyAp" target="_blank">Redes Neurais Artificiais em 45 Minutos - 2a edição</a></li>
+<li><a href="https://amzn.to/3dtlsZi" target="_blank">Social Networks with Rich Edge Semantics (Open Access) (Chapman &amp; Hall/CRC Data Mining and Knowledge</a></li>
+<li><a href="https://amzn.to/3bkQcK7" target="_blank">The Culture of Big Data (English Edition)</a></li>
+<li><a href="https://amzn.to/3dBCRz4" target="_blank">The Everyday Life of an Algorithm</a></li>
+<li><a href="https://amzn.to/2wzyuno" target="_blank">What Is Data Science?</a></li>
+</ul>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Livros Gratuitos da Springer</title>
+			<link>https://marcusnunes.me/posts/livros-gratuitos-da-springer/</link>
+			<pubDate>Fri, 03 Apr 2020 06:57:00 -0300</pubDate>
+			
+			<guid>https://marcusnunes.me/posts/livros-gratuitos-da-springer/</guid>
+			<description>Acabei de saber na lista de emails da Associação Brasileira de Estatística que a editora Springer disponibilizou mais de 500 livros gratuitamente. Basta visitar o site e baixar, sem sequer necessitar fazer cadastro. A lista completa de livros está nesta planilha do Excel, mas abaixo eu coloquei a listagem de livros de Matemática e Estatística, colocados em ordem alfabética do título. Aproveitem.
+ A Beginner&amp;rsquo;s Guide to R - Alain Zuur, Elena N.</description>
+			<content type="html"><![CDATA[<p>Acabei de saber na lista de emails da Associação Brasileira de Estatística que a editora Springer disponibilizou mais de 500 livros gratuitamente. Basta visitar o site e baixar, sem sequer necessitar fazer cadastro. A lista completa de livros está <a href="/images/FreeEnglishTextbooks.xlsx">nesta planilha do Excel</a>, mas abaixo eu coloquei a listagem de livros de Matemática e Estatística, colocados em ordem alfabética do título. Aproveitem.</p>
+
+<ul>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-0-387-93837-0" target="_blank">A Beginner&rsquo;s Guide to R</a> - Alain Zuur, Elena N. Ieno, Erik Meesters</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-84628-168-6" target="_blank">A Modern Introduction to Probability and Statistics</a> - F.M. Dekking, C. Kraaikamp, H.P. Lopuhaä, L.E. Meester</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-662-49887-3" target="_blank">A Primer on Scientific Programming with Python</a> - Hans Petter Langtangen</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-030-02604-2" target="_blank">A Pythagorean Introduction to Number Theory</a> - Ramin Takloo-Bighash</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-319-77649-1" target="_blank">Abstract Algebra</a> - Gregory T. Lee</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4613-0041-0" target="_blank">Algebra</a> - Serge Lang</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-0-387-21736-9" target="_blank">All of Statistics</a> - Larry Wasserman</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4614-7138-7" target="_blank">An Introduction to Statistical Learning</a> - Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-319-91041-3" target="_blank">Applied Linear Algebra</a> - Peter J. Olver, Chehrzad Shakiban</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-662-45171-7" target="_blank">Applied Multivariate Statistical Analysis</a> - Wolfgang Karl Härdle, Léopold Simar</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-319-12493-3" target="_blank">Applied Partial Differential Equations</a> - J. David Logan</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4614-6849-3" target="_blank">Applied Predictive Modeling</a> - Max Kuhn, Kjell Johnson</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-662-54486-0" target="_blank">Applied Quantitative Finance</a> - Wolfgang Karl Härdle, Cathy Yi-Hsuan Chen, Ludger Overbeck</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4419-0925-1" target="_blank">Bayesian and Frequentist Regression Methods</a> - Jon Wakefield</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4614-8687-9" target="_blank">Bayesian Essentials with R</a> - Jean-Michel Marin, Christian P. Robert</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-319-31089-3" target="_blank">Brownian Motion, Martingales, and Stochastic Calculus </a> - Jean-François Le Gall</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-319-32185-1" target="_blank">Business Statistics for Competitive Advantage with Excel 2016 </a> - Cynthia Fraser <strong>(este não está gratuito)</strong></li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4614-7946-8" target="_blank">Calculus With Applications</a> - Peter D. Lax, Maria Shea Terrell</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4939-1194-3" target="_blank">Classical Fourier Analysis</a> - Loukas Grafakos</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4419-7288-0" target="_blank">Complex Analysis</a> - Joseph Bak, Donald J. Newman</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-319-52250-0" target="_blank">Design and Analysis of Experiments</a> - Angela Dean, Daniel Voss, Danel Draguljić</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4612-4360-1" target="_blank">Differential Equations and Their Applications</a> - Martin Braun</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-0-387-21777-2" target="_blank">Discrete Mathematics</a> - László Lovász, József Pelikán, Katalin Vesztergombi</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4614-6271-2" target="_blank">Elementary Analysis</a> - Kenneth A. Ross</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-319-18539-2" target="_blank">Fundamentals of Clinical Trials</a> - Lawrence M. Friedman, Curt D. Furberg, David L. DeMets, David M. Reboussin, Christopher B. Granger</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-319-48936-0" target="_blank">Introduction to Partial Differential Equations</a> - David Borthwick</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-319-02099-0" target="_blank">Introduction to Partial Differential Equations</a> - Peter J. Olver</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4419-9982-5" target="_blank">Introduction to Smooth Manifolds</a> - John Lee</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-319-46162-5" target="_blank">Introduction to Statistics and Data Analysis </a> - Christian Heumann, Michael Schomaker,  Shalabh</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-319-29854-2" target="_blank">Introduction to Time Series and Forecasting</a> - Peter J. Brockwell, Richard A. Davis</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-0-387-79054-1" target="_blank">Introductory Statistics with R</a> - Peter Dalgaard</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-0-387-88698-5" target="_blank">Introductory Time Series with R</a> - Paul S.P. Cowpertwait, Andrew V. Metcalfe</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-319-24346-7" target="_blank">Linear Algebra</a> - Jörg Liesen, Volker Mehrmann</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-319-11080-6" target="_blank">Linear Algebra Done Right</a> - Sheldon Axler</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-319-23042-9" target="_blank">Methods of Mathematical Modelling</a> - Thomas Witelski, Mark Bowen</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-319-59731-7" target="_blank">Modeling Life</a> - Alan Garfinkel, Jane Shevtsov, Yina Guo</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4471-6419-7" target="_blank">Multivariate Calculus and Geometry</a> - Seán Dineen</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-0-387-40065-5" target="_blank">Numerical Optimization</a> - Jorge Nocedal, Stephen Wright</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4614-3618-8" target="_blank">Ordinary Differential Equations</a> - William A. Adkins, Mark G. Davidson</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4614-4809-9" target="_blank">Partial Differential Equations</a> - Jürgen Jost</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4612-4374-8" target="_blank">Probability</a> - Jim Pitman</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4471-5201-9" target="_blank">Probability Theory</a> - Alexandr A. Borovkov</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4471-5361-0" target="_blank">Probability Theory</a> - Achim Klenke</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-662-57265-8" target="_blank">Proofs from THE BOOK</a> - Martin Aigner, Günter M. Ziegler</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4614-7116-5" target="_blank">Quantum Theory for Mathematicians</a> - Brian C. Hall</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4419-9479-0" target="_blank">Reading, Writing, and Proving</a> - Ulrich Daepp, Pamela Gorkin</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4939-2766-1" target="_blank">Real Analysis</a> - Miklós Laczkovich, Vera T. Sós</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-319-19425-7" target="_blank">Regression Modeling Strategies</a> - Frank E. Harrell , Jr.</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4612-0979-9" target="_blank">Representation Theory</a> - William Fulton, Joe Harris</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4939-2122-5" target="_blank">Statistical Analysis and Data Display</a> - Richard M. Heiberger, Burt Holland</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-3-319-44048-4" target="_blank">Statistical Learning from a Regression Perspective</a> - Richard A. Berk</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4939-2614-5" target="_blank">Statistics and Data Analysis for Financial Engineering</a> - David Ruppert, David S. Matteson</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4419-6646-9" target="_blank">Survival Analysis</a> - David G. Kleinbaum, Mitchel Klein</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-0-387-84858-7" target="_blank">The Elements of Statistical Learning</a> - Trevor Hastie, Robert Tibshirani, Jerome Friedman</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-0-387-75959-3" target="_blank">Time Series Analysis</a> - Jonathan D. Cryer, Kung-Sik Chan</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4939-2712-8" target="_blank">Understanding Analysis</a> - Stephen Abbott</li>
+<li><a href="http://link.springer.com/openurl?genre=book&amp;isbn=978-1-4614-6227-9" target="_blank">Understanding Statistics Using R</a> - Randall Schumacker, Sara Tomek</li>
+</ul>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Análise dos Dados de Coronavírus do Hospital Albert Einstein: 90% de Acurácia e Porque isso é Ruim</title>
+			<link>https://marcusnunes.me/posts/covid-19-einstein-90-acuracia/</link>
+			<pubDate>Tue, 31 Mar 2020 12:56:00 -0300</pubDate>
+			
+			<guid>https://marcusnunes.me/posts/covid-19-einstein-90-acuracia/</guid>
+			<description>Introdução Recentemente, o Hospital Albert Einstein compartilhou um conjunto de dados com observações de 5644 pacientes. Os dados possuem 111 características relacionadas a exames médicos, como sangue, urina e muito mais. A tarefa que me propus a resolver foi classificar os pacientes testados em dois grupos, aqueles que posssuem e aqueles que não possuem coronavírus. Farei isso a partir a partir dos resultados dos exames laboratoriais, sem utilizar informação alguma sobre o diagnóstico realizado em relação à contaminação do vírus.</description>
+			<content type="html"><![CDATA[
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
+<p>Recentemente, o Hospital Albert Einstein compartilhou um conjunto de dados com observações de 5644 pacientes. Os dados possuem 111 características relacionadas a exames médicos, como sangue, urina e muito mais. A tarefa que me propus a resolver foi classificar os pacientes testados em dois grupos, aqueles que posssuem e aqueles que não possuem coronavírus. Farei isso a partir a partir dos resultados dos exames laboratoriais, sem utilizar informação alguma sobre o diagnóstico realizado em relação à contaminação do vírus.</p>
+<p>Caso a técnica utilizada neste posto não tenha ficado muito clara, recomendo a leitura do meu post <a href="https://marcusnunes.me/posts/primeiro-projeto-de-data-science/">Tutorial: Como Fazer o Seu Primeiro Projeto de Data Science</a>, que mostra com mais detalhes como ajustar o modelo random forest a um conjunto de dados.</p>
+<p>Os dados utilizados aqui, bem como o código utilizado nesta análise, estão disponíveis em meu <a href="https://github.com/mnunes/einstein-covid-19">github</a>.</p>
+</div>
+<div id="análise-exploratória-dos-dados" class="section level1">
+<h1>Análise Exploratória dos Dados</h1>
+<p>O primeiro passo em qualquer análise de dados é a análise exploratória. É possível gerar ideias e insights apenas olhando para os dados plotados. Vou começar minha análise exploratória carregando alguns pacotes no R:</p>
+<pre class="r"><code>library(tidyverse)
+theme_set(theme_bw())
+library(naniar)
+library(readxl)
+library(caret)
+library(reshape2)
+library(GGally)
+library(mice)</code></pre>
+<p>Com os pacotes carregados, vou ler os dados e realizar pequenas correções neles. Cada passo a seguir foi explicado com um comentário dentro do próprio código.</p>
+<pre class="r"><code>dataset &lt;- read_excel(path = &quot;data/dataset.xlsx&quot;)
+
+# fix column names
+
+names(dataset) &lt;- make.names(names(dataset), unique = TRUE)
+
+#################################
+### exploratory data analysis ###
+#################################
+
+# first look at the dataset
+
+glimpse(dataset)</code></pre>
+<pre><code>## Rows: 5,644
+## Columns: 111
+## $ Patient.ID                                            &lt;chr&gt; &quot;44477f75e8169d…
+## $ Patient.age.quantile                                  &lt;dbl&gt; 13, 17, 8, 5, 1…
+## $ SARS.Cov.2.exam.result                                &lt;chr&gt; &quot;negative&quot;, &quot;ne…
+## $ Patient.addmited.to.regular.ward..1.yes..0.no.        &lt;dbl&gt; 0, 0, 0, 0, 0, …
+## $ Patient.addmited.to.semi.intensive.unit..1.yes..0.no. &lt;dbl&gt; 0, 0, 0, 0, 0, …
+## $ Patient.addmited.to.intensive.care.unit..1.yes..0.no. &lt;dbl&gt; 0, 0, 0, 0, 0, …
+## $ Hematocrit                                            &lt;dbl&gt; NA, 0.2365154, …
+## $ Hemoglobin                                            &lt;dbl&gt; NA, -0.02234027…
+## $ Platelets                                             &lt;dbl&gt; NA, -0.51741302…
+## $ Mean.platelet.volume                                  &lt;dbl&gt; NA, 0.01067657,…
+## $ Red.blood.Cells                                       &lt;dbl&gt; NA, 0.1020042, …
+## $ Lymphocytes                                           &lt;dbl&gt; NA, 0.318365753…
+## $ Mean.corpuscular.hemoglobin.concentration..MCHC.      &lt;dbl&gt; NA, -0.9507903,…
+## $ Leukocytes                                            &lt;dbl&gt; NA, -0.09461035…
+## $ Basophils                                             &lt;dbl&gt; NA, -0.22376651…
+## $ Mean.corpuscular.hemoglobin..MCH.                     &lt;dbl&gt; NA, -0.29226932…
+## $ Eosinophils                                           &lt;dbl&gt; NA, 1.4821582, …
+## $ Mean.corpuscular.volume..MCV.                         &lt;dbl&gt; NA, 0.1661924, …
+## $ Monocytes                                             &lt;dbl&gt; NA, 0.35754666,…
+## $ Red.blood.cell.distribution.width..RDW.               &lt;dbl&gt; NA, -0.6250727,…
+## $ Serum.Glucose                                         &lt;dbl&gt; NA, -0.1406481,…
+## $ Respiratory.Syncytial.Virus                           &lt;chr&gt; NA, &quot;not_detect…
+## $ Influenza.A                                           &lt;chr&gt; NA, &quot;not_detect…
+## $ Influenza.B                                           &lt;chr&gt; NA, &quot;not_detect…
+## $ Parainfluenza.1                                       &lt;chr&gt; NA, &quot;not_detect…
+## $ CoronavirusNL63                                       &lt;chr&gt; NA, &quot;not_detect…
+## $ Rhinovirus.Enterovirus                                &lt;chr&gt; NA, &quot;detected&quot;,…
+## $ Mycoplasma.pneumoniae                                 &lt;lgl&gt; NA, NA, NA, NA,…
+## $ Coronavirus.HKU1                                      &lt;chr&gt; NA, &quot;not_detect…
+## $ Parainfluenza.3                                       &lt;chr&gt; NA, &quot;not_detect…
+## $ Chlamydophila.pneumoniae                              &lt;chr&gt; NA, &quot;not_detect…
+## $ Adenovirus                                            &lt;chr&gt; NA, &quot;not_detect…
+## $ Parainfluenza.4                                       &lt;chr&gt; NA, &quot;not_detect…
+## $ Coronavirus229E                                       &lt;chr&gt; NA, &quot;not_detect…
+## $ CoronavirusOC43                                       &lt;chr&gt; NA, &quot;not_detect…
+## $ Inf.A.H1N1.2009                                       &lt;chr&gt; NA, &quot;not_detect…
+## $ Bordetella.pertussis                                  &lt;chr&gt; NA, &quot;not_detect…
+## $ Metapneumovirus                                       &lt;chr&gt; NA, &quot;not_detect…
+## $ Parainfluenza.2                                       &lt;chr&gt; NA, &quot;not_detect…
+## $ Neutrophils                                           &lt;dbl&gt; NA, -0.6190860,…
+## $ Urea                                                  &lt;dbl&gt; NA, 1.19805908,…
+## $ Proteina.C.reativa.mg.dL                              &lt;dbl&gt; NA, -0.1478949,…
+## $ Creatinine                                            &lt;dbl&gt; NA, 2.0899284, …
+## $ Potassium                                             &lt;dbl&gt; NA, -0.3057871,…
+## $ Sodium                                                &lt;dbl&gt; NA, 0.8625116, …
+## $ Influenza.B..rapid.test                               &lt;chr&gt; NA, &quot;negative&quot;,…
+## $ Influenza.A..rapid.test                               &lt;chr&gt; NA, &quot;negative&quot;,…
+## $ Alanine.transaminase                                  &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Aspartate.transaminase                                &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Gamma.glutamyltransferase.                            &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Total.Bilirubin                                       &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Direct.Bilirubin                                      &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Indirect.Bilirubin                                    &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Alkaline.phosphatase                                  &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Ionized.calcium.                                      &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Strepto.A                                             &lt;chr&gt; NA, NA, NA, NA,…
+## $ Magnesium                                             &lt;dbl&gt; NA, NA, NA, NA,…
+## $ pCO2..venous.blood.gas.analysis.                      &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Hb.saturation..venous.blood.gas.analysis.             &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Base.excess..venous.blood.gas.analysis.               &lt;dbl&gt; NA, NA, NA, NA,…
+## $ pO2..venous.blood.gas.analysis.                       &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Fio2..venous.blood.gas.analysis.                      &lt;lgl&gt; NA, NA, NA, NA,…
+## $ Total.CO2..venous.blood.gas.analysis.                 &lt;dbl&gt; NA, NA, NA, NA,…
+## $ pH..venous.blood.gas.analysis.                        &lt;dbl&gt; NA, NA, NA, NA,…
+## $ HCO3..venous.blood.gas.analysis.                      &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Rods..                                                &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Segmented                                             &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Promyelocytes                                         &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Metamyelocytes                                        &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Myelocytes                                            &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Myeloblasts                                           &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Urine...Esterase                                      &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Aspect                                        &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...pH                                            &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Hemoglobin                                    &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Bile.pigments                                 &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Ketone.Bodies                                 &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Nitrite                                       &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Density                                       &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Urine...Urobilinogen                                  &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Protein                                       &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Sugar                                         &lt;lgl&gt; NA, NA, NA, NA,…
+## $ Urine...Leukocytes                                    &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Crystals                                      &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Red.blood.cells                               &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Urine...Hyaline.cylinders                             &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Granular.cylinders                            &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Yeasts                                        &lt;chr&gt; NA, NA, NA, NA,…
+## $ Urine...Color                                         &lt;chr&gt; NA, NA, NA, NA,…
+## $ Partial.thromboplastin.time..PTT..                    &lt;lgl&gt; NA, NA, NA, NA,…
+## $ Relationship..Patient.Normal.                         &lt;dbl&gt; NA, NA, NA, NA,…
+## $ International.normalized.ratio..INR.                  &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Lactic.Dehydrogenase                                  &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Prothrombin.time..PT...Activity                       &lt;lgl&gt; NA, NA, NA, NA,…
+## $ Vitamin.B12                                           &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Creatine.phosphokinase..CPK..                         &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Ferritin                                              &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Arterial.Lactic.Acid                                  &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Lipase.dosage                                         &lt;lgl&gt; NA, NA, NA, NA,…
+## $ D.Dimer                                               &lt;lgl&gt; NA, NA, NA, NA,…
+## $ Albumin                                               &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Hb.saturation..arterial.blood.gases.                  &lt;dbl&gt; NA, NA, NA, NA,…
+## $ pCO2..arterial.blood.gas.analysis.                    &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Base.excess..arterial.blood.gas.analysis.             &lt;dbl&gt; NA, NA, NA, NA,…
+## $ pH..arterial.blood.gas.analysis.                      &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Total.CO2..arterial.blood.gas.analysis.               &lt;dbl&gt; NA, NA, NA, NA,…
+## $ HCO3..arterial.blood.gas.analysis.                    &lt;dbl&gt; NA, NA, NA, NA,…
+## $ pO2..arterial.blood.gas.analysis.                     &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Arteiral.Fio2                                         &lt;dbl&gt; NA, NA, NA, NA,…
+## $ Phosphor                                              &lt;dbl&gt; NA, NA, NA, NA,…
+## $ ctO2..arterial.blood.gas.analysis.                    &lt;dbl&gt; NA, NA, NA, NA,…</code></pre>
+<pre class="r"><code># remove columns that won&#39;t help on diagnosis
+
+dataset_clean &lt;- dataset %&gt;%
+  select(-Patient.ID, 
+         -Patient.addmited.to.regular.ward..1.yes..0.no.,
+         -Patient.addmited.to.semi.intensive.unit..1.yes..0.no.,
+         -Patient.addmited.to.intensive.care.unit..1.yes..0.no.)
+
+# convert level Urine...Leukocytes &lt;1000 to 1000
+
+dataset_clean$Urine...Leukocytes[dataset_clean$`Urine...Leukocytes` == &quot;&lt;1000&quot;] &lt;- 1000
+dataset_clean$`Urine...Leukocytes` &lt;- as.numeric(dataset_clean$`Urine...Leukocytes`)
+
+# fix Urine...pH
+
+dataset_clean$`Urine...pH`[dataset_clean$`Urine...pH` == &quot;Não Realizado&quot;] &lt;- NA
+dataset_clean$`Urine...pH` &lt;- as.numeric(dataset_clean$`Urine...pH`)
+
+# Urine...Hemoglobin
+
+dataset_clean$`Urine...Hemoglobin`[dataset_clean$`Urine...Hemoglobin` == &quot;not_done&quot;] &lt;- NA
+
+# Urine...Aspect
+
+dataset_clean$`Urine...Aspect` &lt;- factor(dataset_clean$`Urine...Aspect`, 
+                                         levels = c(&quot;clear&quot;, &quot;lightly_cloudy&quot;, &quot;cloudy&quot;, &quot;altered_coloring&quot;))
+
+# Strepto A
+
+dataset_clean$`Strepto.A`[dataset_clean$`Strepto.A` == &quot;not_done&quot;] &lt;- NA
+
+# transform character to factor
+
+dataset_clean_num &lt;- dataset_clean %&gt;%
+  select_if(is.numeric)
+
+dataset_clean_cat &lt;- dataset_clean %&gt;%
+  select_if(negate(is.numeric)) %&gt;%
+  mutate_all(as.factor)
+
+dataset_clean &lt;- base::cbind(dataset_clean_num, dataset_clean_cat)
+
+# fix factor levels
+
+# sort(sapply(dataset_clean[,sapply(dataset_clean, is.factor)], nlevels))</code></pre>
+<p>Com os dados lidos e processados, eu dou uma olhada nos dados faltantes:</p>
+<pre class="r"><code># let&#39;s take a look on missing data
+
+missing_values &lt;- dataset_clean %&gt;%
+  gather(key = &quot;key&quot;, value = &quot;val&quot;) %&gt;%
+  mutate(is.missing = is.na(val)) %&gt;%
+  group_by(key, is.missing) %&gt;%
+  summarise(num.missing = n()) %&gt;%
+  filter(is.missing == TRUE) %&gt;%
+  select(-is.missing) %&gt;%
+  ungroup() %&gt;%
+  mutate(key = reorder(key, -num.missing)) %&gt;%
+  arrange(desc(num.missing)) %&gt;%
+  print(n = Inf)</code></pre>
+<pre><code>## Warning: attributes are not identical across measure variables;
+## they will be dropped</code></pre>
+<pre><code>## # A tibble: 105 x 2
+##     key                                              num.missing
+##     &lt;fct&gt;                                                  &lt;int&gt;
+##   1 D.Dimer                                                 5644
+##   2 Mycoplasma.pneumoniae                                   5644
+##   3 Partial.thromboplastin.time..PTT..                      5644
+##   4 Prothrombin.time..PT...Activity                         5644
+##   5 Urine...Sugar                                           5644
+##   6 Fio2..venous.blood.gas.analysis.                        5643
+##   7 Urine...Nitrite                                         5643
+##   8 Vitamin.B12                                             5641
+##   9 Lipase.dosage                                           5636
+##  10 Albumin                                                 5631
+##  11 Arteiral.Fio2                                           5624
+##  12 Phosphor                                                5624
+##  13 Ferritin                                                5621
+##  14 Arterial.Lactic.Acid                                    5617
+##  15 Base.excess..arterial.blood.gas.analysis.               5617
+##  16 ctO2..arterial.blood.gas.analysis.                      5617
+##  17 Hb.saturation..arterial.blood.gases.                    5617
+##  18 HCO3..arterial.blood.gas.analysis.                      5617
+##  19 pCO2..arterial.blood.gas.analysis.                      5617
+##  20 pH..arterial.blood.gas.analysis.                        5617
+##  21 pO2..arterial.blood.gas.analysis.                       5617
+##  22 Total.CO2..arterial.blood.gas.analysis.                 5617
+##  23 Magnesium                                               5604
+##  24 Ionized.calcium.                                        5594
+##  25 Urine...Ketone.Bodies                                   5587
+##  26 Urine...Esterase                                        5584
+##  27 Urine...Protein                                         5584
+##  28 Urine...Hyaline.cylinders                               5577
+##  29 Urine...Granular.cylinders                              5575
+##  30 Urine...Hemoglobin                                      5575
+##  31 Urine...pH                                              5575
+##  32 Urine...Urobilinogen                                    5575
+##  33 Urine...Aspect                                          5574
+##  34 Urine...Bile.pigments                                   5574
+##  35 Urine...Color                                           5574
+##  36 Urine...Crystals                                        5574
+##  37 Urine...Density                                         5574
+##  38 Urine...Leukocytes                                      5574
+##  39 Urine...Red.blood.cells                                 5574
+##  40 Urine...Yeasts                                          5574
+##  41 Relationship..Patient.Normal.                           5553
+##  42 Metamyelocytes                                          5547
+##  43 Myeloblasts                                             5547
+##  44 Myelocytes                                              5547
+##  45 Promyelocytes                                           5547
+##  46 Rods..                                                  5547
+##  47 Segmented                                               5547
+##  48 Lactic.Dehydrogenase                                    5543
+##  49 Creatine.phosphokinase..CPK..                           5540
+##  50 International.normalized.ratio..INR.                    5511
+##  51 Base.excess..venous.blood.gas.analysis.                 5508
+##  52 Hb.saturation..venous.blood.gas.analysis.               5508
+##  53 HCO3..venous.blood.gas.analysis.                        5508
+##  54 pCO2..venous.blood.gas.analysis.                        5508
+##  55 pH..venous.blood.gas.analysis.                          5508
+##  56 pO2..venous.blood.gas.analysis.                         5508
+##  57 Total.CO2..venous.blood.gas.analysis.                   5508
+##  58 Alkaline.phosphatase                                    5500
+##  59 Gamma.glutamyltransferase.                              5491
+##  60 Direct.Bilirubin                                        5462
+##  61 Indirect.Bilirubin                                      5462
+##  62 Total.Bilirubin                                         5462
+##  63 Serum.Glucose                                           5436
+##  64 Alanine.transaminase                                    5419
+##  65 Aspartate.transaminase                                  5418
+##  66 Strepto.A                                               5313
+##  67 Sodium                                                  5274
+##  68 Potassium                                               5273
+##  69 Urea                                                    5247
+##  70 Creatinine                                              5220
+##  71 Proteina.C.reativa.mg.dL                                5138
+##  72 Neutrophils                                             5131
+##  73 Mean.platelet.volume                                    5045
+##  74 Monocytes                                               5043
+##  75 Basophils                                               5042
+##  76 Eosinophils                                             5042
+##  77 Leukocytes                                              5042
+##  78 Lymphocytes                                             5042
+##  79 Mean.corpuscular.hemoglobin..MCH.                       5042
+##  80 Mean.corpuscular.hemoglobin.concentration..MCHC.        5042
+##  81 Mean.corpuscular.volume..MCV.                           5042
+##  82 Platelets                                               5042
+##  83 Red.blood.cell.distribution.width..RDW.                 5042
+##  84 Red.blood.Cells                                         5042
+##  85 Hematocrit                                              5041
+##  86 Hemoglobin                                              5041
+##  87 Influenza.A..rapid.test                                 4824
+##  88 Influenza.B..rapid.test                                 4824
+##  89 Adenovirus                                              4292
+##  90 Bordetella.pertussis                                    4292
+##  91 Chlamydophila.pneumoniae                                4292
+##  92 Coronavirus.HKU1                                        4292
+##  93 Coronavirus229E                                         4292
+##  94 CoronavirusNL63                                         4292
+##  95 CoronavirusOC43                                         4292
+##  96 Inf.A.H1N1.2009                                         4292
+##  97 Metapneumovirus                                         4292
+##  98 Parainfluenza.1                                         4292
+##  99 Parainfluenza.2                                         4292
+## 100 Parainfluenza.3                                         4292
+## 101 Parainfluenza.4                                         4292
+## 102 Rhinovirus.Enterovirus                                  4292
+## 103 Influenza.A                                             4290
+## 104 Influenza.B                                             4290
+## 105 Respiratory.Syncytial.Virus                             4290</code></pre>
+<pre class="r"><code>missing_values %&gt;%
+  ggplot() +
+  geom_bar(aes(x = key, y = 100*num.missing/dim(dataset_clean)[1]), stat = &quot;identity&quot;) +
+  labs(x = &quot;Variable&quot;, y=&quot;Percent of missing values&quot;) +  
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8))</code></pre>
+<p><img src="/posts/covid-19-einstein-90-acuracia_files/figure-html/missingData01-1.png" width="672" /></p>
+<p>Este gráfico mostra quais são as variáveis com maior quantidade de dados faltantes. Note que algumas delas possuem quase 100% de dados faltantes! Veja o gráfico a seguir para que tenhamos uma ideia melhor da magnitude da falta de dados que estamos enfrentando:</p>
+<pre class="r"><code>vis_miss(dataset_clean) +
+  theme(axis.text.x = element_text(size = 6))</code></pre>
+<p><img src="/posts/covid-19-einstein-90-acuracia_files/figure-html/missingData02-1.png" width="672" /></p>
+<p>Mais de 91% de dados faltantes é muita coisa. Este tipo de informação não me dá muita esperança em encontrar um modelo bom para estes dados. Mesmo assim, vou tentar algo e ver o que acontece. Para isso, vou manter no conjunto a ser analisado apenas as colunas com pelo menos 1000 observações. Ou seja, vou retirar todas as colunas com muito poucos dados registrados.</p>
+<pre class="r"><code># keep only columns with at least n observations
+
+n &lt;- 1000
+
+dataset_clean &lt;- dataset_clean[, which(dim(dataset_clean)[1] - apply(apply(dataset_clean, 2, is.na), 2, sum) &gt;= n)]
+
+# remove quantitative variables with variance equal to zero 
+
+dataset_model_num &lt;- dataset_clean %&gt;%
+  select_if(is.numeric)
+
+if (sum(apply(dataset_model_num, 2, var, na.rm = TRUE) == 0) != 0) {
+  dataset_model_num &lt;- dataset_model_num[, which(apply(dataset_model_num, 2, var, na.rm = TRUE) == 0)]
+}
+
+# remove categorical variables with only one level 
+
+dataset_model_cat &lt;- dataset_clean %&gt;%
+  select_if(negate(is.numeric))
+
+dataset_model_cat &lt;- dataset_model_cat[, sapply(dataset_model_cat, nlevels) &gt; 1]
+  
+# final dataset
+
+dataset_model &lt;- base::cbind(dataset_model_num, dataset_model_cat)
+
+vis_miss(dataset_model) + # it needs naniar package
+  theme(axis.text.x = element_text(size = 6))</code></pre>
+<p><img src="/posts/covid-19-einstein-90-acuracia_files/figure-html/preparation-1.png" width="672" /></p>
+<p>É possíver ver que há uma proporção menor de dados faltantes neste conjunto processado. Baixamos a proporção de dados faltantes de 91,4% para 68%. Ainda é um valor bastante alto, mas está um pouco menos pior do que o original.</p>
+<p>Abaixo coloco mais alguns gráficos que tentam relacionar as variáveis que restaram no conjunto de dados, mas aparentemente não há relação alguma entre elas.</p>
+<pre class="r"><code># some other plots
+
+ggpairs(dataset_model[, c(1:10)])</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="/posts/covid-19-einstein-90-acuracia_files/figure-html/edaSimples-1.png" width="672" /></p>
+<pre class="r"><code>ggpairs(dataset_model[, c(11:ncol(dataset_model))])</code></pre>
+<p><img src="/posts/covid-19-einstein-90-acuracia_files/figure-html/edaSimples-2.png" width="672" /></p>
+<pre class="r"><code># it seems there is no relation between any pair of variables</code></pre>
+</div>
+<div id="modelagem-1" class="section level1">
+<h1>Modelagem 1</h1>
+<p>Poucos modelos de aprendizagem de máquina conseguem lidar com dados faltantes. Por este motivo, decidi escolher um modelo chamado <a href="https://en.wikipedia.org/wiki/Decision_tree_learning">CART</a> (Classification and Regression Tree - Árvore de Classificação e Regressão). Abaixo estão os resultados obtidos, após a separação do conjunto de dados original em treinamento e teste. Os resultados reportados foram obtidos após a aplicação do modelo ajustado no conjunto de teste. Para saber mais porque fazer isso, recomendo novamente meu post <a href="https://marcusnunes.me/posts/primeiro-projeto-de-data-science/">Tutorial: Como Fazer o Seu Primeiro Projeto de Data Science</a>.</p>
+<pre class="r"><code>################
+### modeling ###
+################
+
+# train/test split
+
+covid &lt;- dataset_model
+
+set.seed(1)
+
+index       &lt;- createDataPartition(covid$SARS.Cov.2.exam.result, 
+                                   p = 0.75, 
+                                   list = FALSE)
+covid_train &lt;- covid[ index, ]
+covid_test  &lt;- covid[-index, ]
+
+dim(covid_train)
+table(covid_train$SARS.Cov.2.exam.result)
+
+dim(covid_test)
+table(covid_test$SARS.Cov.2.exam.result)
+
+# parameters for cart
+
+fitControl &lt;- trainControl(method = &quot;cv&quot;,
+                           number = 5,
+                           savePred = TRUE, 
+                           classProb = TRUE)
+
+tune.grid &lt;- expand.grid(mincriterion = seq(from = 0.01, 
+                                            to = .99, 
+                                            by = 0.01))
+
+set.seed(1)
+
+x &lt;- covid_train %&gt;%
+  select(-SARS.Cov.2.exam.result)
+
+y &lt;- covid_train %&gt;%
+  select(SARS.Cov.2.exam.result) %&gt;%
+  unlist()
+
+covid_ctree &lt;- train(x, y,
+                     method = &quot;ctree&quot;, 
+                     tuneGrid = tune.grid,
+                     trControl = fitControl)</code></pre>
+<pre class="r"><code>ggplot(covid_ctree)</code></pre>
+<p><img src="/posts/covid-19-einstein-90-acuracia_files/figure-html/cart02-1.png" width="672" /></p>
+<pre class="r"><code>prediction &lt;- predict(covid_ctree, covid_test)
+
+confusionMatrix(prediction, covid_test$SARS.Cov.2.exam.result)</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction negative positive
+##   negative     1271      139
+##   positive        0        0
+##                                           
+##                Accuracy : 0.9014          
+##                  95% CI : (0.8847, 0.9165)
+##     No Information Rate : 0.9014          
+##     P-Value [Acc &gt; NIR] : 0.5226          
+##                                           
+##                   Kappa : 0               
+##                                           
+##  Mcnemar&#39;s Test P-Value : &lt;2e-16          
+##                                           
+##             Sensitivity : 1.0000          
+##             Specificity : 0.0000          
+##          Pos Pred Value : 0.9014          
+##          Neg Pred Value :    NaN          
+##              Prevalence : 0.9014          
+##          Detection Rate : 0.9014          
+##    Detection Prevalence : 1.0000          
+##       Balanced Accuracy : 0.5000          
+##                                           
+##        &#39;Positive&#39; Class : negative        
+## </code></pre>
+<pre class="r"><code># 90% accuracy seems good, but No Information Rate is also 90%
+# so, using this model or a random process gives the same answer
+# high sensitivity, but very low specificity :(</code></pre>
+<p>Note que obtive 90% de acurácia no meu modelo. Ou seja, ele acerta 90% das tentativas de classificar um paciente como positivo ou negativo em relação ao coronavírus. Parece um resultado muito bom, mas não é. Ele é péssimo, na realidade.</p>
+<p>No conjunto de dados original, aproximadamente 90% dos pacientes não possuem coronavírus, enquanto 10% estão infectados. O meu modelo encontra, com 100% de certeza, quem não tem coronavírus (é o valor de <code>Sensitivity</code> no output acima). Entretanto, encontra 0% dos pacientes com coronavírus (é o valor de <code>Specificity</code> no output acima). Ou seja, ele vai mandar para casa todo mundo que chegar no hospital, tendo coronavírus ou não.</p>
+<p>Isso me fez partir para uma segunda modelagem.</p>
+</div>
+<div id="modelagem-2" class="section level1">
+<h1>Modelagem 2</h1>
+<p>Vimos que a primeira modelagem não deu bons resultados. Com o intuito de tentar obter resultados melhores, vou proceder com a imputação de dados. Se for tentar rodar o código abaixo em seu computador, prepare-se para esperar uns bons minutos.</p>
+<pre class="r"><code>#######################
+### data imputation ###
+#######################
+
+covid_imp &lt;- mice(covid, meth = &quot;rf&quot;, ntree = 5) # be patient
+
+covid &lt;- complete(covid_imp)</code></pre>
+<pre class="r"><code>################
+### modeling ###
+################
+
+# train/test split
+
+set.seed(1)
+
+index       &lt;- createDataPartition(covid$SARS.Cov.2.exam.result, 
+                                   p = 0.75, 
+                                   list = FALSE)
+covid_train &lt;- covid[ index, ]
+covid_test  &lt;- covid[-index, ]
+
+dim(covid_train)
+table(covid_train$SARS.Cov.2.exam.result)
+
+dim(covid_test)
+table(covid_test$SARS.Cov.2.exam.result)
+
+# parameters for random forest
+
+fitControl &lt;- trainControl(method = &quot;cv&quot;,
+                           number = 5,
+                           savePred = TRUE, 
+                           classProb = TRUE)
+
+tune.grid &lt;- expand.grid(mtry = 1:35)
+
+set.seed(1)
+
+x &lt;- covid_train %&gt;%
+  select(-SARS.Cov.2.exam.result)
+
+y &lt;- covid_train %&gt;%
+  select(SARS.Cov.2.exam.result) %&gt;%
+  unlist()
+
+covid_rf &lt;- train(x, y,
+                  method = &quot;rf&quot;, 
+                  tuneGrid = tune.grid,
+                  trControl = fitControl)</code></pre>
+<pre class="r"><code>ggplot(covid_rf)</code></pre>
+<p><img src="/posts/covid-19-einstein-90-acuracia_files/figure-html/random_forest2-1.png" width="672" /></p>
+<pre class="r"><code>prediction &lt;- predict(covid_rf, covid_test)
+
+confusionMatrix(prediction, covid_test$SARS.Cov.2.exam.result)</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction negative positive
+##   negative     1271      139
+##   positive        0        0
+##                                           
+##                Accuracy : 0.9014          
+##                  95% CI : (0.8847, 0.9165)
+##     No Information Rate : 0.9014          
+##     P-Value [Acc &gt; NIR] : 0.5226          
+##                                           
+##                   Kappa : 0               
+##                                           
+##  Mcnemar&#39;s Test P-Value : &lt;2e-16          
+##                                           
+##             Sensitivity : 1.0000          
+##             Specificity : 0.0000          
+##          Pos Pred Value : 0.9014          
+##          Neg Pred Value :    NaN          
+##              Prevalence : 0.9014          
+##          Detection Rate : 0.9014          
+##    Detection Prevalence : 1.0000          
+##       Balanced Accuracy : 0.5000          
+##                                           
+##        &#39;Positive&#39; Class : negative        
+## </code></pre>
+<pre class="r"><code># high sensitivity, but very low specificity :(</code></pre>
+<p>De novo, o mesmo problema: alta sensitividade e baixíssima especificidade neste modelo. Ou seja, não é melhor do que o modelo anterior ou uma seleção aleatória de diagnóstico.</p>
+</div>
+<div id="conclusão" class="section level1">
+<h1>Conclusão</h1>
+<p>Eu cheguei no meu modelo final. 90% de acurácia usando random forest. Mas como a variável resposta é desbalanceada, com 90% para uma classe e 10% para outra, este meu modelo não serve pra nada.</p>
+<p>Mesmo tentando abordagens diversas, como filtragem de dados faltantes e imputação, nada deu certo pra mim. Aparentemente este é um resultado geral para este problema. Os outros participantes deste desafio no kaggle criaram várias <a href="https://www.kaggle.com/einsteindata4u/covid19/kernels">análises diferentes</a>, com muitas abordagens interessantes, mas ninguém consegue uma boa detecção de verdadeiros positivos.</p>
+<p>Tenho pouca esperança que, com este conjunto de dados específico, seja possível fazer algo preditivo de qualidade. Talvez com uma feature engineering muito boa? Pode ser, mas não podemos esquecer que são muitos dados faltantes. No conjunto original, sem pré-processamento, são 91% de dados faltantes. Não dá pra fazer milagre.</p>
+<p>Como sempre, o código utilizado nesta análise está disponível em meu <a href="https://github.com/mnunes/einstein-covid-19">github</a>.</p>
+</div>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Análise Descritiva do Coronavírus nos Estados Brasileiros</title>
+			<link>https://marcusnunes.me/posts/analise-descritiva-do-coronavirus/</link>
+			<pubDate>Tue, 24 Mar 2020 10:12:00 -0300</pubDate>
+			
+			<guid>https://marcusnunes.me/posts/analise-descritiva-do-coronavirus/</guid>
+			<description>Justificativa Hoje, 24 de março de 2020, o coronavírus está muito presente em todas as conversas dos brasileiros. Aqueles que podem estão em quarentena, tentando evitar ao máximo que a doença se espalhe.
+Estou aproveitando este tempo de molho para aprender sobre um assunto que domino muito pouco: a criação de mapas no R. Por isso, resolvi utilizar os dados disponibilizados pela equipe do site Brasil.</description>
+			<content type="html"><![CDATA[
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/plotly-binding/plotly.js"></script>
+<script src="/rmarkdown-libs/typedarray/typedarray.min.js"></script>
+<script src="/rmarkdown-libs/jquery/jquery.min.js"></script>
+<link href="/rmarkdown-libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/crosstalk/js/crosstalk.min.js"></script>
+<link href="/rmarkdown-libs/plotly-htmlwidgets-css/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/plotly-main/plotly-latest.min.js"></script>
+
+
+<div id="justificativa" class="section level1">
+<h1>Justificativa</h1>
+<p>Hoje, 24 de março de 2020, o coronavírus está muito presente em todas as conversas dos brasileiros. Aqueles que podem estão em quarentena, tentando evitar ao máximo que a doença se espalhe.</p>
+<p>Estou aproveitando este tempo de molho para aprender sobre um assunto que domino muito pouco: a criação de mapas no R. Por isso, resolvi utilizar os dados disponibilizados pela equipe do site <a href="https://brasil.io/dataset/covid19/caso">Brasil.io</a> e realizar uma análise espacial simples, a nível estadual, tentando identificar os estados brasileiros com a maior taxa de casos confirmados.</p>
+<p>Optei por utilizar uma escala baseada na taxa de casos confirmados por 100.000 habitantes por 2 motivos principais:</p>
+<ol style="list-style-type: decimal">
+<li>Acredito que comparar valores absolutos entre estados não é a melhor maneira de entender a proliferação da doença, pois São Paulo possui muito mais habitantes do que Roraima, por exemplo;</li>
+<li>Casos suspeitos poderiam deixar a análise ainda mais enviesada do que ela já provavelmente está.</li>
+</ol>
+<p>Com isso, quero dizer que sei das limitações da minha análise, especialmente no que tange à subnotificação de casos. Além de termos limitações me relação à verba que cada estado da federação possui em caixa para comprar os testes necessários para identificação da doença.</p>
+<p>Além disso, nem todas as secretarias de saúde estaduais possuem a mesma velocidade de divulgação nos dados. Assim, apesar de estarmos em 24 de março, estou usando os dados do dia 21 deste mês. Qualquer um pode realizar novamente esta análise para outros dias alterando o valor da variável <code>hoje</code> colocada no código abaixo.</p>
+</div>
+<div id="preparação-dos-dados" class="section level1">
+<h1>Preparação dos Dados</h1>
+<p>Esta parte pode ser pulada por quem não está interessado em reproduzir este estudo. Basicamente o que faço abaixo é carregar pacotes necessários para a minha análise, ler os dados no R e prepará-los para aquilo que me interessa.</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ───────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.0     ✓ purrr   0.3.3
+## ✓ tibble  3.0.0     ✓ dplyr   0.8.5
+## ✓ tidyr   1.0.2     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ──────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>theme_set(theme_bw())
+library(lubridate)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;lubridate&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:base&#39;:
+## 
+##     date</code></pre>
+<pre class="r"><code>library(plotly)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;plotly&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     last_plot</code></pre>
+<pre><code>## The following object is masked from &#39;package:stats&#39;:
+## 
+##     filter</code></pre>
+<pre><code>## The following object is masked from &#39;package:graphics&#39;:
+## 
+##     layout</code></pre>
+<pre class="r"><code>library(brazilmaps)
+
+############################
+### preparacao dos dados ###
+############################
+
+# dados obtidos partir do site brasil.io:
+# 
+# https://brasil.io/dataset/covid19/caso
+
+corona &lt;- read.csv(file=&quot;https://brasil.io/dataset/covid19/caso?format=csv&quot;)
+corona &lt;- as_tibble(corona)
+
+# transformar coluna `date` em data
+
+corona &lt;- corona %&gt;% 
+  mutate(date = ymd(date))
+
+# transformar a coluna `is_last` em logical
+
+corona &lt;- corona %&gt;% 
+  mutate(is_last = ifelse(is_last == &quot;True&quot;, TRUE, FALSE))
+
+# remover as linhas com totais por cidade
+
+corona &lt;- corona %&gt;% 
+  filter(place_type == &quot;state&quot;)</code></pre>
+<p>Com isso os dados do site <a href="https://brasil.io/dataset/covid19/caso">Brasil.io</a> estão prontos para a análise que delineeei.</p>
+</div>
+<div id="análise-exploratória-dos-dados" class="section level1">
+<h1>Análise Exploratória dos Dados</h1>
+<p>A primeira análise que realizo é a comparação dos casos totais em cinco estados que considero importantes: SP, RJ e MG, por possuírem os três maiores PIBs do país, além de RS e RN, o estado em que nasci e o estado em que moro atualmente. Devido à velocidade de atualização dos dados estaduais, minha análise se refere à situação do dia 21 de março de 2020. Para realizar estudos mais atuais, substitua o valor da variável <code>hoje</code> pelo dia da sua preferência no formato aaaa-mm-dd.</p>
+<pre class="r"><code>######################################
+### analise exploratoria dos dados ###
+######################################
+
+# altere a data abaixo, no formato aaaa-mm-dd para realizar 
+# esta análise para outro dia
+
+hoje &lt;- ymd(&quot;2020-03-21&quot;)
+
+corona %&gt;%
+  filter(date == hoje) %&gt;%
+  arrange(desc(confirmed)) %&gt;%
+  select(state, confirmed) %&gt;%
+  print(n = Inf)</code></pre>
+<pre><code>## # A tibble: 26 x 2
+##    state confirmed
+##    &lt;fct&gt;     &lt;int&gt;
+##  1 SP          396
+##  2 RJ          119
+##  3 DF          108
+##  4 CE           84
+##  5 RS           69
+##  6 SC           57
+##  7 MG           55
+##  8 PR           43
+##  9 BA           41
+## 10 PE           33
+## 11 ES           26
+## 12 GO           19
+## 13 MS           16
+## 14 AC           11
+## 15 AM           11
+## 16 SE           10
+## 17 RN            9
+## 18 AL            7
+## 19 PI            4
+## 20 RO            3
+## 21 MA            2
+## 22 PA            2
+## 23 RR            2
+## 24 TO            2
+## 25 AP            1
+## 26 PB            1</code></pre>
+<pre class="r"><code>g &lt;- corona %&gt;%
+  filter(state %in% c(&quot;SP&quot;, &quot;RJ&quot;, &quot;MG&quot;, &quot;RS&quot;, &quot;RN&quot;)) %&gt;%
+  group_by(date) %&gt;%
+  #top_n(1, confirmed) %&gt;%
+  ggplot(., aes(x = date, y = confirmed, group = state, colour = state)) +
+  geom_line() +
+  labs(x = &quot;Data&quot;, y = &quot;Casos Confirmados&quot;, colour = &quot;Estado&quot;) +
+  scale_colour_viridis_d()
+
+ggplotly(g)</code></pre>
+<div id="htmlwidget-1" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"data":[{"x":[18329,18330,18331,18332,18333,18334,18335,18337,18338,18339,18340,18341,18342,18343,18344,18345,18346,18347,18348,18349,18350,18351,18352,18353],"y":[1,1,1,1,2,2,4,6,14,19,29,38,55,83,128,130,133,153,189,205,231,261,275,314],"text":["date: 2020-03-08<br />confirmed:    1<br />state: MG<br />state: MG","date: 2020-03-09<br />confirmed:    1<br />state: MG<br />state: MG","date: 2020-03-10<br />confirmed:    1<br />state: MG<br />state: MG","date: 2020-03-11<br />confirmed:    1<br />state: MG<br />state: MG","date: 2020-03-12<br />confirmed:    2<br />state: MG<br />state: MG","date: 2020-03-13<br />confirmed:    2<br />state: MG<br />state: MG","date: 2020-03-14<br />confirmed:    4<br />state: MG<br />state: MG","date: 2020-03-16<br />confirmed:    6<br />state: MG<br />state: MG","date: 2020-03-17<br />confirmed:   14<br />state: MG<br />state: MG","date: 2020-03-18<br />confirmed:   19<br />state: MG<br />state: MG","date: 2020-03-19<br />confirmed:   29<br />state: MG<br />state: MG","date: 2020-03-20<br />confirmed:   38<br />state: MG<br />state: MG","date: 2020-03-21<br />confirmed:   55<br />state: MG<br />state: MG","date: 2020-03-22<br />confirmed:   83<br />state: MG<br />state: MG","date: 2020-03-23<br />confirmed:  128<br />state: MG<br />state: MG","date: 2020-03-24<br />confirmed:  130<br />state: MG<br />state: MG","date: 2020-03-25<br />confirmed:  133<br />state: MG<br />state: MG","date: 2020-03-26<br />confirmed:  153<br />state: MG<br />state: MG","date: 2020-03-27<br />confirmed:  189<br />state: MG<br />state: MG","date: 2020-03-28<br />confirmed:  205<br />state: MG<br />state: MG","date: 2020-03-29<br />confirmed:  231<br />state: MG<br />state: MG","date: 2020-03-30<br />confirmed:  261<br />state: MG<br />state: MG","date: 2020-03-31<br />confirmed:  275<br />state: MG<br />state: MG","date: 2020-04-01<br />confirmed:  314<br />state: MG<br />state: MG"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(68,1,84,1)","dash":"solid"},"hoveron":"points","name":"MG","legendgroup":"MG","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[18326,18327,18329,18333,18336,18337,18339,18340,18342,18343,18344,18345,18346,18347,18348,18349,18350,18351,18352,18353],"y":[1,2,3,15,24,25,63,66,119,186,233,305,370,421,493,558,600,657,708,832],"text":["date: 2020-03-05<br />confirmed:    1<br />state: RJ<br />state: RJ","date: 2020-03-06<br />confirmed:    2<br />state: RJ<br />state: RJ","date: 2020-03-08<br />confirmed:    3<br />state: RJ<br />state: RJ","date: 2020-03-12<br />confirmed:   15<br />state: RJ<br />state: RJ","date: 2020-03-15<br />confirmed:   24<br />state: RJ<br />state: RJ","date: 2020-03-16<br />confirmed:   25<br />state: RJ<br />state: RJ","date: 2020-03-18<br />confirmed:   63<br />state: RJ<br />state: RJ","date: 2020-03-19<br />confirmed:   66<br />state: RJ<br />state: RJ","date: 2020-03-21<br />confirmed:  119<br />state: RJ<br />state: RJ","date: 2020-03-22<br />confirmed:  186<br />state: RJ<br />state: RJ","date: 2020-03-23<br />confirmed:  233<br />state: RJ<br />state: RJ","date: 2020-03-24<br />confirmed:  305<br />state: RJ<br />state: RJ","date: 2020-03-25<br />confirmed:  370<br />state: RJ<br />state: RJ","date: 2020-03-26<br />confirmed:  421<br />state: RJ<br />state: RJ","date: 2020-03-27<br />confirmed:  493<br />state: RJ<br />state: RJ","date: 2020-03-28<br />confirmed:  558<br />state: RJ<br />state: RJ","date: 2020-03-29<br />confirmed:  600<br />state: RJ<br />state: RJ","date: 2020-03-30<br />confirmed:  657<br />state: RJ<br />state: RJ","date: 2020-03-31<br />confirmed:  708<br />state: RJ<br />state: RJ","date: 2020-04-01<br />confirmed:  832<br />state: RJ<br />state: RJ"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(59,82,139,1)","dash":"solid"},"hoveron":"points","name":"RJ","legendgroup":"RJ","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[18333,18334,18337,18339,18341,18342,18343,18345,18346,18347,18348,18349,18351,18352,18353],"y":[1,1,1,1,6,9,13,14,14,19,28,68,77,82,92],"text":["date: 2020-03-12<br />confirmed:    1<br />state: RN<br />state: RN","date: 2020-03-13<br />confirmed:    1<br />state: RN<br />state: RN","date: 2020-03-16<br />confirmed:    1<br />state: RN<br />state: RN","date: 2020-03-18<br />confirmed:    1<br />state: RN<br />state: RN","date: 2020-03-20<br />confirmed:    6<br />state: RN<br />state: RN","date: 2020-03-21<br />confirmed:    9<br />state: RN<br />state: RN","date: 2020-03-22<br />confirmed:   13<br />state: RN<br />state: RN","date: 2020-03-24<br />confirmed:   14<br />state: RN<br />state: RN","date: 2020-03-25<br />confirmed:   14<br />state: RN<br />state: RN","date: 2020-03-26<br />confirmed:   19<br />state: RN<br />state: RN","date: 2020-03-27<br />confirmed:   28<br />state: RN<br />state: RN","date: 2020-03-28<br />confirmed:   68<br />state: RN<br />state: RN","date: 2020-03-30<br />confirmed:   77<br />state: RN<br />state: RN","date: 2020-03-31<br />confirmed:   82<br />state: RN<br />state: RN","date: 2020-04-01<br />confirmed:   92<br />state: RN<br />state: RN"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(33,144,140,1)","dash":"solid"},"hoveron":"points","name":"RN","legendgroup":"RN","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[18331,18332,18333,18334,18337,18339,18340,18341,18342,18343,18344,18345,18346,18347,18348,18349,18350,18351,18352,18353],"y":[1,2,4,4,8,19,31,43,69,77,96,112,162,190,197,200,230,254,305,316],"text":["date: 2020-03-10<br />confirmed:    1<br />state: RS<br />state: RS","date: 2020-03-11<br />confirmed:    2<br />state: RS<br />state: RS","date: 2020-03-12<br />confirmed:    4<br />state: RS<br />state: RS","date: 2020-03-13<br />confirmed:    4<br />state: RS<br />state: RS","date: 2020-03-16<br />confirmed:    8<br />state: RS<br />state: RS","date: 2020-03-18<br />confirmed:   19<br />state: RS<br />state: RS","date: 2020-03-19<br />confirmed:   31<br />state: RS<br />state: RS","date: 2020-03-20<br />confirmed:   43<br />state: RS<br />state: RS","date: 2020-03-21<br />confirmed:   69<br />state: RS<br />state: RS","date: 2020-03-22<br />confirmed:   77<br />state: RS<br />state: RS","date: 2020-03-23<br />confirmed:   96<br />state: RS<br />state: RS","date: 2020-03-24<br />confirmed:  112<br />state: RS<br />state: RS","date: 2020-03-25<br />confirmed:  162<br />state: RS<br />state: RS","date: 2020-03-26<br />confirmed:  190<br />state: RS<br />state: RS","date: 2020-03-27<br />confirmed:  197<br />state: RS<br />state: RS","date: 2020-03-28<br />confirmed:  200<br />state: RS<br />state: RS","date: 2020-03-29<br />confirmed:  230<br />state: RS<br />state: RS","date: 2020-03-30<br />confirmed:  254<br />state: RS<br />state: RS","date: 2020-03-31<br />confirmed:  305<br />state: RS<br />state: RS","date: 2020-04-01<br />confirmed:  316<br />state: RS<br />state: RS"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(93,200,99,1)","dash":"solid"},"hoveron":"points","name":"RS","legendgroup":"RS","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[18318,18319,18320,18321,18322,18323,18324,18325,18326,18327,18328,18329,18330,18331,18332,18333,18335,18337,18338,18339,18340,18341,18342,18343,18344,18345,18346,18347,18348,18349,18350,18351,18352,18353],"y":[1,1,2,2,2,2,2,3,6,10,13,16,16,19,30,46,65,152,164,240,286,396,396,631,745,810,862,1052,1223,1406,1451,1517,2339,2981],"text":["date: 2020-02-26<br />confirmed:    1<br />state: SP<br />state: SP","date: 2020-02-27<br />confirmed:    1<br />state: SP<br />state: SP","date: 2020-02-28<br />confirmed:    2<br />state: SP<br />state: SP","date: 2020-02-29<br />confirmed:    2<br />state: SP<br />state: SP","date: 2020-03-01<br />confirmed:    2<br />state: SP<br />state: SP","date: 2020-03-02<br />confirmed:    2<br />state: SP<br />state: SP","date: 2020-03-03<br />confirmed:    2<br />state: SP<br />state: SP","date: 2020-03-04<br />confirmed:    3<br />state: SP<br />state: SP","date: 2020-03-05<br />confirmed:    6<br />state: SP<br />state: SP","date: 2020-03-06<br />confirmed:   10<br />state: SP<br />state: SP","date: 2020-03-07<br />confirmed:   13<br />state: SP<br />state: SP","date: 2020-03-08<br />confirmed:   16<br />state: SP<br />state: SP","date: 2020-03-09<br />confirmed:   16<br />state: SP<br />state: SP","date: 2020-03-10<br />confirmed:   19<br />state: SP<br />state: SP","date: 2020-03-11<br />confirmed:   30<br />state: SP<br />state: SP","date: 2020-03-12<br />confirmed:   46<br />state: SP<br />state: SP","date: 2020-03-14<br />confirmed:   65<br />state: SP<br />state: SP","date: 2020-03-16<br />confirmed:  152<br />state: SP<br />state: SP","date: 2020-03-17<br />confirmed:  164<br />state: SP<br />state: SP","date: 2020-03-18<br />confirmed:  240<br />state: SP<br />state: SP","date: 2020-03-19<br />confirmed:  286<br />state: SP<br />state: SP","date: 2020-03-20<br />confirmed:  396<br />state: SP<br />state: SP","date: 2020-03-21<br />confirmed:  396<br />state: SP<br />state: SP","date: 2020-03-22<br />confirmed:  631<br />state: SP<br />state: SP","date: 2020-03-23<br />confirmed:  745<br />state: SP<br />state: SP","date: 2020-03-24<br />confirmed:  810<br />state: SP<br />state: SP","date: 2020-03-25<br />confirmed:  862<br />state: SP<br />state: SP","date: 2020-03-26<br />confirmed: 1052<br />state: SP<br />state: SP","date: 2020-03-27<br />confirmed: 1223<br />state: SP<br />state: SP","date: 2020-03-28<br />confirmed: 1406<br />state: SP<br />state: SP","date: 2020-03-29<br />confirmed: 1451<br />state: SP<br />state: SP","date: 2020-03-30<br />confirmed: 1517<br />state: SP<br />state: SP","date: 2020-03-31<br />confirmed: 2339<br />state: SP<br />state: SP","date: 2020-04-01<br />confirmed: 2981<br />state: SP<br />state: SP"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(253,231,37,1)","dash":"solid"},"hoveron":"points","name":"SP","legendgroup":"SP","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":40.1826484018265,"l":48.9497716894977},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[18316.25,18354.75],"tickmode":"array","ticktext":["Feb 24","Mar 02","Mar 09","Mar 16","Mar 23","Mar 30","Apr 06"],"tickvals":[18323,18330,18337,18344,18351],"categoryorder":"array","categoryarray":["Feb 24","Mar 02","Mar 09","Mar 16","Mar 23","Mar 30","Apr 06"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Data","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-148,3130],"tickmode":"array","ticktext":["0","1000","2000","3000"],"tickvals":[0,1000,2000,3000],"categoryorder":"array","categoryarray":["0","1000","2000","3000"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Casos Confirmados","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":0.913385826771654},"annotations":[{"text":"Estado","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"db6f6a76ffe8":{"x":{},"y":{},"colour":{},"type":"scatter"}},"cur_data":"db6f6a76ffe8","visdat":{"db6f6a76ffe8":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>Note que o gráfico acima é interativo. É possível obter mais informações sobre as curvas passando o mouse por cima delas, dando zoom na imagem e clicando nos nomes dos estados para desabilitá-los.</p>
+<p>A seguir, faço um mapa com a taxa de casos confirmados para cada 100.000 habitantes:</p>
+<pre class="r"><code>######################################
+### analise exploratoria dos dados ###
+######################################
+
+# adiciona uma coluna chamada `estado`, com o nome do estado por extenso
+
+codigos &lt;- structure(
+  list(codigo = c(11L, 12L, 13L, 14L, 15L, 16L, 17L, 
+                  21L, 22L, 23L, 24L, 25L, 26L, 27L, 
+                  28L, 29L, 31L, 32L, 33L, 35L, 
+                  41L, 42L, 43L, 50L, 51L, 52L, 53L), 
+      estado = structure(c(22L, 1L, 4L, 23L, 14L, 3L, 
+               27L, 10L, 18L, 6L, 20L, 15L, 17L, 2L, 26L, 
+               5L, 13L, 8L, 19L, 25L, 16L, 24L, 21L, 12L, 
+               11L, 9L, 7L), 
+        .Label = c(&quot;Acre&quot;, &quot;Alagoas&quot;, &quot;Amapá&quot;, &quot;Amazonas&quot;, &quot;Bahia&quot;, 
+                 &quot;Ceará&quot;, &quot;Distrito Federal&quot;, &quot;Espírito Santo&quot;, 
+                 &quot;Goiás&quot;, &quot;Maranhão&quot;, &quot;Mato Grosso&quot;, 
+                 &quot;Mato Grosso do Sul&quot;, &quot;Minas Gerais&quot;, &quot;Pará&quot;, 
+                 &quot;Paraíba&quot;, &quot;Paraná&quot;, &quot;Pernambuco&quot;, 
+                 &quot;Piauí&quot;, &quot;Rio de Janeiro&quot;, &quot;Rio Grande do Norte&quot;, 
+                 &quot;Rio Grande do Sul&quot;, &quot;Rondônia&quot;, &quot;Roraima&quot;, 
+                 &quot;Santa Catarina&quot;, &quot;São Paulo&quot;, &quot;Sergipe&quot;, 
+                 &quot;Tocantins&quot;), class = &quot;factor&quot;), 
+      uf = structure(c(21L, 1L, 3L, 22L, 14L, 4L, 27L, 10L, 
+            17L, 6L, 20L, 15L, 16L, 2L, 25L, 5L, 
+            11L, 8L, 19L, 26L, 18L, 24L, 23L, 12L, 13L, 9L, 7L), 
+        .Label = c(&quot;AC&quot;, &quot;AL&quot;, &quot;AM&quot;, &quot;AP&quot;, &quot;BA&quot;, &quot;CE&quot;, &quot;DF&quot;, 
+          &quot;ES&quot;, &quot;GO&quot;, &quot;MA&quot;, &quot;MG&quot;, &quot;MS&quot;, &quot;MT&quot;, &quot;PA&quot;, &quot;PB&quot;, 
+          &quot;PE&quot;, &quot;PI&quot;, &quot;PR&quot;, &quot;RJ&quot;, &quot;RN&quot;, &quot;RO&quot;, &quot;RR&quot;, &quot;RS&quot;, 
+          &quot;SC&quot;, &quot;SE&quot;, &quot;SP&quot;, &quot;TO&quot;), class = &quot;factor&quot;)), 
+  class = &quot;data.frame&quot;, row.names = c(NA, -27L))</code></pre>
+<pre class="r"><code>mapa_br &lt;- get_brmap(&quot;State&quot;)
+
+mapa_br %&gt;%
+  left_join(codigos, c(&quot;State&quot; = &quot;codigo&quot;)) %&gt;%
+  left_join(filter(corona, date == hoje), c(&quot;uf&quot; = &quot;state&quot;)) %&gt;%
+  ggplot() +
+  geom_sf(aes(fill = confirmed_per_100k_inhabitants)) +
+  labs(fill = &quot;Casos por 100k habitantes&quot;) +
+  scale_fill_viridis_c(na.value = &quot;grey&quot;) +
+  theme(panel.grid = element_line(colour = &quot;transparent&quot;),
+        panel.background = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        rect = element_blank(),
+        legend.position = &quot;bottom&quot;)</code></pre>
+<p><a href="/images/mapa_corona.png">Clique para ver o Mapa com Taxa de Casos Confirmados de Coronavírus no Brasil</a></p>
+<p>O que acho mais interessante na imagem acima é o destaque para o Distrito Federal. Note como ele possui uma cor muito diferente do restante do país, destacando-se muito em relação aos demais. Eu tenho algumas hipóteses para isso:</p>
+<ol style="list-style-type: decimal">
+<li>É o local mais importante da política nacional, então é natural que mais testes tenham sido realizados lá</li>
+<li>Há um intenso fluxo de pessoas no DF</li>
+<li>Com a renda per capita mais alta do país, é natural que mais pessoas consigam se testar por lá</li>
+</ol>
+<p>Alguém possui mais alguma hipótese para esta diferença tão grande entre o DF e os demais estados brasileiros?</p>
+<p>Como sempre, o código utilizado nesta análise está disponível em meu <a href="https://github.com/mnunes/corona">github</a>.</p>
+</div>
+]]></content>
+		</item>
+		
+		<item>
 			<title>Algumas das piores visualizações de dados já feitas na história das eleições brasileiras e mundiais</title>
 			<link>https://marcusnunes.me/posts/algumas-das-piores-visualizacoes-de-dados-ja-feitas/</link>
 			<pubDate>Thu, 27 Feb 2020 07:57:00 -0300</pubDate>
@@ -279,522 +1178,6 @@ Qual é a melhor ferramenta para Análise de Dados? A melhor ferramenta para an�
 <h1 id="conclusão">Conclusão</h1>
 
 <p>Eu uso <a href="https://marcusnunes.me/tags/r/" target="_blank">R</a> porque ele facilita a minha vida. Programo na linguagem desde 2008 e, antes disso, utilizei S-Plus, sua versão proprietária. Por isso, o <a href="https://marcusnunes.me/tags/r/" target="_blank">R</a> é a minha opção preferida para analisar dados, preparar material didático e escrever relatórios e artigos científicos.</p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Competição de Ciência de Dados da UFRN 2019</title>
-			<link>https://marcusnunes.me/posts/competicao-de-ciencia-de-dados-da-ufrn-2019/</link>
-			<pubDate>Thu, 03 Oct 2019 19:03:00 -0300</pubDate>
-			
-			<guid>https://marcusnunes.me/posts/competicao-de-ciencia-de-dados-da-ufrn-2019/</guid>
-			<description>Alguns professores do Departamento de Estatística da UFRN estão organizando mais uma competição de Ciência de Dados. Ela vai ocorrer entre os dias 23 e 30 de outubro de 2019 e está aberta para qualquer aluno matriculado regularmente em cursos de graduação ou pós-graduação da UFRN.
-Esta competição faz parte das atividades da Semana da Estatística 2019, evento no qual muitas atividades estão programadas para toda a comunidade:
-A competição consistirá em analisar um conjunto de dados fornecido pela organização da competição.</description>
-			<content type="html"><![CDATA[
-
-<p>Alguns professores do <a href="http://www.departamento.ufrn.br/estatistica" target="_blank">Departamento de Estatística da UFRN</a> estão organizando mais uma competição de Ciência de Dados. Ela vai ocorrer entre os dias 23 e 30 de outubro de 2019 e está aberta para qualquer aluno matriculado regularmente em cursos de graduação ou pós-graduação da UFRN.</p>
-
-<p><img src="/images/ccd_2019.png" alt="Logo da Competição de Ciência de Dados da UFRN 2019" /></p>
-
-<p>Esta competição faz parte das atividades da Semana da Estatística 2019, evento no qual muitas atividades estão programadas para toda a comunidade:</p>
-
-<p><img src="/images/Banner_SE2019.jpg" alt="Banner da Semana da Estatística 2019" /></p>
-
-<p>A competição consistirá em analisar um conjunto de dados fornecido pela organização da competição. Este conjunto de dados será mantido em sigilo até o início da competição, marcada para às 11:00 do dia 23 de outubro de 2019. A análise a ser realizada dependerá apenas da criatividade dos competidores. Será possível trabalhar com modelagem dos dados, ajuste de modelos de previsão ou visualização de informações.</p>
-
-<p>Podem ser formadas equipes de até cinco participantes e todos os membros das equipes devem estar regularmente matriculados em algum curso de graduação ou pós-graduação da UFRN.</p>
-
-<p>Corra que as inscrições vão apenas até o dia 20 de outubro, às 23:59! Além disso, as vagas são limitadas.</p>
-
-<p><a href="https://docs.google.com/forms/d/1nvwvHN74yUMDe40vMEj0-ogfegKdikIzIoufo3DL8vE/viewform?edit_requested=true" target="_blank">Clique aqui para fazer a inscrição da sua equipe</a>.</p>
-
-<p><a href="https://marcusnunes.me/posts/como-foi-a-competicao-de-ciencia-de-dados/" target="_blank">Clique aqui para saber foi a Competição de Ciência de Dados de 2018</a>.</p>
-
-<hr />
-
-<h1 id="regulamento">Regulamento</h1>
-
-<p>Este é o regulamento da Competição de Ciência de Dados da UFRN, promovida pelo Departamento de Estatística desta universidade.</p>
-
-<h2 id="introdução">Introdução</h2>
-
-<p>Este regulamento tem como objetivo apresentar como será desenvolvida a Competição de Ciência de Dados 2019 promovida pelo Departamento de Estatística da UFRN.</p>
-
-<h2 id="apresentação">Apresentação</h2>
-
-<p>A Competição de Ciência de Dados 2019 consistirá em analisar um conjunto de dados fornecido pela organização da competição. Este conjunto de dados será mantido em sigilo até o início da competição, marcada para às 11:00 do dia 23 de outubro de 2019. Será a última atividade da Semana da Estatística UFRN 2019 antes do seu encerramento.</p>
-
-<p>Os participantes da competição poderão submeter suas análises, reportadas em no máximo 4 slides (1 slide apenas com título e identificação + 3 slides com o trabalho realizado), até às 23:59 de 27 de outubro de 2019. As apresentações dos resultados destas análises serão públicas e ocorrerão a partir das 14:00 de 30 de outubro de 2019 no Anfiteatro A do CCET.</p>
-
-<h2 id="regras-gerais">Regras Gerais</h2>
-
-<ol>
-<li>Este regulamento se refere à Competição de Ciência de Dados 2019 que está sendo promovida pelo Departamento de Estatística da UFRN.</li>
-<li>Qualquer aluno matriculado regularmente em cursos de graduação ou pós-graduação da UFRN está apto a participar da competição.</li>
-<li>Os competidores prepararão suas análises entre dias 23 e 27 de outubro de 2019, com a apresentação dos resultados marcada para o dia 30 de outubro de 2019, a partir das 14:00.</li>
-<li>Os competidores deverão formar equipes de até 5 participantes.</li>
-<li>Não é obrigatório que as equipes sejam formadas por alunos de apenas um curso de graduação ou pós-graduação.</li>
-<li>Caso seja de interesse da equipe, é possível utilizar outros bancos de dados públicos como ferramentas de apoio à análise apresentada, desde que a fonte seja devidamente citada.</li>
-<li>Os grupos deverão enviar para o email marcus@marcusnunes.me as suas apresentações de no máximo 4 slides (1 slide apenas com título e identificação + 3 slides com o trabalho realizado) até às 23:59 de 27 de outubro de 2019.</li>
-<li>Além disso, um relatório curto, de no máximo uma página, também deve ser enviado para este email dentro deste prazo.</li>
-<li>As apresentações e os relatórios de todas as equipes devem estar no formato pdf, nomeados da seguinte maneira: NomeEquipe_Apresentacao.pdf e NomeEquipe_Relatorio.pdf.</li>
-</ol>
-
-<h2 id="avaliação-dos-trabalhos">Avaliação dos Trabalhos</h2>
-
-<ol>
-<li>A partir das 14:00 do dia 30 de outubro, cada grupo terá até 10 minutos para realizar a apresentação dos seus resultados no Anfiteatro A do CCET.</li>
-<li>As análises realizadas serão avaliadas por uma comissão de três professores do Departamento de Estatística da UFRN.</li>
-<li>Nem todos os membros da equipe precisam falar durante a apresentação.</li>
-<li>Nesta apresentação serão avaliados os resultados obtidos pelas equipes nos quesitos modelagem dos dados, visualização dos dados e comunicação dos resultados.</li>
-</ol>
-
-<h2 id="premiação">Premiação</h2>
-
-<ol>
-<li><p>Todos os grupos que enviarem os arquivos dentro do prazo estipulado e realizarem a apresentação oral a partir das 14:00 em 30 de outubro de 2019 receberão um certificado de participação no evento. Este certificado atesta que o aluno cumpriu 10 horas de Atividades Artístico-Científico-Culturais.</p></li>
-
-<li><p>Os certificados irão conter informações sobre o nome da equipe, seus membros e o desempenho da equipe na competição.</p></li>
-
-<li><p>Os membros das equipes melhores colocadas receberão medalhas.</p></li>
-</ol>
-]]></content>
-		</item>
-		
-		<item>
-			<title>2º Workshop de R: Levando a Ciência de Dados para Todos</title>
-			<link>https://marcusnunes.me/posts/workshop-de-r-na-ufrn/</link>
-			<pubDate>Mon, 30 Sep 2019 11:07:00 -0300</pubDate>
-			
-			<guid>https://marcusnunes.me/posts/workshop-de-r-na-ufrn/</guid>
-			<description>Eu sou um fulbrighter. Como ex-aluno deste programa de intercâmbio, volta e meia sou convidado para participar de ventos promovidos pelo programa U.S.-Brazil Exchange Alumni (USBEA). O último destes eventos do qual participei rolou semana passada, em comemoração ao Dia Nacional do Voluntário no Brasil.
-O projeto que desenvolvi se chamou 2º Workshop de R: Levando a Ciência de Dados para Todos e foi feito com apoio do Departamento de Estatística da UFRN, que cedeu a sala e os computadores com os quais o workshop pode ser desenvolvido.</description>
-			<content type="html"><![CDATA[<p>Eu sou um <a href="https://fulbright.org.br/comissao/" target="_blank">fulbrighter</a>. Como ex-aluno deste programa de intercâmbio, volta e meia sou convidado para participar de ventos promovidos pelo programa U.S.-Brazil Exchange Alumni (USBEA). O último destes eventos do qual participei rolou semana passada, em comemoração ao Dia Nacional do Voluntário no Brasil.</p>
-
-<p><img src="/images/usbea_month.png" alt="USBEA Month" /></p>
-
-<p>O projeto que desenvolvi se chamou <strong>2º Workshop de R: Levando a Ciência de Dados para Todos</strong> e foi feito com apoio do <a href="http://www.departamento.ufrn.br/estatistica" target="_blank">Departamento de Estatística da UFRN</a>, que cedeu a sala e os computadores com os quais o workshop pode ser desenvolvido.</p>
-
-<p><img src="/images/turma_do_workshop.jpg" alt="Turma do Workshop" /></p>
-
-<p>Como pode ser visto na foto acima, o workshop trouxe muitas pessoas, todas de backgrounds diversos. Haviam desde alunos de graduação até doutorandos, todos interessados em conhecer um pouco mais sobre a linguagem de programação mais usada pelos estatísticos para analisarem seus dados.</p>
-
-<p>Além disso, criei um pacote no R para facilitar a utilização do material didático do workshop. Seu nome é <code>workshopR</code> e ele pode ser baixado através <a href="https://github.com/mnunes/workshopR" target="_blank">deste link</a>. Um preview do material trabalhado durante o encontro está <a href="https://htmlpreview.github.io/?https://github.com/mnunes/workshopR/blob/master/inst/doc/workshopR.html" target="_blank">neste outro link aqui</a>.</p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Consultoria Estatística na UFRN: Nosso Trabalho Sendo Divulgado no Oriente</title>
-			<link>https://marcusnunes.me/posts/consultoria-estati%CC%81stica-na-ufrn-nosso-trabalho-sendo-divulgado-no-oriente/</link>
-			<pubDate>Sat, 24 Aug 2019 14:45:00 -0300</pubDate>
-			
-			<guid>https://marcusnunes.me/posts/consultoria-estati%CC%81stica-na-ufrn-nosso-trabalho-sendo-divulgado-no-oriente/</guid>
-			<description>Um dos meus maiores interesses como professor do Departamento de Estatística da UFRN é formar bons prestadores de serviço de consultoria estatística. Acho fundamental que os bacharéis formados em nosso curso sejam capazes de entender as demandas de outras áreas, traduzi-las para o jargão estatístico e reportar os resultados obtidos numa linguagem fácil de compreender.
-Por isso, junto com a Professora Carla Vivacqua, coordeno o Laboratório de Estatística Aplicada (LEA), órgão do Departamento de Estatística criado para prestar assessoria estatística gratuita para alunos, professores, pesquisadores e técnicos da universidade.</description>
-			<content type="html"><![CDATA[
-
-<p>Um dos meus maiores interesses como professor do Departamento de Estatística da UFRN é formar bons prestadores de serviço de consultoria estatística. Acho fundamental que os bacharéis formados em nosso curso sejam capazes de entender as demandas de outras áreas, traduzi-las para o jargão estatístico e reportar os resultados obtidos numa linguagem fácil de compreender.</p>
-
-<p>Por isso, junto com a Professora Carla Vivacqua, coordeno o Laboratório de Estatística Aplicada (LEA), órgão do Departamento de Estatística criado para prestar assessoria estatística gratuita para alunos, professores, pesquisadores e técnicos da universidade. <a href="https://ufrn.br/imprensa/materias-especiais/3041/departamento-de-estatistica-oferece-servico-de-consultoria-gratuita-para-a-comunidade" target="_blank">O LEA já foi matéria de um número especial do boletim da universidade, em 11 de abril de 2017, no qual nossos serviços são descritos com detalhes</a>.</p>
-
-<p>Pois eis que o LEA foi convidado, junto com outros 20 laboratórios ao redor do mundo, para participar de dois eventos em Kuala Lumpur, na Malásia. Estive lá entre 15 e 23 de Agosto, como representante do nosso laboratório, para participar destes eventos.</p>
-
-<h1 id="2nd-lisa-2020-symposium">2nd LISA 2020 Symposium</h1>
-
-<p>O primeiro evento que participei, chamado 2nd LISA 2020 Symposium, diz respeito a uma iniciativa mundial de laboratório de colaboração estatística. Esta iniciativa visa unir laboratórios de colaboração estatística em países em desenvolvimento. Seu nome é <a href="http://lisa2020.org" target="_blank">Laboratory for Interdisciplinary Statistical Analysis 2020</a> e foi criada pelo professor <a href="https://www.colorado.edu/amath/ervance" target="_blank">Eric Vance</a>, da University of Colorado Boulder, nos Estados Unidos. Até o momento, são mais de 20 países com laboratórios já funcionais ou em vias de serem implementados.</p>
-
-<p><img src="/images/imagem01.png" alt="Laboratórios ao redor do mundo" /></p>
-
-<p>Perceba como há vários laboratórios na África, mas quase nenhum na América Latina. Caso seja do teu interesse ou caso tu conheça alguém interessado em criar um laboratório de colaboração estatística no Brasil, Argentina, Uruguai ou outro país do nosso continente, <a href="https://marcusnunes.me/contato/" target="_blank">entre em contato comigo</a> para conversarmos a respeito de como implementar algo assim na tua universidade.</p>
-
-<p>O professor Vance organizou este simpósio em Kuala Lumpur envolvendo coordenadores de laboratórios com missões semelhantes ao que temos na UFRN. Os países que enviaram representantes para participarem do simpósio, além dos Estados Unidos como organizadores, foram</p>
-
-<ul>
-<li>África do Sul</li>
-<li>Brasil</li>
-<li>Etiópia</li>
-<li>Gana</li>
-<li>Índia</li>
-<li>Nepal</li>
-<li>Nigéria</li>
-<li>Paquistão</li>
-<li>Tanzânia</li>
-<li>Zimbábue</li>
-</ul>
-
-<p><img src="/images/foto02.jpg" alt="Representantes de laboratórios ao redor do mundo" /></p>
-
-<p>Foi uma experiência enriquecedora, na qual pude comparar minhas experiências com as deles. Assim, pudemos todos perceber como existem dificuldades semelhantes em fazer estatística ao redor do mundo, principalmente nos países em desenvolvimento. Uma queixa muito comum entre todos os participantes foi a falta de verba, seguida por falta de apoio da universidade e pelo desinteresse dos colegas de departamento.</p>
-
-<p>Além das experiências trocadas com os outros participantes, que contribuíram com relatos a respeito de ensino de estatística e análise de dados, tive a oportunidade de participar de quatro workshops:</p>
-
-<ul>
-<li>Collaboration Skills</li>
-<li>Creating and Administering a Stat Lab</li>
-<li>Transforming Evidence to Action</li>
-<li>Grant Writing</li>
-</ul>
-
-<p>Particularmente, creio que o workshop de Grant Writing vai ser o mais útil de todos, dados os cortes de verbas que temos enfrentado nos últimos anos.</p>
-
-<h1 id="62nd-isi-world-statistics-congress">62nd ISI World Statistics Congress</h1>
-
-<p>O segundo evento do qual participei foi o 62nd World Statistics Congress. Neste evento apresentei o trabalho &ldquo;Effects of Participation in a Statistical Laboratory on Statistics Students&rdquo;. Este trabalho serviu para apresentar o LEA para o mundo, mostrando como é o nosso fluxo de trabalho no Brasil e como lidamos com as dificuldades de encontramos por aqui.</p>
-
-<p><img src="/images/foto03.jpg" alt="Cosplay de palestrante 01" /></p>
-
-<p><img src="/images/foto03a.jpg" alt="Cosplay de palestrante 02" /></p>
-
-<p>A repercussão da minha apresentação foi muito boa, com uma discussão envolvendo a plateia ao final da minha apresentação. Foram quase 10 minutos de perguntas e respostas a respeito da iniciativa que mantemos no Brasil. Além disso, fui procurado por professores de outros países interessados em implementar um laboratório como o LEA em suas universidades. Para quem se interessou pelo assunto, <a href="/images/Marcus_Nunes_62nd_ISI_WSC.pdf">este é o pdf com os slides que apresentei no evento</a>.</p>
-
-<p>Por fim, também fui o moderador da sessão &ldquo;How to Scale Up Statistical Analysis Capacity to Achieve the Sustainable Development Goals&rdquo;. Foi uma sessão extremamente produtiva, na qual os palestrantes mostraram como eles são capazes de aumentar a contribuição dos laboratórios de colaboração estatística em seus países de origem e como é possível, mesmo com poucos recursos financeiros, realizar projetos de grande impacto social.</p>
-
-<p><img src="/images/foto04.jpg" alt="Mediador" /></p>
-
-<p>Minha participação neste evento se concretizou devido a um prêmio que ganhei da United States Agency for International Development (USAID), que cobriu meus gastos com translado, hospedagem e alimentação, além dos custos com a inscrição no congresso.</p>
-
-<p><a href="https://www.instagram.com/grandeabobora/" target="_blank">Aproveita e me segue no instagram para ver umas fotos que bati na Malásia e estou publicando de forma homeopática</a>.</p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Análise de Sentimentos com o R: Bojack Horseman vs Brooklyn Nine-Nine</title>
-			<link>https://marcusnunes.me/posts/analise-de-sentimentos-com-r-bojack-horseman-vs-brooklyn-99/</link>
-			<pubDate>Sun, 28 Jul 2019 08:20:00 -0300</pubDate>
-			
-			<guid>https://marcusnunes.me/posts/analise-de-sentimentos-com-r-bojack-horseman-vs-brooklyn-99/</guid>
-			<description>Introdução Analisar sentimentos em texto é uma das coisas que sempre desejei aprender a fazer. Ao descobrir o post Bojack Horseman and Tidy Data Principles (Part 1) senti que era o momento de dar o pontapé inicial no assunto. Mas em vez de simplesmente reaplicar aquilo que o meu texto inspirador fez, decidi ir além, comparando duas séries de TV que gosto bastante.
-Para tal, escolhi Bojack Horseman e Brooklyn Nine-Nine para a empreitada.</description>
-			<content type="html"><![CDATA[
-
-
-<div id="introdução" class="section level1">
-<h1>Introdução</h1>
-<p>Analisar sentimentos em texto é uma das coisas que sempre desejei aprender a fazer. Ao descobrir o post <a href="https://pacha.hk/blog/2019/07/16/bojack-horseman-and-tidy-data-principles-part-1/">Bojack Horseman and Tidy Data Principles (Part 1)</a> senti que era o momento de dar o pontapé inicial no assunto. Mas em vez de simplesmente reaplicar aquilo que o meu texto inspirador fez, decidi ir além, comparando duas séries de TV que gosto bastante.</p>
-<p>Para tal, escolhi <a href="https://pt.wikipedia.org/wiki/BoJack_Horseman">Bojack Horseman</a> e <a href="https://pt.wikipedia.org/wiki/Brooklyn_Nine-Nine">Brooklyn Nine-Nine</a> para a empreitada. Optei pelas duas por uma série de motivos. O principal deles, como dito anteriormente, é o fato de eu gostar de ambas. Além disso, as duas séries são consideradas <em>sitcoms</em>, o que as coloca no mesmo gênero televisivo. Não obstante, são séries contemporâneas: Bojack Horseman estreou em 2014, enquanto Brooklyn Nine-Nine é apenas um ano mais velha. Assm, decidi me concentrar nas cinco primeiras temporadas de cada seriado.</p>
-<p>O que as difere são os temas abordados. Enquanto Bojack Horseman é uma série brutalmente triste, que explora a relação do protagonista com a sua depressão, Brooklyn Nine-Nine aposta em piadas leves e temas como inclusão para contar a sua história.</p>
-<p>Assim, a minha hipótese é que Bojack Horseman use sentimentos mais negativos em seus diálogos, enquanto Brooklyn Nine-Nine seja uma série mais positiva.</p>
-</div>
-<div id="obtenção-dos-dados" class="section level1">
-<h1>Obtenção dos Dados</h1>
-<p>O ideal seria utilizar os roteiros dos seriados como base para a minha análise. Mas isto so mostrou impossível, pois desejo encontrar resultados em português. Portanto, decidi utilizar as legendas traduzidas para fazer a minha análise. Por sorte, o site <a href="http://legendas.tv">Legendas TV</a> possui todas as legendas das cinco primeiras temporadas destes seriados. Como estas legendas estão organizadas em um arquivo único por temporada, o trabalho de baixá-las tornou-se bem menor.</p>
-</div>
-<div id="tratamento-e-análise-dos-dados" class="section level1">
-<h1>Tratamento e Análise dos Dados</h1>
-<div id="palavras-mais-frequentes" class="section level2">
-<h2>Palavras Mais Frequentes</h2>
-<p>A primeira parte da análise é carregar os pacotes necessários para realizá-la. Note que o pacote <code>subtools</code> está hospedado no GitHub, o que implica que não basta rodar <code>install.packages(subtools)</code> para que ele seja instalado.</p>
-<pre class="r"><code># pacotes necessarios
-
-library(subtools) # devtools::install_github(&quot;fkeck/subtools&quot;)
-library(tm)
-library(tidyverse)
-theme_set(theme_bw())
-library(gridExtra)
-library(reshape2)</code></pre>
-<p>Como cada episódio dos seriados está armazenado em um arquivo .srt diferente, é necessário ter uma forma prática de ler todos estes arquivos de uma vez. A função <code>subtools::read.subtitles.serie</code> é perfeita para isso, pois além de ler todos os arquivos de uma vez só, ela também os organiza por episódio e temporada.</p>
-<pre class="r"><code>#######################
-### bojack horseman ###
-#######################
-
-# leitura das legendas dos episodios
-
-bojack &lt;- read.subtitles.serie(dir = &quot;subtitles/bojack_horseman/&quot;)</code></pre>
-<p>Após a leitura das legendas, precisamos transformá-las em um <em><a href="https://pt.wikipedia.org/wiki/Corpus_lingu%C3%ADstico">corpus</a></em>. Isto é fundamental para que possamos proceder com a limpeza do texto, aplicando nele as seguintes transformações:</p>
-<ul>
-<li>converter todas as letras para sua versão minúscula</li>
-<li>remover sinais de pontuação</li>
-<li>remover números</li>
-<li>remover <em><a href="https://pt.wikipedia.org/wiki/Palavra_vazia">stopwords</a></em> (palavras vazias de sentido, como: e, para, de e similares)</li>
-<li>remover espaços em branco</li>
-</ul>
-<pre class="r"><code># limpeza do texto
-
-bojack_corpus &lt;- tmCorpus(bojack)
-
-bojack_corpus &lt;- tm_map(bojack_corpus, content_transformer(tolower))
-bojack_corpus &lt;- tm_map(bojack_corpus, removePunctuation)
-bojack_corpus &lt;- tm_map(bojack_corpus, removeNumbers)
-bojack_corpus &lt;- tm_map(bojack_corpus, removeWords, stopwords(&quot;portuguese&quot;))
-bojack_corpus &lt;- tm_map(bojack_corpus, stripWhitespace)
-bojack_corpus &lt;- TermDocumentMatrix(bojack_corpus)
-
-bojack_corpus_matrix &lt;- as.matrix(bojack_corpus)</code></pre>
-<p>Em seguida, é preciso proceder com a lematização do texto. É necessário identificar e converter formas flexionadas das palavras para as suas versões dicionarizadas. Por exemplo, é preciso tomar as palavras <em>comi</em>, <em>comemos</em>. <em>comeríamos</em>, <em>comia</em> e transformá-las todas em <em>comer</em>.</p>
-<p>Não encontrei nenhum pacote que fizesse uma lematização aceitável em português. Assim, tive que implementar a minha própria, baseado no <a href="https://github.com/michmech/lemmatization-lists">dicionário de lematização encontrado neste link</a>. Ela ficou um pouco lenta de ser aplicada, mas foi a melhor solução que encontrei na minha pesquisa.</p>
-<pre class="r"><code># lemmatizacao
-
-lemma_dic &lt;- read.delim(file = &quot;lemmatization/lemmatization-pt.txt&quot;, header = FALSE, stringsAsFactors = FALSE)
-names(lemma_dic) &lt;- c(&quot;stem&quot;, &quot;term&quot;)
-
-# palavras do bojack que estao no dicionario
-
-palavras &lt;- row.names(bojack_corpus_matrix)
-
-for (j in 1:length(palavras)){
-  comparacao &lt;- palavras[j] == lemma_dic$term
-  if (sum(comparacao) == 1){
-    palavras[j] &lt;- as.character(lemma_dic$stem[comparacao])
-  } else {
-    palavras[j] &lt;- palavras[j]
-  }
-}
-
-palavras_bojack &lt;- palavras
-
-bojack_corpus_df &lt;- as.data.frame(bojack_corpus_matrix)
-row.names(bojack_corpus_df) &lt;- NULL
-bojack_corpus_df$palavras &lt;- palavras_bojack</code></pre>
-<p>Após a lematização, é preciso contar as ocorrências de cada palavra e preparar os conjuntos de dados para que sejam plotados:</p>
-<pre class="r"><code># agrupar os resultados 
-
-bojack_corpus_df &lt;- bojack_corpus_df %&gt;%
-  group_by(palavras) %&gt;%
-  summarise_all(sum)
-
-temporadas &lt;- rep(1:5, each = 12)
-bojack_corpus_df_col &lt;- t(apply(bojack_corpus_df[, 2:61], 1, function(x) tapply(x, temporadas, sum)))
-colnames(bojack_corpus_df_col) &lt;- paste(&quot;S0&quot;, 1:5, sep = &quot;&quot;)
-bojack_corpus_df_col &lt;- data.frame(palavra = bojack_corpus_df$palavras,
-                                   bojack_corpus_df_col)
-
-bojack_corpus_melt &lt;- melt(bojack_corpus_df_col)
-names(bojack_corpus_melt) &lt;- c(&quot;palavra&quot;, &quot;temporada&quot;, &quot;ocorrencias&quot;)
-
-
-# funcao para plotar os graficos de barra
-
-plot.seriado &lt;- function(dados, season, cor = 0){
-  
-  grafico &lt;- dados %&gt;%
-    filter(temporada == season) %&gt;%
-    top_n(n = 10, wt = ocorrencias) %&gt;%
-    arrange(desc(ocorrencias)) %&gt;%
-    ggplot(., aes(x = reorder(palavra, ocorrencias), y = ocorrencias, fill = temporada)) +
-    geom_col(show.legend = FALSE) +
-    labs(x = &quot;&quot;, y = &quot;&quot;, title = season) +
-    coord_flip() +
-    scale_fill_viridis_d(begin = cor)
-  
-  return(grafico)  
-  
-}</code></pre>
-<p>No fim, o que obtemos é o seguinte gráfico:</p>
-<pre class="r"><code>s01 &lt;- plot.seriado(bojack_corpus_melt, &quot;S01&quot;, 0.00)
-s02 &lt;- plot.seriado(bojack_corpus_melt, &quot;S02&quot;, 0.25)
-s03 &lt;- plot.seriado(bojack_corpus_melt, &quot;S03&quot;, 0.50)
-s04 &lt;- plot.seriado(bojack_corpus_melt, &quot;S04&quot;, 0.75)
-s05 &lt;- plot.seriado(bojack_corpus_melt, &quot;S05&quot;, 1.00)
-
-grid.arrange(s01, s02, s03, s04, s05, left = &quot;Palavras&quot;, bottom = &quot;Número de Ocorrências&quot;)</code></pre>
-<p><img src="/posts/analise-de-sentimentos-com-R-bojack-horseman-vs-brooklyn-99_files/figure-html/bojack_plots-1.png" width="672" /></p>
-<p>Note que o verbo <strong>ir</strong> é o que mais aparece em todas as temporadas de Bojack Horseman, com <strong>querer</strong> e <strong>fazer</strong> alternando a segunda posição.</p>
-<p>A preparação dos dados para a análise dos diálogos de Brooklyn Nine-Nine é análoga à realizada para Bojack Horseman.</p>
-<pre class="r"><code>###################
-### brooklyn 99 ###
-###################
-
-# leitura das legendas dos episodios
-
-brooklyn99 &lt;- read.subtitles.serie(dir = &quot;subtitles/brooklyn99/&quot;)
-
-# limpeza do texto
-
-brooklyn99_corpus &lt;- tmCorpus(brooklyn99)
-
-brooklyn99_corpus &lt;- tm_map(brooklyn99_corpus, content_transformer(tolower))
-brooklyn99_corpus &lt;- tm_map(brooklyn99_corpus, removePunctuation)
-brooklyn99_corpus &lt;- tm_map(brooklyn99_corpus, removeNumbers)
-brooklyn99_corpus &lt;- tm_map(brooklyn99_corpus, removeWords, stopwords(&quot;portuguese&quot;))
-brooklyn99_corpus &lt;- tm_map(brooklyn99_corpus, stripWhitespace)
-brooklyn99_corpus &lt;- TermDocumentMatrix(brooklyn99_corpus)
-
-brooklyn99_corpus_matrix &lt;- as.matrix(brooklyn99_corpus)
-
-# lemmatizacao
-
-lemma_dic &lt;- read.delim(file = &quot;lemmatization/lemmatization-pt.txt&quot;, header = FALSE, stringsAsFactors = FALSE)
-names(lemma_dic) &lt;- c(&quot;stem&quot;, &quot;term&quot;)
-
-# palavras do brooklyn99 que estao no dicionario
-
-palavras &lt;- row.names(brooklyn99_corpus_matrix)
-
-for (j in 1:length(palavras)){
-  comparacao &lt;- palavras[j] == lemma_dic$term
-  if (sum(comparacao) == 1){
-    palavras[j] &lt;- as.character(lemma_dic$stem[comparacao])
-  } else {
-    palavras[j] &lt;- palavras[j]
-  }
-}
-
-palavras_brooklyn99 &lt;- palavras
-
-brooklyn99_corpus_df &lt;- as.data.frame(brooklyn99_corpus_matrix)
-row.names(brooklyn99_corpus_df) &lt;- NULL
-brooklyn99_corpus_df$palavras &lt;- palavras_brooklyn99
-
-# agrupar os resultados 
-
-brooklyn99_corpus_df &lt;- brooklyn99_corpus_df %&gt;%
-  group_by(palavras) %&gt;%
-  summarise_all(sum)
-
-temporadas &lt;- c(rep(1, 22), 
-                rep(2, 23), 
-                rep(3, 23), 
-                rep(4, 22), 
-                rep(5, 22))
-
-brooklyn99_corpus_df_col &lt;- t(apply(brooklyn99_corpus_df[, 2:113], 1, function(x) tapply(x, temporadas, sum)))
-colnames(brooklyn99_corpus_df_col) &lt;- paste(&quot;S0&quot;, 1:5, sep = &quot;&quot;)
-brooklyn99_corpus_df_col &lt;- data.frame(palavra = brooklyn99_corpus_df$palavras,
-                                       brooklyn99_corpus_df_col)
-
-brooklyn99_corpus_melt &lt;- melt(brooklyn99_corpus_df_col)
-names(brooklyn99_corpus_melt) &lt;- c(&quot;palavra&quot;, &quot;temporada&quot;, &quot;ocorrencias&quot;)
-
-# funcao para plotar os graficos de barra
-
-plot.seriado &lt;- function(dados, season, cor = 0){
-  
-  grafico &lt;- dados %&gt;%
-    filter(temporada == season) %&gt;%
-    top_n(n = 10, wt = ocorrencias) %&gt;%
-    arrange(desc(ocorrencias)) %&gt;%
-    ggplot(., aes(x = reorder(palavra, ocorrencias), y = ocorrencias, fill = temporada)) +
-    geom_col(show.legend = FALSE) +
-    labs(x = &quot;&quot;, y = &quot;&quot;, title = season) +
-    coord_flip() +
-    scale_fill_viridis_d(begin = cor)
-  
-  return(grafico)  
-  
-}</code></pre>
-<p>E ao fazer a contagem das palavras que mais aparecem e colocá-las em um gráfico, eis que o resultado é praticamente idêntico ao de Bojack Horseman:</p>
-<pre class="r"><code>s01 &lt;- plot.seriado(brooklyn99_corpus_melt, &quot;S01&quot;, 0.00)
-s02 &lt;- plot.seriado(brooklyn99_corpus_melt, &quot;S02&quot;, 0.25)
-s03 &lt;- plot.seriado(brooklyn99_corpus_melt, &quot;S03&quot;, 0.50)
-s04 &lt;- plot.seriado(brooklyn99_corpus_melt, &quot;S04&quot;, 0.75)
-s05 &lt;- plot.seriado(brooklyn99_corpus_melt, &quot;S05&quot;, 1.00)
-
-grid.arrange(s01, s02, s03, s04, s05, left = &quot;Palavras&quot;, bottom = &quot;Número de Ocorrências&quot;)</code></pre>
-<p><img src="/posts/analise-de-sentimentos-com-R-bojack-horseman-vs-brooklyn-99_files/figure-html/b99_plot-1.png" width="672" /></p>
-<pre class="r"><code>sentimentos &lt;- read.table(file = &quot;sentiment/sentiword.txt&quot;, sep = &quot;\t&quot;, header = TRUE)
-
-sentimentos &lt;- sentimentos %&gt;%
-  group_by(Termo) %&gt;%
-  summarise(positivo = max(PosScore), negativo = max(NegScore)) %&gt;%
-  mutate(Termo = trimws(Termo, which = &quot;left&quot;))
-
-pos &lt;- sentimentos[, c(1, 2)]
-neg &lt;- sentimentos[, c(1, 3)]
-
-# sentimento para cada episodio
-
-bojack_sentimento_positivo &lt;- 0
-bojack_sentimento_negativo &lt;- 0
-
-for (j in 1:(dim(bojack_corpus_df)[2]-1)){
-  
-  # palavras do j-esimo episodio
-  
-  a &lt;- bojack_corpus_matrix[, j]
-  a &lt;- data.frame(Termo = names(a),
-                  Ocorrencias = a)
-
-  row.names(a) &lt;- NULL
-  
-  # juntando sentimentos com as palavras do episodio - caso positivo
-  
-  x &lt;- left_join(a, pos, by = &quot;Termo&quot;) %&gt;%
-    na.omit()
-
-  sentimento_positivo &lt;- sum(x$Ocorrencias*x$positivo)/sum(a$Ocorrencias)
-  
-  # juntando sentimentos com as palavras do episodio - caso negativo
-
-  x &lt;- left_join(a, neg, by = &quot;Termo&quot;) %&gt;%
-    na.omit()
-
-  sentimento_negativo &lt;- sum(x$Ocorrencias*x$negativo)/sum(a$Ocorrencias)
-  
-  bojack_sentimento_positivo[j] &lt;- sentimento_positivo
-  bojack_sentimento_negativo[j] &lt;- sentimento_negativo
-}
-
-bojack_plot &lt;- data.frame(episodio = 1:length(bojack_sentimento_positivo),
-                          temporada = factor(temporadas),
-                          positivo = bojack_sentimento_positivo,
-                          negativo = bojack_sentimento_negativo)
-
-# sentimento para cada episodio
-
-brooklyn99_sentimento_positivo &lt;- 0
-brooklyn99_sentimento_negativo &lt;- 0
-
-for (j in 1:(dim(brooklyn99_corpus_df)[2]-1)){
-  
-  # palavras do j-esimo episodio
-  
-  a &lt;- brooklyn99_corpus_matrix[, j]
-  a &lt;- data.frame(Termo = names(a),
-                  Ocorrencias = a)
-  
-  row.names(a) &lt;- NULL
-  
-  # juntando sentimentos com as palavras do episodio - caso positivo
-  
-  x &lt;- left_join(a, pos, by = &quot;Termo&quot;) %&gt;%
-    na.omit()
-  
-  sentimento_positivo &lt;- sum(x$Ocorrencias*x$positivo)/sum(a$Ocorrencias)
-  
-  # juntando sentimentos com as palavras do episodio - caso negativo
-  
-  x &lt;- left_join(a, neg, by = &quot;Termo&quot;) %&gt;%
-    na.omit()
-  
-  sentimento_negativo &lt;- sum(x$Ocorrencias*x$negativo)/sum(a$Ocorrencias)
-  
-  brooklyn99_sentimento_positivo[j] &lt;- sentimento_positivo
-  brooklyn99_sentimento_negativo[j] &lt;- sentimento_negativo
-}
-
-brooklyn99_plot &lt;- data.frame(episodio = 1:length(brooklyn99_sentimento_positivo),
-                              temporada = factor(temporadas),
-                              positivo = brooklyn99_sentimento_positivo,
-                              negativo = brooklyn99_sentimento_negativo)</code></pre>
-</div>
-<div id="análise-de-sentimentos" class="section level2">
-<h2>Análise de Sentimentos</h2>
-<p>É possível atribuir pesos positivos e negativos a palavras, em uma escala de 0 a 1. Por exemplo, a palavra incapaz pode ter valor 0.75 positivo, enquanto a palavra hiperventilar tem peso negativo de 0.5. Ao atribuir estes pesos para as palavras ditas no seriado, é possível verificar como, em uma escala de 0 a 1 para valores positivos e de -1 a 0 para valores negativos, como estão os diálogos das séries. O dicionário <a href="https://github.com/Pedro-Thales/SentiWordNet-PT-BR">SentiWordNet-PT-BR</a>, criado pelo Pedro Thales, me ajudou muito nesta tarefa. Os resultados obtidos estão nas figuras abaixo.</p>
-<pre class="r"><code>ggplot(bojack_plot, aes(x = episodio, colour = temporada)) +
-  geom_line(aes(y = positivo)) +
-  geom_line(aes(y = -negativo)) +
-  scale_x_continuous(breaks = seq(12, 60, 12)) +
-  labs(x = &quot;Episódio&quot;, y = &quot;Sentimento&quot;, colour = &quot;Temporada&quot;, title = &quot;Bojack Horseman&quot;) +
-  scale_colour_viridis_d()</code></pre>
-<p><img src="/posts/analise-de-sentimentos-com-R-bojack-horseman-vs-brooklyn-99_files/figure-html/plotSentimento-1.png" width="672" /></p>
-<pre class="r"><code>ggplot(brooklyn99_plot, aes(x = episodio, colour = temporada)) +
-  geom_line(aes(y = positivo)) +
-  geom_line(aes(y = -negativo)) +
-  scale_x_continuous(breaks = c(22, 45, 68, 90, 112)) +
-  labs(x = &quot;Episódio&quot;, y = &quot;Sentimento&quot;, colour = &quot;Temporada&quot;, title = &quot;Brooklyn 99&quot;) +
-  scale_colour_viridis_d()</code></pre>
-<p><img src="/posts/analise-de-sentimentos-com-R-bojack-horseman-vs-brooklyn-99_files/figure-html/plotSentimento-2.png" width="672" /></p>
-<p>Novamente, parece não haver muita diferença de uma série para outra.</p>
-</div>
-</div>
-<div id="conclusão" class="section level1">
-<h1>Conclusão</h1>
-<p>Reconheço que este não é o resultado que eu esperava. Eu imaginava que as palavras com maior frequência para Bojack Horseman teriam conotação negativa, enquanto em Brooklyn Nine-Nine elas teriam mais conotação positiva. Pelo visto, me enganei.</p>
-<p>Caberia fazer uma segunda análise nestes dados, talvez com os diálogos originais. Afinal, como as traduções que usei não são, pode ser que elas estejam influenciando no resultado final da análise. Além disso, é possível que meus dicionários de lematização e sentimentos possuam problemas, fazendo com que os resultados não sejam exatamente aqueles que ocorrem na língua original dos seriados.</p>
-<p>De toda forma, foi uma análise divertida de fazer. Tentarei repeti-la co fututo, mas aí com <em>corpus</em> originais do português.</p>
-<p>Os arquivos utilizados nesta análise estão <a href="https://github.com/mnunes/tv_series">neste repositório do GitHub</a>.</p>
-</div>
 ]]></content>
 		</item>
 		

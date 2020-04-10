@@ -10,7 +10,11 @@ weight: 40
 
 Nos últimos tempos tenho me interessado muito por aplicações web que demonstrem como a Estatística pode ser utilizada para ensino ou divulgação de informações. Por isso criei o site [shiny](http://shiny.estatistica.ccet.ufrn.br/). Neste site divulgo apps criados por mim e por alunos que orientei, a fim de tornar o acesso à Estatística mais amplo do que é atualmente.
 
-* [Dashboard Deputados](http://shiny.estatistica.ccet.ufrn.br/DashboardDeputados/): Dashboard desenvolvido no `shiny` para o controle de gastos públicos. Baseado em um [https://github.com/mnunes/reembolsos/](pacote) escrito para o `R` no qual organizo os dados da [Operação Serenata de Amor](https://serenata.ai/) a respeito dos pedidos de reembolsos feitos pelos deputados federais brasileiros. Escrevi sobre o pacote [neste post](http://marcusnunes.me/post/controle-de-gastos-publicos-como-verificar-quanto-os-deputados-federais-estao-gastando/) do meu blog. [[github]](https://github.com/raylandmagalhaes/Shiny-Reembolsos/)
+* [Doenças Cardiovasculares](http://shiny.estatistica.ccet.ufrn.br/DoencasCardiovasculares/): Entre com dados biométricos e descubra a sua probabilidade de ter uma doença cardiovascular, baseada em dados obtidos em uma amostra de 70 mil pessoas.
+
+* [Jogadores Similares](http://shiny.estatistica.ccet.ufrn.br/JogadoresSimilares/): Escolha algum jogador de PES 2019 e veja quais são os outros 10 jogadores mais parecidos com ele.
+
+* [Dashboard Deputados](http://shiny.estatistica.ccet.ufrn.br/DashboardDeputados/): Dashboard desenvolvido no `shiny` para o controle de gastos públicos. Baseado em um [pacote](https://github.com/mnunes/reembolsos/) escrito para o `R` no qual organizo os dados da [Operação Serenata de Amor](https://serenata.ai/) a respeito dos pedidos de reembolsos feitos pelos deputados federais brasileiros. Escrevi sobre o pacote [neste post](http://marcusnunes.me/post/controle-de-gastos-publicos-como-verificar-quanto-os-deputados-federais-estao-gastando/) do meu blog.
 
 * [Regressão Linear Interativa](http://shiny.estatistica.ccet.ufrn.br/regressao-linear-interativa/): Aplicativo utilizado para demonstrar como funciona a regressão linear simples. O usuário clica em locais do plano e uma reta é ajustada aos pontos criados, indicando desde a equação que melhor se ajusta aos dados, até a tabela ANOVA e os gráficos de diagnóstico. [[github]](https://github.com/mnunes/regressao)
 
