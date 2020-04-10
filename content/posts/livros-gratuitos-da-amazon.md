@@ -3,7 +3,7 @@ title: "Livros de Ciência de Dados Gratuitos na Amazon"
 description: "Lista de livros de Ciência de Dados, Big Data e programação disponibilizados pela Amazon durante a epidemia de coronavírus"
 tags: ["amazon", "big data", "ciência de dados", "coronavírus", "livro", "programação"]
 draft: false
-date: 2020-04-09T14:50:00-03:00
+date: 2020-04-09T14:51:00-03:00
 ---
 
 Recebi esta dica no grupo de telegram Ciência de Dados RN. A Amazon está disponibilizando gratuitamente 28 de livros sobre Ciência de Dados, Big Data e programação em suas versões para Kindle. 
