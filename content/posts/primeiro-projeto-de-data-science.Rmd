@@ -1,7 +1,7 @@
 ---
 title: "Tutorial: Como Fazer o Seu Primeiro Projeto de Data Science"
 description: "Faça o seu primeiro projeto de data science a partir do zero, desde a obtenção dos dados, passando pela sua análise exploratória e chegando a um modelo de previsão"
-tags: ["curso", "data science", "ensino", "machine learning", "random forest", "tutorial"]
+tags: ["caret", "curso", "data science", "ensino", "machine learning", "random forest", "tutorial"]
 draft: false
 date: 2018-07-01T08:54:00-03:00
 ---
