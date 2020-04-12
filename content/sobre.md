@@ -39,6 +39,6 @@ Antes de me dedicar aos modelos lineares generalizados, me interessei por série
 **Pessoal**
 
 
-Dentre muitas coisas, gosto principalmente de ciência, [fotografia](https://instagram.com/grandeabobora/), [música](https://www.last.fm/user/grandeabobora), cinema, [videogames](http://psnprofiles.com/grandeabobora/) e [internet](https://pinboard.in/u:grandeabobora).
+Dentre muitas coisas, gosto principalmente de ciência, [música](https://www.last.fm/user/grandeabobora), cinema, [videogames](http://psnprofiles.com/grandeabobora/) e [internet](https://pinboard.in/u:grandeabobora). Atualmente, [fotografia](https://instagram.com/grandeabobora/) é meu hobby principal.
 
-{{< instagram B2MEb36BICK >}}
+{{< instagram B88ctDQFyNp >}}
