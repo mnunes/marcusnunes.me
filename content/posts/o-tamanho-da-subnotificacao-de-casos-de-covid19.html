@@ -11,7 +11,7 @@ date: 2020-04-16T07:16:00-03:00
 
 <div id="introdução" class="section level1">
 <h1>Introdução</h1>
-<p>Não deve ser surpresa para ninguém as reportagens sobre <a href="https://g1.globo.com/sp/sao-paulo/noticia/2020/04/15/apesar-de-provavel-subnotificacao-e-atraso-de-exames-especialistas-veem-indicios-de-achamento-da-curva-do-coronavirus-em-sp.ghtml">prováveis subnotificações a respeito dos casos de COVID-19</a>. A fim deverifiar se essas suspeitas são memso procedentes, eu decidi comparar os números de casos de Síndrome Respiratória Aguda Grave (SRAG) registrados no Brasil nos últimos 10 anos, a fim de tentar detectar se houve um aumento nos casos em 2020.</p>
+<p>Não deve ser surpresa para ninguém as reportagens sobre <a href="https://g1.globo.com/sp/sao-paulo/noticia/2020/04/15/apesar-de-provavel-subnotificacao-e-atraso-de-exames-especialistas-veem-indicios-de-achamento-da-curva-do-coronavirus-em-sp.ghtml">prováveis subnotificações a respeito dos casos de COVID-19</a>. A fim de verificar se essas suspeitas são mesmo procedentes, eu decidi comparar os números de casos de Síndrome Respiratória Aguda Grave (SRAG) registrados no Brasil nos últimos 10 anos, a fim de tentar detectar se houve um aumento nos casos em 2020.</p>
 <p>Para me ajudar nisso, vou usar um script do usuário <a href="https://github.com/belisards">belisards</a> do github. O script se chama <a href="https://github.com/belisards/srag_brasil/blob/master/infogripe_scrap.R">infogripe_scrap.R</a> e ele baixa dados da SRAG coletados, organizados e disponibilizados pela Fiocruz no site <a href="http://info.gripe.fiocruz.br/">Infogripe</a>. Para obter esses dados, basta rodar o <a href="https://github.com/belisards/srag_brasil/blob/master/infogripe_scrap.R">script do belisards</a> ou utilizar <a href="https://marcusnunes.me/images/dados/dados_br.csv">esse arquivo</a> com os dados que já baixei até 16 de abril de 2020. Há um <a href="https://marcusnunes.me/images/dados/dados_uf.csv">arquivo extra, com os dados por UF</a>, mas ele não será utilizado nesse post.</p>
 </div>
 <div id="análise-exploratória" class="section level1">
@@ -57,7 +57,11 @@ library(reshape2)</code></pre>
        title=&quot;Número de Casos de Síndrome Respiratória Aguda Grave por Ano&quot;)</code></pre>
 <p><img src="/posts/o-tamanho-da-subnotificacao-de-casos-de-covid19_files/figure-html/grafico01-1.png" width="672" /></p>
 <p>São dois os destaques que podemos ver no gráfico acima. O primeiro deles é o ano de 2020. Claramente está ocorrendo algum fenômeno que fez as notificações de SRAG aumentarem nesse ano, mas eu não faço ideia do que pode ser ¯_(ツ)_/¯</p>
-<p>O segundo destaque é o ano de 2016. Eu não lembrava, mas parece que <a href="https://g1.globo.com/bemestar/noticia/brasil-tem-mais-de-19-mil-mortes-por-h1n1-em-2016-diz-ministerio.ghtml">2016 foi um ano com muitos casos dessa doença</a>, com um número de mortes comparável à época pré-vacina.</p>
+<p>O segundo destaque é o ano de 2016. Eu não lembrava, mas parece que <a href="https://g1.globo.com/bemestar/noticia/brasil-tem-mais-de-19-mil-mortes-por-h1n1-em-2016-diz-ministerio.ghtml">2016 foi um ano com muitos casos dessa doença</a>, com um número de mortes comparável à época pré-vacina. <strong>Atualização:</strong> segundo Leonardo Bastos, pesquisador da Fiocruz,</p>
+<blockquote>
+<p>Sobre 2016 rolou uma grande epidemia (pouco reportda) de Influenza A (H1N1) que pegou bastante todo mundo de forma geral, mas em particular criancas de 0 a 2 anos.</p>
+</blockquote>
+<p>Fonte: <a href="http://cadernos.ensp.fiocruz.br/csp/artigo/1032/covid-19-e-hospitalizaes-por-srag-no-brasil-uma-comparao-at-a-12-semana-epidemiolgica-de-2020">COVID-19 e hospitalizações por SRAG no Brasil: uma comparação até a 12ª semana epidemiológica de 2020</a></p>
 <p>No gráfico abaixo eu comparo o número de casos de SRAG em 2020 com a média histórica entre os anos de 2011 a 2019. A diferença fica ainda mais gritante.</p>
 <pre class="r"><code>srag_medio &lt;- srag_filtrado %&gt;%
   filter(ano != &quot;2020&quot;) %&gt;%
