@@ -1,7 +1,7 @@
 ---
 title: "Livros Gratuitos da Springer"
 description: "Lista de livros de Matemática e Estatística disponibilizados pela Springer durante a epidemia de coronavírus"
-tags: ["coronavírus", "estatística", "livro", "matemática", "springer"]
+tags: ["coronavírus", "covid-19", "estatística", "livro", "matemática", "springer"]
 draft: false
 date: 2020-04-03T6:57:00-03:00
 ---

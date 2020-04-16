@@ -1,7 +1,7 @@
 ---
 title: "Análise Descritiva do Coronavírus nos Estados Brasileiros"
 description: "Uma análise espacial da situação da pandemia no Brasil"
-tags: ["análise", "análise descritiva", "coronavírus", "ggplot2", "mapas", "visualização"]
+tags: ["análise", "análise descritiva", "coronavírus", "covid-19", "ggplot2", "mapas", "visualização"]
 draft: false
 date: 2020-03-24T10:12:00-03:00
 ---

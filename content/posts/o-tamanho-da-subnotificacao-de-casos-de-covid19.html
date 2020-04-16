@@ -1,0 +1,80 @@
+---
+title: "O Tamanho da Subnotificação dos Casos de COVID-19"
+description: "Comparação entre os números de casos de COVID-19 nos últimos 10 anos no Brasil"
+tags: ["coronavírus", "covid-19", "fiocruz", "r", "srag", "tutorial"]
+draft: false
+date: 2020-04-16T07:16:00-03:00
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
+<p>Não deve ser surpresa para ninguém as reportagens sobre <a href="https://g1.globo.com/sp/sao-paulo/noticia/2020/04/15/apesar-de-provavel-subnotificacao-e-atraso-de-exames-especialistas-veem-indicios-de-achamento-da-curva-do-coronavirus-em-sp.ghtml">prováveis subnotificações a respeito dos casos de COVID-19</a>. A fim deverifiar se essas suspeitas são memso procedentes, eu decidi comparar os números de casos de Síndrome Respiratória Aguda Grave (SRAG) registrados no Brasil nos últimos 10 anos, a fim de tentar detectar se houve um aumento nos casos em 2020.</p>
+<p>Para me ajudar nisso, vou usar um script do usuário <a href="https://github.com/belisards">belisards</a> do github. O script se chama <a href="https://github.com/belisards/srag_brasil/blob/master/infogripe_scrap.R">infogripe_scrap.R</a> e ele baixa dados da SRAG coletados, organizados e disponibilizados pela Fiocruz no site <a href="http://info.gripe.fiocruz.br/">Infogripe</a>. Para obter esses dados, basta rodar o <a href="https://github.com/belisards/srag_brasil/blob/master/infogripe_scrap.R">script do belisards</a> ou utilizar <a href="https://marcusnunes.me/images/dados/dados_br.csv">esse arquivo</a> com os dados que já baixei até 16 de abril de 2020. Há um <a href="https://marcusnunes.me/images/dados/dados_uf.csv">arquivo extra, com os dados por UF</a>, mas ele não será utilizado nesse post.</p>
+</div>
+<div id="análise-exploratória" class="section level1">
+<h1>Análise Exploratória</h1>
+<p>O primeiro passo é importar os dados para dentro do <code>R</code>.</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ──────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.0     ✓ purrr   0.3.3
+## ✓ tibble  3.0.0     ✓ dplyr   0.8.5
+## ✓ tidyr   1.0.2     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ─────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>theme_set(theme_bw())
+library(reshape2)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;reshape2&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
+## 
+##     smiths</code></pre>
+<pre class="r"><code>srag &lt;- read_csv(file = &quot;dados_br.csv&quot;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   ano = col_double(),
+##   epiweek = col_double(),
+##   casos = col_double(),
+##   territory_name = col_character(),
+##   situation_name = col_character(),
+##   value = col_character()
+## )</code></pre>
+<p>Em seguida faço uma filtragem, mantendo apenas os últimos 10 anos na análise.</p>
+<pre class="r"><code>srag_filtrado &lt;- srag %&gt;%
+    filter(epiweek &lt;= 14) %&gt;%
+    filter(ano &gt;= 2011) %&gt;%
+    mutate(ano = factor(ano))</code></pre>
+<p>Por fim, faço as curvas com o número de casos de SRAG para cada ano de 2011 a 2020.</p>
+<pre class="r"><code>ggplot(srag_filtrado, aes(x = epiweek, y = casos, group = ano, colour = ano)) +
+    geom_line() +
+    scale_colour_viridis_d() +
+  scale_x_continuous(breaks = 1:14, labels = 1:14, minor_breaks = NULL) +
+  labs(x = &quot;Semana&quot;, y = &quot;Número de Casos&quot;, colour = &quot;Ano&quot;, 
+       title=&quot;Número de Casos de Síndrome Respiratória Aguda Grave por Ano&quot;)</code></pre>
+<p><img src="/posts/o-tamanho-da-subnotificacao-de-casos-de-covid19_files/figure-html/grafico01-1.png" width="672" /></p>
+<p>São dois os destaques que podemos ver no gráfico acima. O primeiro deles é o ano de 2020. Claramente está ocorrendo algum fenômeno que fez as notificações de SRAG aumentarem nesse ano, mas eu não faço ideia do que pode ser ¯_(ツ)_/¯</p>
+<p>O segundo destaque é o ano de 2016. Eu não lembrava, mas parece que <a href="https://g1.globo.com/bemestar/noticia/brasil-tem-mais-de-19-mil-mortes-por-h1n1-em-2016-diz-ministerio.ghtml">2016 foi um ano com muitos casos dessa doença</a>, com um número de mortes comparável à época pré-vacina.</p>
+<p>No gráfico abaixo eu comparo o número de casos de SRAG em 2020 com a média histórica entre os anos de 2011 a 2019. A diferença fica ainda mais gritante.</p>
+<pre class="r"><code>srag_medio &lt;- srag_filtrado %&gt;%
+  filter(ano != &quot;2020&quot;) %&gt;%
+    group_by(epiweek) %&gt;%
+  summarise(media = mean(casos))
+
+full_join(srag_medio, filter(srag_filtrado, ano == &quot;2020&quot;)) %&gt;%
+  select(epiweek, media, casos) %&gt;%
+  melt(id.var=&quot;epiweek&quot;) %&gt;%
+  mutate(variable = ifelse(variable == &quot;media&quot;, &quot;Média\n2011-2019&quot;, &quot;2020&quot;)) %&gt;% 
+  ggplot(., aes(x = epiweek, y = value, group = variable, colour = variable)) +
+    geom_line() +
+    scale_colour_viridis_d() +
+  scale_x_continuous(breaks = 1:14, labels = 1:14, minor_breaks = NULL) +
+  labs(x = &quot;Semana&quot;, y = &quot;Número de Casos&quot;, colour = &quot;Grupo&quot;, 
+       title=&quot;Número de Casos de Síndrome Respiratória Aguda Grave&quot;)</code></pre>
+<pre><code>## Joining, by = &quot;epiweek&quot;</code></pre>
+<p><img src="/posts/o-tamanho-da-subnotificacao-de-casos-de-covid19_files/figure-html/grafico02-1.png" width="672" /></p>
+<p>Creio que sequer seja necessário um teste de hipóteses para concluir que essas duas curvas são diferentes entre si.</p>
+</div>
