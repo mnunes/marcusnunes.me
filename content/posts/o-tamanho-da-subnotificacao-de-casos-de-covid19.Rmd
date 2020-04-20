@@ -10,7 +10,7 @@ date: 2020-04-16T07:16:00-03:00
 
 Não deve ser surpresa para ninguém as reportagens sobre [prováveis subnotificações a respeito dos casos de COVID-19](https://g1.globo.com/sp/sao-paulo/noticia/2020/04/15/apesar-de-provavel-subnotificacao-e-atraso-de-exames-especialistas-veem-indicios-de-achamento-da-curva-do-coronavirus-em-sp.ghtml). A fim de verificar se essas suspeitas são mesmo procedentes, eu decidi comparar os números de casos de Síndrome Respiratória Aguda Grave (SRAG) registrados no Brasil nos últimos 10 anos, a fim de tentar detectar se houve um aumento nos casos em 2020.
 
-Para me ajudar nisso, vou usar um script do usuário [belisards](https://github.com/belisards) do github. O script se chama [infogripe_scrap.R](https://github.com/belisards/srag_brasil/blob/master/infogripe_scrap.R) e ele baixa dados da SRAG coletados, organizados e disponibilizados pela Fiocruz no site [Infogripe](http://info.gripe.fiocruz.br/). Para obter esses dados, basta rodar o [script do belisards](https://github.com/belisards/srag_brasil/blob/master/infogripe_scrap.R) ou utilizar [esse arquivo](https://marcusnunes.me/images/dados/dados_br.csv) com os dados que já baixei até 16 de abril de 2020. Há um [arquivo extra, com os dados por UF](https://marcusnunes.me/images/dados/dados_uf.csv), mas ele não será utilizado nesse post.
+Para me ajudar nisso, vou usar um script do usuário [belisards](https://github.com/belisards) do github. O script se chama [infogripe_scrap.R](https://github.com/belisards/srag_brasil/blob/master/infogripe_scrap.R) e ele baixa dados da SRAG coletados, organizados e disponibilizados pela Fiocruz no site [Situação da Gripe](http://info.gripe.fiocruz.br/). Para obter esses dados, basta rodar o [script do belisards](https://github.com/belisards/srag_brasil/blob/master/infogripe_scrap.R) ou utilizar [esse arquivo](https://marcusnunes.me/images/dados/dados_br.csv) com os dados que já baixei até 16 de abril de 2020. Há um [arquivo extra, com os dados por UF](https://marcusnunes.me/images/dados/dados_uf.csv), mas ele não será utilizado nesse post.
 
 
 
@@ -76,5 +76,5 @@ full_join(srag_medio, filter(srag_filtrado, ano == "2020")) %>%
 
 Creio que sequer seja necessário um teste de hipóteses para concluir que essas duas curvas são diferentes entre si.
 
-
+Veja o post [Dashboard: COVID-19 ou SRAG?](https://marcusnunes.me/posts/dashboard-covid-19-ou-srag/) para ver como construir um dashboard com os dados dos estados brasileiros.
 

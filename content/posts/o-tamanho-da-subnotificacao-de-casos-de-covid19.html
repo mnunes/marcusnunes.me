@@ -12,18 +12,18 @@ date: 2020-04-16T07:16:00-03:00
 <div id="introdução" class="section level1">
 <h1>Introdução</h1>
 <p>Não deve ser surpresa para ninguém as reportagens sobre <a href="https://g1.globo.com/sp/sao-paulo/noticia/2020/04/15/apesar-de-provavel-subnotificacao-e-atraso-de-exames-especialistas-veem-indicios-de-achamento-da-curva-do-coronavirus-em-sp.ghtml">prováveis subnotificações a respeito dos casos de COVID-19</a>. A fim de verificar se essas suspeitas são mesmo procedentes, eu decidi comparar os números de casos de Síndrome Respiratória Aguda Grave (SRAG) registrados no Brasil nos últimos 10 anos, a fim de tentar detectar se houve um aumento nos casos em 2020.</p>
-<p>Para me ajudar nisso, vou usar um script do usuário <a href="https://github.com/belisards">belisards</a> do github. O script se chama <a href="https://github.com/belisards/srag_brasil/blob/master/infogripe_scrap.R">infogripe_scrap.R</a> e ele baixa dados da SRAG coletados, organizados e disponibilizados pela Fiocruz no site <a href="http://info.gripe.fiocruz.br/">Infogripe</a>. Para obter esses dados, basta rodar o <a href="https://github.com/belisards/srag_brasil/blob/master/infogripe_scrap.R">script do belisards</a> ou utilizar <a href="https://marcusnunes.me/images/dados/dados_br.csv">esse arquivo</a> com os dados que já baixei até 16 de abril de 2020. Há um <a href="https://marcusnunes.me/images/dados/dados_uf.csv">arquivo extra, com os dados por UF</a>, mas ele não será utilizado nesse post.</p>
+<p>Para me ajudar nisso, vou usar um script do usuário <a href="https://github.com/belisards">belisards</a> do github. O script se chama <a href="https://github.com/belisards/srag_brasil/blob/master/infogripe_scrap.R">infogripe_scrap.R</a> e ele baixa dados da SRAG coletados, organizados e disponibilizados pela Fiocruz no site <a href="http://info.gripe.fiocruz.br/">Situação da Gripe</a>. Para obter esses dados, basta rodar o <a href="https://github.com/belisards/srag_brasil/blob/master/infogripe_scrap.R">script do belisards</a> ou utilizar <a href="https://marcusnunes.me/images/dados/dados_br.csv">esse arquivo</a> com os dados que já baixei até 16 de abril de 2020. Há um <a href="https://marcusnunes.me/images/dados/dados_uf.csv">arquivo extra, com os dados por UF</a>, mas ele não será utilizado nesse post.</p>
 </div>
 <div id="análise-exploratória" class="section level1">
 <h1>Análise Exploratória</h1>
 <p>O primeiro passo é importar os dados para dentro do <code>R</code>.</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ──────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
-<pre><code>## ✓ ggplot2 3.3.0     ✓ purrr   0.3.3
+<pre><code>## ── Attaching packages ───────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.0     ✓ purrr   0.3.4
 ## ✓ tibble  3.0.0     ✓ dplyr   0.8.5
 ## ✓ tidyr   1.0.2     ✓ stringr 1.4.0
 ## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
-<pre><code>## ── Conflicts ─────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ──────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>theme_set(theme_bw())
@@ -81,4 +81,5 @@ full_join(srag_medio, filter(srag_filtrado, ano == &quot;2020&quot;)) %&gt;%
 <pre><code>## Joining, by = &quot;epiweek&quot;</code></pre>
 <p><img src="/posts/o-tamanho-da-subnotificacao-de-casos-de-covid19_files/figure-html/grafico02-1.png" width="672" /></p>
 <p>Creio que sequer seja necessário um teste de hipóteses para concluir que essas duas curvas são diferentes entre si.</p>
+<p>Veja o post <a href="https://marcusnunes.me/posts/dashboard-covid-19-ou-srag/">Dashboard: COVID-19 ou SRAG?</a> para ver como construir um dashboard com os dados dos estados brasileiros.</p>
 </div>
