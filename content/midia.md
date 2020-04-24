@@ -14,7 +14,7 @@ Abaixo listo sites, jornais ou TVs que fizeram matérias sobre mim ou projetos q
 
 - [Estudo mostra aumento expressivo de internações por síndromes respiratórias e indica subnotificação da Covid-19](https://g1.globo.com/bemestar/coronavirus/noticia/2020/04/23/estudo-mostra-aumento-expressivo-de-internacoes-por-sindromes-respiratorias-e-indica-subnotificacao-da-covid-19.ghtml) - Trecho *Professor mostra ano 'fora da curva'* - G1
 - [Como meu projeto de final de semana sobre urbanismo virou matéria na Superinteressante](https://youtu.be/6_yng3xTUzQ?t=2940) - Open Data Day Natal 2020 - [Slides](https://marcusnunes.me/images/ODD_2020.pdf)
-- [Aplicativo ganha destaque em competição mundial](https://webcache.googleusercontent.com/search?q=cache:-Y6MnQ2jFzUJ:https://portal.ifrn.edu.br/campus/natalzonanorte/noticias/aplicativo-ganha-destaque-em-competicao-mundial+&cd=1&hl=en&ct=clnk&gl=br) - Portal do IFRN
+<!-- - [Aplicativo ganha destaque em competição mundial](https://webcache.googleusercontent.com/search?q=cache:-Y6MnQ2jFzUJ:https://portal.ifrn.edu.br/campus/natalzonanorte/noticias/aplicativo-ganha-destaque-em-competicao-mundial+&cd=1&hl=en&ct=clnk&gl=br) - Portal do IFRN -->
 - [Edital Internacional da LISA seleciona projeto da UFRN](https://www.ufrn.br/imprensa/noticias/33581/edital-internacional-da-lisa-seleciona-projeto-da-ufrn) - Portal da UFRN
 - [Infográfico: Caos nas cidades](https://super.abril.com.br/sociedade/infografico-caos-nas-cidades/) - Superinteressante
 
