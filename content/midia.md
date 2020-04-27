@@ -8,7 +8,7 @@ menu:
 weight: 50
 ---
 
-Abaixo listo sites, jornais ou TVs que fizeram matérias sobre mim ou projetos que coordeno.
+Abaixo listo sites, jornais ou TVs que fizeram matérias comigo ou projetos que coordeno.
 
 **2020**
 
