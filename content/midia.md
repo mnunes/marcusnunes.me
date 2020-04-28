@@ -12,7 +12,7 @@ Abaixo listo sites, jornais ou TVs que fizeram matérias comigo ou projetos que 
 
 **2020**
 
-
+- [Potiguar Cria Aplicativo que Compara Jogadores](https://globoplay.globo.com/v/8513019/programa/?s=8276s) - Bom Dia RN
 - [Se ligue nos links (25 de abril) - Blog do Helio Gurovitz](https://g1.globo.com/mundo/blog/helio-gurovitz/post/2020/04/25/se-ligue-nos-links-25-de-abril.ghtml) - G1
 - [Estudo mostra aumento expressivo de internações por síndromes respiratórias e indica subnotificação da Covid-19](https://g1.globo.com/bemestar/coronavirus/noticia/2020/04/23/estudo-mostra-aumento-expressivo-de-internacoes-por-sindromes-respiratorias-e-indica-subnotificacao-da-covid-19.ghtml) - Trecho *Professor mostra ano 'fora da curva'* - G1
 - [Como meu projeto de final de semana sobre urbanismo virou matéria na Superinteressante](https://youtu.be/6_yng3xTUzQ?t=2940) - Open Data Day Natal 2020 - [Slides](https://marcusnunes.me/images/ODD_2020.pdf)
