@@ -10,11 +10,11 @@ weight: 30
 
 **Resumo**
 
-Sou especialista em modelos lineares generalizados e delineamento de experimentos. Tenho profundo conhecimento em Bioestatística. Costumo dizer que se existe um conjunto de dados, eu consigo encontrar um bom modelo para eles, seja utilizando estatística clássica ou [machine learning](https://marcusnunes.me/posts/primeiro-projeto-de-data-science/).
+Fiz meu doutorado em modelos lineares generalizados e delineamento de experimentos. Tenho profundo conhecimento em Bioestatística. Costumo dizer que se existe um conjunto de dados, eu consigo encontrar um bom modelo para eles, seja utilizando estatística clássica ou [machine learning](https://marcusnunes.me/posts/primeiro-projeto-de-data-science/).
 
-Sou um entusiasta do [R](https://cran.r-project.org). Tenho bastante experiência com planejamento de experimentos e modelos lineares generalizados, principalmente dados biológicos. 
+Também tenho interesse em [aplicar estatística no controle dos gastos públicos](https://marcusnunes.me/controle-de-gastos-publicos-como-verificar-quanto-os-deputados-federais-estao-gastando/). Tenho me dedicado cada vez mais a aproximar o público em geral da Estatística, com um [blog](https://marcusnunes.me/posts/) e [ferramentas de visualização de dados e conceitos estatísticos](http://shiny.estatistica.ccet.ufrn.br). Veja meu [lattes](http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4750166H6) e perfil no [Google Scholar](https://scholar.google.com/citations?user=mTYYN9gAAAAJ).
 
-Também tenho interesse em [aplicar estatística no controle dos gastos públicos](https://marcusnunes.me/controle-de-gastos-publicos-como-verificar-quanto-os-deputados-federais-estao-gastando/). Tenho me dedicado cada vez mais a aproximar o público em geral da Estatística, com um [blog](https://marcusnunes.me/posts/) e [ferramentas de visualização de dados e conceitos estatísticos](http://shiny.estatistica.ccet.ufrn.br). Veja meu [lattes](http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4750166H6).
+Sou um entusiasta do [R](https://cran.r-project.org). Sou o [melhor respondedor a respeito de R](https://pt.stackoverflow.com/tags/r/topusers) no Stack Overflow em português. 
 
 
 **Artigos**
