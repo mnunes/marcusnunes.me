@@ -1,0 +1,323 @@
+---
+title: "O Mercado para Ciência de Dados no Brasil - Parte I - Visualização"
+description: "Avaliação de como está o mercado para Ciência de Dados no Brasil, utilizando informações do Data Hackers"
+tags: ["análise", "ciência de dados", "data hackers", "r", "visualização", "tutorial"]
+draft: false
+date: 2020-05-26T18:51:00-03:00
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
+<p>Recentemente o site <a href="https://datahackers.com.br/">Data Hackers</a> realizou uma pesquisa com pessoas que trabalham com Ciência de Dados. As respostas coletadas pelos questionários foram compilados e disponibilizados no <a href="https://www.kaggle.com/datahackers/pesquisa-data-hackers-2019">Kaggle</a>. Nesta primeira parte da minha análise irei fazer uma série de análises descritivas, a fim de ter uma noção de como estão algumas características deste mercado.</p>
+</div>
+<div id="preparação-dos-dados" class="section level1">
+<h1>Preparação dos Dados</h1>
+<p>Como em qualquer análise de dados, o primeiro passo é importá-los para o R.</p>
+<pre class="r"><code># pacotes necessarios
+
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ──────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.0     ✓ purrr   0.3.4
+## ✓ tibble  3.0.1     ✓ dplyr   0.8.5
+## ✓ tidyr   1.1.0     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ─────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>theme_set(theme_bw())
+
+# leitura dos dados 
+
+survey &lt;- read_csv(&quot;data/datahackers-survey-2019-anonymous-responses.csv&quot;) %&gt;%
+    janitor::clean_names()</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   .default = col_double(),
+##   `(&#39;P0&#39;, &#39;id&#39;)` = col_character(),
+##   `(&#39;P2&#39;, &#39;gender&#39;)` = col_character(),
+##   `(&#39;P5&#39;, &#39;living_state&#39;)` = col_character(),
+##   `(&#39;P8&#39;, &#39;degreee_level&#39;)` = col_character(),
+##   `(&#39;P10&#39;, &#39;job_situation&#39;)` = col_character(),
+##   `(&#39;P12&#39;, &#39;workers_number&#39;)` = col_character(),
+##   `(&#39;P16&#39;, &#39;salary_range&#39;)` = col_character(),
+##   `(&#39;P17&#39;, &#39;time_experience_data_science&#39;)` = col_character(),
+##   `(&#39;P18&#39;, &#39;time_experience_before&#39;)` = col_character(),
+##   `(&#39;P22&#39;, &#39;most_used_proggraming_languages&#39;)` = col_character(),
+##   `(&#39;P32&#39;, &#39;prefered_data_hackers_initiative&#39;)` = col_character(),
+##   `(&#39;P35&#39;, &#39;data_science_plataforms_preference&#39;)` = col_character(),
+##   `(&#39;P35&#39;, &#39;other&#39;)` = col_character(),
+##   `(&#39;D1&#39;, &#39;living_macroregion&#39;)` = col_character(),
+##   `(&#39;D2&#39;, &#39;origin_macroregion&#39;)` = col_character(),
+##   `(&#39;D3&#39;, &#39;anonymized_degree_area&#39;)` = col_character(),
+##   `(&#39;D4&#39;, &#39;anonymized_market_sector&#39;)` = col_character(),
+##   `(&#39;D5&#39;, &#39;anonymized_manager_level&#39;)` = col_character(),
+##   `(&#39;D6&#39;, &#39;anonymized_role&#39;)` = col_character()
+## )</code></pre>
+<pre><code>## See spec(...) for full column specifications.</code></pre>
+<p>A seguir, processo a coluna <code>p5_living_state</code>, mantendo apenas a sigla do estado em que o respondente mora. Além disso, há dados faltantes para o estado de quem mora no exterior. Portanto, então vou colocar o nível “Exterior” para essas pessoas.</p>
+<pre class="r"><code># manter apenas as siglas para os estados e
+# completar os NA de p5_living_state com Exterior
+
+survey &lt;- survey %&gt;%
+    mutate(p5_living_state = gsub(&quot;[\\(\\)]&quot;, &quot;&quot;, regmatches(p5_living_state, gregexpr(&quot;\\(.*?\\)&quot;, p5_living_state)))) %&gt;%
+    mutate(p5_living_state = ifelse(p5_living_state == &quot;character0&quot;, &quot;Exterior&quot;, p5_living_state))</code></pre>
+<p>A seguir, crio um ordenamento que faça sentido para a variável <code>p16_salary_range</code>:</p>
+<pre class="r"><code># criar ordenamento para p16_salary_range
+
+survey &lt;- survey %&gt;%
+    mutate(p16_salary_range = fct_explicit_na(p16_salary_range, na_level = &quot;Não Informado&quot;)) %&gt;%
+    mutate(p16_salary_range = 
+             factor(p16_salary_range,
+                    levels = c(&quot;Não Informado&quot;, 
+                               &quot;Menos de R$ 1.000/mês&quot;, 
+                               &quot;de R$ 1.001/mês a R$ 2.000/mês&quot;, 
+                               &quot;de R$ 2.001/mês a R$ 3000/mês&quot;, 
+                               &quot;de R$ 3.001/mês a R$ 4.000/mês&quot;, 
+                               &quot;de R$ 4.001/mês a R$ 6.000/mês&quot;, 
+                               &quot;de R$ 6.001/mês a R$ 8.000/mês&quot;, 
+                               &quot;de R$ 8.001/mês a R$ 12.000/mês&quot;, 
+                               &quot;de R$ 12.001/mês a R$ 16.000/mês&quot;, 
+                               &quot;de R$ 16.001/mês a R$ 20.000/mês&quot;, 
+                               &quot;de R$ 20.001/mês a R$ 25.000/mês&quot;, 
+                               &quot;Acima de R$ 25.001/mês&quot;)))
+
+names(survey)</code></pre>
+<pre><code>##   [1] &quot;p0_id&quot;                                   
+##   [2] &quot;p1_age&quot;                                  
+##   [3] &quot;p2_gender&quot;                               
+##   [4] &quot;p3_living_in_brasil&quot;                     
+##   [5] &quot;p5_living_state&quot;                         
+##   [6] &quot;p6_born_or_graduated&quot;                    
+##   [7] &quot;p8_degreee_level&quot;                        
+##   [8] &quot;p10_job_situation&quot;                       
+##   [9] &quot;p12_workers_number&quot;                      
+##  [10] &quot;p13_manager&quot;                             
+##  [11] &quot;p16_salary_range&quot;                        
+##  [12] &quot;p17_time_experience_data_science&quot;        
+##  [13] &quot;p18_time_experience_before&quot;              
+##  [14] &quot;p19_is_data_science_professional&quot;        
+##  [15] &quot;p20_linear_regression&quot;                   
+##  [16] &quot;p20_logistic_regression&quot;                 
+##  [17] &quot;p20_glms&quot;                                
+##  [18] &quot;p20_decision_tree&quot;                       
+##  [19] &quot;p20_random_forest&quot;                       
+##  [20] &quot;p20_neural_networks&quot;                     
+##  [21] &quot;p20_bayesian_inference&quot;                  
+##  [22] &quot;p20_ensemble&quot;                            
+##  [23] &quot;p20_svms&quot;                                
+##  [24] &quot;p20_cnns&quot;                                
+##  [25] &quot;p20_rnns&quot;                                
+##  [26] &quot;p20_hmms&quot;                                
+##  [27] &quot;p20_gans&quot;                                
+##  [28] &quot;p20_markov_chains&quot;                       
+##  [29] &quot;p20_nlp&quot;                                 
+##  [30] &quot;p20_gradient_boosted_machines&quot;           
+##  [31] &quot;p20_cluster_analysis&quot;                    
+##  [32] &quot;p20_survival_analysis&quot;                   
+##  [33] &quot;p20_longitudinal_data_analysis&quot;          
+##  [34] &quot;p20_joint_analysis&quot;                      
+##  [35] &quot;p20_no_listed_methods&quot;                   
+##  [36] &quot;p21_sql&quot;                                 
+##  [37] &quot;p21_r&quot;                                   
+##  [38] &quot;p21_python&quot;                              
+##  [39] &quot;p21_c_c_c_number&quot;                        
+##  [40] &quot;p21_dotnet&quot;                              
+##  [41] &quot;p21_java&quot;                                
+##  [42] &quot;p21_julia&quot;                               
+##  [43] &quot;p21_sas_stata&quot;                           
+##  [44] &quot;p21_visual_basic_vba&quot;                    
+##  [45] &quot;p21_scala&quot;                               
+##  [46] &quot;p21_matlab&quot;                              
+##  [47] &quot;p21_php&quot;                                 
+##  [48] &quot;p21_no_listed_languages&quot;                 
+##  [49] &quot;p22_most_used_proggraming_languages&quot;     
+##  [50] &quot;p23_sql&quot;                                 
+##  [51] &quot;p23_nosql&quot;                               
+##  [52] &quot;p23_images&quot;                              
+##  [53] &quot;p23_nlp&quot;                                 
+##  [54] &quot;p23_videos&quot;                              
+##  [55] &quot;p23_sheets&quot;                              
+##  [56] &quot;p23_other&quot;                               
+##  [57] &quot;p24_sql&quot;                                 
+##  [58] &quot;p24_nosql&quot;                               
+##  [59] &quot;p24_imagens&quot;                             
+##  [60] &quot;p24_nlp&quot;                                 
+##  [61] &quot;p24_videos&quot;                              
+##  [62] &quot;p24_planilhas&quot;                           
+##  [63] &quot;p24_other&quot;                               
+##  [64] &quot;p25_aws&quot;                                 
+##  [65] &quot;p25_gcp&quot;                                 
+##  [66] &quot;p25_azure&quot;                               
+##  [67] &quot;p25_ibm&quot;                                 
+##  [68] &quot;p25_on_premise_servers&quot;                  
+##  [69] &quot;p25_cloud_propria&quot;                       
+##  [70] &quot;p25_other&quot;                               
+##  [71] &quot;p26_mysql&quot;                               
+##  [72] &quot;p26_oracle&quot;                              
+##  [73] &quot;p26_sql_server&quot;                          
+##  [74] &quot;p26_aurora&quot;                              
+##  [75] &quot;p26_dynamodb&quot;                            
+##  [76] &quot;p26_coachdb&quot;                             
+##  [77] &quot;p26_cassandra&quot;                           
+##  [78] &quot;p26_mongodb&quot;                             
+##  [79] &quot;p26_mariadb&quot;                             
+##  [80] &quot;p26_datomic&quot;                             
+##  [81] &quot;p26_s3&quot;                                  
+##  [82] &quot;p26_postgresql&quot;                          
+##  [83] &quot;p26_elaticsearch&quot;                        
+##  [84] &quot;p26_db2&quot;                                 
+##  [85] &quot;p26_ms_access&quot;                           
+##  [86] &quot;p26_sqlite&quot;                              
+##  [87] &quot;p26_sybase&quot;                              
+##  [88] &quot;p26_firebase&quot;                            
+##  [89] &quot;p26_vertica&quot;                             
+##  [90] &quot;p26_redis&quot;                               
+##  [91] &quot;p26_neo4j&quot;                               
+##  [92] &quot;p26_google_bigtable&quot;                     
+##  [93] &quot;p26_hbase&quot;                               
+##  [94] &quot;p26_other&quot;                               
+##  [95] &quot;p27_microsoft_powerbi&quot;                   
+##  [96] &quot;p27_qlik_view_qlik_sense&quot;                
+##  [97] &quot;p27_tableau&quot;                             
+##  [98] &quot;p27_metabase&quot;                            
+##  [99] &quot;p27_superset&quot;                            
+## [100] &quot;p27_redash&quot;                              
+## [101] &quot;p27_microstrategy&quot;                       
+## [102] &quot;p27_ibm_analytics_cognos&quot;                
+## [103] &quot;p27_sap_business_objects&quot;                
+## [104] &quot;p27_oracle_business_intelligence&quot;        
+## [105] &quot;p27_birst&quot;                               
+## [106] &quot;p27_looker&quot;                              
+## [107] &quot;p27_google_data_studio&quot;                  
+## [108] &quot;p27_only_excel_gsheets&quot;                  
+## [109] &quot;p27_no_bi_tool_at_work&quot;                  
+## [110] &quot;p27_other&quot;                               
+## [111] &quot;p28_sql_stored_procedures&quot;               
+## [112] &quot;p28_apache_airflow&quot;                      
+## [113] &quot;p28_luigi&quot;                               
+## [114] &quot;p28_aws_glue&quot;                            
+## [115] &quot;p28_talend&quot;                              
+## [116] &quot;p28_pentaho&quot;                             
+## [117] &quot;p28_alteryx&quot;                             
+## [118] &quot;p28_oracle_data_integrator&quot;              
+## [119] &quot;p28_ibm_data_stage&quot;                      
+## [120] &quot;p28_sap_bw_etl&quot;                          
+## [121] &quot;p28_siss_sql_server_integration_services&quot;
+## [122] &quot;p28_other&quot;                               
+## [123] &quot;p29_have_data_warehouse&quot;                 
+## [124] &quot;p30_google_bigquery&quot;                     
+## [125] &quot;p30_aws_redshift&quot;                        
+## [126] &quot;p30_snowflake&quot;                           
+## [127] &quot;p30_oracle&quot;                              
+## [128] &quot;p30_postgres_mysql&quot;                      
+## [129] &quot;p30_ibm&quot;                                 
+## [130] &quot;p30_teradata&quot;                            
+## [131] &quot;p30_microsoft_azure&quot;                     
+## [132] &quot;p30_do_not_know&quot;                         
+## [133] &quot;p30_other&quot;                               
+## [134] &quot;p31_data_hackers_blog&quot;                   
+## [135] &quot;p31_data_hackers_podcast&quot;                
+## [136] &quot;p31_weekly_newsletter&quot;                   
+## [137] &quot;p31_slack_channel&quot;                       
+## [138] &quot;p31_data_hackers_bootcamp&quot;               
+## [139] &quot;p31_do_not_know_data_hackers&quot;            
+## [140] &quot;p32_prefered_data_hackers_initiative&quot;    
+## [141] &quot;p33_telegram_groups&quot;                     
+## [142] &quot;p33_whatsapp_groups&quot;                     
+## [143] &quot;p33_youtube_channels&quot;                    
+## [144] &quot;p33_other_brasilian_blogs&quot;               
+## [145] &quot;p33_other_slack_channels&quot;                
+## [146] &quot;p33_twitter&quot;                             
+## [147] &quot;p33_abroad_blogs&quot;                        
+## [148] &quot;p33_abroad_podcasts&quot;                     
+## [149] &quot;p33_meetups_and_events&quot;                  
+## [150] &quot;p33_only_data_hackers&quot;                   
+## [151] &quot;p33_other&quot;                               
+## [152] &quot;p34_udacity&quot;                             
+## [153] &quot;p34_coursera&quot;                            
+## [154] &quot;p34_udemy&quot;                               
+## [155] &quot;p34_height&quot;                              
+## [156] &quot;p34_edx&quot;                                 
+## [157] &quot;p34_data_camp&quot;                           
+## [158] &quot;p34_data_quest&quot;                          
+## [159] &quot;p34_kaggle_learn&quot;                        
+## [160] &quot;p34_online_courses&quot;                      
+## [161] &quot;p34_other&quot;                               
+## [162] &quot;p35_data_science_plataforms_preference&quot;  
+## [163] &quot;p35_other&quot;                               
+## [164] &quot;p36_draw_participation&quot;                  
+## [165] &quot;d1_living_macroregion&quot;                   
+## [166] &quot;d2_origin_macroregion&quot;                   
+## [167] &quot;d3_anonymized_degree_area&quot;               
+## [168] &quot;d4_anonymized_market_sector&quot;             
+## [169] &quot;d5_anonymized_manager_level&quot;             
+## [170] &quot;d6_anonymized_role&quot;</code></pre>
+<p>De modo análogo, segue uma ordenação para a variável <code>p8_degree_level</code>:</p>
+<pre class="r"><code># criar ordenamento para p8_degree_level
+
+survey &lt;- survey %&gt;%
+    mutate(p8_degreee_level = factor(p8_degreee_level, 
+                                    levels = c(&quot;Prefiro não informar&quot;, 
+                                               &quot;Não tenho graduação formal&quot;,
+                                               &quot;Estudante de Graduação&quot;,
+                                               &quot;Graduação/Bacharelado&quot;,
+                                               &quot;Pós-graduação&quot;,
+                                               &quot;Mestrado&quot;,
+                                               &quot;Doutorado ou Phd&quot;)))</code></pre>
+<p>A partir de agora inicio a análise dos dados coletados. Como a amostragem não foi feita de maneira probabilística, não há a garantia de que os resultados reportados a seguir sejam extrapoláveis para um grupo de pessoas que não tenha respondido o questionário.</p>
+</div>
+<div id="análise-exploratória" class="section level1">
+<h1>Análise Exploratória</h1>
+<p>Como podemos ver no gráfico abaixo, esse é um campo de atuação majoritariamente masculino:</p>
+<pre class="r"><code>survey %&gt;%
+    mutate(p2_gender = fct_explicit_na(p2_gender, &quot;Não Informado&quot;)) %&gt;%
+    group_by(p2_gender) %&gt;%
+    count() %&gt;%
+    ggplot(aes(x = p2_gender, y = n)) +
+    geom_col() +
+    labs(x = &quot;Gênero&quot;, y = &quot;Quantidade&quot;, title = &quot;Gênero dos Cientistas de Dados Brasileiros&quot;)</code></pre>
+<p><img src="/posts/mercado-ciencia-de-dados-brasil-parte-i_files/figure-html/p2_gender_geom_colt-1.png" width="672" /></p>
+<p>Além disso, nessa amostra não houve respondentes que trabalhassem no Brasil e fora das regiões Sul ou Sudeste:</p>
+<pre class="r"><code>survey %&gt;%
+    group_by(p5_living_state) %&gt;%
+    count() %&gt;%
+    ggplot(aes(x = reorder(p5_living_state, -n), y = n)) +
+    geom_col() +
+    labs(x = &quot;Estado de Residência&quot;, y = &quot;Quantidade&quot;, title = &quot;Número de Cientistas de Dados por Estado&quot;)</code></pre>
+<p><img src="/posts/mercado-ciencia-de-dados-brasil-parte-i_files/figure-html/p5_living_state_geom_col-1.png" width="672" /></p>
+<p>A faixa salarial mais comum é entre R$ 4.001 e R$ 6.000 por mês:</p>
+<pre class="r"><code>survey %&gt;%
+    filter(p5_living_state != &quot;Exterior&quot;) %&gt;%
+    group_by(p16_salary_range) %&gt;%
+    count() %&gt;%
+    na.omit() %&gt;%
+    ggplot(aes(x = p16_salary_range, y = n)) +
+    geom_col() +
+    labs(x = &quot;Faixa Salarial&quot;, y = &quot;Quantidade&quot;, title = &quot;Faixa Salarial dos Cientistas de Dados Brasileiros&quot;) +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1))</code></pre>
+<p><img src="/posts/mercado-ciencia-de-dados-brasil-parte-i_files/figure-html/p16_salary_range_geom_col-1.png" width="672" /></p>
+<p>São Paulo possui mais gente recebendo melhores salários:</p>
+<pre class="r"><code>survey %&gt;%
+    group_by(p5_living_state, p16_salary_range) %&gt;%
+    count() %&gt;%
+    ggplot(aes(x = p16_salary_range, y = p5_living_state, fill = n)) +
+    geom_tile() +
+    labs(x = &quot;Faixa Salarial&quot;, y = &quot;Estado de Residência&quot;, fill = &quot;Qtde&quot;) +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+    scale_fill_viridis_c()</code></pre>
+<p><img src="/posts/mercado-ciencia-de-dados-brasil-parte-i_files/figure-html/p16_salary_range_p5_living_state_geom_tile-1.png" width="672" /></p>
+<p>Por fim, as combinações de faixas salariais e formação mais comuns são de R$3.000 a R$12.000 por mês, para pessoas com graduação ou pós-graduação.</p>
+<pre class="r"><code>survey %&gt;%
+    group_by(p8_degreee_level, p16_salary_range) %&gt;%
+    count() %&gt;%
+    ggplot(aes(x = p16_salary_range, y = p8_degreee_level, fill = n)) +
+    geom_tile() +
+    labs(x = &quot;Faixa Salarial&quot;, y = &quot;Formação&quot;, fill = &quot;Qtde&quot;) +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+    scale_fill_viridis_c()</code></pre>
+<p><img src="/posts/mercado-ciencia-de-dados-brasil-parte-i_files/figure-html/p16_salary_range_p8_degreee_level_geom_tile-1.png" width="672" /></p>
+<p>No próximo artigo veremos como ajustar um modelo preditivo capaz de prever o salário de um cientista de dados de acordo com algumas variáveis pré-estabelecidas.</p>
+</div>

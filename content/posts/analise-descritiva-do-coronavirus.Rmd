@@ -30,7 +30,8 @@ library(tidyverse)
 theme_set(theme_bw())
 library(lubridate)
 library(plotly)
-library(brazilmaps)
+library(brazilmaps) # devtools::install_github("rpradosiqueira/brazilmaps")
+
 
 ############################
 ### preparacao dos dados ###
