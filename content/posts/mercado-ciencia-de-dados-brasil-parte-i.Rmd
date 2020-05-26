@@ -3,7 +3,7 @@ title: "O Mercado para Ciência de Dados no Brasil - Parte I - Visualização"
 description: "Avaliação de como está o mercado para Ciência de Dados no Brasil, utilizando informações do Data Hackers"
 tags: ["análise", "ciência de dados", "data hackers", "r", "visualização", "tutorial"]
 draft: false
-date: 2020-05-26T18:51:00-03:00
+date: 2020-05-26T19:20:00-03:00
 ---
 
 # Introdução
@@ -59,8 +59,6 @@ survey <- survey %>%
 	                           "de R$ 16.001/mês a R$ 20.000/mês", 
 	                           "de R$ 20.001/mês a R$ 25.000/mês", 
 	                           "Acima de R$ 25.001/mês")))
-
-names(survey)
 ```
 
 De modo análogo, segue uma ordenação para a variável `p8_degree_level`:
