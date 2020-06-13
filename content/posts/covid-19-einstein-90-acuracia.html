@@ -214,6 +214,7 @@ missing_values &lt;- dataset_clean %&gt;%
   print(n = Inf)</code></pre>
 <pre><code>## Warning: attributes are not identical across measure variables;
 ## they will be dropped</code></pre>
+<pre><code>## `summarise()` regrouping output by &#39;key&#39; (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 105 x 2
 ##     key                                              num.missing
 ##     &lt;fct&gt;                                                  &lt;int&gt;
@@ -368,16 +369,119 @@ vis_miss(dataset_model) + # it needs naniar package
 
 ggpairs(dataset_model[, c(1:10)])</code></pre>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 4290 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4290 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4290 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4290 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4290 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4290 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4290 rows containing non-finite values (stat_g_gally_count).</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 4290 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4290 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4290 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4290 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4290 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4290 rows containing non-finite values (stat_g_gally_count).</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 4290 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4290 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4290 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4290 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4290 rows containing non-finite values (stat_g_gally_count).</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).</code></pre>
+<pre><code>## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="/posts/covid-19-einstein-90-acuracia_files/figure-html/edaSimples-1.png" width="672" /></p>
 <pre class="r"><code>ggpairs(dataset_model[, c(11:ncol(dataset_model))])</code></pre>
+<pre><code>## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).
+
+## Warning: Removed 4292 rows containing non-finite values (stat_g_gally_count).</code></pre>
 <p><img src="/posts/covid-19-einstein-90-acuracia_files/figure-html/edaSimples-2.png" width="672" /></p>
 <pre class="r"><code># it seems there is no relation between any pair of variables</code></pre>
 </div>
