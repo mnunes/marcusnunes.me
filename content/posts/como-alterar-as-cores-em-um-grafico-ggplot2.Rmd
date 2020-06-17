@@ -1,5 +1,5 @@
 ---
-title: "Como Alterar as Cores de um Gráfico Feito no `ggplot2`"
+title: "Como Alterar as Cores de um Gráfico Feito no ggplot2"
 description: "Aprenda a alterar facilmente as cores de qualquer gráfico feito no ggplot2"
 tags: ["ciência de dados", "ggplot2", "r", "visualização", "tutorial"]
 draft: false
