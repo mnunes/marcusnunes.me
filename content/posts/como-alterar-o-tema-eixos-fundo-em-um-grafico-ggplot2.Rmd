@@ -1,0 +1,88 @@
+---
+title: "Como Alterar o Tema (Eixos, Fundo, Linhas de Grade) de um Gráfico Feito no ggplot2"
+description: "Aprenda a alterar facilmente as cores de qualquer gráfico feito no ggplot2"
+tags: ["ciência de dados", "ggplot2", "r", "visualização", "tutorial"]
+draft: false
+date: 2020-06-25T14:32:00-03:00
+---
+
+# Introdução
+
+Eu já havia escrito um post aqui indicando [Como Alterar as Cores de um Gráfico Feito no ggplot2](https://marcusnunes.me/posts/como-alterar-as-cores-em-um-grafico-ggplot2/). Resolvi fazer esse post para mostar como dar um passo além na criação de gráficos, personalizando ainda mais a nossa produção.
+
+
+
+# Gráfico Base
+
+O conjunto de dados com o qual iremos trabalhar se refere a medições realizadas em pinguins. Para instalar o pacote com esses dados, basta rodar o comando `devtools::install_github("allisonhorst/palmerpenguins")` (assumindo que o pacote `devtools` já está instalado em seu computador). Com o pacote instalado, basta carregá-lo na memória através do comando
+
+```{r penguins01, warning=FALSE}
+library(palmerpenguins)
+```
+
+O gráfico base busca procurar a relação entre o comprimento das nadadeiras dos pinguins com a sua massa corporal. Abaixo vemos o gráfico base.
+
+```{r penguins02, warning=FALSE}
+library(tidyverse)
+
+g <- ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g, colour = species)) +
+  geom_point()
+g
+```
+
+A figura acima mostra o gráfico criado com o tema padrão do [ggplot2](https://marcusnunes.me/tags/ggplot2). Note o fundo cinza, com linhas de grade brancas. A seguir, veremos como os outros temas alteram essas e muitas outras características da apresentação dos gráficos.
+
+# Temas Padrão do ggplot2
+
+```{r penguins03, warning=FALSE}
+g + theme_bw()
+g + theme_classic()
+g + theme_dark()
+g + theme_gray()
+g + theme_grey()
+g + theme_light()
+g + theme_linedraw()
+g + theme_minimal()
+g + theme_test()
+g + theme_void()
+```
+
+
+
+# Temas do Pacote ggthemes
+
+```{r penguins04, warning=FALSE}
+library(ggthemes)
+g + theme_base()
+g + theme_calc()
+g + theme_clean()
+g + theme_economist()
+g + theme_economist_white()
+g + theme_excel()
+g + theme_excel_new()
+g + theme_few()
+g + theme_fivethirtyeight()
+g + theme_foundation()
+g + theme_gdocs()
+g + theme_hc()
+g + theme_igray()
+g + theme_map()
+g + theme_pander()
+g + theme_par()
+g + theme_solarized()
+g + theme_solarized_2()
+g + theme_solid()
+g + theme_stata()
+g + theme_tufte()
+```
+
+
+
+# Conclusão
+
+Agora é só escolher o seu tema preferido e começar a alterar os seus gráficos. Note que nem todos os temas funcionaram bem com a paleta de cores padrão do ggplot. Por isso, não custa lemnrar que esse blog tem um post ensinando [Como Alterar as Cores de um Gráfico Feito no ggplot2](https://marcusnunes.me/posts/como-alterar-as-cores-em-um-grafico-ggplot2/). Assim, basta escolher a melhor combinação entre tema e paleta de cores para criar a melhor visualização de dados possível para os seus dados.
+
+
+
+
+

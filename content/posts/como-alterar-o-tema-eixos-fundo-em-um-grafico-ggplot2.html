@@ -1,0 +1,108 @@
+---
+title: "Como Alterar o Tema (Eixos, Fundo, Linhas de Grade) de um Gráfico Feito no ggplot2"
+description: "Aprenda a alterar facilmente as cores de qualquer gráfico feito no ggplot2"
+tags: ["ciência de dados", "ggplot2", "r", "visualização", "tutorial"]
+draft: false
+date: 2020-06-25T14:32:00-03:00
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
+<p>Eu já havia escrito um post aqui indicando <a href="https://marcusnunes.me/posts/como-alterar-as-cores-em-um-grafico-ggplot2/">Como Alterar as Cores de um Gráfico Feito no ggplot2</a>. Resolvi fazer esse post para mostar como dar um passo além na criação de gráficos, personalizando ainda mais a nossa produção.</p>
+</div>
+<div id="gráfico-base" class="section level1">
+<h1>Gráfico Base</h1>
+<p>O conjunto de dados com o qual iremos trabalhar se refere a medições realizadas em pinguins. Para instalar o pacote com esses dados, basta rodar o comando <code>devtools::install_github("allisonhorst/palmerpenguins")</code> (assumindo que o pacote <code>devtools</code> já está instalado em seu computador). Com o pacote instalado, basta carregá-lo na memória através do comando</p>
+<pre class="r"><code>library(palmerpenguins)</code></pre>
+<p>O gráfico base busca procurar a relação entre o comprimento das nadadeiras dos pinguins com a sua massa corporal. Abaixo vemos o gráfico base.</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ───────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
+## ✓ tibble  3.0.1     ✓ dplyr   1.0.0
+## ✓ tidyr   1.1.0     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ──────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>g &lt;- ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g, colour = species)) +
+  geom_point()
+g</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins02-1.png" width="672" /></p>
+<p>A figura acima mostra o gráfico criado com o tema padrão do <a href="https://marcusnunes.me/tags/ggplot2">ggplot2</a>. Note o fundo cinza, com linhas de grade brancas. A seguir, veremos como os outros temas alteram essas e muitas outras características da apresentação dos gráficos.</p>
+</div>
+<div id="temas-padrão-do-ggplot2" class="section level1">
+<h1>Temas Padrão do ggplot2</h1>
+<pre class="r"><code>g + theme_bw()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins03-1.png" width="672" /></p>
+<pre class="r"><code>g + theme_classic()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins03-2.png" width="672" /></p>
+<pre class="r"><code>g + theme_dark()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins03-3.png" width="672" /></p>
+<pre class="r"><code>g + theme_gray()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins03-4.png" width="672" /></p>
+<pre class="r"><code>g + theme_grey()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins03-5.png" width="672" /></p>
+<pre class="r"><code>g + theme_light()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins03-6.png" width="672" /></p>
+<pre class="r"><code>g + theme_linedraw()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins03-7.png" width="672" /></p>
+<pre class="r"><code>g + theme_minimal()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins03-8.png" width="672" /></p>
+<pre class="r"><code>g + theme_test()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins03-9.png" width="672" /></p>
+<pre class="r"><code>g + theme_void()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins03-10.png" width="672" /></p>
+</div>
+<div id="temas-do-pacote-ggthemes" class="section level1">
+<h1>Temas do Pacote ggthemes</h1>
+<pre class="r"><code>library(ggthemes)
+g + theme_base()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-1.png" width="672" /></p>
+<pre class="r"><code>g + theme_calc()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-2.png" width="672" /></p>
+<pre class="r"><code>g + theme_clean()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-3.png" width="672" /></p>
+<pre class="r"><code>g + theme_economist()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-4.png" width="672" /></p>
+<pre class="r"><code>g + theme_economist_white()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-5.png" width="672" /></p>
+<pre class="r"><code>g + theme_excel()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-6.png" width="672" /></p>
+<pre class="r"><code>g + theme_excel_new()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-7.png" width="672" /></p>
+<pre class="r"><code>g + theme_few()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-8.png" width="672" /></p>
+<pre class="r"><code>g + theme_fivethirtyeight()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-9.png" width="672" /></p>
+<pre class="r"><code>g + theme_foundation()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-10.png" width="672" /></p>
+<pre class="r"><code>g + theme_gdocs()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-11.png" width="672" /></p>
+<pre class="r"><code>g + theme_hc()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-12.png" width="672" /></p>
+<pre class="r"><code>g + theme_igray()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-13.png" width="672" /></p>
+<pre class="r"><code>g + theme_map()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-14.png" width="672" /></p>
+<pre class="r"><code>g + theme_pander()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-15.png" width="672" /></p>
+<pre class="r"><code>g + theme_par()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-16.png" width="672" /></p>
+<pre class="r"><code>g + theme_solarized()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-17.png" width="672" /></p>
+<pre class="r"><code>g + theme_solarized_2()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-18.png" width="672" /></p>
+<pre class="r"><code>g + theme_solid()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-19.png" width="672" /></p>
+<pre class="r"><code>g + theme_stata()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-20.png" width="672" /></p>
+<pre class="r"><code>g + theme_tufte()</code></pre>
+<p><img src="/posts/como-alterar-o-tema-eixos-fundo-em-um-grafico-ggplot2_files/figure-html/penguins04-21.png" width="672" /></p>
+</div>
+<div id="conclusão" class="section level1">
+<h1>Conclusão</h1>
+<p>Agora é só escolher o seu tema preferido e começar a alterar os seus gráficos. Note que nem todos os temas funcionaram bem com a paleta de cores padrão do ggplot. Por isso, não custa lemnrar que esse blog tem um post ensinando <a href="https://marcusnunes.me/posts/como-alterar-as-cores-em-um-grafico-ggplot2/">Como Alterar as Cores de um Gráfico Feito no ggplot2</a>. Assim, basta escolher a melhor combinação entre tema e paleta de cores para criar a melhor visualização de dados possível para os seus dados.</p>
+</div>
