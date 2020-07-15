@@ -43,5 +43,6 @@ Abaixo listo sites, jornais ou TVs que fizeram matérias comigo ou projetos que 
 
 **2016** 
 
+- [Desenvolvimentos metodológicos e aplicações da Estatística são discutidos em Encontro promovido pela UEPB](http://www.uepb.edu.br/desenvolvimentos-metodologicos-e-aplicacoes-da-estatistica-sao-discutidos-em-encontro-paraibano-promovido-pela-uepb/) - Universidade Estadual da Paraíba
 - [UFRN realiza festival de divulgação científica em bares de Natal](https://neuro.ufrn.br/news/235) - Instituto do Cérebro
 - [Bares de Natal recebem Festival Internacional de Ciência](https://g1.globo.com/rn/rio-grande-do-norte/noticia/bares-de-natal-recebem-festival-internacional-de-ciencia.ghtml) - G1 RN
