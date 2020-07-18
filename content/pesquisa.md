@@ -21,6 +21,8 @@ Sou um entusiasta do [R](https://cran.r-project.org). Sou o [melhor respondedor 
 
 Os artigos que publiquei estão disponíveis para download logo abaixo.
 
+* [Uma comparação entre ANOVA e modelos lineares mistos para análise de dados de tempo de resposta](/images/papers/RevistaDaAbralin-2020.pdf). Revista da Abralin, v. 19 n. 1, 2020.
+
 * [Declining fisheries and increasing prices: The economic cost of tropical rivers impoundment](/images/papers/FisheriesResearch-2020.pdf). Fisheries Research, v. 221, January 2020.
 
 * [O papel do conhecimento de eventos no processamento de sentenças isoladas](/images/papers/Letronica-2017.pdf). LETRÔNICA, v. 10, p. 538, 2017.
