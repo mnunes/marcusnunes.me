@@ -98,4 +98,6 @@ ggplot(dados) +
   labs(caption = "marcusnunes.me")
 ```
 
+O código completo também está [no meu github](https://github.com/mnunes/state-viz/).
+
 
