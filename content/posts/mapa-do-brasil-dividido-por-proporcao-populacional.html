@@ -1,0 +1,99 @@
+---
+title: "Visualização do Mapa do Brasil Dividido por Estratos Populacionais"
+description: "Cada grupo de cores corresponde a 33% da população brasileira"
+tags: ["ggplot2", "mapas", "R", "visualização"]
+draft: false
+date: 2020-08-03T07:20:00-03:00
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>Não é mistério para ninguém que a distribuição da população no Brasil é desigual. Há muito mais pessoas vivendo próximas à costa do que no interior do país.</p>
+<p>Pensei que uma forma de ilustrar esta desigualdade seria através de um mapa no qual cada cor seria equilavente a um percentual da população do país. Fiz alguns testes e a visualização que mais me agradou foi aquela em que dividi a população brasileira em terços. Isto é, juntei estados suficientes para que 33% da população estivesse representada na união de alguns estados. O resultado foi este:</p>
+<div class="figure">
+<img src="/images/mapa-brasil-estados.jpeg" alt="" />
+<p class="caption">Visualização do Mapa do Brasil Dividido por Estratos Populacionais</p>
+</div>
+<p>O mapa acima pode ser reproduzido através do código a seguir.</p>
+<pre class="r"><code># pacotes necessarios
+
+library(tidyverse)
+library(rvest)
+library(janitor)
+library(stringi)
+library(brazilmaps)
+
+# extrair dados da populacao dos estados da wikipedia
+
+url &lt;- &quot;https://pt.wikipedia.org/wiki/Lista_de_unidades_federativas_do_Brasil_por_popula%C3%A7%C3%A3o&quot;
+
+pagina &lt;- read_html(url)
+
+tabelas &lt;- html_table(pagina, fill = TRUE)
+
+dados &lt;- tabelas[[1]]
+
+# limpeza dos dados
+
+dados &lt;- clean_names(dados)
+
+dados &lt;- dados %&gt;%
+  select(unidade_federativa, populacao) %&gt;%
+  mutate(populacao = stri_replace_all_charclass(populacao, &quot;\\p{WHITE_SPACE}&quot;, &quot;&quot;)) %&gt;%
+  mutate(populacao = as.numeric(populacao))
+
+# encontrar as proporcoes 
+
+dados &lt;- dados %&gt;%
+  mutate(proporcao = populacao/sum(populacao)*100) %&gt;%
+  print()
+
+###########
+### 33% ###
+###########
+
+v1 &lt;- c(1, 2, 14)
+sum(dados$proporcao[v1])
+
+v2 &lt;- c(3, 4, 5, 6, 10, 18, 19, 22)
+sum(dados$proporcao[v2])
+
+v3 &lt;- (1:27)[!(1:27 %in% c(v1, v2))]
+sum(dados$proporcao[v3])
+
+# criar indices para as cores
+
+id &lt;- rep(&quot;&quot;, length(dados$proporcao))
+
+id[v1] &lt;- &quot;a&quot;
+id[v2] &lt;- &quot;b&quot;
+id[v3] &lt;- &quot;c&quot;
+
+dados &lt;- cbind(dados, id)
+
+# informacoes sobre o mapa
+
+mapa_br &lt;- get_brmap(&quot;State&quot;)
+
+names(mapa_br) &lt;- c(&quot;unidade_federativa&quot;, &quot;estado&quot;, &quot;regiao&quot;, &quot;geometry&quot;)
+
+# colocar os nomes das unidades federativas no mesmo padrao
+
+dados$unidade_federativa &lt;- tolower(dados$unidade_federativa)
+mapa_br$unidade_federativa &lt;- tolower(mapa_br$unidade_federativa)
+
+dados &lt;- left_join(mapa_br, dados)
+
+# criacao do mapa
+
+ggplot(dados) +
+  geom_sf(aes(fill = id)) +
+  theme(panel.grid = element_line(colour = &quot;transparent&quot;),
+        panel.background = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        rect = element_blank(),
+        legend.position = &quot;none&quot;) +
+  scale_fill_viridis_d() +
+  labs(caption = &quot;marcusnunes.me&quot;)</code></pre>
