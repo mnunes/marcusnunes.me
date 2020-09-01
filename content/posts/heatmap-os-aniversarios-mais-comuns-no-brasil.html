@@ -1,0 +1,174 @@
+---
+title: "Heatmap: Os Aniversários Mais Comuns no Brasil"
+description: "As pessoas não fazem tanto sexo no Carnaval como vocês esperavam."
+tags: ["análise", "carnaval", "ciência de dados", "r", "sinasc", "tutorial", "visualização"]
+draft: false
+date: 2020-09-01T05:26:00-03:00
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
+<p>A informatização do sistema de saúde do Brasil é um projeto muito bem sucedido. Embora hajam alguns atrasos eventuais em algumas notificações, a coleta de dados realizada em nível nacional é extremamente bem organizada. Além disso, os dados são abertos, permitindo que qualquer pessoa tenha acesso a eles, facilitando análises de pesquisadores e curiosos.</p>
+<p>Um dos vários sistemas de informação em saúde do país é o <a href="http://www2.datasus.gov.br/DATASUS/index.php?area=060702">Sistema de Informações de Nascidos Vivos - SINASC</a>. Ele reúne informações anonimizadas sobre todos os nascimentos ocorridos no país entre 1996 e 2018. Foram 68.818.788 nascimentos neste período, dos quais 68.191.383 possuíam informação sobre dia e mês (ou seja, 0,91% dos dados são faltantes). Achei que estes dados seriam interessantes para visualizar tendências de nascimento e resolvi criar um heatmap sobre isso.</p>
+</div>
+<div id="obtendo-os-dados" class="section level1">
+<h1>Obtendo os Dados</h1>
+<p>O <a href="ftp://ftp.datasus.gov.br/dissemin/publicos/SINASC/NOV/DNRES//">servidor ftp do datasus</a> disponibiliza diretamente os dados, separados por estado e por ano. Como são 23 anos de registros e 27 unidades federativas, são 621 arquivos disponíveis. Como baixar eles um a um é impraticável, eu escrevi um loop para resolver isso.</p>
+<p>Por sorte, todos os arquivos tem o formato <code>DNUFAAAA.DBC</code>, em que <code>UF</code> é a unidade federativa e <code>AAAA</code> é o ano dos dados com quatro algarismos. Portanto, fica fácil criar as urls de maneira automática e baixar os arquivos uma a um.</p>
+<pre class="r"><code># parametros para uf e anos
+
+uf &lt;- c(&quot;RO&quot;, &quot;AC&quot;, &quot;AM&quot;, &quot;RR&quot;, &quot;PA&quot;, &quot;AP&quot;, &quot;TO&quot;, &quot;MA&quot;, &quot;PI&quot;, &quot;CE&quot;, &quot;RN&quot;, &quot;PB&quot;, &quot;PE&quot;, &quot;AL&quot;, &quot;SE&quot;, &quot;BA&quot;, &quot;MG&quot;, &quot;ES&quot;, &quot;RJ&quot;, &quot;SP&quot;, &quot;PR&quot;, &quot;SC&quot;, &quot;RS&quot;, &quot;MS&quot;, &quot;MT&quot;, &quot;GO&quot;, &quot;DF&quot;)
+
+ano &lt;- 1996:2018
+
+# loop para baixar os arquivos
+
+for (i in uf){
+    for (j in ano){
+        
+        # criacao das urls
+        url &lt;- paste0(&quot;ftp://ftp.datasus.gov.br/dissemin/publicos/SINASC/NOV/DNRES//DN&quot;, i, j, &quot;.DBC&quot;)
+        
+        # download dos arquivos
+        download.file(url, destfile = paste0(&quot;dados/&quot;, i, j, &quot;.DBC&quot;))
+        
+    }
+}</code></pre>
+</div>
+<div id="preparação-dos-dados" class="section level1">
+<h1>Preparação dos Dados</h1>
+<p>Como cada unidade federativa e cada ano estão em um arquivo, será necessário juntá-los em um local apenas. Criei mais um loop para fazer isso. Além disso, como são milhões de registros de nascimentos com muitas outras informações agregadas, eu preciso otimizar o uso da memória do meu computador de alguma forma. Para isso, eu seleciono apenas a data de nascimento associada a cada registro, descartando no processo todos os dados que não sejam referentes a nascimento.</p>
+<pre class="r"><code># preparacao dos dados
+
+arquivos &lt;- list.files(&quot;dados&quot;)
+
+library(read.dbc)
+
+dados &lt;- read.dbc(file = paste0(&quot;dados/&quot;, arquivos[1]))
+
+nascimento &lt;- as.character(dados$DTNASC)
+
+for (j in arquivos[-1]) {
+    dados &lt;- read.dbc(file = paste0(&quot;dados/&quot;, j))
+    nascimento &lt;- c(nascimento, as.character(dados$DTNASC))
+}
+
+length(nascimento)
+
+save(nascimento, file = &quot;dados/nascimento.RData&quot;)</code></pre>
+</div>
+<div id="criação-do-heatmap" class="section level1">
+<h1>Criação do Heatmap</h1>
+<p>Para criar o heatmap de maneira que fosse informativo, pensei em calcular a média diária de nascimentos por dia. A partir disso, calculei a diferença percentual entre cada dia do ano e a média anual. Pintei com uma cor clara os valores maiores e com uma cor escura os menores. Além disso, colori de branco os valores sem diferença em relação à média, de modo que houvesse uma cor de referência.</p>
+<p>Como considerei 29 de fevereiro na análise, eu fiz uma compensação proporcional para o resultado deste dia, considerando que no período de 23 anos analisados houve 6 anos bissextos.</p>
+<pre class="r"><code># pacotes necessarios
+
+library(tidyverse)
+library(viridis)
+
+# leitura dos dados
+
+load(&quot;dados/nascimento.RData&quot;)
+
+dias &lt;- substr(nascimento, 1, 2)
+
+meses &lt;- substr(nascimento, 3, 4)
+
+datas &lt;- substr(nascimento, 1, 4)
+
+datas &lt;- datas[datas != &quot;0000&quot;]
+
+datas_tabela &lt;- table(datas)
+
+datas_tabela_proporcao &lt;- as.vector(datas_tabela/mean(datas_tabela)-1)*100
+
+summary(datas_tabela_proporcao)
+
+# criacao da malha de datas
+
+meses &lt;- c(&quot;Janeiro&quot;, &quot;Fevereiro&quot;, &quot;Março&quot;, &quot;Abril&quot;, &quot;Maio&quot;, &quot;Junho&quot;, &quot;Julho&quot;, &quot;Agosto&quot;, &quot;Setembro&quot;, &quot;Outubro&quot;, &quot;Novembro&quot;, &quot;Dezembro&quot;)
+
+malha &lt;- expand.grid(x = meses, y = 1:31)
+
+malha &lt;- malha %&gt;%
+    arrange(y)
+
+# retirar dias que nao existem
+
+malha &lt;- malha %&gt;%
+    filter(!(x == &quot;Fevereiro&quot; &amp; y &gt; 29)) %&gt;%
+    filter(!(x %in% c(&quot;Abril&quot;, &quot;Junho&quot;, &quot;Setembro&quot;, &quot;Novembro&quot;) &amp; y &gt; 30)) %&gt;%
+    mutate(x = factor(x, 
+                      levels = c(&quot;Janeiro&quot;, &quot;Fevereiro&quot;, &quot;Março&quot;, &quot;Abril&quot;, &quot;Maio&quot;, &quot;Junho&quot;, &quot;Julho&quot;, &quot;Agosto&quot;, &quot;Setembro&quot;, &quot;Outubro&quot;, &quot;Novembro&quot;, &quot;Dezembro&quot;)))
+
+# colocar as porcentagens dos nascimentos
+
+malha &lt;- data.frame(malha, prop = datas_tabela_proporcao)
+
+# compensacao de 29 de fevereiro
+
+malha[338, 3] &lt;- malha[338, 3]*(6/23)
+
+# grafico
+
+ggplot(malha, aes(x = y, y = fct_rev(x), fill = prop)) + 
+    geom_tile(colour = &quot;grey10&quot;) +
+    scale_fill_gradient2(low = viridis(2)[1], high = viridis(2)[2], mid = &quot;white&quot;, midpoint = 0) +
+    scale_x_continuous(breaks = 1:31) +
+    coord_equal() +
+    theme_minimal() +
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) + 
+    labs(x = &quot;&quot;, y = &quot;&quot;, fill = &quot;Diferença Percentual\nem Relação à Média&quot;, title = &quot;As datas de aniversário mais comuns no Brasil: 1996-2018&quot;, caption = &quot;https://marcusnunes.me&quot;)</code></pre>
+<div class="figure">
+<img src="/images/heatmap-nascimentos-2.png" title="Logo Title Text 1" alt="" />
+<p class="caption">heatmap</p>
+</div>
+</div>
+<div id="inferências-sobre-a-imagem" class="section level1">
+<h1>Inferências sobre a Imagem</h1>
+<p>Os pontos escuros espalhados “aleatoriamente” no grid são os primeiros detalhes que me chamam a atenção. Coloquei aleatoriamente entre aspas porque estes pontos escuros não são aleatórios. Ao checarmos quais são os 10 dias de aniversário menos comuns, temos o seguinte:</p>
+<pre class="r"><code># dias menos comuns
+
+malha %&gt;%
+    arrange(prop) %&gt;%
+    head(10) %&gt;%
+    mutate(prop = round(prop, 2))
+##            x  y   prop
+## 1   Dezembro 25 -29.67
+## 2   Novembro  2 -26.54
+## 3   Dezembro 31 -25.52
+## 4   Dezembro 24 -23.85
+## 5  Fevereiro 29 -19.75
+## 6   Novembro 15 -17.38
+## 7    Outubro 12 -15.76
+## 8   Dezembro 30 -14.68
+## 9   Setembro  7 -14.22
+## 10   Janeiro  1 -12.43</code></pre>
+<p>Com exceção de 29 de fevereiro, todos os dias menos são feriados ou parte do período de festas do final do ano. Desconfio que estas sejam datas em que nem as mães, nem os obstetras estão querendo ir para o hospital passar por um parto.</p>
+<p>Os 10 dias mais comuns, por outro lado, tem a seguinte configuracao:</p>
+<pre class="r"><code># dias mais comuns
+
+malha %&gt;%
+    arrange(desc(prop)) %&gt;%
+    head(10) %&gt;%
+    mutate(prop = round(prop, 2))
+##        x  y  prop
+## 1  Março 10 11.54
+## 2   Maio  5 10.93
+## 3  Abril 25 10.60
+## 4  Março 20 10.00
+## 5  Abril 16  9.86
+## 6   Maio 10  9.64
+## 7  Março 12  9.53
+## 8  Abril 20  9.40
+## 9   Maio 15  9.37
+## 10 Abril  4  9.32</code></pre>
+<p>Todos ocorrem no trimestre compreendido entre março, abril e maio. Grosseiramente, são os meses de outono, o que implica que as concepções destes brasileiros se deram no inverno do ano anterior. Portanto, isso derruba a lenda de que o período de Carnaval é responsável por um aumento no número de nascimentos. As pessoas podem até fazer mais sexo nesta época, mas isto não se reflete em um aumento na quantidade de gestações.</p>
+<p>Por sim, gostaria de chamar atenção para um período particular em setembro, aproximadamente entre os dias 10 e 21. Note como estes dias apresentam um aumento no número de nascimentos em comparação com os dias imediatamente anteriores e posteriores.</p>
+<p>Pensando a respeito disso, vejo que estes dias correspondem às semanas 37 e 38 do ano. Levando em conta que uma gestação dura de 39 a 41 semanas, a concepção destas crianças ocorreu nas últimas duas semanas do ano anterior. Portanto, isso me leva a crer que as pessoas tendem a fazer mais sexo que resulta em concepções no período do Natal e Ano Novo do que no Carnaval.</p>
+<p>O código completo desta análise, com os dados já pré-processados, está disponível em meu <a href="https://github.com/mnunes/viz_nasc">github</a>.</p>
+<p>Além disso, desta vez um <a href="https://www.youtube.com/watch?v=cp9WydwhwCo">vídeo de divulgação</a> para este post. Assista ele e me conte o que achou.</p>
+</div>

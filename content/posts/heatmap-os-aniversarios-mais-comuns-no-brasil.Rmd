@@ -1,0 +1,202 @@
+---
+title: "Heatmap: Os Aniversários Mais Comuns no Brasil"
+description: "As pessoas não fazem tanto sexo no Carnaval como vocês esperavam."
+tags: ["análise", "carnaval", "ciência de dados", "r", "sinasc", "tutorial", "visualização"]
+draft: false
+date: 2020-09-01T05:26:00-03:00
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(tidy = FALSE,
+                      tidy.opts = list(width.cutoff = 60),
+                      options(width = 60))
+```
+
+# Introdução
+
+A informatização do sistema de saúde do Brasil é um projeto muito bem sucedido. Embora hajam alguns atrasos eventuais em algumas notificações, a coleta de dados realizada em nível nacional é extremamente bem organizada. Além disso, os dados são abertos, permitindo que qualquer pessoa tenha acesso a eles, facilitando análises de pesquisadores e curiosos.
+
+Um dos vários sistemas de informação em saúde do país é o [Sistema de Informações de Nascidos Vivos - SINASC](http://www2.datasus.gov.br/DATASUS/index.php?area=060702). Ele reúne informações anonimizadas sobre todos os nascimentos ocorridos no país entre 1996 e 2018. Foram 68.818.788 nascimentos neste período, dos quais 68.191.383 possuíam informação sobre dia e mês (ou seja, 0,91% dos dados são faltantes). Achei que estes dados seriam interessantes para visualizar tendências de nascimento e resolvi criar um heatmap sobre isso.
+
+# Obtendo os Dados
+
+O [servidor ftp do datasus](ftp://ftp.datasus.gov.br/dissemin/publicos/SINASC/NOV/DNRES//) disponibiliza diretamente os dados, separados por estado e por ano. Como são 23 anos de registros e 27 unidades federativas, são 621 arquivos disponíveis. Como baixar eles um a um é impraticável, eu escrevi um loop para resolver isso. 
+
+Por sorte, todos os arquivos tem o formato `DNUFAAAA.DBC`, em que `UF` é a unidade federativa e `AAAA` é o ano dos dados com quatro algarismos. Portanto, fica fácil criar as urls de maneira automática e baixar os arquivos uma a um.
+
+```{r download, eval=FALSE}
+# parametros para uf e anos
+
+uf <- c("RO", "AC", "AM", "RR", "PA", "AP", "TO", "MA", "PI", "CE", "RN", "PB", "PE", "AL", "SE", "BA", "MG", "ES", "RJ", "SP", "PR", "SC", "RS", "MS", "MT", "GO", "DF")
+
+ano <- 1996:2018
+
+# loop para baixar os arquivos
+
+for (i in uf){
+	for (j in ano){
+		
+		# criacao das urls
+		url <- paste0("ftp://ftp.datasus.gov.br/dissemin/publicos/SINASC/NOV/DNRES//DN", i, j, ".DBC")
+		
+		# download dos arquivos
+		download.file(url, destfile = paste0("dados/", i, j, ".DBC"))
+		
+	}
+}
+```
+
+# Preparação dos Dados
+
+Como cada unidade federativa e cada ano estão em um arquivo, será necessário juntá-los em um local apenas. Criei mais um loop para fazer isso. Além disso, como são milhões de registros de nascimentos com muitas outras informações agregadas, eu preciso otimizar o uso da memória do meu computador de alguma forma. Para isso, eu seleciono apenas a data de nascimento associada a cada registro, descartando no processo todos os dados que não sejam referentes a nascimento.
+
+```{r preparacao, eval=FALSE}
+# preparacao dos dados
+
+arquivos <- list.files("dados")
+
+library(read.dbc)
+
+dados <- read.dbc(file = paste0("dados/", arquivos[1]))
+
+nascimento <- as.character(dados$DTNASC)
+
+for (j in arquivos[-1]) {
+	dados <- read.dbc(file = paste0("dados/", j))
+	nascimento <- c(nascimento, as.character(dados$DTNASC))
+}
+
+length(nascimento)
+
+save(nascimento, file = "dados/nascimento.RData")
+```
+
+
+# Criação do Heatmap
+
+Para criar o heatmap de maneira que fosse informativo, pensei em calcular a média diária de nascimentos por dia. A partir disso, calculei a diferença percentual entre cada dia do ano e a média anual. Pintei com uma cor clara os valores maiores e com uma cor escura os menores. Além disso, colori de branco os valores sem diferença em relação à média, de modo que houvesse uma cor de referência.
+
+Como considerei 29 de fevereiro na análise, eu fiz uma compensação proporcional para o resultado deste dia, considerando que no período de 23 anos analisados houve 6 anos bissextos.
+
+```{r visualizacao, eval=FALSE}
+# pacotes necessarios
+
+library(tidyverse)
+library(viridis)
+
+# leitura dos dados
+
+load("dados/nascimento.RData")
+
+dias <- substr(nascimento, 1, 2)
+
+meses <- substr(nascimento, 3, 4)
+
+datas <- substr(nascimento, 1, 4)
+
+datas <- datas[datas != "0000"]
+
+datas_tabela <- table(datas)
+
+datas_tabela_proporcao <- as.vector(datas_tabela/mean(datas_tabela)-1)*100
+
+summary(datas_tabela_proporcao)
+
+# criacao da malha de datas
+
+meses <- c("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro")
+
+malha <- expand.grid(x = meses, y = 1:31)
+
+malha <- malha %>%
+	arrange(y)
+
+# retirar dias que nao existem
+
+malha <- malha %>%
+	filter(!(x == "Fevereiro" & y > 29)) %>%
+	filter(!(x %in% c("Abril", "Junho", "Setembro", "Novembro") & y > 30)) %>%
+	mutate(x = factor(x, 
+	                  levels = c("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro")))
+
+# colocar as porcentagens dos nascimentos
+
+malha <- data.frame(malha, prop = datas_tabela_proporcao)
+
+# compensacao de 29 de fevereiro
+
+malha[338, 3] <- malha[338, 3]*(6/23)
+
+# grafico
+
+ggplot(malha, aes(x = y, y = fct_rev(x), fill = prop)) + 
+	geom_tile(colour = "grey10") +
+	scale_fill_gradient2(low = viridis(2)[1], high = viridis(2)[2], mid = "white", midpoint = 0) +
+	scale_x_continuous(breaks = 1:31) +
+	coord_equal() +
+	theme_minimal() +
+	theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) + 
+	labs(x = "", y = "", fill = "Diferença Percentual\nem Relação à Média", title = "As datas de aniversário mais comuns no Brasil: 1996-2018", caption = "https://marcusnunes.me")
+```
+
+![heatmap](/images/heatmap-nascimentos-2.png "Logo Title Text 1")
+
+
+# Inferências sobre a Imagem
+
+Os pontos escuros espalhados "aleatoriamente" no grid são os primeiros detalhes que me chamam a atenção. Coloquei aleatoriamente entre aspas porque estes pontos escuros não são aleatórios. Ao checarmos quais são os 10 dias de aniversário menos comuns, temos o seguinte:
+
+```{r diasMenosComuns, eval=FALSE}
+# dias menos comuns
+
+malha %>%
+	arrange(prop) %>%
+	head(10) %>%
+	mutate(prop = round(prop, 2))
+##            x  y   prop
+## 1   Dezembro 25 -29.67
+## 2   Novembro  2 -26.54
+## 3   Dezembro 31 -25.52
+## 4   Dezembro 24 -23.85
+## 5  Fevereiro 29 -19.75
+## 6   Novembro 15 -17.38
+## 7    Outubro 12 -15.76
+## 8   Dezembro 30 -14.68
+## 9   Setembro  7 -14.22
+## 10   Janeiro  1 -12.43
+```
+
+Com exceção de 29 de fevereiro, todos os dias menos são feriados ou parte do período de festas do final do ano. Desconfio que estas sejam datas em que nem as mães, nem os obstetras estão querendo ir para o hospital passar por um parto.
+
+Os 10 dias mais comuns, por outro lado, tem a seguinte configuracao:
+
+```{r diasMaisComuns, eval=FALSE}
+# dias mais comuns
+
+malha %>%
+	arrange(desc(prop)) %>%
+	head(10) %>%
+	mutate(prop = round(prop, 2))
+##        x  y  prop
+## 1  Março 10 11.54
+## 2   Maio  5 10.93
+## 3  Abril 25 10.60
+## 4  Março 20 10.00
+## 5  Abril 16  9.86
+## 6   Maio 10  9.64
+## 7  Março 12  9.53
+## 8  Abril 20  9.40
+## 9   Maio 15  9.37
+## 10 Abril  4  9.32
+```
+
+Todos ocorrem no trimestre compreendido entre março, abril e maio. Grosseiramente, são os meses de outono, o que implica que as concepções destes brasileiros se deram no inverno do ano anterior. Portanto, isso derruba a lenda de que o período de Carnaval é responsável por um aumento no número de nascimentos. As pessoas podem até fazer mais sexo nesta época, mas isto não se reflete em um aumento na quantidade de gestações.
+
+Por sim, gostaria de chamar atenção para um período particular em setembro, aproximadamente entre os dias 10 e 21. Note como estes dias apresentam um aumento no número de nascimentos em comparação com os dias imediatamente anteriores e posteriores. 
+
+Pensando a respeito disso, vejo que estes dias correspondem às semanas 37 e 38 do ano. Levando em conta que uma gestação dura de 39 a 41 semanas, a concepção destas crianças ocorreu nas últimas duas semanas do ano anterior. Portanto, isso me leva a crer que as pessoas tendem a fazer mais sexo que resulta em concepções no período do Natal e Ano Novo do que no Carnaval.
+
+O código completo desta análise, com os dados já pré-processados, está disponível em meu [github](https://github.com/mnunes/viz_nasc).
+
+Além disso, desta vez um [vídeo de divulgação](https://www.youtube.com/watch?v=cp9WydwhwCo) para este post. Assista ele e me conte o que achou.
+

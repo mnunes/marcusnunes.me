@@ -1,7 +1,7 @@
 ---
 title: "Heatmap: De Onde Saem os Arremessos na NBA"
-description: "Quer Perder Peso? Pergunte-me Como."
-tags: ["análise", "ciência de dados", "esporte", "nba", "r", "tutorial", "visualização"]
+description: "Descubra de onde os jogadores da NBA preferem arremessar"
+tags: ["análise", "ciência de dados", "esporte", "heatmap", "nba", "r", "tutorial", "visualização"]
 draft: false
 date: 2020-06-16T17:14:00-03:00
 ---
