@@ -15,7 +15,7 @@ knitr::opts_chunk$set(tidy = FALSE,
 
 # Introdução
 
-O Matinal News, meu jornal favorito, publicou um [perfil sobre os vereadores de Porto Alegre](https://www.matinaljornalismo.com.br/matinal/newsletter/conheca-o-perfil-dos-vereadores-de-porto-alegre/). Achei uma ideia fantástica e resolvi chamar [minha mulher](https://mahayana.me/) para fazermos algo similar para Natal, organizando tudo em um infográfico. O resultado está abaixo:
+O Matinal News, meu jornal favorito, publicou um [perfil sobre os vereadores de Porto Alegre](https://www.matinaljornalismo.com.br/matinal/newsletter/conheca-o-perfil-dos-vereadores-de-porto-alegre/). Achei uma ideia fantástica e resolvi chamar a Professora [Mahayana Godoy](https://mahayana.me/) para fazermos algo similar para Natal, organizando tudo em um infográfico. O resultado está abaixo:
 
 ![Infográfico Completo](/images/infografico.png)
 
