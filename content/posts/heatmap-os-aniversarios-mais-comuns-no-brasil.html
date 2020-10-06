@@ -12,7 +12,7 @@ date: 2020-09-01T05:26:00-03:00
 <div id="introdução" class="section level1">
 <h1>Introdução</h1>
 <p>A informatização do sistema de saúde do Brasil é um projeto muito bem sucedido. Embora hajam alguns atrasos eventuais em algumas notificações, a coleta de dados realizada em nível nacional é extremamente bem organizada. Além disso, os dados são abertos, permitindo que qualquer pessoa tenha acesso a eles, facilitando análises de pesquisadores e curiosos.</p>
-<p>Um dos vários sistemas de informação em saúde do país é o <a href="http://www2.datasus.gov.br/DATASUS/index.php?area=060702">Sistema de Informações de Nascidos Vivos - SINASC</a>. Ele reúne informações anonimizadas sobre todos os nascimentos ocorridos no país entre 1996 e 2018. Foram 68.818.788 nascimentos neste período, dos quais 68.191.383 possuíam informação sobre dia e mês (ou seja, 0,91% dos dados são faltantes). Achei que estes dados seriam interessantes para visualizar tendências de nascimento e resolvi criar um heatmap sobre isso.</p>
+<p>Um dos vários sistemas de informação em saúde do país é o <a href="http://www2.datasus.gov.br/DATASUS/index.php?area=060702">Sistema de Informações sobre Nascidos Vivos - SINASC</a>. Ele reúne informações anonimizadas sobre todos os nascimentos ocorridos no país entre 1996 e 2018. Foram 68.818.788 nascimentos neste período, dos quais 68.191.383 possuíam informação sobre dia e mês (ou seja, 0,91% dos dados são faltantes). Achei que estes dados seriam interessantes para visualizar tendências de nascimento e resolvi criar um heatmap sobre isso.</p>
 </div>
 <div id="obtendo-os-dados" class="section level1">
 <h1>Obtendo os Dados</h1>
@@ -63,7 +63,7 @@ save(nascimento, file = &quot;dados/nascimento.RData&quot;)</code></pre>
 <div id="criação-do-heatmap" class="section level1">
 <h1>Criação do Heatmap</h1>
 <p>Para criar o heatmap de maneira que fosse informativo, pensei em calcular a média diária de nascimentos por dia. A partir disso, calculei a diferença percentual entre cada dia do ano e a média anual. Pintei com uma cor clara os valores maiores e com uma cor escura os menores. Além disso, colori de branco os valores sem diferença em relação à média, de modo que houvesse uma cor de referência.</p>
-<p>Como considerei 29 de fevereiro na análise, eu fiz uma compensação proporcional para o resultado deste dia, considerando que no período de 23 anos analisados houve 6 anos bissextos.</p>
+<p>Como considerei 29 de fevereiro na análise, fiz uma compensação proporcional para o resultado desse dia, considerando que no período de 23 anos analisado houve 6 anos bissextos.</p>
 <pre class="r"><code># pacotes necessarios
 
 library(tidyverse)
@@ -147,8 +147,8 @@ malha %&gt;%
 ## 8   Dezembro 30 -14.68
 ## 9   Setembro  7 -14.22
 ## 10   Janeiro  1 -12.43</code></pre>
-<p>Com exceção de 29 de fevereiro, todos os dias menos são feriados ou parte do período de festas do final do ano. Desconfio que estas sejam datas em que nem as mães, nem os obstetras estão querendo ir para o hospital passar por um parto.</p>
-<p>Os 10 dias mais comuns, por outro lado, tem a seguinte configuracao:</p>
+<p>Com exceção de 29 de fevereiro, todos os dias menos frequentes são feriados ou parte do período de festas do final do ano. Desconfio que estas sejam datas em que nem as mães, nem os obstetras estão querendo ir para o hospital passar por um parto.</p>
+<p>Os 10 dias mais comuns, por outro lado, têm a seguinte configuração:</p>
 <pre class="r"><code># dias mais comuns
 
 malha %&gt;%
@@ -170,5 +170,5 @@ malha %&gt;%
 <p>Por fim, gostaria de chamar atenção para um período particular em setembro, aproximadamente entre os dias 10 e 21. Note como estes dias apresentam um aumento no número de nascimentos em comparação com os dias imediatamente anteriores e posteriores.</p>
 <p>Pensando a respeito disso, vejo que estes dias correspondem às semanas 37 e 38 do ano. Levando em conta que uma gestação dura de 39 a 41 semanas, a concepção destas crianças ocorreu nas últimas duas semanas do ano anterior. Portanto, isso me leva a crer que as pessoas tendem a fazer mais sexo que resulta em concepções no período do Natal e Ano Novo do que no Carnaval.</p>
 <p>O código completo desta análise, com os dados já pré-processados, está disponível em meu <a href="https://github.com/mnunes/viz_nasc">github</a>.</p>
-<p>Além disso, desta vez um <a href="https://www.youtube.com/watch?v=cp9WydwhwCo">vídeo de divulgação</a> para este post. Assista ele e me conte o que achou.</p>
+<p>Além disso, dessa vez produzi um <a href="https://www.youtube.com/watch?v=cp9WydwhwCo">vídeo de divulgação</a> para este post. Assista ele e me conte o que achou.</p>
 </div>

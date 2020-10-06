@@ -1,0 +1,123 @@
+---
+title: "Infográfico sobre os Vereadores de Natal"
+description: "Conheça o perfil da câmara da nossa cidade."
+tags: ["análise", "ciência de dados", "r", "política", "tutorial", "vereadores", "visualização"]
+draft: false
+date: 2020-10-06T16:59:00-03:00
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
+<p>O Matinal News, meu jornal favorito, publicou um <a href="https://www.matinaljornalismo.com.br/matinal/newsletter/conheca-o-perfil-dos-vereadores-de-porto-alegre/">perfil sobre os vereadores de Porto Alegre</a>. Achei uma ideia fantástica e resolvi chamar <a href="https://mahayana.me/">minha mulher</a> para fazermos algo similar para Natal, organizando tudo em um infográfico. O resultado está abaixo:</p>
+<div class="figure">
+<img src="/images/infografico.png" alt="" />
+<p class="caption">Infográfico Completo</p>
+</div>
+<p>Os dados foram obtidos diretamente dos sites da <a href="https://www.cmnat.rn.gov.br/">Câmara de Vereadores de Natal</a> e do <a href="http://divulgacandcontas.tse.jus.br/">Site do TSE</a>. <a href="/images/vereadores.xlsx">Clique aqui</a> para baixar a planilha com os dados coletados.</p>
+<p>As figuras foram criadas utilizando o R e abaixo eu mostro como elas foram feitas.</p>
+</div>
+<div id="criação-de-um-infográfico-no-r" class="section level1">
+<h1>Criação de um Infográfico no R</h1>
+<p>Nossa principal fonte de consulta foi o post <a href="https://www.listendata.com/2019/06/create-infographics-with-r.html">Create Infographics with R R</a>. Nesse post vimos como criar todos os gráficos que fogem do padrão <code>ggplot2</code> de ser. Por exemplo, o gráfico comparando gêneros foi criado com o código abaixo:</p>
+<pre class="r"><code>##### dados
+
+vereadores &lt;- read_excel(path = &quot;dados/vereadores.xlsx&quot;)
+vereadores &lt;- clean_names(vereadores)
+
+vereadores &lt;- vereadores %&gt;%
+  mutate(idade = interval(dmy(data_de_nascimento), today())/years(1))
+
+vereadores %&gt;%
+  select(genero, 
+         estado_civil, 
+         grau_de_instrucao, 
+         idade, 
+         cor_raca, 
+         cidade, 
+         uf, 
+         recursos_recebidos, 
+         patrimonio) %&gt;%
+  summarise(genero = mlv(genero), 
+            estado_civil = mlv(estado_civil), 
+            grau_de_instrucao = mlv(grau_de_instrucao), 
+            idade = mean(idade), 
+            cor_raca = mlv(cor_raca), 
+            cidade = mlv(cidade), 
+            uf = mlv(uf), 
+            recursos_recebidos = mean(recursos_recebidos), 
+            patrimonio = mean(patrimonio)) %&gt;%
+  t()
+
+
+# genero
+
+genero &lt;- vereadores %&gt;%
+  group_by(genero) %&gt;%
+  count() %&gt;%
+  arrange(desc(n))
+
+waffle(
+  c(&#39;Feminino&#39; = 5, &#39;Masculino&#39; = 24), rows = 5,
+  colors = c(&quot;#F9D84A&quot;, &quot;#00C8C8&quot;),
+  use_glyph = &quot;user&quot;,
+  glyph_size = 20,
+  reverse = FALSE,
+  flip = FALSE,
+  title = &#39;&#39;, legend_pos=&quot;bottom&quot;
+)</code></pre>
+<p>O código abaixo foi usado para criar a visualização da raça/cor dos vereadores da cidade:</p>
+<pre class="r"><code># raca/cor
+
+raca &lt;- vereadores %&gt;%
+  group_by(cor_raca) %&gt;%
+  count() %&gt;%
+  arrange(desc(n))
+
+waffle(
+  c(&quot;Branca&quot; = raca$n[1], &quot;Parda&quot;  = raca$n[2], &quot;Preta&quot; = raca$n[3]), rows = 5,
+  use_glyph = &quot;user&quot;,
+  title = &#39;Câmara de Vereadores por raça&#39;, legend_pos=&quot;bottom&quot;
+)
+
+ggplot(raca)+
+  geom_parliament(aes(seats = n, fill = cor_raca))+
+  coord_fixed() + 
+  theme_void() +
+  theme(legend.position = &quot;bottom&quot;) +
+  labs(fill = NULL) +
+  scale_fill_brewer(palette = &quot;Dark2&quot;, labels = c(&quot;Branco&quot;, &quot;Pardo&quot;, &quot;Preto&quot;))</code></pre>
+<p>Por fim, para o gráfico com os partidos, usamos o seguinte código:</p>
+<pre class="r"><code># partido
+
+vereadores %&gt;%
+  group_by(partido_atual) %&gt;%
+  count() %&gt;%
+  arrange(desc(n))
+
+partido &lt;- vereadores %&gt;%
+  group_by(partido_atual) %&gt;%
+  count() %&gt;%
+  arrange(desc(n)) %&gt;% 
+  filter(n &gt;1) %&gt;% 
+  droplevels()
+
+partido %&gt;% 
+  e_charts(partido_atual) %&gt;% 
+  e_pictorial(n, symbol = ea_icons(&quot;user&quot;), 
+              symbolRepeat = TRUE, z = -1,
+              symbolSize = c(60, 60)) %&gt;% 
+  e_theme(&quot;westeros&quot;) %&gt;%
+  e_title(text = &quot;Distribuição por partidos&quot;, subtext = &quot;Partidos com pelo menos 2 parlamentares. Partidos com 1 parlamentar são \nAvante, MDB, PCdoB, PL, PP, PROS, PSB, PSD, PSL, PV e Republicanos&quot;, textStyle =list(fontSize= 24, fontFamily= &#39;Arial&#39;, fontWeight =&#39;bold&#39;), subtextStyle =list(fontSize= 12, fontFamily= &#39;Arial&#39;, fontWeight =&#39;lighter&#39;)) %&gt;%
+  e_flip_coords() %&gt;%
+  # Hide Legend
+  e_legend(show = FALSE) %&gt;%
+  # Remove Gridlines
+  e_x_axis(splitLine=list(show = FALSE), show = FALSE) %&gt;%
+  e_y_axis(splitLine=list(show = FALSE), show = TRUE, inverse = TRUE, axisLine = list(show = FALSE)) %&gt;%
+  # Format Label
+  e_labels(fontSize = 16, fontWeight =&#39;bold&#39;, position = &quot;right&quot;, offset=c(10, 0))</code></pre>
+<p>O código completo dessa análise, com os dados já pré-processados, está disponível em meu <a href="https://github.com/mnunes/infografico-vereadores">github</a>.</p>
+</div>
