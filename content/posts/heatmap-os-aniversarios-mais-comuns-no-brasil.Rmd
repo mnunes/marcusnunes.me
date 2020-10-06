@@ -16,7 +16,7 @@ knitr::opts_chunk$set(tidy = FALSE,
 
 A informatização do sistema de saúde do Brasil é um projeto muito bem sucedido. Embora hajam alguns atrasos eventuais em algumas notificações, a coleta de dados realizada em nível nacional é extremamente bem organizada. Além disso, os dados são abertos, permitindo que qualquer pessoa tenha acesso a eles, facilitando análises de pesquisadores e curiosos.
 
-Um dos vários sistemas de informação em saúde do país é o [Sistema de Informações de Nascidos Vivos - SINASC](http://www2.datasus.gov.br/DATASUS/index.php?area=060702). Ele reúne informações anonimizadas sobre todos os nascimentos ocorridos no país entre 1996 e 2018. Foram 68.818.788 nascimentos neste período, dos quais 68.191.383 possuíam informação sobre dia e mês (ou seja, 0,91% dos dados são faltantes). Achei que estes dados seriam interessantes para visualizar tendências de nascimento e resolvi criar um heatmap sobre isso.
+Um dos vários sistemas de informação em saúde do país é o [Sistema de Informações sobre Nascidos Vivos - SINASC](http://www2.datasus.gov.br/DATASUS/index.php?area=060702). Ele reúne informações anonimizadas sobre todos os nascimentos ocorridos no país entre 1996 e 2018. Foram 68.818.788 nascimentos neste período, dos quais 68.191.383 possuíam informação sobre dia e mês (ou seja, 0,91% dos dados são faltantes). Achei que estes dados seriam interessantes para visualizar tendências de nascimento e resolvi criar um heatmap sobre isso.
 
 # Obtendo os Dados
 
@@ -76,7 +76,7 @@ save(nascimento, file = "dados/nascimento.RData")
 
 Para criar o heatmap de maneira que fosse informativo, pensei em calcular a média diária de nascimentos por dia. A partir disso, calculei a diferença percentual entre cada dia do ano e a média anual. Pintei com uma cor clara os valores maiores e com uma cor escura os menores. Além disso, colori de branco os valores sem diferença em relação à média, de modo que houvesse uma cor de referência.
 
-Como considerei 29 de fevereiro na análise, eu fiz uma compensação proporcional para o resultado deste dia, considerando que no período de 23 anos analisados houve 6 anos bissextos.
+Como considerei 29 de fevereiro na análise, fiz uma compensação proporcional para o resultado desse dia, considerando que no período de 23 anos analisado houve 6 anos bissextos.
 
 ```{r visualizacao, eval=FALSE}
 # pacotes necessarios
@@ -166,9 +166,9 @@ malha %>%
 ## 10   Janeiro  1 -12.43
 ```
 
-Com exceção de 29 de fevereiro, todos os dias menos são feriados ou parte do período de festas do final do ano. Desconfio que estas sejam datas em que nem as mães, nem os obstetras estão querendo ir para o hospital passar por um parto.
+Com exceção de 29 de fevereiro, todos os dias menos frequentes são feriados ou parte do período de festas do final do ano. Desconfio que estas sejam datas em que nem as mães, nem os obstetras estão querendo ir para o hospital passar por um parto.
 
-Os 10 dias mais comuns, por outro lado, tem a seguinte configuracao:
+Os 10 dias mais comuns, por outro lado, têm a seguinte configuração:
 
 ```{r diasMaisComuns, eval=FALSE}
 # dias mais comuns
@@ -198,5 +198,5 @@ Pensando a respeito disso, vejo que estes dias correspondem às semanas 37 e 38 
 
 O código completo desta análise, com os dados já pré-processados, está disponível em meu [github](https://github.com/mnunes/viz_nasc).
 
-Além disso, desta vez um [vídeo de divulgação](https://www.youtube.com/watch?v=cp9WydwhwCo) para este post. Assista ele e me conte o que achou.
+Além disso, dessa vez produzi um [vídeo de divulgação](https://www.youtube.com/watch?v=cp9WydwhwCo) para este post. Assista ele e me conte o que achou.
 
