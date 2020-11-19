@@ -12,6 +12,8 @@ googleAnalytics = "UA-201649-7"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 disqusShortname = "marcus-nunes-blog"
 
+ignoreErrors = ["error-remote-getjson"]
+
 [author]
   name = "Marcus Nunes"
 
