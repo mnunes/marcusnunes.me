@@ -9,7 +9,7 @@ hasCJKLanguage = true  # If there're Chinese/Japanese/Korean Languages in the co
 rssLimit = 10  # Maximum number of items in the RSS feed.
 copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License." # This message is only used by the RSS template.
 googleAnalytics = "UA-201649-7"
-ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+ignoreFiles =  ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$"]
 disqusShortname = "marcus-nunes-blog"
 
 ignoreErrors = ["error-remote-getjson"]
