@@ -112,3 +112,5 @@ O laboratório é focado em projetos de colaboração estatística de curta dura
 - Treinamentos no software R
 
 O edital para pedidos de colaboração estatística é lançado duas vezes ao ano, nos períodos de férias da universidade. Acesse o [site para consultoria estatística](http://lea.estatistica.ccet.ufrn.br/) ou tire as suas dúvidas ou marque uma reunião com a equipe do LEA através do email [lea.ccet.ufrn@gmail.com](mailto:lea.ccet.ufrn@gmail.com).
+
+Alguma outra dúvida? Mande um email para [marcus.nunes@gmail.com](mailto:marcus.nunes@gmail.com) que conversamos.

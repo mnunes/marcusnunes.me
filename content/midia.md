@@ -12,6 +12,7 @@ Abaixo listo sites, jornais ou TVs que fizeram matérias comigo ou projetos que 
 
 **2020**
 
+- [Trinta municípios do RN têm mais eleitores do que habitantes](http://www.tribunadonorte.com.br/noticia/trinta-munica-pios-do-rn-ta-m-mais-eleitores-que-habitantes/492194) - Tribuna do Norte
 - [Aplicativo demonstra em gráficos número de casos de SRAG no país](https://ufrn.br/imprensa/noticias/35429/aplicativo-demonstra-em-graficos-numero-de-casos-de-srag-no-pais) - Portal da UFRN
 - [Potiguar Cria Aplicativo que Compara Jogadores](https://globoplay.globo.com/v/8513019/programa/?s=8276s) - Bom Dia RN
 - [The ten most similar players - Pro Evolution Soccer 2019](https://shiny.rstudio.com/gallery/soccer-player-similarity.html) - RStudio
