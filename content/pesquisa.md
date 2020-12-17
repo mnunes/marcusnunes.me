@@ -39,7 +39,7 @@ Os artigos que publiquei estão disponíveis para download logo abaixo.
 
 **Computação**
 
-Apesar de ter preferência pessoal pelo <a href="http://www.r-project.org/">R</a>, por ser um programa gratuito e multiplataforma, tenho conhecimento avançado nos principais programas de análise estatística do mercado: S-Plus, Matlab, SAS, Minitab e SPSS, além de ter programado muito em Fortran durante meu passado.
+Apesar de ter preferência pessoal pelo [R](https://r-project.org), por ser um programa gratuito e multiplataforma, tenho conhecimento avançado nos principais programas de análise estatística do mercado: S-Plus, Matlab, SAS, Minitab e SPSS, além de ter programado muito em Fortran durante meu passado.
 
 Publiquei alguns pacotes para o R no meu [perfil no GitHub](https://github.com/mnunes/).
 
@@ -55,16 +55,9 @@ Sou usuário avançado de sistemas Unix (como macOS) e Linux.
 
 * Ciência de Dados sob a Ótica da Estatística - [UFRN Telecom Day 2019](http://telecomday.ct.ufrn.br/) - [Slides](/images/telecom-day-2019.pdf)
 
-
-
 * Ciência de Dados e Multidisciplinaridade - [II Seminário de Aplicações em Ciência de Dados](http://datascience.dca.ufrn.br) - [Slides](/images/minicursos/ii-seminario-ciencia-de-dados-2018/ciencia_de_dados_e_multidisciplinaridade.pdf)
 
-
-
 * Big data: a organização do dia a dia em um disco rígido - Pint of Science Natal, 2017 - [Slides](/images/divulgacao/Pint_of_Science_2017/Marcus_PintOfScience.pdf)
-
-
-
 
 * Introdução ao Big Data - Encontro Paraibano de Estatística, 2016 - [Slides](/images/minicursos/epbest-2016/slides.pdf) e [Material Complementar](/images/minicursos/epbest-2016/material.zip)
 
@@ -74,6 +67,8 @@ Sou usuário avançado de sistemas Unix (como macOS) e Linux.
 **Eventos**
 
 Nos últimos anos participei dos seguintes eventos, com os respectivos trabalhos:
+
+* 3rd [LISA 2020](http://lisa2020.org) Symposium (2020) - [Modernizing the Curricula of Statistics courses through Statistical Learning](/images/)
 
 * 62nd ISI World Statistics Congress (2019) - [Effects of Participation in a Statistical Laboratory on Statistics Students](/images/Marcus_Nunes_62nd_ISI_WSC.pdf)
 
@@ -113,4 +108,4 @@ O laboratório é focado em projetos de colaboração estatística de curta dura
 
 O edital para pedidos de colaboração estatística é lançado duas vezes ao ano, nos períodos de férias da universidade. Acesse o [site para consultoria estatística](http://lea.estatistica.ccet.ufrn.br/) ou tire as suas dúvidas ou marque uma reunião com a equipe do LEA através do email [lea.ccet.ufrn@gmail.com](mailto:lea.ccet.ufrn@gmail.com).
 
-Alguma outra dúvida? Mande um email para [marcus.nunes@gmail.com](mailto:marcus.nunes@gmail.com) que conversamos.
+Alguma outra dúvida? Mande um email para [marcus@marcusnunes.me](mailto:marcus@marcusnunes.me) que conversamos.
