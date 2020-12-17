@@ -68,7 +68,7 @@ Sou usuário avançado de sistemas Unix (como macOS) e Linux.
 
 Nos últimos anos participei dos seguintes eventos, com os respectivos trabalhos:
 
-* 3rd [LISA 2020](http://lisa2020.org) Symposium (2020) - [Modernizing the Curricula of Statistics courses through Statistical Learning](/images/)
+* 3rd [LISA 2020](http://lisa2020.org) Symposium (2020) - [Modernizing the Curricula of Statistics courses through Statistical Learning](/images/Marcus_Nunes_3rd_LISA_Symposium.pdf)
 
 * 62nd ISI World Statistics Congress (2019) - [Effects of Participation in a Statistical Laboratory on Statistics Students](/images/Marcus_Nunes_62nd_ISI_WSC.pdf)
 
