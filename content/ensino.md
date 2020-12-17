@@ -92,8 +92,8 @@ O edital para pedidos de colaboração estatística é lançado duas vezes ao an
 
 **Consultoria Profissional**
 
-Também estou aberto a propostas de consultorias para empresas e profissionais em geral, seja na forma de trabalhos aplicados ou cursos de estatística ou programação. Mande um email para [marcus.nunes@gmail.com](mailto:marcus.nunes@gmail.com) e podemos acertar os detalhes.
+Também estou aberto a propostas de consultorias para empresas e profissionais em geral, seja na forma de trabalhos aplicados ou cursos de estatística ou programação. Mande um email para [marcus@marcusnunes.me](mailto:marcus@marcusnunes.me) e podemos acertar os detalhes.
 
-Dê uma olhada no [blog](https://marcusnunes.me/posts/) deste site para ter uma ideia do que é possível fazer com estatística.
+Dê uma olhada no [blog](https://marcusnunes.me/posts/) desse site para ter uma ideia melhor do que é possível fazer com estatística.
 
 

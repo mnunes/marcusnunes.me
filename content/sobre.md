@@ -35,4 +35,4 @@ Antes de me dedicar aos modelos lineares generalizados, me interessei por série
 
 Atualmente, [fotografia](https://instagram.com/grandeabobora/) é meu hobby principal. Dentre outras coisas, gosto principalmente de ciência, [música](https://www.last.fm/user/grandeabobora), cinema, [videogames](http://psnprofiles.com/grandeabobora/) e [internet](https://pinboard.in/u:grandeabobora).
 
-Alguma outra dúvida? Mande um email para [marcus.nunes@gmail.com](mailto:marcus.nunes@gmail.com) que conversamos.
+Alguma outra dúvida? Mande um email para [marcus@marcusnunes.me](mailto:marcus@marcusnunes.me) que conversamos.
