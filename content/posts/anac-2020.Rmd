@@ -51,13 +51,13 @@ preparacao <- function(arquivo){
   return(dados)
 }
 
-resumo_anual_2019 <- preparacao("dados/resumo_anual_2019.csv")
+resumo_anual_2019 <- preparacao("data/resumo_anual_2019.csv")
 # retirar dezembro
 resumo_anual_2019 <-
   resumo_anual_2019 %>%
   filter(mes != 12)
 
-resumo_anual_2020 <- preparacao("dados/resumo_anual_2020.csv")
+resumo_anual_2020 <- preparacao("data/resumo_anual_2020.csv")
 
 dados <- 
   rbind(resumo_anual_2019, resumo_anual_2020) %>%
