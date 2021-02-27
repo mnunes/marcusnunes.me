@@ -10,6 +10,10 @@ weight: 50
 
 Abaixo listo sites, jornais ou TVs que fizeram matérias comigo ou projetos que coordeno.
 
+**2021**
+
+- [Margem Hub de Fotografia realiza Mostra Refúgios até o dia 28](https://apartamento702.com.br/margem-hub-de-fotografia-realiza-mostra-refugios-ate-o-dia-28/) - Apartamento 702 (uma foto minha participa dessa mostra fotográfica)
+
 **2020**
 
 - [Trinta municípios do RN têm mais eleitores do que habitantes](http://www.tribunadonorte.com.br/noticia/trinta-munica-pios-do-rn-ta-m-mais-eleitores-que-habitantes/492194) - Tribuna do Norte
