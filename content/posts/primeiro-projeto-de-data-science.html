@@ -1,7 +1,7 @@
 ---
 title: "Tutorial: Como Fazer o Seu Primeiro Projeto de Data Science"
 description: "Faça o seu primeiro projeto de data science a partir do zero, desde a obtenção dos dados, passando pela sua análise exploratória e chegando a um modelo de previsão"
-tags: ["caret", "curso", "data science", "ensino", "machine learning", "random forest", "tutorial"]
+tags: ["caret", "curso", "data science", "ensino", "machine learning", "r", "random forest", "tutorial"]
 draft: false
 date: 2018-07-01T08:54:00-03:00
 ---
@@ -69,8 +69,8 @@ corrplot.mixed(correlacao, upper = &quot;ellipse&quot;)</code></pre>
 <pre class="r"><code>library(tidyverse)</code></pre>
 <pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
 <pre><code>## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
-## ✓ tibble  3.1.0     ✓ dplyr   1.0.4
-## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
+## ✓ tibble  3.1.0     ✓ dplyr   1.0.5
+## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
 ## ✓ readr   1.4.0     ✓ forcats 0.5.1</code></pre>
 <pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
@@ -201,9 +201,9 @@ iris_teste &lt;- iris[-trainIndex, ]</code></pre>
 <p><span class="math display">\[
     Kappa: 
     \begin{align*}
-    p_{\mbox{Sim}} &amp;= \frac{a+b}{a+b+c+b} \times \frac{a+c}{a+b+c+b} \\
-    p_{\mbox{Não}} &amp;= \frac{c+d}{a+b+c+b} \times \frac{b+d}{a+b+c+b} \\
-    p_e            &amp;= p_{\mbox{Sim}} + p_{\mbox{Não}} \\
+    p_{\mbox{Sim}} &amp; =  \frac{a+b}{a+b+c+b} \times \frac{a+c}{a+b+c+b} \\
+    p_{\mbox{Não}} &amp; =  \frac{c+d}{a+b+c+b} \times \frac{b+d}{a+b+c+b} \\
+    p_e            &amp; =  p_{\mbox{Sim}} + p_{\mbox{Não}} \\
     \end{align*}
 \]</span></p>
 <p>Com estas medidas definidas, o Kappa é dado por</p>
@@ -275,7 +275,7 @@ confusionMatrix(predicao, iris_teste$especie)</code></pre>
 
 * [Economic Time Series Page](http://www.economagic.com/): Dados de séries temporais econométricas.
 
-* [Time Series Data Library](https://datamarket.com/data/list/?q=provider:tsdl): Fonte excelente para quem procura dados de séries temporais, sejam eles econométricos ou não.-->
+* [Time Series Data Library](https://datamarket.com/data/list/?q = provider:tsdl): Fonte excelente para quem procura dados de séries temporais, sejam eles econométricos ou não.-->
 <p>Além destas fontes de terceiros, eu mantenho uma lista de favoritos online, locais em que encontrei fontes interessantes para dados. Venho fazendo isto desde 2007. Os links são os seguintes:</p>
 <ul>
 <li><p><a href="https://pinboard.in/u:grandeabobora/t:datasets/">https://pinboard.in/u:grandeabobora/t:datasets/</a></p></li>

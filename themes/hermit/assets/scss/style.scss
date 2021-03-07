@@ -11,7 +11,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #fff;
 
   &:hover {
     background: $text;
@@ -19,7 +19,7 @@
 }
 
 html {
-  background: $light-grey;
+  background: #fff;
   line-height: 1.6;
   letter-spacing: .06em;
   scroll-behavior: smooth;
@@ -60,7 +60,7 @@ pre {
 }
 
 code {
-  color: #eee;
+  color: #000;
   background: $highlight-grey;
   border-radius: 3px;
   padding: 0 3px;
@@ -94,8 +94,7 @@ a {
   transition-timing-function: ease-out;
 
   &:hover {
-    color: #fff;
-    text-shadow: 0 0 1px #fff;
+    background-color: #cccccc;
   }
 }
 
