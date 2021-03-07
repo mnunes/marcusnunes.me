@@ -2,8 +2,8 @@
 title: "Como Usar o R no Google Colab"
 description: "Edite seus códigos no R sem precisar comprometer a sua máquina local"
 tags: ["google colab", "python", "r"]
-draft: true
-date: 2021-02-07T16:45:00-03:00
+draft: false
+date: 2021-03-07T16:45:00-03:00
 ---
 
 Semana passada descobri que é possível rodar códigos do R no Google Colab sem chamar funções do python para isso. Clique no link abaixo para testar essa solução no seu navegador:
