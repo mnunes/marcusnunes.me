@@ -1,11 +1,11 @@
---2020-12-22 13:49:54--  https://marcusnunes.me/robots.txt
-Resolving marcusnunes.me (marcusnunes.me)... 54.207.147.214, 18.230.52.212
-Connecting to marcusnunes.me (marcusnunes.me)|54.207.147.214|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 136 [text/plain]
-Saving to: ‘robots.txt.1’
+# Group 1
+User-agent: Googlebot
+Disallow: /nogooglebot/
 
-     0K                                                       100% 4.99M=0s
+# Group 2
+User-agent: *
+Allow: /
 
-2020-12-22 13:49:54 (4.99 MB/s) - ‘robots.txt.1’ saved [136/136]
+Sitemap: https://marcusnunes.me/sitemap.xml
+
 
